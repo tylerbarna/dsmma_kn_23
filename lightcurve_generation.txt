@@ -1,0 +1,8 @@
+Commands used for generating the lighturves (presumes nmma is cloned in the same root directory as this repository)
+
+
+## supernova injections
+nmma_create_injection --prior-file ../nmma/priors/Piro2021.prior --eos-file ../nmma/example_files/eos/ALF2.dat --binary-type BNS --n-injection 1 --original-parameters --extension json
+
+
+ --ztf-sampling --ztf-uncertainties --ztf-ToO

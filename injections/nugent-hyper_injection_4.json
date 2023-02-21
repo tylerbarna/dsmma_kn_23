@@ -1,0 +1,19 @@
+{
+  "injections": {
+    "__dataframe__": true,
+    "content": {
+      "luminosity_distance": [
+        3986.4117632677517
+      ],
+      "KNtimeshift": [
+        -1.2369227438778192
+      ],
+      "supernova_mag_boost": [
+        0.7955140118806696
+      ],
+      "geocent_time": [
+        -0.04854089728298614
+      ]
+    }
+  }
+}
