@@ -16,6 +16,7 @@ import numpy as np
 #subprocess.run('conda activate nmma', shell=True)
 
 models = ['Bu2019lm','TrPi2018', 'nugent-hyper']
+priors = [ os.path.join('/home/cough052/shared/NMMA/priors/',model) for model in models]
 
 def injection_gen(model,inj_label='injection'):
     n_inj = str(1)
@@ -76,8 +77,22 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
     #                 ]
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
+    return outfile
     
-for model in models:
+
+def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
+    ## retreive prior
+    #prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    #outfile = os.path.join(out_path, model+'_lc_'+inj_label+'.csv')
+    cmd_str = ['sbatch msi_analysis.bash',
+                    '--datafile', lc_path,
+                    '--candname', inj_label,
+                    '--model', model,
+                    ]
+    command = ' '.join(cmd_str)
+    subprocess.run(command, shell=True)
+    
+for model, prior in zip(models,priors):
     if model == 'nugent-hyper':
         lc_count = 7
     else:
@@ -85,7 +100,11 @@ for model in models:
     
     for item in range(lc_count):
         inj_path = injection_gen(model,inj_label='injection_'+str(item))
-        lc_gen(model=model, inj_path=inj_path, out_path='./injections',inj_label='injection_'+str(item),filters='g')
+        print('created injection file: ',inj_path)
+        lc_path = lc_gen(model=model, inj_path=inj_path, out_path='./injections',inj_label='injection_'+str(item),filters='g')
+        print('created lightcurve file: ',inj_path)
+        #lc_analysis_msi(model=model, lc_path=lc_path, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
+        #print('submitted to msi: ',inj_path)
 
 
 ## use create lightcurve from injection
