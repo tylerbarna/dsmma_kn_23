@@ -47,34 +47,37 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
                '--model', model,
                '--svd-path', '../nmma/svdmodels',
                '--filters', filters,
+               '--tmin', '0.1',
+               '--tmax', '20',
+               '--dt', '0.5',
+               '--ztf-uncertainties',
+               '--ztf-sampling',
+               '--ztf-ToO', '180',
+               '--outdir', out_path,
+               ]
+    command = ' '.join(cmd_str)
+    subprocess.run(command, shell=True)
+
+    cmd_str = ['light_curve_analysis',
+                '--model', model,
+                '--label', inj_label,
+                '--prior', prior_path,
+                '--injection', inj_path,
+                '--injection-num', '0',
+                '--generation-seed', '42',
+                '--filters', filters,
                 '--tmin', '0.1',
                 '--tmax', '20',
                 '--dt', '0.5',
+                '--error-budget', '1',
+                '--nlive', '512',
+                '--remove-nondetections',
                 '--ztf-uncertainties',
                 '--ztf-sampling',
-                '--ztf-ToO', '180',
+                '--ztf-ToO', '180', 
                 '--outdir', out_path,
-               ]
-    # cmd_str = ['light_curve_analysis',
-    #                 '--model', model,
-    #                 '--label', inj_label,
-    #                 '--prior', prior_path,
-    #                 '--injection', inj_path,
-    #                 '--injection-num', '0',
-    #                 '--generation-seed', '42',
-    #                 '--filters', filters,
-    #                 '--tmin', '0.1',
-    #                 '--tmax', '20',
-    #                 '--dt', '0.5',
-    #                 '--error-budget', '1',
-    #                 '--nlive', '512',
-    #                 '--remove-nondetections',
-    #                 '--ztf-uncertainties',
-    #                 '--ztf-sampling',
-    #                 '--ztf-ToO', '180',
-    #                 '--outdir', out_path,
-    #                 '--injection-outfile', outfile
-    #                 ]
+                '--injection-outfile', outfile
+              ]
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
     return outfile
@@ -96,7 +99,7 @@ for model, prior in zip(models,priors):
     if model == 'nugent-hyper':
         lc_count = 7
     else:
-        lc_count = 0
+        lc_count = 1
     
     for item in range(lc_count):
         inj_path = injection_gen(model,inj_label='injection_'+str(item))
