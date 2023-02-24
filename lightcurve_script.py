@@ -40,6 +40,7 @@ def injection_gen(model,inj_label='injection'):
 def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
     ## retreive prior
     prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    models_path = os.path.join('../','nmma/svdmodels')
     outfile = os.path.join(out_path, model+'_lc_'+inj_label+'.csv')
     cmd_str = ['light_curve_generation',
                '--injection', inj_path,
@@ -76,6 +77,7 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
                 '--ztf-sampling',
                 '--ztf-ToO', '180', 
                 '--outdir', out_path,
+                '--svd-path', models_path,
                 '--injection-outfile', outfile
               ]
     command = ' '.join(cmd_str)
