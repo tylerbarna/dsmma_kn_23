@@ -62,32 +62,32 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
                '--tmin', '0.1',
                '--tmax', '20',
                '--dt', '0.5',
-               '--ztf-uncertainties',
-               '--ztf-sampling',
-               '--ztf-ToO', '180',
+            #    '--ztf-uncertainties',
+            #    '--ztf-sampling',
+            #    '--ztf-ToO', '180',
                '--outdir', out_path,
                ]
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
 
-    cmd_str = ['light_curve_analysis',
-                '--model', model,
-                '--label', inj_label,
-                '--prior', prior_path,
-                '--injection', inj_path,
-                '--injection-num', '0',
-                '--generation-seed', '42',
-                '--filters', filters,
-                '--tmin', '0.1',
-                '--tmax', '10',
-                '--dt', '0.5',
-                # '--ztf-uncertainties',
-                # '--ztf-sampling',
-                # '--ztf-ToO', '180',
-                '--outdir', out_path,
-                '--svd-path', models_path,
-                '--injection-outfile', outfile
-              ]
+    # cmd_str = ['light_curve_analysis',
+    #             '--model', model,
+    #             '--label', inj_label,
+    #             '--prior', prior_path,
+    #             '--injection', inj_path,
+    #             '--injection-num', '0',
+    #             '--generation-seed', '42',
+    #             '--filters', filters,
+    #             '--tmin', '0.1',
+    #             '--tmax', '10',
+    #             '--dt', '0.5',
+    #             # '--ztf-uncertainties',
+    #             # '--ztf-sampling',
+    #             # '--ztf-ToO', '180',
+    #             '--outdir', out_path,
+    #             '--svd-path', models_path,
+    #             '--injection-outfile', outfile
+    #           ]
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
     
