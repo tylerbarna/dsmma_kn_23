@@ -41,10 +41,13 @@ prior = args.prior
 
 filters = 'g'
 
-time_range = np.range(1,10)
+
+## will probably need to tweak based on final version of the ingest data
+df = pd.read_csv(lc_path)
+## do whatver time conversion required (may be ingested as isot)
+time_range = df['time'] + 0.01 ## set max time slightly above each data point to go point by point
 
 outdir_array = np.empty(len(time_range))
-
 for tmax in time_range:
     outdir_array[tmax-1] = os.path.join(outdir_base+ '_tmax_'+str(tmax))
     outdir_iter = outdir_array[tmax-1]

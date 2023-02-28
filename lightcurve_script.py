@@ -51,7 +51,7 @@ def injection_gen(model,inj_label='injection'):
 def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     ## retreive prior
     prior_path = os.path.join('../','nmma/priors',model+'.prior')
-    outfile = os.path.join(out_path,'lc_'+model+'_'+inj_label+'.dat')
+    outfile = os.path.join(out_path,'lc_'+model+'_'+inj_label+'.json')
     label = 'lc_'+model+'_'+inj_label
     cmd_str = ['light_curve_generation',
                '--injection', inj_path,
@@ -62,9 +62,9 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
                '--tmin', '0.1',
                '--tmax', '20',
                '--dt', '0.5',
-            #    '--ztf-uncertainties',
-            #    '--ztf-sampling',
-            #    '--ztf-ToO', '180',
+               '--ztf-uncertainties',
+               '--ztf-sampling',
+               '--ztf-ToO', '180',
                '--outdir', out_path,
                ]
     command = ' '.join(cmd_str)
@@ -94,7 +94,10 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     ## rename output file of light_curve_analysis (temporary hack)
     dat_files = glob.glob(os.path.join(out_path,'*.dat'))
     recent_file = max(dat_files, key=os.path.getctime)
-    Path(recent_file).rename(outfile)
+    if recent_file == outfile:
+        return outfile
+    else:
+        Path(recent_file).rename(outfile)
     return outfile
     
 
