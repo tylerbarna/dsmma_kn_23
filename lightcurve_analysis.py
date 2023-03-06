@@ -54,6 +54,7 @@ for tmax in time_range:
     os.path.exists(outdir_iter) or os.makedirs(outdir_iter)
     cmd_str = ['mpiexec -np',str(args.cpus),
                'light_curve_analysis',
+               '--data', lc_path,
                '--model', model,
                '--label', cand,
                '--prior', prior,

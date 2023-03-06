@@ -7,7 +7,9 @@ from pathlib import Path
 import json
 
 import numpy as np
-#import pandas as pd
+import pandas as pd
+
+from astropy.time import Time
 #import matplotlib
 #import matplotlib.pyplot as plt
 #from matplotlib.pyplot import cm
@@ -47,6 +49,21 @@ def injection_gen(model,inj_label='injection'):
             json.dump(data, f, indent=4)
             f.truncate()
     return inj_path
+
+def convert_lc_json(lc_file):
+    '''
+    takes the output file of lc_gen and converts the json into a dat file readable by nmma's light_curve_analysis
+    '''
+    with open(lc_file, 'r') as f:
+        data = json.load(f)
+    df_all = pd.DataFrame()
+    for filt, vals in data.items():
+        df = pd.DataFrame(vals, columns=['jd', 'mag', 'mag_unc'])
+        df['filter'] = filt
+        df['isot'] = Time(df['jd']+2400000.5, format='jd').isot
+        df['limmag'] = [mag if unc == np.inf else 99 for mag, unc in zip(df['mag'], df['mag_unc'])]
+        df_all = pd.concat([df_all, df],ignore_index=True)
+    df_all[['isot','filter','mag','mag_unc','limmag']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
 
 def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     ## retreive prior
@@ -98,7 +115,14 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
         return outfile
     else:
         Path(recent_file).rename(outfile)
+    
+    ## convert json to dat file
+    convert_lc_json(outfile)
     return outfile
+
+
+    
+    
     
 
 def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
@@ -114,6 +138,8 @@ def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
     subprocess.run(command, shell=True)
     
 for model, prior in zip(models,priors):
+    print('starting model: ',model,' with prior: ',prior,'')
+    print()
     if model == 'nugent-hyper':
         lc_count = 7
     else:
@@ -126,9 +152,11 @@ for model, prior in zip(models,priors):
         lc_path = lc_gen(model=model, inj_path=inj_path, out_path='./injections/',inj_label=str(item),filters='g')
         print('created lightcurve file: ',lc_path)
         print()
-        #lc_analysis_msi(model=model, lc_path=lc_path, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
+        lc_dat = lc_path.replace('.json','.dat')
+        #lc_analysis_msi(model=model, lc_path=lc_dat, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
         #print('submitted to msi: ',inj_path)
         ## removing logs since they aren't actually logging anything as of now
         log_files = glob.glob(os.path.join('./injections/','*.log'))
         os.remove(log_files[0])
+        #exit()
 
