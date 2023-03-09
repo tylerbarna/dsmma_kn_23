@@ -18,12 +18,14 @@ from astropy.time import Time
 ## want to generate 1 kilonova, one afterfglow, and seven supernovae
 #subprocess.run('conda activate nmma', shell=True)
 
-models = ['nugent-hyper','Bu2019lm','TrPi2018'] #
-priors = [ os.path.join('/home/cough052/shared/NMMA/priors/',model) for model in models]
+models = ['nugent-hyper','Bu2019lm','TrPi2018'] #['nugent-hyper','Bu2019lm','TrPi2018'] #
+#priors = [ os.path.join('/home/cough052/shared/NMMA/priors/',model) for model in models]
+priors = [os.path.join('./priors/',model+'.prior') for model in models]
 
 def injection_gen(model,inj_label='injection'):
     n_inj = 1
-    prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    #prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    prior_path = os.path.join('./priors/',model+'.prior')
     cmd_str = ['nmma_create_injection', 
                 '--prior-file', prior_path,
                 #'--injection-file', '../nmma/example_files/sim_events/injections.dat',
@@ -63,11 +65,12 @@ def convert_lc_json(lc_file):
         df['isot'] = Time(df['jd']+2400000.5, format='jd').isot
         df['limmag'] = [mag if unc == np.inf else 99 for mag, unc in zip(df['mag'], df['mag_unc'])]
         df_all = pd.concat([df_all, df],ignore_index=True)
-    df_all[['isot','filter','mag','mag_unc','limmag']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
+    df_all[['isot','filter','mag','mag_unc']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
 
 def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     ## retreive prior
-    prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    #prior_path = os.path.join('../','nmma/priors',model+'.prior')
+    prior_path = os.path.join('./priors/',model+'.prior')
     outfile = os.path.join(out_path,'lc_'+model+'_'+inj_label+'.json')
     label = 'lc_'+model+'_'+inj_label
     cmd_str = ['light_curve_generation',
@@ -75,7 +78,6 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
                '--label', label,
                '--model', model,
                '--svd-path', '../nmma/svdmodels',
-               '--filters', filters,
                '--tmin', '0.1',
                '--tmax', '20',
                '--dt', '0.5',
@@ -84,6 +86,10 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
                '--ztf-ToO', '180',
                '--outdir', out_path,
                ]
+    print("lcg command: {}".format(' '.join(cmd_str)))
+    if model == 'nugent-hyper':
+        cmd_str.append('--filters')
+        cmd_str.append(filters)
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
 
@@ -105,8 +111,8 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     #             '--svd-path', models_path,
     #             '--injection-outfile', outfile
     #           ]
-    command = ' '.join(cmd_str)
-    subprocess.run(command, shell=True)
+    # command = ' '.join(cmd_str)
+    # subprocess.run(command, shell=True)
     
     ## rename output file of light_curve_analysis (temporary hack)
     dat_files = glob.glob(os.path.join(out_path,'*.dat'))
@@ -119,10 +125,6 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
     ## convert json to dat file
     convert_lc_json(outfile)
     return outfile
-
-
-    
-    
     
 
 def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
@@ -137,6 +139,7 @@ def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
     
+
 for model, prior in zip(models,priors):
     print('starting model: ',model,' with prior: ',prior,'')
     print()
@@ -153,6 +156,7 @@ for model, prior in zip(models,priors):
         print('created lightcurve file: ',lc_path)
         print()
         lc_dat = lc_path.replace('.json','.dat')
+        print('lc_dat: ',lc_dat)
         #lc_analysis_msi(model=model, lc_path=lc_dat, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
         #print('submitted to msi: ',inj_path)
         ## removing logs since they aren't actually logging anything as of now
