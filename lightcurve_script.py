@@ -20,7 +20,16 @@ from astropy.time import Time
 #subprocess.run('conda activate nmma', shell=True)
 parser = argparse.ArgumentParser(description='Generate light curves for a given model')
 
-parser.add_argument('-m','--models', type=str, nargs='+', default=['nugent-hyper','Bu2019lm','TrPi2018'], help='models to generate light curves for')
+parser.add_argument('-m','--models', 
+                    type=str, nargs='+', 
+                    default=['nugent-hyper','Bu2019lm','TrPi2018'], 
+                    help='models to generate light curves for'
+)
+parser.add_argument('-f','--filters',
+                    type=str,
+                    default='g',
+                    help='filters to generate light curves for (choices for ztf are r,g,i)'
+)
 
 args = parser.parse_args()
 models = args.models
@@ -165,6 +174,7 @@ for model, prior in zip(models,priors):
         lc_count = 1
     
     for item in range(lc_count):
+        ## may want to add some thing so it tries to generate a new injection if it fails
         print('starting injection: ',item,'')
         t0 = time.time()
         inj_path = injection_gen(model,inj_label=str(item))
@@ -173,7 +183,7 @@ for model, prior in zip(models,priors):
         inj_gen_time_dict[model] = np.append(inj_gen_time_dict[model], inj_time)
         print('created injection file: {} ({:.2f} seconds)'.format(inj_path,inj_time))
         
-        lc_path = lc_gen(model=model, inj_path=inj_path, out_path='./injections/',inj_label=str(item),filters='g')
+        lc_path = lc_gen(model=model, inj_path=inj_path, out_path='./injections/',inj_label=str(item),filters=args.filters)
         lc_time = time.time() - inj_time - t0
         lc_gen_time_dict[model] = np.append(lc_gen_time_dict[model], lc_time)
         print('created lightcurve file: {} ({:.2f} seconds)'.format(lc_path, lc_time))
