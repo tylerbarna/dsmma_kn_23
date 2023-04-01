@@ -101,7 +101,7 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
                '--model', model,
                '--svd-path', '../nmma/svdmodels',
                '--tmin', '0.1',
-               '--tmax', '20',
+               '--tmax', '14',
                '--dt', '0.5',
                '--ztf-uncertainties',
                '--ztf-sampling',
