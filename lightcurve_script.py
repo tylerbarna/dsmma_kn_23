@@ -89,7 +89,7 @@ def convert_lc_json(lc_file):
         df_all = pd.concat([df_all, df],ignore_index=True)
     df_all[['isot','filter','mag','mag_unc']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
 
-def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
+def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
     ## retreive prior
     #prior_path = os.path.join('../','nmma/priors',model+'.prior')
     prior_path = os.path.join('./priors/',model+'.prior')
@@ -105,9 +105,13 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
                '--dt', '0.5',
                '--ztf-uncertainties',
                '--ztf-sampling',
-               '--ztf-ToO', '180',
+            #    '--ztf-ToO', '180',
+            #    '--rubin-ToO', #'180',
+            #    '--rubin-ToO-type', 'BNS',
                '--filters', filters,
                '--outdir', out_path,
+               '--photometry-augmentation',
+               '--photometry-augmentation-filters', filters,
                ]
     
     #if model == 'nugent-hyper':
@@ -145,7 +149,7 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='r,g,i'):
         return outfile
     else:
         Path(recent_file).rename(outfile)
-    
+    ## may be good to try to check if there's too many non-detections and then augment or something if that's the case
     ## convert json to dat file
     convert_lc_json(outfile)
     return outfile
@@ -191,6 +195,7 @@ for model, prior in zip(models,priors):
         lc_dat = lc_path.replace('.json','.dat')
         print('converted lightcurve dat: {}'.format(lc_dat))
         
+        #lc_dat = os.path.join('./injection_sample/', model+'_lc_'+str(item)+'.dat')
         #lc_analysis_msi(model=model, lc_path=lc_dat, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
         #print('submitted to msi: ',inj_path)
         ## removing logs since they aren't actually logging anything as of now
