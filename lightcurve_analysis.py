@@ -26,7 +26,7 @@ parser.add_argument("--prior", type=str, default="/home/cough052/shared/NMMA/pri
 
 args = parser.parse_args()
 
-outdir_base = os.path.join('/home/cough052/barna314/dsmma_kn_23', args.candname)
+outdir_base = os.path.join('/home/cough052/barna314/dsmma_kn_23/fits', args.candname)
 
 os.path.exists(outdir_base) or os.makedirs(outdir_base)
 
@@ -44,38 +44,52 @@ filters = 'g'
 
 
 ## will probably need to tweak based on final version of the ingest data
-df = pd.read_csv(lc_path)
-## do whatver time conversion required (may be ingested as isot)
-time_range = df['time'] + 0.01 ## set max time slightly above each data point to go point by point
+df = pd.read_csv(lc_path, sep="\s+", header=None, names=['time','filter','mag','magerr'])
 
-outdir_array = np.empty(len(time_range))
-for tmax in time_range:
-    outdir_array[tmax-1] = os.path.join(outdir_base+ '_tmax_'+str(tmax))
-    outdir_iter = outdir_array[tmax-1]
-    os.path.exists(outdir_iter) or os.makedirs(outdir_iter)
-    cmd_str = ['mpiexec -np',str(args.cpus),
+df['time'] = [Time(t, format='isot') for t in df['time']]
+trigger_time = df['time'][0].mjd - 1
+time_range = np.arange(3.01, 16.01, 2)
+    #[t.mjd +0.01 for t in df['time']]
+
+## do whatver time conversion required (may be ingested as isot)
+# time_range = df['time'].mjd + 0.01 ## set max time slightly above each data point to go point by point
+
+# outdir_array = np.empty(len(time_range))
+for idx, tmax in enumerate(time_range):
+    # outdir_array[idx] = os.path.join(outdir_base,)
+    # outdir_iter = outdir_array[idx]
+    # os.path.exists(outdir_iter) or os.makedirs(outdir_iter)
+    label = 'lc_{}_fit_{}_tmax_{}'.format(cand, model, int(tmax))
+    cmd_str = [#'mpiexec -np',str(args.cpus),
                'light_curve_analysis',
                '--data', lc_path,
                '--model', model,
-               '--label', cand,
+               '--label', label,
                '--prior', prior,
                 '--filters', filters,
                 '--tmin', '0.1',
                 '--tmax', str(tmax),
                 '--dt', '0.5',
+                '--trigger-time', str(trigger_time),
                 '--error-budget', '1',
                 '--nlive', str(args.nlive),
                 '--remove-nondetections',
                 '--ztf-uncertainties',
                 '--ztf-sampling',
                 '--ztf-ToO', '180',
-                '--outdir', outdir_iter,
-                '--plot', '--verbose'
+                '--outdir', outdir_base,
+                '--plot', 
+                '--verbose'
                 ]
     command = ' '.join(cmd_str)
-    subp = subprocess.run(command, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE) ## do I want to run them all sequentially? Would probably be fine to run them in sequence since I'll submit each object/model seperately
-    sys.stdout.buffer.write(command.stdout)
-    sys.stderr.buffer.write(command.stderr)
+    subp = subprocess.run(command, shell=True, capture_output=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
+    ## do I want to run them all sequentially? Would probably be fine to run them in sequence since I'll submit each object/model seperately
+    pewda = os.path.join(outdir_base, label, 'pm_'+label,'post_equal_weights.da')
+    pewdat = os.path.join(outdir_base, label, 'pm_'+label,'post_equal_weights.dat')
+    if os.path.isfile(pewda):
+        os.rename(pewda, pewdat)
+    #sys.stdout.buffer.write(subp.stdout)
+    sys.stderr.buffer.write(subp.stderr)
     print("({}) executing: {}".format(time.ctime(), command))
     #stdout, stderr = subp.communicate() ## unsure about this
     # try: ## this may not work? Need to check if it waits properly
