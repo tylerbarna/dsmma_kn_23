@@ -3,6 +3,7 @@ import sys
 import os
 import argparse
 from pathlib import Path
+import time
 
 import numpy as np
 import pandas as pd
@@ -72,12 +73,15 @@ for tmax in time_range:
                 '--plot', '--verbose'
                 ]
     command = ' '.join(cmd_str)
-    subp = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE) ## do I want to run them all sequentially? Would probably be fine to run them in sequence since I'll submit each object/model seperately
-    stdout, stderr = subp.communicate() ## unsure about this
-    try: ## this may not work? Need to check if it waits properly
-        Path('lightcurve.png').rename(os.path.join(outdir_iter,'lightcurve.png'))
-    except:
-        print('No lightcurve.png found')
+    subp = subprocess.run(command, shell=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE) ## do I want to run them all sequentially? Would probably be fine to run them in sequence since I'll submit each object/model seperately
+    sys.stdout.buffer.write(command.stdout)
+    sys.stderr.buffer.write(command.stderr)
+    print("({}) executing: {}".format(time.ctime(), command))
+    #stdout, stderr = subp.communicate() ## unsure about this
+    # try: ## this may not work? Need to check if it waits properly
+    #     Path('lightcurve.png').rename(os.path.join(outdir_iter,'lightcurve.png'))
+    # except:
+    #     print('No lightcurve.png found')
 
 
     ## lightcurves will output to cwd I think, might need to pr nmma to correct label functionality
