@@ -26,7 +26,7 @@ parser.add_argument("--prior", type=str, default="/home/cough052/shared/NMMA/pri
 
 args = parser.parse_args()
 
-outdir_base = os.path.join('/panfs/roc/groups/7/cough052/barna314/dsmma_kn_23', args.candname)
+outdir_base = os.path.join('/home/cough052/barna314/dsmma_kn_23', args.candname)
 
 os.path.exists(outdir_base) or os.makedirs(outdir_base)
 
