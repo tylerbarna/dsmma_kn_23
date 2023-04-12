@@ -59,7 +59,7 @@ for idx, tmax in enumerate(time_range):
     # outdir_array[idx] = os.path.join(outdir_base,)
     # outdir_iter = outdir_array[idx]
     # os.path.exists(outdir_iter) or os.makedirs(outdir_iter)
-    label = 'lc_{}_fit_{}_tmax_{}'.format(cand, model, int(tmax))
+    label = '{}_tmax_{}'.format(cand, int(tmax))
     cmd_str = [#'mpiexec -np',str(args.cpus),
                'light_curve_analysis',
                '--data', lc_path,
