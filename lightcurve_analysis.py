@@ -23,10 +23,11 @@ parser.add_argument("--nlive", type=int, default=256, help="Number of live point
 parser.add_argument("--cpus", type=int, default=4, help="Number of cpus to use")
 parser.add_argument("--svdmodels", type=str, default="/home/cough052/shared/NMMA/svdmodels", help="Path to the SVD models. Note: Not present in the repo, need to be aquired separately (Files are very large)")
 parser.add_argument("--prior", type=str, default="/home/cough052/shared/NMMA/priors/Bu2019lm.prior", help="Path to the prior file")
+parser.add_argument("--outdir", type=str, default="/home/cough052/barna314/dsmma_kn_23/fits", help="Path to the output directory")
 
 args = parser.parse_args()
 
-outdir_base = os.path.join('/home/cough052/barna314/dsmma_kn_23/fits', args.candname)
+outdir_base = os.path.join(args.outdir, args.candname)
 
 os.path.exists(outdir_base) or os.makedirs(outdir_base)
 
@@ -59,13 +60,15 @@ for idx, tmax in enumerate(time_range):
     # outdir_array[idx] = os.path.join(outdir_base,)
     # outdir_iter = outdir_array[idx]
     # os.path.exists(outdir_iter) or os.makedirs(outdir_iter)
-    label = '{}_tmax_{}'.format(cand, int(tmax))
+    label = '{}_t_{}'.format(cand, int(tmax))
+    print('starting analysis for {}'.format(label))
     cmd_str = [#'mpiexec -np',str(args.cpus),
                'light_curve_analysis',
                '--data', lc_path,
                '--model', model,
                '--label', label,
                '--prior', prior,
+               '--svd-path', svdmodels,
                 '--filters', filters,
                 '--tmin', '0.1',
                 '--tmax', str(tmax),
@@ -82,6 +85,7 @@ for idx, tmax in enumerate(time_range):
                 '--verbose'
                 ]
     command = ' '.join(cmd_str)
+    print('command: {}'.format(command))
     subp = subprocess.run(command, shell=True, capture_output=True)#, stdout=subprocess.PIPE, stderr=subprocess.PIPE) 
     ## do I want to run them all sequentially? Would probably be fine to run them in sequence since I'll submit each object/model seperately
     pewda = os.path.join(outdir_base, label, 'pm_'+label,'post_equal_weights.da')

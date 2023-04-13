@@ -46,6 +46,7 @@ parser.add_argument('--outdir',
 
 args = parser.parse_args()
 models = args.models
+outdir = args.outdir
 
 lc_paths = glob.glob(os.path.join(args.data,'*.dat')) ## list of lightcurve data files
 lc_names = [os.path.basename(lc).split('.')[0].replace('lc_','') for lc in lc_paths] ## list of lightcurve names (eg nugent-hyper_0)
@@ -62,10 +63,13 @@ for idx, lc in enumerate(lc_names):
                 lc_paths[idx], ## lightcurve data file
                 label, ## lightcurve label
                 model, ## model name
-                prior ## prior file
+                prior, ## prior file
+                outdir, ## output directory
             
         ]
         command = ' '.join(cmd_str)
         subprocess.run(command, shell=True, capture_output=True)
+        print('Submitted job for {}'.format(label))
+        print('command: {}'.format(command))
 
 print('Submitted jobs for all lightcurves')
