@@ -58,7 +58,7 @@ for idx, lc in enumerate(lc_names):
     for model in models:
 
         prior = os.path.join(args.priors,model+'.prior')
-        label = 'lc_{}_fit_{}'.format(lc,model)
+        label = '{}_fit_{}'.format(lc,model)
         cmd_str = ['sbatch msi_analysis.sh',
                 lc_paths[idx], ## lightcurve data file
                 label, ## lightcurve label
