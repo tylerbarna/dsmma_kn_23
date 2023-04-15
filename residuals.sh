@@ -8,7 +8,7 @@
 #NOTSBATCH -p amdsmall
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ztfrest@gmail.com
-#SBATCH -j calc_residuals
+#SBATCH -J calc_residuals
 #SBATCH -o ./logs/%j.out
 #SBATCH -e ./logs/%j.err
 
