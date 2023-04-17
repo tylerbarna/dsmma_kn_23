@@ -19,6 +19,9 @@ from nmma.em.model import SimpleKilonovaLightCurveModel,GRBLightCurveModel, SVDL
 
 from nmma.em.injection import create_light_curve_data as cld
 
+import warnings
+warnings.simplefilter("ignore", UserWarning)
+
 snModel = lambda t: SupernovaLightCurveModel(sample_times=t, model='nugent-hyper')
 grbModel = lambda t: GRBLightCurveModel(sample_times=t, model='TrPi2018')
 knModel = lambda t: SVDLightCurveModel(sample_times=t, model='Bu2019lm')
@@ -77,8 +80,12 @@ def get_lc(file, tmax=False):
 
 def get_best_params(json, verbose=False):
     '''Get the best fit parameters from a bilby json file, return as a dictionary'''
-    ll_idx = np.argmin(np.abs(json['log_likelihood_evaluations']))
-    best_ll = json['log_likelihood_evaluations'][ll_idx]
+    # ll_idx = np.argmin(np.abs(json['log_likelihood_evaluations']))
+    #best_ll = json['log_likelihood_evaluations'][ll_idx]
+    post = json['posterior']
+    ll_idx = np.argmin(np.abs(post['log_likelihood']))
+    best_ll = post['log_likelihood'][ll_idx]
+    post_keys = list(post.keys())
     print("Best log likelihood evaluation: {}".format(best_ll)) if verbose else None
     log_evidence = json['log_evidence']
     log_evidence_err = json['log_evidence_err']
@@ -86,7 +93,8 @@ def get_best_params(json, verbose=False):
     likelihood_dict = dict(zip(['log_likelihood','log_evidence', 'log_evidence_err', 'log_bayes_factor'], [best_ll, log_evidence, log_evidence_err, log_bayes_factor]))
     # print(bp_dict) if verbose else None
     #bp_dict = dict(zip(json['search_parameter_keys'], json['samples'][ll_idx]))
-    bp_dict = dict(zip(json['search_parameter_keys'], json['samples'][ll_idx, :]))
+    # bp_dict = dict(zip(json['search_parameter_keys'], json['samples'][ll_idx, :]))
+    bp_dict = dict(zip(post_keys, [post[k][ll_idx] for k in post_keys]))
 
     return bp_dict, likelihood_dict
 
@@ -100,6 +108,8 @@ def get_labels(json):
     label_dict = dict(zip(keys, [candidate, model, tmax]))
     
     return label_dict
+    
+    return label_dict
 
 def gen_lc(json, model, sample_times, verbose=False):
     '''Generate a light curve from a bilby json file'''
@@ -108,8 +118,14 @@ def gen_lc(json, model, sample_times, verbose=False):
     model = modelDict(sample_times)[model_type]
     print(model) if verbose else None
     label = get_labels(json)
-    print(label) if verbose else None
-    print(bp) if verbose else None
+    #print(label) 
+    
+    # for k, v in bp.items():
+    #     if v == 0:
+    #         bp[k] = 0.01
+    print('parameters: ',bp) 
+    print('sample_times: ', sample_times)
+    #print()
     lc = model.generate_lightcurve(sample_times, parameters=bp)[1]
     lc_abs = luminosity(bp['luminosity_distance'], lc)
     return lc_abs, label
@@ -122,8 +138,8 @@ def calc_resids(lc, data):
         t_sample = data[data['filter'] == filter]['t']
         lc_filt = lc[filter] #gen_lc(json, modelDict(t_sample)['Bu2019lm'], t_sample)[1]
         data_filt = data[data['filter'] == filter]
-        resids += np.sum(np.abs(lc_filt - data_filt['mag']))/ data_filt['mag_unc']/len(lc_filt)
-    return resids
+        resids += np.sum(np.abs(lc_filt - data_filt['mag'])/ data_filt['mag_unc'])
+    return resids / len(data['filter'].unique()) / len(data)
 
 def create_series(json, residuals=False, verbose=False):
     '''creates a pandas series from a bilby json file (already read in)'''
@@ -140,11 +156,16 @@ def create_series(json, residuals=False, verbose=False):
         data = get_lc('./injection_sample/lc_{}.dat'.format(label_dict['candidate']),
                       tmax=tmax) ## should be a function argument
         t_sample = np.array(data['t'])
-        # print(type(t_sample))
+        t_sample[0] += 0.01 ## to prevent a zero value in the light curve
+        # print(type(t_sample))]
         model = modelDict(t_sample)[label_dict['model']]
+        print("json file: {}".format(json['label']))
+        print("model: {}".format(model))
         # print(model)
         bf_lc, _ = gen_lc(json, model, t_sample)
         resids = calc_resids(bf_lc, data)
+        print("residual: {}".format(resids))
+        print()
         obj_series['residuals'] = resids
     return obj_series
 

@@ -12,6 +12,9 @@
 #SBATCH -o ./logs/%j.out
 #SBATCH -e ./logs/%j.err
 
-source /home/cough052/barna314/anaconda3/bin/activate nmma
+#source /home/cough052/barna314/anaconda3/bin/activate nmma
+eval "$(conda shell.bash hook)"
+conda activate nmma
 
-python3 /home/cough052/barna314/dsmma_kn_23/calc_residuals.py
+#python3 /home/cough052/barna314/dsmma_kn_23/calc_residuals.py
+python3 ./calc_residuals.py
