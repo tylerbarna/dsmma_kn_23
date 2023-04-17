@@ -135,13 +135,15 @@ def calc_resids(lc, data):
     # assert len(lc) == len(data):
     resids = 0
     resids_unc = 0
+    chi2 = 0
     for filter in data['filter'].unique():
         t_sample = data[data['filter'] == filter]['t']
         lc_filt = lc[filter] #gen_lc(json, modelDict(t_sample)['Bu2019lm'], t_sample)[1]
         data_filt = data[data['filter'] == filter]
+        chi2 += np.sum((lc_filt - data_filt['mag'])**2 / data_filt['mag']**2)
         resids += np.sum(np.abs(lc_filt - data_filt['mag']))/ len(data['filter'].unique()) / len(data_filt)
         resids_unc += np.sum(np.abs(lc_filt - data_filt['mag'])/ data_filt['mag_unc'])/ len(data['filter'].unique()) / len(data_filt)
-    return resids, resids_unc
+    return resids, resids_unc, chi2
 
 def create_series(json, residuals=False, verbose=False):
     '''creates a pandas series from a bilby json file (already read in)'''
@@ -165,12 +167,13 @@ def create_series(json, residuals=False, verbose=False):
         print("model: {}".format(model))
         # print(model)
         bf_lc, _ = gen_lc(json, model, t_sample)
-        resids, resids_unc = calc_resids(bf_lc, data)
+        resids, resids_unc, chi2 = calc_resids(bf_lc, data)
         print("residual: {:.2f} ({:.2f} with uncertainty)".format(resids, resids_unc))
         
         print()
         obj_series['residuals'] = resids
         obj_series['residuals_unc'] = resids_unc
+        obj_series['chi2'] = chi2
     return obj_series
 
 def create_df(jsons, residuals=False, verbose=False):
