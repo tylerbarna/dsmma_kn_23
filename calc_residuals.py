@@ -2,6 +2,7 @@ import subprocess
 import sys
 import os
 import argparse
+from distutils.version import LooseVersion
 import glob
 from pathlib import Path
 import json
@@ -15,12 +16,16 @@ import pandas as pd
 
 from astropy.time import Time
 
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import warnings
+warnings.filterwarnings('ignore')
+warnings.simplefilter("ignore", UserWarning)
+
 from nmma.em.model import SimpleKilonovaLightCurveModel,GRBLightCurveModel, SVDLightCurveModel, KilonovaGRBLightCurveModel, GenericCombineLightCurveModel, SupernovaLightCurveModel, ShockCoolingLightCurveModel
 
 from nmma.em.injection import create_light_curve_data as cld
-
-import warnings
-warnings.simplefilter("ignore", UserWarning)
 
 snModel = lambda t: SupernovaLightCurveModel(sample_times=t, model='nugent-hyper')
 grbModel = lambda t: GRBLightCurveModel(sample_times=t, model='TrPi2018')
@@ -33,7 +38,7 @@ def luminosity(distance, mag):
     Calculate the luminosity of a source given its distance and apparent magnitude.
     Parameters
     """
-    abs = lambda mag, distance: mag - 5 * np.log10(distance * 1e6 / 10.0)
+    abs = lambda mag, distance: mag + 5 * np.log10(distance * 1e6 / 10.0)
     if type(mag) == np.ndarray:
         return abs(mag, distance)
     elif type(mag) == dict:
@@ -68,39 +73,40 @@ posterior_samples = [j['posterior'] for j in jsons]
 # best_params = dict(zip(jsons[0]['search_parameter_keys'], jsons[0]['samples'][ll_idx]))
 # print(best_params)
 
-def get_lc(file, tmax=False):
+def get_lc(file, tmax=False,remove_nondetections=False):
     '''imports dat file as a pandas dataframe'''
     df = pd.read_csv(file, sep=' ', header=None, names=['t', 'filter', 'mag', 'mag_unc'])
-    df = df[df['mag_unc'] != np.inf] ## drop non-detections
+    
     df['t'] = Time(pd.to_datetime(df['t'])).mjd ## convert to mjd
     df['t'] = df['t'] - df['t'].min() ## set t=0 to first observation
     if tmax:
         df = df[df['t'] < tmax]
+    df = df[df['mag_unc'] != np.inf] if remove_nondetections else df
     return df
 
-def get_best_params(json, verbose=False):
-    '''Get the best fit parameters from a bilby json file, return as a dictionary'''
-    # ll_idx = np.argmin(np.abs(json['log_likelihood_evaluations']))
-    #best_ll = json['log_likelihood_evaluations'][ll_idx]
-    post = json['posterior']
+def get_best_params(json_path, verbose=False):
+    '''Get the best fit parameters from a bilby json_path file, return as a dictionary'''
+    # ll_idx = np.argmin(np.abs(json_path['log_likelihood_evaluations']))
+    #best_ll = json_path['log_likelihood_evaluations'][ll_idx]
+    post = json_path['posterior']
     ll_idx = np.argmin(np.abs(post['log_likelihood']))
     best_ll = post['log_likelihood'][ll_idx]
     post_keys = list(post.keys())
     print("Best log likelihood evaluation: {}".format(best_ll)) if verbose else None
-    log_evidence = json['log_evidence']
-    log_evidence_err = json['log_evidence_err']
-    log_bayes_factor = json['log_bayes_factor']
+    log_evidence = json_path['log_evidence']
+    log_evidence_err = json_path['log_evidence_err']
+    log_bayes_factor = json_path['log_bayes_factor']
     likelihood_dict = dict(zip(['log_likelihood','log_evidence', 'log_evidence_err', 'log_bayes_factor'], [best_ll, log_evidence, log_evidence_err, log_bayes_factor]))
     # print(bp_dict) if verbose else None
-    #bp_dict = dict(zip(json['search_parameter_keys'], json['samples'][ll_idx]))
-    # bp_dict = dict(zip(json['search_parameter_keys'], json['samples'][ll_idx, :]))
+    #bp_dict = dict(zip(json_path['search_parameter_keys'], json_path['samples'][ll_idx]))
+    # bp_dict = dict(zip(json_path['search_parameter_keys'], json_path['samples'][ll_idx, :]))
     bp_dict = dict(zip(post_keys, [post[k][ll_idx] for k in post_keys]))
 
     return bp_dict, likelihood_dict
 
-def get_labels(json):
+def get_labels(json_path):
     '''get the object label from bilby file, return as a dictionary'''
-    raw_label = json['label']
+    raw_label = json_path['label']
     candidate = raw_label.split('_')[0] + '_' + raw_label.split('_')[1]
     model = raw_label.split('_')[3]
     tmax = float(raw_label.split('_')[5])
@@ -108,24 +114,18 @@ def get_labels(json):
     label_dict = dict(zip(keys, [candidate, model, tmax]))
     
     return label_dict
-    
-    return label_dict
 
-def gen_lc(json, model, sample_times, verbose=False):
-    '''Generate a light curve from a bilby json file'''
-    bp, like_dict = get_best_params(json, verbose=verbose)
-    model_type = get_labels(json)['model']
+
+def gen_lc(json_path, model, sample_times, verbose=False):
+    '''Generate a light curve from a bilby json_path file'''
+    bp, like_dict = get_best_params(json_path, verbose=verbose)
+    model_type = get_labels(json_path)['model']
     model = modelDict(sample_times)[model_type]
     print(model) if verbose else None
-    label = get_labels(json)
-    #print(label) 
-    
-    # for k, v in bp.items():
-    #     if v == 0:
-    #         bp[k] = 0.01
-    print('parameters: ',bp) 
-    print('sample_times: ', sample_times)
-    #print()
+    label = get_labels(json_path)
+    print(label) if verbose else None
+    print(bp) if verbose else None
+    print() if verbose else None
     lc = model.generate_lightcurve(sample_times, parameters=bp)[1]
     lc_abs = luminosity(bp['luminosity_distance'], lc)
     return lc_abs, label
@@ -140,10 +140,8 @@ def calc_resids(lc, data):
         t_sample = data[data['filter'] == filter]['t']
         lc_filt = lc[filter] #gen_lc(json, modelDict(t_sample)['Bu2019lm'], t_sample)[1]
         data_filt = data[data['filter'] == filter]
-        chi2 += np.sum((lc_filt - data_filt['mag'])**2 / data_filt['mag']**2)
-        resids += np.sum(np.abs(lc_filt - data_filt['mag']))/ len(data['filter'].unique()) / len(data_filt)
-        resids_unc += np.sum(np.abs(lc_filt - data_filt['mag'])/ data_filt['mag_unc'])/ len(data['filter'].unique()) / len(data_filt)
-    return resids, resids_unc, chi2
+        chi2 += np.sum((lc_filt - data_filt['mag'])**2 / data_filt['mag']) / len(lc_filt) / len(data['filter'].unique())
+    return chi2
 
 def create_series(json, residuals=False, verbose=False):
     '''creates a pandas series from a bilby json file (already read in)'''
@@ -159,20 +157,29 @@ def create_series(json, residuals=False, verbose=False):
         tmax = label_dict['tmax']
         data = get_lc('./injection_sample/lc_{}.dat'.format(label_dict['candidate']),
                       tmax=tmax) ## should be a function argument
-        t_sample = np.array(data['t'])
+        print("json file: {}".format(json['label']))
+        
+        t_sample = np.array(data[data['mag_unc'] != np.inf]['t'])
+        print("t_sample: {}".format(t_sample))
+        if len(t_sample) < 3:
+            print("less than 3 detections for this object at t < {}".format(tmax))
+            print()
+            obj_series['chi2'] = np.inf
+            return obj_series
         t_sample[0] += 0.01 ## to prevent a zero value in the light curve
         # print(type(t_sample))]
         model = modelDict(t_sample)[label_dict['model']]
-        print("json file: {}".format(json['label']))
         print("model: {}".format(model))
         # print(model)
         bf_lc, _ = gen_lc(json, model, t_sample)
-        resids, resids_unc, chi2 = calc_resids(bf_lc, data)
-        print("residual: {:.2f} ({:.2f} with uncertainty)".format(resids, resids_unc))
+        print('calculated best fit light curve')
+        chi2 = calc_resids(bf_lc, data[data['mag_unc'] != np.inf])
+        # print("residual: {:.2f} ({:.2f} with uncertainty)".format(resids, resids_unc))
+        print("calculated chi2: {:.4e}".format(chi2))
         
         print()
-        obj_series['residuals'] = resids
-        obj_series['residuals_unc'] = resids_unc
+        # obj_series['residuals'] = resids
+        # obj_series['residuals_unc'] = resids_unc
         obj_series['chi2'] = chi2
     return obj_series
 
@@ -186,6 +193,7 @@ t1 = time.time()
 print("Creating dataframe (no residuals) took {:.2f} seconds".format(t1-t0))
 df.to_csv('fit_results.csv', index=False)
 
+print('starting to create dataframe with residuals')
 t0 = time.time()
 df_r = create_df(jsons, residuals=True)
 t1 = time.time()

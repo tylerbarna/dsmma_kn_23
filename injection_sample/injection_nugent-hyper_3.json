@@ -3,7 +3,6 @@
         "__dataframe__": true,
         "content": {
             "luminosity_distance": [
-<<<<<<< HEAD:injection_sample/injection_nugent-hyper_3.json
                 276.4208155147444
             ],
             "KNtimeshift": [
@@ -14,18 +13,6 @@
             ],
             "geocent_time": [
                 0.015814530054009818
-=======
-                419.54141853010793
-            ],
-            "KNtimeshift": [
-                -1.9942568022771017
-            ],
-            "supernova_mag_boost": [
-                -2.4907724375070925
-            ],
-            "geocent_time": [
-                0.015589024698688253
->>>>>>> 06cc5f4a6a366da283443d665594d3a9663870ed:injections/injection_nugent-hyper_3.json
             ],
             "simulation_id": [
                 0
