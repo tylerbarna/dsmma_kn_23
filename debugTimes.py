@@ -74,7 +74,8 @@ def get_lc(file, tmax=False,remove_nondetections=False):
     df['t'] = df['t'] - df['t'].min() +1e-2 ## set t=0 to first observation
     if tmax:
         df = df[df['t'] < tmax]
-    df = df[df['mag_unc'] != np.inf] if remove_nondetections else df
+    if remove_nondetections:
+        df = df[df['mag_unc'] != np.inf]
     return df
 
 def get_best_params(json_path, verbose=False):
@@ -129,7 +130,7 @@ def calc_resids(lc, data):
     for filter in data['filter'].unique():
         t_sample = data[data['filter'] == filter]['t']
         lc_filt = lc[filter] #gen_lc(json_path, modelDict(t_sample)['Bu2019lm'], t_sample)[1]
-        data_filt = data[data['filter'] == filter]
+        data_filt = data[(data['filter'] == filter) & (data['mag_unc'] != np.inf)]
         resids += np.sum(np.abs(lc_filt - data_filt['mag']))/ data_filt['mag_unc']/len(lc_filt) ## updated in .py script
     return resids
 
@@ -144,7 +145,8 @@ def create_series(json, residuals=False):
         # print(bp_dict)
         tmax = label_dict['tmax']
         data = get_lc('./injection_sample/lc_{}.dat'.format(label_dict['candidate']),
-                      tmax=tmax) ## should be a function argument
+                      tmax=tmax, remove_nondetections=True) ## should be a function argument
+        ## need residuals to be calculated for only the detections
         t_sample = np.array(data['t'])
         # print(type(t_sample))
         model = modelDict(t_sample)[label_dict['model']]
@@ -170,7 +172,7 @@ def plot_lc(json_path, remove_nondetections=True, verbose=False, ax=None, lines=
     model = labels['model']
     print(labels) if verbose else None
     dataPath = './injection_sample/lc_{}.dat'.format(labels['candidate'])
-    lc_data = get_lc(dataPath)
+    lc_data = get_lc(dataPath, tmax=labels['tmax'], remove_nondetections=remove_nondetections)
     sample_times = lc_data['t'].copy().to_numpy()
     if 'added_time' in kwargs.keys():
         sample_times = np.append(sample_times, kwargs['added_time'])
@@ -216,13 +218,11 @@ def plot_lc(json_path, remove_nondetections=True, verbose=False, ax=None, lines=
 df = pd.read_csv('fit_results_residuals.csv')
 fig, ax = plt.subplots(1, 1, figsize=(8, 8), facecolor='w', edgecolor='k')
 marker_iter = ['.','v', 'o']
-offsets = [1]
-added_times = np.linspace(1e-3, 1, 100)
+added_times = np.linspace(1e-3, 2, 100)
 filePath = 'fits/nugent-hyper_3_fit_nugent-hyper/nugent-hyper_3_fit_nugent-hyper_t_15_result.json'
-filePath = 'fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_15_result.json'
-# for mark, offset in zip(marker_iter, offsets):
-#     data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, c='k', marker=mark, offset=offset)
-#     plt.show();
-data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, c='k', added_time=added_times)
+# filePath = 'fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_15_result.json'
+#filePath = 'fits/Bu2019lm_0_fit_Bu2019lm/Bu2019lm_0_fit_Bu2019lm_t_15_result.json'
+#filePath = 'fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_15_result.json'
+data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, lines=True, c='k', added_time=added_times)
 ax.axvline(0.5, c='r', ls='--')
 plt.show();

@@ -1,0 +1,22 @@
+{
+    "injections": {
+        "__dataframe__": true,
+        "content": {
+            "luminosity_distance": [
+                230.36438413969586
+            ],
+            "KNtimeshift": [
+                0.0
+            ],
+            "supernova_mag_boost": [
+                -0.6898965321017148
+            ],
+            "geocent_time": [
+                -0.09558009676420948
+            ],
+            "simulation_id": [
+                0
+            ]
+        }
+    }
+}

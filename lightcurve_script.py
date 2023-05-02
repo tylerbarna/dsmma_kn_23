@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 from astropy.time import Time
+import shutil 
 #import matplotlib
 #import matplotlib.pyplot as plt
 #from matplotlib.pyplot import cm
@@ -31,17 +32,22 @@ parser.add_argument('-f','--filters',
                     help='filters to generate light curves for (choices for ztf are r,g,i)'
 )
 
+parser.add_argument('-o','--outdir',
+                    type=str,
+                    default='./injections/',
+                    help='output directory for light curves')
+
 args = parser.parse_args()
 models = args.models
+outdir = args.outdir
 
-if not os.path.exists('./injections'):
-    os.mkdir('./injections')
+os.makedirs(outdir, exist_ok=True)
 
 #models = ['TrPi2018']#['nugent-hyper','Bu2019lm','TrPi2018'] #
 #priors = [ os.path.join('/home/cough052/shared/NMMA/priors/',model) for model in models]
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
 
-def injection_gen(model,inj_label='injection'):
+def injection_gen(model,inj_label='injection', outDir='./injections/'):
     n_inj = 1
     #prior_path = os.path.join('../','nmma/priors',model+'.prior')
     prior_path = os.path.join('./priors/',model+'.prior')
@@ -57,8 +63,11 @@ def injection_gen(model,inj_label='injection'):
     subprocess.run(command, shell=True)
     
     ## move injection file to injection folder (nmma defaults to cwd)
-    inj_path = os.path.join('./injections/injection_'+model+'_'+inj_label+'.json')
-    Path('injection.json').rename(inj_path)
+    print('moving injection file to {}'.format(outDir))
+    inj_path = os.path.join(outDir,'injection_'+model+'_'+inj_label+'.json')
+    print('inj_path: {}'.format(inj_path))
+    shutil.move('./injection.json', inj_path)
+    # os.rename('./injection.json', inj_path)
     ## add a simulation_id item to the json file (hack until I can establish the cause)
     with open(inj_path, 'r') as f:
         data = json.load(f)
@@ -181,13 +190,13 @@ for model, prior in zip(models,priors):
         ## may want to add some thing so it tries to generate a new injection if it fails
         print('starting injection: ',item,'')
         t0 = time.time()
-        inj_path = injection_gen(model,inj_label=str(item))
+        inj_path = injection_gen(model,inj_label=str(item), outDir=args.outdir)
         #inj_path = './injections/'+model+'_injection_'+str(item)+'.json'
         inj_time = time.time() - t0
         inj_gen_time_dict[model] = np.append(inj_gen_time_dict[model], inj_time)
         print('created injection file: {} ({:.2f} seconds)'.format(inj_path,inj_time))
         
-        lc_path = lc_gen(model=model, inj_path=inj_path, out_path='./injections/',inj_label=str(item),filters=args.filters)
+        lc_path = lc_gen(model=model, inj_path=inj_path, out_path=args.outdir,inj_label=str(item),filters=args.filters)
         lc_time = time.time() - inj_time - t0
         lc_gen_time_dict[model] = np.append(lc_gen_time_dict[model], lc_time)
         print('created lightcurve file: {} ({:.2f} seconds)'.format(lc_path, lc_time))
@@ -199,7 +208,7 @@ for model, prior in zip(models,priors):
         #lc_analysis_msi(model=model, lc_path=lc_dat, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path
         #print('submitted to msi: ',inj_path)
         ## removing logs since they aren't actually logging anything as of now
-        log_files = glob.glob(os.path.join('./injections/','*.log'))
+        log_files = glob.glob(os.path.join(args.outdir,'*.log'))
         os.remove(log_files[0])
         #exit()
     print('finished model: ',model,' with prior: ',prior,'')
