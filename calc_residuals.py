@@ -27,6 +27,27 @@ from nmma.em.model import SimpleKilonovaLightCurveModel,GRBLightCurveModel, SVDL
 
 from nmma.em.injection import create_light_curve_data as cld
 
+
+parser = argparse.ArgumentParser(description='Generate the dataframes for the light curves')
+
+parser.add_argument('--data',
+                    type=str,
+                    default='./fits',
+                    help='directory containing the results of the fits')
+
+parser.add_argument('--outdir',
+                    type=str,
+                    default='./',
+                    help='output directory for the dataframes')
+
+parser.add_argument('--filename',
+                    type=str,
+                    default='fit_results',
+                    help='filename for the dataframes')
+
+args = parser.parse_args()
+
+
 snModel = lambda t: SupernovaLightCurveModel(sample_times=t, model='nugent-hyper')
 grbModel = lambda t: GRBLightCurveModel(sample_times=t, model='TrPi2018')
 knModel = lambda t: SVDLightCurveModel(sample_times=t, model='Bu2019lm')
@@ -48,7 +69,8 @@ def read_json(path_to_file):
     with open(path_to_file) as p:
         return json.load(p, object_hook=bilby.core.utils.decode_bilby_json)
     
-results = glob.glob('./fits/*/*result.json')
+results = glob.glob(os.path.join(args.data,'*/*result.json'))
+glob.glob('./fits/*/*result.json')
 print("Found {} results".format(len(results)))
 print()
 
@@ -187,15 +209,17 @@ def create_df(jsons, residuals=False, verbose=False):
     '''creates a pandas dataframe from a list of bilby json files (already read in)'''
     return pd.DataFrame([create_series(j, residuals, verbose) for j in jsons]).sort_values(by=['candidate','model','tmax']).reset_index(drop=True)
 
+## should add something that defines length or something (maybe encode in filename provided)
 t0 = time.time()
 df = create_df(jsons, residuals=False)
 t1 = time.time()
 print("Creating dataframe (no residuals) took {:.2f} seconds".format(t1-t0))
-df.to_csv('fit_results.csv', index=False)
+df_name = os.path.join(args.outdir, args.filename+'.csv')
+df.to_csv(df_name, index=False)
 
 print('starting to create dataframe with residuals')
 t0 = time.time()
 df_r = create_df(jsons, residuals=True)
 t1 = time.time()
-print("Creating dataframe (with residuals) took {:.2f} seconds".format(t1-t0))
-df_r.to_csv('fit_results_residuals.csv', index=False)
+df_r_name = os.path.join(args.outdir, args.filename+'_residuals.csv')
+df_r.to_csv(df_r_name, index=False)

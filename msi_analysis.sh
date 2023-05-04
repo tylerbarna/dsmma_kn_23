@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --name=msi_analysis
 #SBATCH --time=23:59:59
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
@@ -6,8 +7,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=8gb
 #NOTSBATCH -p amdsmall
-#SBATCH -o ./logs/%j.out
-#SBATCH -e ./logs/%j.err
+#SBATCH -o ./logs/%x_%j.out
+#SBATCH -e ./logs/%x_%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ztfrest@gmail.com
 

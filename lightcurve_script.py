@@ -23,12 +23,14 @@ parser = argparse.ArgumentParser(description='Generate light curves for a given 
 
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
-                    default=['nugent-hyper','Bu2019lm','TrPi2018'], 
+                    default=['nugent-hyper','Bu2019lm','TrPi2018'],
+                    choices=['nugent-hyper','Bu2019lm','TrPi2018'], 
                     help='models to generate light curves for'
 )
 parser.add_argument('-f','--filters',
                     type=str,
                     default='g',
+                    choices=['r','g','i'],
                     help='filters to generate light curves for (choices for ztf are r,g,i)'
 )
 
@@ -37,9 +39,15 @@ parser.add_argument('-o','--outdir',
                     default='./injections/',
                     help='output directory for light curves')
 
+parser.add_argument('--multiplier',
+                    type=int,
+                    default=1,
+                    help='multiplier for number of light curves to generate (default=1)')
+
 args = parser.parse_args()
 models = args.models
 outdir = args.outdir
+multiplier = args.multiplier
 
 os.makedirs(outdir, exist_ok=True)
 
@@ -175,6 +183,8 @@ def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
                     ]
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
+
+
     
 inj_gen_time_dict = {model:[] for model in models}
 lc_gen_time_dict = {model:[] for model in models}
@@ -182,9 +192,9 @@ for model, prior in zip(models,priors):
     print('starting model: ',model,' with prior: ',prior,'')
     print()
     if model == 'nugent-hyper':
-        lc_count = 7
+        lc_count = 7 * multiplier
     else:
-        lc_count = 1
+        lc_count = 1 * multiplier
     
     for item in range(lc_count):
         ## may want to add some thing so it tries to generate a new injection if it fails
