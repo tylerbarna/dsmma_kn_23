@@ -111,24 +111,28 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
     #prior_path = os.path.join('../','nmma/priors',model+'.prior')
     prior_path = os.path.join('./priors/',model+'.prior')
     outfile = os.path.join(out_path,'lc_'+model+'_'+inj_label+'.json')
+    t_space = np.arange(1e-4,14.5,0.5)
     label = 'lc_'+model+'_'+inj_label
     cmd_str = ['light_curve_generation',
                '--injection', inj_path,
                '--label', label,
                '--model', model,
                '--svd-path', '../nmma/svdmodels',
-               '--tmin', '0.1',
-               '--tmax', '14',
-               '--dt', '0.5',
+               '--tmin', '0.0001',
+               '--tmax', '14.5',
+               '--dt', '0.1',
                '--ztf-uncertainties',
-               '--ztf-sampling',
+            #    '--ztf-sampling',
             #    '--ztf-ToO', '180',
             #    '--rubin-ToO', #'180',
             #    '--rubin-ToO-type', 'BNS',
                '--filters', filters,
                '--outdir', out_path,
-               '--photometry-augmentation',
+            #    '--photometry-augmentation',
                '--photometry-augmentation-filters', filters,
+               #'--photometry-augmentation-N-points', str(15)
+               '--photometry-augmentation-times', ','.join([str(t) for t in t_space]),
+            #    '--injection-detection-limit', '21.5',
                ]
     
     #if model == 'nugent-hyper':

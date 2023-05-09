@@ -222,7 +222,51 @@ added_times = np.linspace(1e-3, 2, 100)
 filePath = 'fits/nugent-hyper_3_fit_nugent-hyper/nugent-hyper_3_fit_nugent-hyper_t_15_result.json'
 # filePath = 'fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_15_result.json'
 #filePath = 'fits/Bu2019lm_0_fit_Bu2019lm/Bu2019lm_0_fit_Bu2019lm_t_15_result.json'
-#filePath = 'fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_15_result.json'
+filePath = 'fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_15_result.json'
 data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, lines=True, c='k', added_time=added_times)
 ax.axvline(0.5, c='r', ls='--')
 plt.show();
+
+# json_list = sorted(glob.glob('fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_*_result.json'), key=LooseVersion)
+# json_list2 = sorted(glob.glob('fits/TrPi2018_0_fit_nugent-hyper/TrPi2018_0_fit_nugent-hyper_t_*_result.json'), key=LooseVersion)
+# json_list3 = sorted(glob.glob('fits/TrPi2018_0_fit_Bu2019lm/TrPi2018_0_fit_Bu2019lm_t_*_result.json'), key=LooseVersion)
+
+# colors = ['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6']
+# markers = ['s', 'D', 'X']
+# lines = ['dotted', 'dashed', 'dashdot']
+
+# fig, ax = plt.subplots(1, 1, figsize=(10, 10), facecolor='w', edgecolor='k')
+# for idx, json_path in enumerate(json_list):
+#     data, fit = plot_lc(json_path, remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[0], linestyle=lines[0])
+#     data2, fit2 = plot_lc(json_list2[idx], remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[1], linestyle=lines[1])
+#     data3, fit3 = plot_lc(json_list3[idx], remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[2], linestyle=lines[2])
+# handles, labels = ax.get_legend_handles_labels()
+# print(labels)
+# labelSwap = {'TrPi2018': 'GRB Afterglow', 'nugent-hyper': 'Supernova', 'Bu2019lm': 'Kilonova'}
+# labels = [labelSwap.get(l, l) for l in labels]
+# by_label = dict(zip(labels, handles))
+# plt.legend(by_label.values(), by_label.keys(), ncol=2,loc='lower right',)
+# ax.title.set_text("object: {}".format('GRB Afterglow'))
+# plt.show();
+
+# json_list = sorted(glob.glob('fits/Bu2019lm_0_fit_TrPi2018/Bu2019lm_0_fit_TrPi2018_t_*_result.json'), key=LooseVersion)
+# json_list2 = sorted(glob.glob('fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_*_result.json'), key=LooseVersion)
+# json_list3 = sorted(glob.glob('fits/Bu2019lm_0_fit_Bu2019lm/Bu2019lm_0_fit_Bu2019lm_t_*_result.json'), key=LooseVersion)
+
+# colors = ['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6']
+# markers = ['s', 'D', 'X']
+# lines = ['dotted', 'dashed', 'dashdot']
+
+# fig, ax = plt.subplots(1, 1, figsize=(10,10), facecolor='w', edgecolor='k')
+# for idx, json_path in enumerate(json_list):
+#     data, fit = plot_lc(json_path, remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[0], linestyle=lines[0])
+#     data2, fit2 = plot_lc(json_list2[idx], remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[1], linestyle=lines[1])
+#     data3, fit3 = plot_lc(json_list3[idx], remove_nondetections=False, lines=True, verbose=False, ax=ax, alpha=0.5, c=colors[idx], marker=markers[2], linestyle=lines[2])
+# handles, labels = ax.get_legend_handles_labels()
+# labelSwap = {'data':'data','TrPi2018': 'GRB Afterglow', 'nugent-hyper': 'Supernova', 'Bu2019lm': 'Kilonova'}
+# labels = [label.replace(label.split(' ')[0], labelSwap[label.split(' ')[0]]) for label in labels]
+# #labels = [labelSwap.get(l, l) for l in labels]
+# by_label = dict(zip(labels, handles))
+# plt.legend(by_label.values(), by_label.keys(), ncol=2,loc='lower right',)
+# ax.title.set_text("object: {}".format('Kilonova'))
+# plt.show();
