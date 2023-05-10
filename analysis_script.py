@@ -57,6 +57,7 @@ timeout = args.timeout
 
 lc_paths = glob.glob(os.path.join(args.data,'*.dat')) ## list of lightcurve data files
 lc_names = [os.path.basename(lc).split('.')[0].replace('lc_','') for lc in lc_paths] ## list of lightcurve names (eg nugent-hyper_0)
+print('lightcurve names: {}'.format(lc_names))
 
 def check_completion(lc_names, models, outdir):
         ''''
