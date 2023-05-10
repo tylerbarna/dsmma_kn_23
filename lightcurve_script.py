@@ -209,14 +209,15 @@ for model, prior in zip(models,priors):
     for item in range(lc_count):
         ## may want to add some thing so it tries to generate a new injection if it fails
         print('starting injection: ',item,'')
+        item_count = str(item).zfill(5)
         t0 = time.time()
-        inj_path = injection_gen(model,inj_label=str(item), outDir=args.outdir)
+        inj_path = injection_gen(model,inj_label=item_count, outDir=args.outdir)
         #inj_path = './injections/'+model+'_injection_'+str(item)+'.json'
         inj_time = time.time() - t0
         inj_gen_time_dict[model] = np.append(inj_gen_time_dict[model], inj_time)
         print('created injection file: {} ({:.2f} seconds)'.format(inj_path,inj_time))
         
-        lc_path = lc_gen(model=model, inj_path=inj_path, out_path=args.outdir,inj_label=str(item),filters=args.filters)
+        lc_path = lc_gen(model=model, inj_path=inj_path, out_path=args.outdir,inj_label=item_count,filters=args.filters)
         lc_time = time.time() - inj_time - t0
         lc_gen_time_dict[model] = np.append(lc_gen_time_dict[model], lc_time)
         print('created lightcurve file: {} ({:.2f} seconds)'.format(lc_path, lc_time))
