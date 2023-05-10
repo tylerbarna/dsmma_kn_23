@@ -7,6 +7,10 @@ from pathlib import Path
 import json
 import time
 
+import matplotlib.pyplot as plt
+import matplotlib
+import seaborn as sns
+
 import numpy as np
 import pandas as pd
 
@@ -88,10 +92,11 @@ def injection_gen(model,inj_label='injection', outDir='./injections/'):
             f.truncate()
     return inj_path
 
-def convert_lc_json(lc_file):
+def convert_lc_json(lc_file,filters):
     '''
     takes the output file of lc_gen and converts the json into a dat file readable by nmma's light_curve_analysis
     '''
+    print('filters: {}'.format(filters))
     if not os.path.exists(lc_file):
         print('file {} does not exist'.format(lc_file))
         exit()
@@ -104,14 +109,15 @@ def convert_lc_json(lc_file):
         df['isot'] = Time(df['jd']+2400000.5, format='jd').isot
         df['limmag'] = [mag if unc == np.inf else 99 for mag, unc in zip(df['mag'], df['mag_unc'])]
         df_all = pd.concat([df_all, df],ignore_index=True)
+    df_all = df_all[df_all['filter'].isin([filters])]
     df_all[['isot','filter','mag','mag_unc']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
 
-def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
+def lc_gen(model, inj_path, out_path,inj_label='injection',filters=['g']):
     ## retreive prior
     #prior_path = os.path.join('../','nmma/priors',model+'.prior')
     prior_path = os.path.join('./priors/',model+'.prior')
     outfile = os.path.join(out_path,'lc_'+model+'_'+inj_label+'.json')
-    t_space = np.arange(1e-4,14.5,0.5)
+    t_space = np.arange(1e-2,14.5,0.5)
     label = 'lc_'+model+'_'+inj_label
     cmd_str = ['light_curve_generation',
                '--injection', inj_path,
@@ -120,19 +126,19 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
                '--svd-path', '../nmma/svdmodels',
                '--tmin', '0.0001',
                '--tmax', '14.5',
-               '--dt', '0.1',
+               '--dt', '0.5',
                '--ztf-uncertainties',
             #    '--ztf-sampling',
             #    '--ztf-ToO', '180',
             #    '--rubin-ToO', #'180',
             #    '--rubin-ToO-type', 'BNS',
-               '--filters', filters,
+               '--filters', ','.join(filters),
                '--outdir', out_path,
             #    '--photometry-augmentation',
-               '--photometry-augmentation-filters', filters,
+               '--photometry-augmentation-filters', ','.join(filters),
                #'--photometry-augmentation-N-points', str(15)
                '--photometry-augmentation-times', ','.join([str(t) for t in t_space]),
-            #    '--injection-detection-limit', '21.5',
+               #'--injection-detection-limit', '21.5',
                ]
     
     #if model == 'nugent-hyper':
@@ -141,27 +147,6 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
     command = ' '.join(cmd_str)
     print("lcg command: {}".format(command))
     subprocess.run(command, shell=True)
-
-    # cmd_str = ['light_curve_analysis',
-    #             '--model', model,
-    #             '--label', inj_label,
-    #             '--prior', prior_path,
-    #             '--injection', inj_path,
-    #             '--injection-num', '0',
-    #             '--generation-seed', '42',
-    #             '--filters', filters,
-    #             '--tmin', '0.1',
-    #             '--tmax', '10',
-    #             '--dt', '0.5',
-    #             # '--ztf-uncertainties',
-    #             # '--ztf-sampling',
-    #             # '--ztf-ToO', '180',
-    #             '--outdir', out_path,
-    #             '--svd-path', models_path,
-    #             '--injection-outfile', outfile
-    #           ]
-    # command = ' '.join(cmd_str)
-    # subprocess.run(command, shell=True)
     
     ## rename output file of light_curve_analysis (temporary hack)
     dat_files = glob.glob(os.path.join(out_path,'*.dat'))
@@ -172,7 +157,7 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters='g'):
         Path(recent_file).rename(outfile)
     ## may be good to try to check if there's too many non-detections and then augment or something if that's the case
     ## convert json to dat file
-    convert_lc_json(outfile)
+    convert_lc_json(outfile, filters)
     return outfile
     
 
@@ -188,7 +173,30 @@ def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
     command = ' '.join(cmd_str)
     subprocess.run(command, shell=True)
 
-
+def plot_lc(dat_path, filters=['g']):
+    dflc = pd.read_csv(dat_path, sep=' ', names=['isot','filter','mag','mag_unc'])
+    dflc['jd'] = Time([str(t) for t in dflc['isot']]).jd - 2400000.5
+    dflc['t0'] = dflc['jd'] - dflc['jd'].min()
+    
+    lc_name = dat_path.split('/')[-1].replace('.dat','')
+    lc_path = dat_path.replace('.dat','.png')
+    
+    fig, ax = plt.subplots()
+    for filt in filters:
+        dff = dflc[dflc['filter']==filt]
+        dffd = dff[dff['mag_unc']!=np.inf]
+        ax.errorbar(dffd['t0'],dffd['mag'],yerr=dffd['mag_unc'],fmt='o',label=filt)
+    fig.suptitle(lc_name)
+    plt.xlabel('time since first observation (days)')
+    plt.ylabel('magnitude')
+    #ax.invert_yaxis()
+    ax.set_xlim(-0.1, 14.5)
+    ax.set_ylim(21.5, 11.5)
+    plt.legend()
+    plt.savefig(lc_path)
+        
+    
+    
     
 inj_gen_time_dict = {model:[] for model in models}
 lc_gen_time_dict = {model:[] for model in models}
@@ -217,6 +225,7 @@ for model, prior in zip(models,priors):
         #print()
         lc_dat = lc_path.replace('.json','.dat')
         print('converted lightcurve dat: {}'.format(lc_dat))
+        plot_lc(lc_dat, filters=args.filters)
         
         #lc_dat = os.path.join('./injection_sample/', model+'_lc_'+str(item)+'.dat')
         #lc_analysis_msi(model=model, lc_path=lc_dat, #inj_label='injection_'+str(item),filters='g') ## may need to correct lc_path

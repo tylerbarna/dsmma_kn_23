@@ -48,8 +48,8 @@ filters = 'g'
 df = pd.read_csv(lc_path, sep="\s+", header=None, names=['time','filter','mag','magerr'])
 
 df['time'] = [Time(t, format='isot') for t in df['time']]
-trigger_time = df['time'][0].mjd - 1
-time_range = np.arange(3.01, 16.01, 2)
+trigger_time = df['time'][0].mjd
+time_range = np.arange(3.01, 15.01, 2)
     #[t.mjd +0.01 for t in df['time']]
 
 ## do whatver time conversion required (may be ingested as isot)
@@ -78,11 +78,12 @@ for idx, tmax in enumerate(time_range):
                 '--nlive', str(args.nlive),
                 '--remove-nondetections',
                 '--ztf-uncertainties',
-                '--ztf-sampling',
-                '--ztf-ToO', '180',
+                #'--ztf-sampling',
+                #'--ztf-ToO', '180',
                 '--outdir', outdir_base,
                 '--plot', 
-                '--verbose'
+                '--verbose',
+                " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\""
                 ]
     command = ' '.join(cmd_str)
     print('command: {}'.format(command))
