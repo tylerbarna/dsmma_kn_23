@@ -153,7 +153,7 @@ def gen_lc(json_path, model, sample_times, verbose=False):
     return lc_abs, label
 
 def calc_resids(lc, data):
-    '''Calculate residuals between a light curve and data'''
+    '''Calculate residuals between a best fit light curve and actual data'''
     # assert len(lc) == len(data):
     resids = 0
     resids_unc = 0

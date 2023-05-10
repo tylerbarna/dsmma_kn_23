@@ -3,16 +3,16 @@
         "__dataframe__": true,
         "content": {
             "luminosity_distance": [
-                311.77397189473334
+                212.29347017401574
             ],
             "KNtimeshift": [
-                0.0
+                0.5686188485911965
             ],
             "supernova_mag_boost": [
-                3.178575958228315
+                1.2428025322037852
             ],
             "geocent_time": [
-                0.054885354742777365
+                0.08339463677976319
             ],
             "simulation_id": [
                 0
