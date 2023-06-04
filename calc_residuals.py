@@ -30,6 +30,10 @@ from nmma.em.injection import create_light_curve_data as cld
 
 parser = argparse.ArgumentParser(description='Generate the dataframes for the light curves')
 
+parser.add_argument('--injections',
+                    type=str,
+                    default='./injection_sample',
+                    help='directory containing the injections')
 parser.add_argument('--data',
                     type=str,
                     default='./fits',
@@ -165,7 +169,7 @@ def calc_resids(lc, data):
         chi2 += np.sum((lc_filt - data_filt['mag'])**2 / data_filt['mag']) / len(lc_filt) / len(data['filter'].unique())
     return chi2
 
-def create_series(json, residuals=False, verbose=False):
+def create_series(json, injections, residuals=False, verbose=False):
     '''creates a pandas series from a bilby json file (already read in)'''
     # if verbose:
     #     print('creating series for {} ({} of {})'.format(json['label'], i, len(jsons)))
@@ -177,7 +181,8 @@ def create_series(json, residuals=False, verbose=False):
     if residuals:
         # print(bp_dict)
         tmax = label_dict['tmax']
-        data = get_lc('./injection_sample/lc_{}.dat'.format(label_dict['candidate']),
+        injectionDir = os.path.join(injections, 'lc_{}.dat'.format(label_dict['candidate']))
+        data = get_lc(injectionDir,
                       tmax=tmax) ## should be a function argument
         print("json file: {}".format(json['label']))
         
@@ -205,13 +210,13 @@ def create_series(json, residuals=False, verbose=False):
         obj_series['chi2'] = chi2
     return obj_series
 
-def create_df(jsons, residuals=False, verbose=False):
+def create_df(jsons, injections, residuals=False, verbose=False):
     '''creates a pandas dataframe from a list of bilby json files (already read in)'''
-    return pd.DataFrame([create_series(j, residuals, verbose) for j in jsons]).sort_values(by=['candidate','model','tmax']).reset_index(drop=True)
+    return pd.DataFrame([create_series(j,injections, residuals, verbose) for j in jsons]).sort_values(by=['candidate','model','tmax']).reset_index(drop=True)
 
 ## should add something that defines length or something (maybe encode in filename provided)
 t0 = time.time()
-df = create_df(jsons, residuals=False)
+df = create_df(jsons, args.injections, residuals=False)
 t1 = time.time()
 print("Creating dataframe (no residuals) took {:.2f} seconds".format(t1-t0))
 df_name = os.path.join(args.outdir, args.filename+'.csv')
@@ -219,7 +224,7 @@ df.to_csv(df_name, index=False)
 
 print('starting to create dataframe with residuals')
 t0 = time.time()
-df_r = create_df(jsons, residuals=True)
+df_r = create_df(jsons, args.injections, residuals=True)
 t1 = time.time()
 df_r_name = os.path.join(args.outdir, args.filename+'_residuals.csv')
 df_r.to_csv(df_r_name, index=False)

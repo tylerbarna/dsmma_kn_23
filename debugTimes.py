@@ -134,8 +134,10 @@ def calc_resids(lc, data):
         resids += np.sum(np.abs(lc_filt - data_filt['mag']))/ data_filt['mag_unc']/len(lc_filt) ## updated in .py script
     return resids
 
-def create_series(json, residuals=False):
+def create_series(json, injections, residuals=False, verbose=False):
     '''creates a pandas series from a bilby json file (already read in)'''
+    # if verbose:
+    #     print('creating series for {} ({} of {})'.format(json['label'], i, len(jsons)))
     label_dict = get_labels(json)
     bp_dict, likelihood_dict = get_best_params(json)
     obj_dict = {**label_dict,  **likelihood_dict, **bp_dict,}
@@ -144,34 +146,48 @@ def create_series(json, residuals=False):
     if residuals:
         # print(bp_dict)
         tmax = label_dict['tmax']
-        data = get_lc('./injection_sample/lc_{}.dat'.format(label_dict['candidate']),
-                      tmax=tmax, remove_nondetections=True) ## should be a function argument
-        ## need residuals to be calculated for only the detections
-        t_sample = np.array(data['t'])
-        # print(type(t_sample))
-        model = modelDict(t_sample)[label_dict['model']]
-        # print("json file: {}".format(json['label']))
-        # print("model: {}".format(model))
-        # if model == GRBLightCurveModel(model='TrPi2018', sample_times=t_sample):
-        #     print(json['log10_E0'])
+        injectionDir = os.path.join(injections, 'lc_{}.dat'.format(label_dict['candidate']))
+        data = get_lc(injectionDir,
+                      tmax=tmax) ## should be a function argument
+        print("json file: {}".format(json['label']))
         
+        t_sample = np.array(data[data['mag_unc'] != np.inf]['t'])
+        print("t_sample: {}".format(t_sample))
+        if len(t_sample) < 3:
+            print("less than 3 detections for this object at t < {}".format(tmax))
+            print()
+            obj_series['chi2'] = np.inf
+            return obj_series
+        t_sample[0] += 0.01 ## to prevent a zero value in the light curve
+        # print(type(t_sample))]
+        model = modelDict(t_sample)[label_dict['model']]
+        print("model: {}".format(model))
+        # print(model)
         bf_lc, _ = gen_lc(json, model, t_sample)
-        resids = calc_resids(bf_lc, data)
-        obj_series['residuals'] = resids
+        print('calculated best fit light curve')
+        chi2 = calc_resids(bf_lc, data[data['mag_unc'] != np.inf])
+        # print("residual: {:.2f} ({:.2f} with uncertainty)".format(resids, resids_unc))
+        print("calculated chi2: {:.4e}".format(chi2))
+        
+        print()
+        # obj_series['residuals'] = resids
+        # obj_series['residuals_unc'] = resids_unc
+        obj_series['chi2'] = chi2
     return obj_series
 
-def create_df(jsons, residuals=False):
+def create_df(jsons, injections, residuals=False, verbose=False):
     '''creates a pandas dataframe from a list of bilby json files (already read in)'''
-    return pd.DataFrame([create_series(j, residuals) for j in jsons]).sort_values(by=['candidate','model','tmax']).reset_index(drop=True)
+    return pd.DataFrame([create_series(j,injections, residuals, verbose) for j in jsons]).sort_values(by=['candidate','model','tmax']).reset_index(drop=True)
 
 
 
-def plot_lc(json_path, remove_nondetections=True, verbose=False, ax=None, lines=False, **kwargs):
+def plot_lc(json_path, injections, remove_nondetections=True, verbose=False, ax=None, lines=False, **kwargs):
     bf_json = read_json(json_path)
     labels = get_labels(bf_json)
     model = labels['model']
     print(labels) if verbose else None
-    dataPath = './injection_sample/lc_{}.dat'.format(labels['candidate'])
+    dataPath = os.path.join(injections, 'lc_{}.dat'.format(labels['candidate']))
+    # dataPath = './injection_sample/lc_{}.dat'.format(labels['candidate'])
     lc_data = get_lc(dataPath, tmax=labels['tmax'], remove_nondetections=remove_nondetections)
     sample_times = lc_data['t'].copy().to_numpy()
     if 'added_time' in kwargs.keys():
@@ -215,17 +231,55 @@ def plot_lc(json_path, remove_nondetections=True, verbose=False, ax=None, lines=
     ax.grid()
     return lc_data, lc_fit
 
-df = pd.read_csv('fit_results_residuals.csv')
+# df = pd.read_csv('fit_results_residuals.csv')
+# fig, ax = plt.subplots(1, 1, figsize=(8, 8), facecolor='w', edgecolor='k')
+# marker_iter = ['.','v', 'o']
+# added_times = np.linspace(1e-3, 2, 100)
+# filePath = 'fits/nugent-hyper_3_fit_nugent-hyper/nugent-hyper_3_fit_nugent-hyper_t_15_result.json'
+# # filePath = 'fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_15_result.json'
+# #filePath = 'fits/Bu2019lm_0_fit_Bu2019lm/Bu2019lm_0_fit_Bu2019lm_t_15_result.json'
+# filePath = 'fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_15_result.json'
+# data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, lines=True, c='k', added_time=added_times)
+# ax.axvline(0.5, c='r', ls='--')
+# plt.show();
+
+json_list = sorted(glob.glob('fits-augmented-redux/Bu2019lm_00000_fit_TrPi2018/Bu2019lm_00000_fit_TrPi2018_t_*_result.json'), key=LooseVersion)
+json_list2 = sorted(glob.glob('fits-augmented-redux/Bu2019lm_00000_fit_nugent-hyper/Bu2019lm_00000_fit_nugent-hyper_t_*_result.json'), key=LooseVersion)
+json_list3 = sorted(glob.glob('fits-augmented-redux/Bu2019lm_00000_fit_Bu2019lm/Bu2019lm_00000_fit_Bu2019lm_t_*_result.json'), key=LooseVersion)
+
+df = pd.read_csv('fit_results_redux_residuals.csv')
 fig, ax = plt.subplots(1, 1, figsize=(8, 8), facecolor='w', edgecolor='k')
-marker_iter = ['.','v', 'o']
+colors = ['C0', 'C1', 'C2', 'C3', 'C4', 'C5', 'C6']
+markers = ['s', 'D', 'X']
+lines = ['dotted', 'dashed', 'dashdot']
 added_times = np.linspace(1e-3, 2, 100)
-filePath = 'fits/nugent-hyper_3_fit_nugent-hyper/nugent-hyper_3_fit_nugent-hyper_t_15_result.json'
-# filePath = 'fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_15_result.json'
-#filePath = 'fits/Bu2019lm_0_fit_Bu2019lm/Bu2019lm_0_fit_Bu2019lm_t_15_result.json'
-filePath = 'fits/Bu2019lm_0_fit_nugent-hyper/Bu2019lm_0_fit_nugent-hyper_t_15_result.json'
-data, fit = plot_lc(filePath, remove_nondetections=True, verbose=False, ax=ax, lines=True, c='k', added_time=added_times)
-ax.axvline(0.5, c='r', ls='--')
+for idx, json_path in enumerate(json_list):
+    try:
+        data, fit = plot_lc(json_path, injections='./injections-augmented/', remove_nondetections=True, verbose=False, ax=ax, lines=True, alpha=0.5, c=colors[idx], marker=markers[0], linestyle=lines[0])
+    except:
+        continue
+    try:
+        
+        data2, fit2 = plot_lc(json_list2[idx], injections='./injections-augmented/', remove_nondetections=True, verbose=False, ax=ax, lines=True, alpha=0.5, c=colors[idx], marker=markers[1], linestyle=lines[1])
+    except:
+        continue
+    try:
+        data3, fit3 = plot_lc(json_list3[idx], injections='./injections-augmented/', remove_nondetections=True, verbose=False, ax=ax, lines=True, alpha=0.5, c=colors[idx], marker=markers[2], linestyle=lines[2])
+    except:
+        continue
+    
+handles, labels = ax.get_legend_handles_labels()
+print(labels)
+labelSwap = {'TrPi2018': 'GRB Afterglow', 'nugent-hyper': 'Supernova', 'Bu2019lm': 'Kilonova'}
+labels = [labelSwap.get(l, l) for l in labels]
+by_label = dict(zip(labels, handles))
+plt.legend(by_label.values(), by_label.keys(), ncol=2,loc='lower right',)
+ax.title.set_text("object: {}".format('Kilonova'))
 plt.show();
+# filePath = 'fits-augmented-redux/Bu2019lm_00000_fit_Bu2019lm/Bu2019lm_00000_fit_Bu2019lm_t_13_result.json'
+# data, fit = plot_lc(filePath, injections='./injections-augmented/', remove_nondetections=True, verbose=False, ax=ax, lines=True, c='k')#, added_time=added_times)
+# ax.axvline(0.5, c='r', ls='--')
+
 
 # json_list = sorted(glob.glob('fits/TrPi2018_0_fit_TrPi2018/TrPi2018_0_fit_TrPi2018_t_*_result.json'), key=LooseVersion)
 # json_list2 = sorted(glob.glob('fits/TrPi2018_0_fit_nugent-hyper/TrPi2018_0_fit_nugent-hyper_t_*_result.json'), key=LooseVersion)
@@ -270,3 +324,4 @@ plt.show();
 # plt.legend(by_label.values(), by_label.keys(), ncol=2,loc='lower right',)
 # ax.title.set_text("object: {}".format('Kilonova'))
 # plt.show();
+

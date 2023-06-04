@@ -92,26 +92,6 @@ def injection_gen(model,inj_label='injection', outDir='./injections/'):
             f.truncate()
     return inj_path
 
-def convert_lc_json(lc_file,filters):
-    '''
-    takes the output file of lc_gen and converts the json into a dat file readable by nmma's light_curve_analysis
-    '''
-    print('filters: {}'.format(filters))
-    if not os.path.exists(lc_file):
-        print('file {} does not exist'.format(lc_file))
-        exit()
-    with open(lc_file, 'r') as f:
-        data = json.load(f)
-    df_all = pd.DataFrame()
-    for filt, vals in data.items():
-        df = pd.DataFrame(vals, columns=['jd', 'mag', 'mag_unc'])
-        df['filter'] = filt
-        df['isot'] = Time(df['jd']+2400000.5, format='jd').isot
-        df['limmag'] = [mag if unc == np.inf else 99 for mag, unc in zip(df['mag'], df['mag_unc'])]
-        df_all = pd.concat([df_all, df],ignore_index=True)
-    df_all = df_all[df_all['filter'].isin([filters])]
-    df_all[['isot','filter','mag','mag_unc']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
-
 def lc_gen(model, inj_path, out_path,inj_label='injection',filters=['g']):
     ## retreive prior
     #prior_path = os.path.join('../','nmma/priors',model+'.prior')
@@ -158,6 +138,25 @@ def lc_gen(model, inj_path, out_path,inj_label='injection',filters=['g']):
     convert_lc_json(outfile, filters)
     return outfile
     
+def convert_lc_json(lc_file,filters):
+    '''
+    takes the output file of lc_gen and converts the json into a dat file readable by nmma's light_curve_analysis
+    '''
+    print('filters: {}'.format(filters))
+    if not os.path.exists(lc_file):
+        print('file {} does not exist'.format(lc_file))
+        exit()
+    with open(lc_file, 'r') as f:
+        data = json.load(f)
+    df_all = pd.DataFrame()
+    for filt, vals in data.items():
+        df = pd.DataFrame(vals, columns=['jd', 'mag', 'mag_unc'])
+        df['filter'] = filt
+        df['isot'] = Time(df['jd']+2400000.5, format='jd').isot
+        df['limmag'] = [mag if unc == np.inf else 99 for mag, unc in zip(df['mag'], df['mag_unc'])]
+        df_all = pd.concat([df_all, df],ignore_index=True)
+    df_all = df_all[df_all['filter'].isin([filters])]
+    df_all[['isot','filter','mag','mag_unc']].to_csv(lc_file.replace('.json','.dat'), sep=' ', index=False, header=False)
 
 def lc_analysis_msi(model, lc_path, out_path,inj_label='injection',filters='g'):
     ## retreive prior
