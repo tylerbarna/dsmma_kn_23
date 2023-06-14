@@ -23,7 +23,7 @@ import warnings
 warnings.filterwarnings('ignore')
 warnings.simplefilter("ignore", UserWarning)
 
-from nmma.em.model import SimpleKilonovaLightCurveModel,GRBLightCurveModel, SVDLightCurveModel, KilonovaGRBLightCurveModel, GenericCombineLightCurveModel, SupernovaLightCurveModel, ShockCoolingLightCurveModel
+from nmma.em.model import SimpleKilonovaLightCurveModel, GRBLightCurveModel, SVDLightCurveModel, KilonovaGRBLightCurveModel, GenericCombineLightCurveModel, SupernovaLightCurveModel, ShockCoolingLightCurveModel
 
 from nmma.em.injection import create_light_curve_data as cld
 
