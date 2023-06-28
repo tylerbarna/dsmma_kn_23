@@ -51,5 +51,5 @@ for model, prior in zip(models,priors):
         print('starting light curve: {0}'.format(lc_idx))
         injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
         print('created injection file: {0}'.format(injection_file))
-        lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file,)
+        lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir)
         

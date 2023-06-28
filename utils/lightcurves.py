@@ -23,6 +23,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
     Returns:
     - lightcurve_path (str): path to lightcurve file
     '''
+    assert os.path.exists(injection_path), 'injection file {} does not exist'.format(injection_path)
     if outDir is None:
         outDir = os.path.dirname(injection_path)
     if lightcurve_label is None:
