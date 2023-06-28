@@ -8,7 +8,7 @@ from argparse import Namespace
 
 from nmma.eos import create_injection
 
-def generate_injections(model, outDir, injection_label=None,prior=None,):
+def generate_injection(model, outDir, injection_label=None,prior=None,):
     '''
     Generates injection for a given model
     

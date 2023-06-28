@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from utils.injections import generate_injections
+from utils.injections import generate_injection
 
 parser = argparse.ArgumentParser(description='Generate light curves for a given model')
 
@@ -48,5 +48,5 @@ for model, prior in zip(models,priors):
     for lc_idx in range(lc_count):
         lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
         print('starting light curve: {0}'.format(lc_idx))
-        generate_injections(model=model, outDir=outdir, injection_label=lc_idx_zfill)
+        generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
         
