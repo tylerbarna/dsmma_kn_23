@@ -29,7 +29,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
     if lightcurve_label is None:
         ## if injection_path=injections/injection_<model>_<label>.json, then lightcurve_label will be <label>
         lightcurve_label = os.path.basename(injection_path).split('.')[0].split('_')[-1]
-    lightcurve_filename = 'lc_'+model+'_'+lightcurve_label+'.dat'
+    lightcurve_filename = 'lc_'+model+'_'+lightcurve_label
     lightcurve_path = os.path.join(outDir, 'lc_'+model+'_'+lightcurve_label+'.dat')
     
     if 'time_series' in kwargs: ## for modification fo time series
@@ -43,6 +43,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             injection=injection_path,
             label=lightcurve_filename,
             outdir=outDir,
+            extension="json",
             model=model,
             svd_path="svdmodels",
             tmin=time_series[0],
@@ -50,7 +51,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             dt=time_series[1] - time_series[0],
             svd_mag_ncoeff=10,
             svd_lbol_ncoeff=10,
-            filters=', '.join(filters),
+            filters=','.join(filters),
             grb_resolution=5,
             jet_type=0,
             ztf_sampling=False,
