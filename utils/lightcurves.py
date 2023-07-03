@@ -9,7 +9,7 @@ from argparse import Namespace
 
 from nmma.em import create_lightcurves
 
-def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=None, filters=['g'], **kwargs):
+def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=None, filters=['ztfg','ztfr'], **kwargs):
     '''
     Generates lightcurve for a given injection file
     
@@ -45,7 +45,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             outdir=outDir,
             extension="json",
             model=model,
-            svd_path="svdmodels",
+            svd_path="../nmma/svdmodels",
             tmin=time_series[0],
             tmax=time_series[-1],
             dt=time_series[1] - time_series[0],
