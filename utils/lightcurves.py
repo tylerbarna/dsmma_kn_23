@@ -5,6 +5,8 @@ creates lightcurves from a given injection file using nmma
 import numpy as np
 import os 
 
+from astropy.time import Time
+
 from argparse import Namespace 
 
 from nmma.em import create_lightcurves
@@ -76,4 +78,41 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
     assert os.path.exists(lightcurve_path), 'lightcurve file {} was not created'.format(lightcurve_path)
     
     return lightcurve_path
+
+def lightcurve_conversion(lightcurve_path):
+    '''
+    Converts lightcurve to be ingestible by light_curve_analysis (this is a temporary solution until the compatibility between light_curve_generation and light_curve_analysis are fixed)
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve file (expected to be a .dat file)
+    
+    Returns:
+    - converted_lightcurve_path (str): path to converted lightcurve file
+    '''
+    assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
+    lightcurve_directory = os.path.dirname(lightcurve_path)
+    
+    with open(lightcurve_path, 'r') as f:
+        lines = f.readlines() ## reads in lines
+        lines = [line.strip() for line in lines] ## removes newlines
+
+    filters = lines[0].split()[2:] ## skip first 2 items in list ("#", "t[days]"), then get filters
+    times = np.array([float(line.split()[0]) for line in lines[1:]]) ## skip first item in list ("#"), then get times
+    mags = { filt:[float(line.split()[col]) for line in lines[1:]] for col, filt in enumerate(filters, start=1)} ## dictionary of magnitudes for each filter
+    
+    isot_times = Time(times+ 40587, format='mjd').isot ## sets times to be in isot format, with 40587 being the MJD of 1970-01-01T00:00:00
+    
+    converted_lines = []
+    for filter in filters:
+        filtered_mags = mags[filter]
+        for isot_time, mag in zip(isot_times, filtered_mags):
+            converted_lines.append('{} {} {}'.format(isot_time, filter, mag))
+    
+    converted_lightcurve_path = os.path.join(lightcurve_directory, 'converted_'+os.path.basename(lightcurve_path))
+    
+    with open(converted_lightcurve_path, 'w') as f:
+        f.write('\n'.join(converted_lines))
+        
+    return converted_lightcurve_path 
+            
 
