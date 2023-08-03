@@ -32,7 +32,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
         ## if injection_path=injections/injection_<model>_<label>.json, then lightcurve_label will be <label>
         lightcurve_label = os.path.basename(injection_path).split('.')[0].split('_')[-1]
     lightcurve_filename = 'lc_'+model+'_'+lightcurve_label
-    lightcurve_path = os.path.join(outDir, 'lc_'+model+'_'+lightcurve_label+'.dat')
+    lightcurve_path = os.path.join(outDir, 'lc_'+model+'_'+lightcurve_label+'.json')
     
     if 'time_series' in kwargs: ## for modification fo time series
         time_series = kwargs['time_series']
@@ -45,9 +45,9 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             injection=injection_path,
             label=lightcurve_filename,
             outdir=outDir,
-            extension="json",
+            outfile_type="json", ## new addition
             model=model,
-            svd_path="../nmma/svdmodels",
+            svd_path="./svdmodels",
             tmin=time_series[0],
             tmax=time_series[-1],
             dt=time_series[1] - time_series[0],

@@ -79,7 +79,7 @@ for idx, tmax in enumerate(time_range):
                 '--remove-nondetections',
                 '--ztf-uncertainties',
                 #'--ztf-sampling',
-                #'--ztf-ToO', '180',
+                '--ztf-ToO', '180',
                 '--outdir', outdir_base,
                 '--plot', 
                 '--verbose',
