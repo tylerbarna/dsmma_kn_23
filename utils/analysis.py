@@ -31,6 +31,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     - bestfit_path (str): path to bestfit file
     '''
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
+    os.makedirs(outdir, exist_ok=True)
     
     if not tmax:
         try:
@@ -108,12 +109,62 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     bestfit_path = os.path.join(outdir, label + "_bestfit.json")
     return results_path, bestfit_path
 
-def check_completion(lc_labels, t0, timeout=71.9):
+def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=None, tmax_array=None, threading=True):
+    '''
+    wrapper for lightcurve_analysis that runs multiple analyses for a given lightcurve and model with different tmax values
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve file
+    - model (str): model to use (must exist in nmma)
+    - prior (str): path to prior file (must match model)
+    - outdir (str): path to root output directory (will be created if it doesn't exist). A subdirectory for the specific object will be created if it doesn't exist
+    - label (str): label for analysis files (a time value will be appended to this)
+    - tmax_array (array): array of tmax values to use in analysis (default=None, which imposes a two day cadence from 3 to 20 days)
+    - threading (bool): whether to use threading (default=True). If True, will use multiprocessing.Process to run analysis in parallel
+    
+    Returns:
+    - results_paths (list): list of paths to results files for a given lightcurve and model
+    - bestfit_paths (list): list of paths to bestfit files for a given lightcurve and model
+    '''
+    
+    assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
+    lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
+    lighcurve_outdir = os.path.join(outdir, lightcurve_label)
+    model_outdir = os.path.join(lighcurve_outdir, model) ## so directory structure will be {outdir}/{lightcurve_label}/{model}/
+    os.makedirs(model_outdir, exist_ok=True)
+    fit_label = lightcurve_label + '_fit_' + model if not label else label
+    
+    if not tmax_array:
+        try:
+            lightcurve_df = pd.read_json(lightcurve_path)
+            tmax = lightcurve_df.max()[0][0] ## should return the last time in the lightcurve
+            tmax_array = np.arrange(3.1,tmax+0.1,2)
+        except:
+            tmax = np.inf ## nmma might not like this 
+    
+    results_paths = []
+    bestfit_paths = []
+    for tmax in tmax_array:
+        tmax_label = fit_label + '_tmax_' + str(round(tmax,0)).zfill(2) ## imposes a label of the format 'lc_{true_model}_{idx}_fit_{model}_tmax_{tmax}'
+        if os.path.exists(os.path.join(model_outdir, tmax_label + '_result.json')):
+            print(f'{tmax_label} has already been fit, skipping')
+            continue
+        else:
+            try:
+                results_path, bestfit_path = lightcurve_analysis(lightcurve_path, model, prior, model_outdir, label=tmax_label, tmax=tmax, threading=threading)
+                results_paths.append(results_path)
+                bestfit_paths.append(bestfit_path)
+            except:
+                print(f'analysis of {tmax_label} failed, skipping')
+                continue
+    return results_paths, bestfit_paths
+
+def check_completion(lightcurve_paths, t0, timeout=71.9):
     '''
     checks for truthiness of all json files existing in output directory
     
     args:
-    - lc_labels (list): list of lightcurve labels (including relative path)
+    - lightcurve_paths (list): list of lightcurve labels (including relative path)
     - t0 (time object): time of trigger (assign time.time() at start of analysis)
     - timeout (float): time in hours to wait until returning False even with incomplete analysis
     
@@ -122,9 +173,9 @@ def check_completion(lc_labels, t0, timeout=71.9):
     - completed_analyses (array): array of lightcurve labels that have been analysed
     '''
     
-    total_analyses = len(lc_labels)
-    analysis_status = np.array([os.path.exists(lc_label + '*_result.json') for lc_label in lc_labels], dtype=np.bool)
-    completed_analyses = np.array(lc_labels)[analysis_status]
+    total_analyses = len(lightcurve_paths)
+    analysis_status = np.array([os.path.exists(lc_label + '*_result.json') for lc_label in lightcurve_paths], dtype=np.bool)
+    completed_analyses = np.array(lightcurve_paths)[analysis_status]
     completed_analyses_count = np.sum(analysis_status)
     completion_status = completed_analyses_count == total_analyses
     
