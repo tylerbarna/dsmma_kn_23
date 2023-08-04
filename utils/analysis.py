@@ -95,3 +95,8 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None)
     results_path = os.path.join(outdir, label + "_result.json")
     bestfit_path = os.path.join(outdir, label + "_bestfit.json")
     return results_path, bestfit_path
+
+def check_completion(lc_names, models, outdir):
+    '''
+    checks for truthiness of all json files existing in output directory
+    '''
