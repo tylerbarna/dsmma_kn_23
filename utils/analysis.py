@@ -14,10 +14,10 @@ from functools import wraps
 
 from nmma.em import analysis
 
-from utils.misc import strtime, surpress_print
+from utils.misc import strtime, suppress_print
 
 
-def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, threading=False):
+def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, threading=False, **kwargs):
     '''
     Uses nmma to analyse a given lightcurve against a specific model and prior
     
@@ -41,9 +41,9 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         try:
             lightcurve_df = pd.read_json(lightcurve_path)
             # print('lightcurve_df ',lightcurve_df)
-            tmax = lightcurve_df.max()[0][0]+0.1 ## should return the last time in the lightcurve
+            tmax = lightcurve_df.max()[0][0]+0.1 - lightcurve_df.min()[0][0] ## should return the last time in the lightcurve
         except:
-            tmax = np.inf ## nmma might not like this 
+            tmax = 21 ## nmma might not like this 
     # print('tmax is {}'.format(tmax))
     
     args = Namespace(
@@ -102,7 +102,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         verbose=False,
     ) 
     
-    @surpress_print
+    # @suppress_print
     def analysis_main(args):
         analysis.main(args)
         
@@ -110,6 +110,8 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         print(f'running {label} in parallel')
         multiprocessing.freeze_support()
         process = multiprocessing.Process(target=analysis_main, args=(args,))
+        if 'pool' in kwargs:
+            kwargs.pool.apply_async(process.start())
         process.start()
     else:
         analysis_main(args)
@@ -119,7 +121,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     bestfit_path = os.path.join(outdir, label + "_bestfit.json")
     return results_path, bestfit_path
 
-def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=None, tmax_array=None, threading=True):
+def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=None, tmax_array=None, threading=True, **kwargs):
     '''
     wrapper for lightcurve_analysis that runs multiple analyses for a given lightcurve and model with different tmax values
     
@@ -147,7 +149,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     if tmax_array==None:
         try:
             lightcurve_df = pd.read_json(lightcurve_path)
-            tmax = lightcurve_df.max()[0][0] ## should return the last time in the lightcurve
+            tmax = lightcurve_df.max()[0][0] - lightcurve_df.min()[0][0] ## should return the last time in the lightcurve
             tmax_array = np.arange(3.1,tmax+0.1,2)
         except:
             tmax_array = np.arange(3.1,20.1,2) ## nmma might not like this 
@@ -161,7 +163,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
             continue
         else:
             try:
-                results_path, bestfit_path = lightcurve_analysis(lightcurve_path, model, prior, model_outdir, label=tmax_label, tmax=tmax, threading=threading)
+                results_path, bestfit_path = lightcurve_analysis(lightcurve_path, model, prior, model_outdir, label=tmax_label, tmax=tmax, threading=threading, **kwargs)
                 results_paths.append(results_path)
                 bestfit_paths.append(bestfit_path)
             except:
