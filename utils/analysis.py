@@ -2,16 +2,18 @@
 functions for analysis of generated lightcurves
 '''
 
+import multiprocessing
 import numpy as np
 import os
 import pandas as pd
+import time
 
 from argparse import Namespace
 
 from nmma.em import analysis
 
 
-def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None):
+def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, threading=False):
     '''
     Uses nmma to analyse a given lightcurve against a specific model and prior
     
@@ -22,6 +24,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None)
     - outdir (str): path to output directory (will be created if it doesn't exist)
     - label (str): label for analysis files
     - tmax (float): maximum time to consider in analysis (default=None, which means use all data)
+    - threading (bool): whether to use threading (default=False). If True, will use multiprocessing.Process to run analysis in parallel
     
     Returns:
     - results_path (str): path to results file
@@ -90,13 +93,56 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None)
         verbose=False,
     ) 
     
-    analysis.main(args)
+    def analysis_main(args):
+        analysis.main(args)
+        
+    if threading:
+        print(f'running {label} in parallel')
+        process = multiprocessing.Process(target=analysis_main, args=(args,))
+        process.start()
+    else:
+        analysis_main(args)
+    
     
     results_path = os.path.join(outdir, label + "_result.json")
     bestfit_path = os.path.join(outdir, label + "_bestfit.json")
     return results_path, bestfit_path
 
-def check_completion(lc_names, models, outdir):
+def check_completion(lc_labels, t0, timeout=71.9):
     '''
     checks for truthiness of all json files existing in output directory
+    
+    args:
+    - lc_labels (list): list of lightcurve labels (including relative path)
+    - t0 (time object): time of trigger (assign time.time() at start of analysis)
+    - timeout (float): time in hours to wait until returning False even with incomplete analysis
+    
+    returns:
+    - completion_status (bool): whether all lightcurves have been analysed
+    - completed_analyses (array): array of lightcurve labels that have been analysed
     '''
+    
+    total_analyses = len(lc_labels)
+    analysis_status = np.array([os.path.exists(lc_label + '*_result.json') for lc_label in lc_labels], dtype=np.bool)
+    completed_analyses = np.array(lc_labels)[analysis_status]
+    completed_analyses_count = np.sum(analysis_status)
+    completion_status = completed_analyses_count == total_analyses
+    
+    current_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+    t1 = time.time()
+    hours_elapsed = round((t1 - t0) / 3600, 2)
+    estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+    
+    if hours_elapsed > timeout:
+        print(f'[{current_time}] Analysis timed out, exiting...')
+        return True, completed_analyses
+    elif completion_status:
+        print(f'[{current_time}] All analyses complete!')
+        return True, completed_analyses
+    else:
+        print(f'[{current_time}] {completed_analyses_count}/{total_analyses} analyses complete, estimated time remaining: {str(estimated_remaining_time).zfill(5)} hours')
+        if hours_elapsed + estimated_remaining_time > timeout:
+            excess_time = round((hours_elapsed + estimated_remaining_time - timeout),2)
+            print(f'[{current_time}] Warning: estimated time remaining exceeds timeout by {excess_time} hours')
+        return False, completed_analyses
+    
