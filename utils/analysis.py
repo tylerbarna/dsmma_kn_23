@@ -2,10 +2,10 @@
 functions for analysis of generated lightcurves
 '''
 
-import multiprocessing
 import numpy as np
 import os
 import pandas as pd
+import subprocess
 import time
 
 from argparse import Namespace
@@ -17,7 +17,7 @@ from nmma.em import analysis
 from utils.misc import strtime, suppress_print
 
 
-def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, threading=False, **kwargs):
+def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=False, **kwargs):
     '''
     Uses nmma to analyse a given lightcurve against a specific model and prior
     
@@ -28,7 +28,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     - outdir (str): path to output directory (will be created if it doesn't exist)
     - label (str): label for analysis files
     - tmax (float): maximum time to consider in analysis (default=None, which means use all data)
-    - threading (bool): whether to use threading (default=False). If True, will use multiprocessing.Process to run analysis in parallel
+    - slurm (bool): whether to submit via slurm (default=False). If True, will use create_msi_job and submit_msi_job to create and submit a job file
     
     Returns:
     - results_path (str): path to results file
@@ -65,7 +65,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         bestfit=True,
         svd_mag_ncoeff=10,
         svd_lbol_ncoeff=10,
-        filters="sdssu",
+        filters="ztfg,ztfr,ztfi",
         Ebv_max=0.0,
         grb_resolution=5,
         jet_type=0,
@@ -101,18 +101,14 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         reactive_sampling=False,
         verbose=False,
     ) 
-    
     # @suppress_print
     def analysis_main(args):
         analysis.main(args)
         
-    if threading:
-        print(f'running {label} in parallel')
-        multiprocessing.freeze_support()
-        process = multiprocessing.Process(target=analysis_main, args=(args,))
-        if 'pool' in kwargs:
-            kwargs.pool.apply_async(process.start())
-        process.start()
+    if slurm:
+        print(f'running {label} via slurm')
+        job_path = create_msi_job(lightcurve_path, model, label, prior, outdir, tmax)
+        submit_msi_job(job_path)
     else:
         analysis_main(args)
     
@@ -157,7 +153,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     results_paths = []
     bestfit_paths = []
     for tmax in tmax_array:
-        tmax_label = fit_label + '_tmax_' + str(round(tmax,0)).zfill(2) ## imposes a label of the format 'lc_{true_model}_{idx}_fit_{model}_tmax_{tmax}'
+        tmax_label = fit_label + '_tmax_' + str(int(tmax)).zfill(2) ## imposes a label of the format 'lc_{true_model}_{idx}_fit_{model}_tmax_{tmax}'
         if os.path.exists(os.path.join(model_outdir, tmax_label + '_result.json')):
             print(f'{tmax_label} has already been fit, skipping')
             continue
@@ -186,7 +182,7 @@ def check_completion(result_paths, t0, timeout=71.9):
     '''
     
     total_analyses = len(result_paths)
-    analysis_status = np.array([os.path.exists(result_file) for result_file in result_paths], dtype=np.bool)
+    analysis_status = np.array([os.path.exists(result_file) for result_file in result_paths], dtype=bool)
     completed_analyses = np.array(result_paths)[analysis_status]
     completed_analyses_count = np.sum(analysis_status)
     completion_status = completed_analyses_count == total_analyses
@@ -209,3 +205,82 @@ def check_completion(result_paths, t0, timeout=71.9):
             print(f'[{current_time}] Warning: estimated time remaining exceeds timeout by {excess_time} hours')
         return False, completed_analyses
     
+    
+def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax):
+    '''
+    creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve file
+    - model (str): model to use (must exist in nmma)
+    - label (str): label for analysis files
+    - prior (str): path to prior file (must match model)
+    - outdir (str): path to output directory (will be created if it doesn't exist)
+    - tmax (float): maximum time to consider in analysis
+    
+    Returns:
+    - job_path (str): path to job file
+    '''
+    os.makedirs(outdir, exist_ok=True)
+    
+    cmd_str = [ 'light_curve_analysis',
+                '--data', lightcurve_path,
+                '--model', model,
+                '--label', label,
+                '--prior', prior,
+                '--svd-path', 'svdmodels',
+                '--filters', 'ztfg',
+                '--tmin', '0.1',
+                '--tmax', str(tmax),
+                '--dt', '0.5',
+                '--trigger-time', '0.1',
+                '--error-budget', '1',
+                '--nlive', '1024',
+                '--remove-nondetections',
+                '--ztf-uncertainties',
+                #'--ztf-sampling',
+                '--ztf-ToO', '180',
+                '--outdir', outdir,
+                '--plot', 
+                '--bestfit',
+                " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\""
+            ]
+    
+    ## create job file
+    job_path = os.path.join(outdir, label + '.sh')
+    with open(job_path, 'w') as f:
+        f.write('#!/bin/bash\n')
+        f.write('#SBATCH --name=' + label + '\n')
+        f.write('#SBATCH --time=23:59:00\n')
+        f.write('#SBATCH --nodes=1\n')
+        f.write('#SBATCH --ntasks=1\n')
+        f.write('#SBATCH --cpus-per-task=2\n')
+        f.write('#SBATCH --mem=8gb\n')
+        f.write('#SBATCH -o ./logs/%x_%j.out\n')
+        f.write('#SBATCH -e ./logs/%x_%j.err\n')
+        f.write('#SBATCH --mail-type=ALL\n')
+        f.write('#SBATCH --mail-user=ztfrest@gmail.com\n')
+        f.write('module load anaconda3\n')
+        f.write('source activate nmma\n')
+        f.write(f'cd {outdir}\n')
+        f.write(' '.join(cmd_str))
+    
+    return job_path
+
+def submit_msi_job(job_path, delete=False):
+    '''
+    submits a job to the MSI cluster
+    
+    Args:
+    - job_path (str): path to job file
+    - delete (bool): whether to delete the job file after submission (default=False)
+    
+    Returns:
+    - None
+    '''
+    
+    submission_cmd = f'sbatch {job_path}'
+    subp = subprocess.run(submission_cmd, shell=True, capture_output=True)
+    
+    if delete:
+        os.remove(job_path)

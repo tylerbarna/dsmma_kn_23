@@ -6,8 +6,6 @@ import time
 from utils.analysis import timestep_lightcurve_analysis, check_completion
 from utils.misc import strtime
 
-from multiprocessing import Pool
-
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
 
@@ -66,13 +64,12 @@ lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_path
 
 results_paths = []
 bestfit_paths = []
-analysis_pool = Pool(processes=4)
 for model in models:
     model_prior = os.path.join(priors,f'{model}.prior')
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, threading=False)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=True)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 
