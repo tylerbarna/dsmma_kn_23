@@ -262,7 +262,7 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax):
         f.write('#SBATCH --mail-user=ztfrest@gmail.com\n')
         f.write('module load anaconda3\n')
         f.write('source activate nmma\n')
-        f.write(f'cd {outdir}\n')
+        # f.write(f'cd {outdir}\n')
         f.write(' '.join(cmd_str))
     
     return job_path

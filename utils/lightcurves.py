@@ -11,7 +11,7 @@ from argparse import Namespace
 
 from nmma.em import create_lightcurves
 
-def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=None, filters=['ztfg','ztfr'], **kwargs):
+def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=None, filters=['ztfg'], **kwargs):
     '''
     Generates lightcurve for a given injection file
     
