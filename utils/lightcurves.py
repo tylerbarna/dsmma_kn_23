@@ -66,6 +66,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             photometry_augmentation_N_points=10,
             photometry_augmentation_filters=','.join(filters),
             photometry_augmentation_times=None,
+            photometric_error_budget=None,
             plot=False, ## maybe change this to False?
             joint_light_curve=False,
             with_grb_injection=False,
