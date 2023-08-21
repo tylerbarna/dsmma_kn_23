@@ -74,6 +74,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             injection_detection_limit=None,
             generation_seed=42,
             interpolation_type="sklearn_gp",
+            increment_seeds=False,
         )
     create_lightcurves.main(args)
     assert os.path.exists(lightcurve_path), 'lightcurve file {} was not created'.format(lightcurve_path)
