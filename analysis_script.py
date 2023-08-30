@@ -53,7 +53,7 @@ timeout = args.timeout
 
 if os.path.exists(outdir):
     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
-    outdir = os.path.join(outdir +'('+ strtime()+')')
+    outdir = os.path.join(outdir +'-'+ strtime())
     print(f'outdir is now {outdir}')
 
 os.makedirs(outdir)
