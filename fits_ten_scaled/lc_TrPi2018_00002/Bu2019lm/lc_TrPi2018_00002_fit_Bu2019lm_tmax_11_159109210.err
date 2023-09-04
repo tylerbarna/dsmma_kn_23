@@ -1,0 +1,8 @@
+/home/cough052/barna314/anaconda3/envs/nmma_canary/lib/python3.10/site-packages/astropy/time/formats.py:1580: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  val1_uint32 = val1.view((np.uint32, val1.dtype.itemsize // 4))
+Traceback (most recent call last):
+  File "/home/cough052/barna314/anaconda3/envs/nmma_canary/bin/light_curve_analysis", line 8, in <module>
+    sys.exit(main())
+  File "/home/cough052/barna314/anaconda3/envs/nmma_canary/lib/python3.10/site-packages/nmma/em/analysis.py", line 569, in main
+    raise ValueError("Need at least one detection to do fitting.")
+ValueError: Need at least one detection to do fitting.

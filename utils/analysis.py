@@ -206,7 +206,7 @@ def check_completion(result_paths, t0, timeout=71.9):
         return False, completed_analyses
     
     
-def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_canary'):
+def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_canary'):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     
@@ -217,21 +217,36 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, rootdir='
     - prior (str): path to prior file (must match model)
     - outdir (str): path to output directory (will be created if it doesn't exist)
     - tmax (float): maximum time to consider in analysis
-    - rootdir (str): root path to use 
-    - envpath (str): path to anaconda installation
-    - env (str): name of environment to use
+    - svdpath (str): path to svd models (default='~/dsmma_kn_23/svdmodels')
+    - rootdir (str): root path to use for analysis (default='~/dsmma_kn_23')
+    - envpath (str): path to anaconda installation (default='/home/cough052/barna314/anaconda3/bin/activate')
+    - env (str): name of environment to use (default='nmma_canary')
     
     Returns:
     - job_path (str): path to job file
     '''
     os.makedirs(outdir, exist_ok=True)
+    outfile = os.path.join(outdir, f'%x_%j.out')
+    errfile = os.path.join(outdir, f'%x_%j.err')
+    job_path = os.path.join(outdir, label + '.sh')
+    
+    ## workaround for path length limit in fortran
+    outdir_string_length = len(outdir)
+    if outdir_string_length > 64: 
+        print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
+        relative_outdir = os.path.join(rootdir,outdir)
+        outdir = './'
+        lightcurve_path = os.path.join(rootdir, lightcurve_path)
+        prior = os.path.join(rootdir, prior)
+        
+        
     
     cmd_str = [ 'light_curve_analysis',
                 '--data', lightcurve_path,
                 '--model', model,
                 '--label', label,
                 '--prior', prior,
-                '--svd-path', 'svdmodels',
+                '--svd-path', svdpath,
                 '--filters', 'ztfg',
                 '--tmin', '0.1',
                 '--tmax', str(tmax),
@@ -248,10 +263,9 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, rootdir='
                 '--bestfit',
                 " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\""
             ]
-    outfile = os.path.join(outdir, f'%x_%j.out')
-    errfile = os.path.join(outdir, f'%x_%j.err')
+    
     ## create job file
-    job_path = os.path.join(outdir, label + '.sh')
+    
     with open(job_path, 'w') as f:
         f.write('#!/bin/bash\n')
         f.write('#SBATCH --job-name=' + label + '\n')
@@ -264,7 +278,10 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, rootdir='
         f.write(f'#SBATCH -e {errfile}\n')
         f.write('#SBATCH --mail-type=ALL\n')
         f.write('#SBATCH --mail-user=ztfrest@gmail.com\n')
-        f.write(f'cd {rootdir}\n')
+        if outdir_string_length > 64: ## should output to './' while inside of the outdir
+            f.write(f'cd {relative_outdir}\n')
+        else:
+            f.write(f'cd {rootdir}\n')
         f.write(f'source {envpath} {env}\n')
         f.write(' '.join(cmd_str))
     
