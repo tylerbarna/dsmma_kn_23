@@ -50,6 +50,7 @@ def generate_injection(model, outDir, injection_label=None,prior=None,):
         detections_file=None,
         indices_file=None,
         original_parameters=True,
+	repeated_simulations=0,
         )
     create_injection.main(args)
     assert os.path.exists(injection_path), 'injection file {} was not created'.format(injection_path)
