@@ -254,14 +254,15 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='
                 '--trigger-time', '0.1',
                 '--error-budget', '1',
                 '--nlive', '1024',
-                '--remove-nondetections',
                 '--ztf-uncertainties',
                 #'--ztf-sampling',
                 '--ztf-ToO', '180',
                 '--outdir', outdir,
                 '--plot', 
                 '--bestfit',
-                " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\""
+                " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\"",
+                "--remove-nondetections",
+                "--verbose",
             ]
     
     ## create job file
