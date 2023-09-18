@@ -28,7 +28,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     - outdir (str): path to output directory (will be created if it doesn't exist)
     - label (str): label for analysis files
     - tmax (float): maximum time to consider in analysis (default=None, which means use all data)
-    - slurm (bool): whether to submit via slurm (default=False). If True, will use create_msi_job and submit_msi_job to create and submit a job file
+    - slurm (str): whether to submit via slurm (default=False). If a string, will use create_slurm_job and submit_slurm_job to create and submit a job file. currrently only accepts msi or expanse as cluster options
     
     Returns:
     - results_path (str): path to results file
@@ -107,8 +107,8 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_msi_job(lightcurve_path, model, label, prior, outdir, tmax)
-        submit_msi_job(job_path)
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm))
+        submit_slurm_job(job_path)
     else:
         analysis_main(args)
     
@@ -206,7 +206,7 @@ def check_completion(result_paths, t0, timeout=71.9):
         return False, completed_analyses
     
     
-def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_canary'):
+def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi'):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     
@@ -220,7 +220,8 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='
     - svdpath (str): path to svd models (default='~/dsmma_kn_23/svdmodels')
     - rootdir (str): root path to use for analysis (default='~/dsmma_kn_23')
     - envpath (str): path to anaconda installation (default='/home/cough052/barna314/anaconda3/bin/activate')
-    - env (str): name of environment to use (default='nmma_canary')
+    - env (str): name of environment to use (default='nmma_env')
+    - cluster (str): name of cluster to use (default='msi'). Also accepts expanse
     
     Returns:
     - job_path (str): path to job file
@@ -269,6 +270,7 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='
     
     with open(job_path, 'w') as f:
         f.write('#!/bin/bash\n')
+        f.write('#SBATCH --partition=shared\n') if cluster == 'expanse' else None
         f.write('#SBATCH --job-name=' + label + '\n')
         f.write('#SBATCH --time=23:59:00\n')
         f.write('#SBATCH --nodes=1\n')
@@ -283,15 +285,18 @@ def create_msi_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='
             f.write(f'cd {relative_outdir}\n')
         else:
             f.write(f'cd {rootdir}\n')
-        f.write(f'source {envpath} {env}\n')
+        if cluster == 'msi':
+            f.write(f'source {envpath} {env}\n')
+        else:
+            f.write(f'source activate {env}\n')
         f.write(' '.join(cmd_str))
     
     print(job_path)
     return job_path
 
-def submit_msi_job(job_path, delete=False):
+def submit_slurm_job(job_path, delete=False):
     '''
-    submits a job to the MSI cluster
+    submits a job to a cluster
     
     Args:
     - job_path (str): path to job file

@@ -41,8 +41,14 @@ parser.add_argument('--outdir',
 parser.add_argument('--timeout',
                     type=float,
                     default=71.9,
-                    help='timeout in hours (default: 71.9 hours)')
+                    help='timeout in hours (default: 71.9 hours)'
+)
 
+parser.add_argument('--cluster',
+                    type=str,
+                    default='msi',
+                    help='cluster to run on (default: msi)',choices=['msi','expanse','']
+)
 
 args = parser.parse_args()
 priors = args.priors
@@ -50,6 +56,7 @@ datadir = args.data
 models = args.models
 outdir = args.outdir
 timeout = args.timeout
+cluster = args.cluster if args.cluster != '' else False
 
 if os.path.exists(outdir):
     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
@@ -69,7 +76,7 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=True)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=cluster)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 
