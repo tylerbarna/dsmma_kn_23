@@ -51,6 +51,11 @@ parser.add_argument('--cluster',
                     help='cluster to run on (default: msi)',choices=['msi','expanse','']
 )
 
+parser.add_argument('--dry-run',
+                    action='store_true',
+                    help='dry run, do not submit jobs'
+)
+
 args = parser.parse_args()
 priors = args.priors
 datadir = args.data
@@ -77,10 +82,12 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=cluster)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=cluster, dry_run=args.dry_run)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
-
+if args.dry_run:
+    print('dry run complete, exiting')
+    exit()
 print('all fits submitted, checking for completion')
 start_time = time.time()
 while True:
