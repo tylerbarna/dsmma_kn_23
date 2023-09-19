@@ -46,6 +46,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         except:
             tmax = 21 ## nmma might not like this 
     # print('tmax is {}'.format(tmax))
+    trigger_time = get_trigger_time(lightcurve_path)
     
     args = Namespace(
         data=lightcurve_path,
@@ -53,7 +54,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         model=model,
         prior=prior,
         label=label,
-        trigger_time=0.1, ## may tweak this
+        trigger_time=trigger_time, ## may tweak this
         outdir=outdir,
         interpolation_type="sklearn_gp",
         svd_path="svdmodels",
@@ -231,6 +232,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     outfile = os.path.join(outdir, f'%x_%j.out')
     errfile = os.path.join(outdir, f'%x_%j.err')
     job_path = os.path.join(outdir, label + '.sh')
+    trigger_time = get_trigger_time(lightcurve_path)
     
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
@@ -253,7 +255,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 '--tmin', '0.1',
                 '--tmax', str(tmax),
                 '--dt', '0.5',
-                '--trigger-time', '0.1',
+                '--trigger-time', str(trigger_time),
                 '--error-budget', '1',
                 '--nlive', '1024',
                 '--ztf-uncertainties',
@@ -312,3 +314,18 @@ def submit_slurm_job(job_path, delete=False):
     
     if delete:
         os.remove(job_path)
+        
+def get_trigger_time(lightcurve_path):
+    '''
+    gets trigger time from lightcurve file
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve file
+    
+    Returns:
+    - trigger_time (float): trigger time of lightcurve
+    '''
+    lightcurve_df = pd.read_json(lightcurve_path)
+    lc_keys = list(lightcurve_df.keys())
+    trigger_time = lightcurve_df[lc_keys[0]][0][0]
+    return trigger_time
