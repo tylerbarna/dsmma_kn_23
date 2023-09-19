@@ -273,7 +273,9 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     
     with open(job_path, 'w') as f:
         f.write('#!/bin/bash\n')
-        f.write('#SBATCH --partition=shared\n') if cluster == 'expanse' else None
+        if cluster == 'expanse':
+            f.write('#SBATCH --partition=shared\n')
+            f.write('#SBATCH --account=umn131\n')
         f.write('#SBATCH --job-name=' + label + '\n')
         f.write('#SBATCH --time=23:59:00\n')
         f.write('#SBATCH --nodes=1\n')
