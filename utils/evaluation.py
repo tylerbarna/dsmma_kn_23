@@ -19,12 +19,10 @@ def read_best_fit_params(json_path):
     - best_fit_params (dict): dictionary of best fit parameters
     - best_fit_lightcurve (pd.DataFrame): dataframe of best fit lightcurve with associated times
     '''
-    
     with open(json_path) as f:
         best_fit_params_json = json.load(f)
         
-    ## define best fit params as best_fit_params_json with the 'Magnitudes' key removed
-    best_fit_params = best_fit_params_json.copy()
+    best_fit_params = best_fit_params_json.copy() ## define best fit params as best_fit_params_json with the 'Magnitudes' key removed
     best_fit_lightcurve_dict = best_fit_params.pop('Magnitudes') ## this pulls double duty of both removing the 'Magnitudes' key and returning the lightcurve dict 
     best_fit_lightcurve = pd.DataFrame.from_dict(best_fit_lightcurve_dict) ## can handle multiple filters
     

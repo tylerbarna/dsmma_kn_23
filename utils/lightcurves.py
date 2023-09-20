@@ -4,10 +4,13 @@ creates lightcurves from a given injection file using nmma
 
 import numpy as np
 import os 
+import pandas as pd
 
 from astropy.time import Time
 
 from argparse import Namespace 
+
+from functools import reduce
 
 from nmma.em import create_lightcurves
 
@@ -117,4 +120,25 @@ def lightcurve_conversion(lightcurve_path):
         
     return converted_lightcurve_path 
             
-
+def read_lightcurve(lightcurve_json, start_time=0.1):
+    '''
+    Reads in the lightcurve json and returns a pandas dataframe of the lightcurve with associated times, relative to the start time
+    
+    Args:
+    - lightcurve_json (str): path to lightcurve json file
+    - start_time (float): relative start time of lightcurve (default=0.1) 
+    
+    Returns:
+    - lightcurve_df (pd.DataFrame): dataframe of lightcurve with associated times
+    '''
+    lightcurve_df_raw = pd.read_json(lightcurve_json) ## this will be in a somewhat messy format
+    filters = lightcurve_df_raw.keys() ## get filters
+    
+    filter_dfs = [] ## initialize empty list of dataframes. Each corresponds to a filter
+    for filter in filters:
+        filt_df = pd.DataFrame(lightcurve_df_raw[filter].tolist(), columns=['sample_times', filter, f'{filter}_err']) ## convert each filter to a dataframe
+        filter_dfs.append(filt_df) ## append to list of dataframes
+    lightcurve_df = reduce(lambda left,right: pd.merge(left,right,on=['sample_times'], how='outer'), filter_dfs).fillna(np.inf) ## merge dataframes on sample_times, fill NaNs with np.inf
+    lightcurve_df['sample_times'] = round(lightcurve_df['sample_times'] - lightcurve_df['sample_times'].min() + start_time, 2) ## subtract start time from sample_times, also rounds to second decimal place for consistency
+    
+    return lightcurve_df
