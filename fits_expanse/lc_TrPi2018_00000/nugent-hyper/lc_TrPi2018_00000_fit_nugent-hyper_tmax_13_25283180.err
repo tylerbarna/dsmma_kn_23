@@ -1,0 +1,37 @@
+/home/tbarna/.conda/envs/nmma_env/lib/python3.10/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version >=1.16.5 and <1.23.0 is required for this version of SciPy (detected version 1.26.0
+  warnings.warn(f"A NumPy version >={np_minversion} and <{np_maxversion}"
+/home/tbarna/.conda/envs/nmma_env/lib/python3.10/site-packages/astropy/time/formats.py:1580: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  val1_uint32 = val1.view((np.uint32, val1.dtype.itemsize // 4))
+15:38 bilby INFO    : Running for label 'lc_TrPi2018_00000_fit_nugent-hyper_tmax_13', output will be saved to './fits_expanse/lc_TrPi2018_00000/nugent-hyper'
+Traceback (most recent call last):
+  File "/cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/condabin/conda", line 12, in <module>
+    from conda.cli import main
+ModuleNotFoundError: No module named 'conda'
+/home/tbarna/.conda/envs/nmma_env/lib/python3.10/site-packages/_distutils_hack/__init__.py:33: UserWarning: Setuptools is replacing distutils.
+  warnings.warn("Setuptools is replacing distutils.")
+15:38 bilby INFO    : Analysis priors:
+15:38 bilby INFO    : luminosity_distance=Uniform(minimum=150, maximum=225, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+15:38 bilby INFO    : KNtimeshift=Uniform(minimum=-1.0, maximum=1.0, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+15:38 bilby INFO    : supernova_mag_boost=Uniform(minimum=-5.0, maximum=5.0, name='supernova_mag_boost', latex_label='$\\rm{SNmag}$', unit=None, boundary=None)
+15:38 bilby INFO    : Ebv=Interped(xx=array([0.    , 0.5724]), yy=array([3.4940601, 0.       ]), minimum=0.0, maximum=0.5724, name='Ebv', latex_label='$E(B-V)$', unit=None, boundary=None)
+15:38 bilby INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+15:38 bilby INFO    : Analysis likelihood noise evidence: 0.0
+15:38 bilby INFO    : Single likelihood evaluation took 7.573e-03 s
+15:38 bilby WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+15:38 bilby WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+15:38 bilby INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 1024, 'n_params': 4, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x155536c43940>>}
+15:38 bilby INFO    : Using temporary file /tmp/tmpuh40dhe0
+15:38 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Overwriting ./fits_expanse/lc_TrPi2018_00000/nugent-hyper/pm_lc_TrPi2018_00000_fit_nugent-hyper_tmax_13/ with /tmp/tmpuh40dhe0/
+15:39 bilby INFO    : Sampling time: 0:00:59.119117
+15:39 bilby INFO    : Summary of results:
+nsamples: 3278
+ln_noise_evidence:  0.000
+ln_evidence: -6.294 +/-  0.040
+ln_bayes_factor: -6.294 +/-  0.040
+
+15:39 bilby INFO    : Writing samples file to /home/tbarna/dsmma_kn_23/fits_expanse/lc_TrPi2018_00000/nugent-hyper/lc_TrPi2018_00000_fit_nugent-hyper_tmax_13_posterior_samples.dat
