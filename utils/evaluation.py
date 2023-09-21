@@ -112,3 +112,26 @@ def evaluate_fits_by_likelihood(best_fit_json_list, target_model='Me2017', **kwa
     fit_eval = {model: likelihood_diff_dict[model] for model in sorted(likelihood_diff_dict, key=likelihood_diff_dict.get, reverse=True)} ## the model with the largest difference in likelihood can be considered to be the best fit
     
     return fit_eval
+
+def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
+    '''
+    Creates a series for a specific lightcurve and best fit json file, with the following columns:
+    
+    - lightcurve (str): lightcurve name (eg lc_Me2017_00000)
+    - true_model (str): true model name (eg Me2017)
+    - lightcurve_path (str): path to lightcurve
+    - fit_model (str): model name of best fit (eg Me2017)
+    - fit_path (str): path to best fit json file
+    - t_max (float): time of most recent observed data point
+    - *residual (float): residual between lightcurve and best fit lightcurve
+    - *odds_ratio (float): odds ratio of the best fit model compared to true model 
+    * (note: the current implementation of these functions calculates them for a list of best fit json files, so these columns will need to turn them from a list to a float)
+    - best_fit_params (dict): dictionary of best fit parameters (dependent on specific fit model)
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve
+    - best_fit_json_path (str): path to best fit json file
+    
+    Returns:
+    - fit_series (pd.Series): series of fit evaluation metrics
+    '''
