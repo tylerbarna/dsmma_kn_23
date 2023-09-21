@@ -120,13 +120,15 @@ def lightcurve_conversion(lightcurve_path):
         
     return converted_lightcurve_path 
             
-def read_lightcurve(lightcurve_json, start_time=0.1):
+def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None):
     '''
     Reads in the lightcurve json and returns a pandas dataframe of the lightcurve with associated times, relative to the start time
     
     Args:
     - lightcurve_json (str): path to lightcurve json file
     - start_time (float): relative start time of lightcurve (default=0.1) 
+    - cutoff_time (float): cutoff time of lightcurve relative to the start time (default=None). This will remove any data points after that time.
+    
     
     Returns:
     - lightcurve_df (pd.DataFrame): dataframe of lightcurve with associated times
@@ -140,5 +142,8 @@ def read_lightcurve(lightcurve_json, start_time=0.1):
         filter_dfs.append(filt_df) ## append to list of dataframes
     lightcurve_df = reduce(lambda left,right: pd.merge(left,right,on=['sample_times'], how='outer'), filter_dfs).fillna(np.inf) ## merge dataframes on sample_times, fill NaNs with np.inf
     lightcurve_df['sample_times'] = round(lightcurve_df['sample_times'] - lightcurve_df['sample_times'].min() + start_time, 2) ## subtract start time from sample_times, also rounds to second decimal place for consistency
+    if cutoff_time is not None:
+        assert cutoff_time > start_time, 'cutoff_time must be greater than start_time'
+        lightcurve_df = lightcurve_df[lightcurve_df['sample_times'] <= cutoff_time]
     
     return lightcurve_df
