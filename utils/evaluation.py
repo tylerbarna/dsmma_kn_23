@@ -200,3 +200,8 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
     return lightcurve_fit_dict
             
 
+# ## get all the lightcurve and best fit json paths
+# lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
+# ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+# best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+# print(best_fit_json_paths)
