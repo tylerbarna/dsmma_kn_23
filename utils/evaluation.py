@@ -11,7 +11,7 @@ from utils.injections import get_parameters
 
 from utils.lightcurves import read_lightcurve
 
-def read_best_fit_params(json_path):
+def read_best_fit_params(json_path, **kwargs):
     '''
     Reads in a best fit parameters json and returns a dictionary of the best fit parameters as well as a pandas dataframe of the best fit lightcurve with associated times
     
@@ -22,12 +22,16 @@ def read_best_fit_params(json_path):
     - best_fit_params (dict): dictionary of best fit parameters
     - best_fit_lightcurve (pd.DataFrame): dataframe of best fit lightcurve with associated times
     '''
+    best_fit_lightcurve_type = kwargs.get('best_fit_lightcurve_type', 'pandas') ## default to pandas but can return a dict if desired
     with open(json_path) as f:
         best_fit_params_json = json.load(f)
         
     best_fit_params = best_fit_params_json.copy() ## define best fit params as best_fit_params_json with the 'Magnitudes' key removed
     best_fit_lightcurve_dict = best_fit_params.pop('Magnitudes') ## this pulls double duty of both removing the 'Magnitudes' key and returning the lightcurve dict 
-    best_fit_lightcurve = pd.DataFrame.from_dict(best_fit_lightcurve_dict) ## can handle multiple filters
+    if best_fit_lightcurve_type == 'pandas':
+        best_fit_lightcurve = pd.DataFrame.from_dict(best_fit_lightcurve_dict) ## can handle multiple filters
+    elif best_fit_lightcurve_type == 'dict':
+        best_fit_lightcurve = best_fit_lightcurve_dict
     
     return best_fit_params, best_fit_lightcurve
 
@@ -135,3 +139,25 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     Returns:
     - fit_series (pd.Series): series of fit evaluation metrics
     '''
+    file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
+    lc_model_idx = kwargs.get('lc_model_idx', 1) ## position of lightcurve model in lightcurve filename, the default is 1 (eg lc_Me2017_00000). This means that the lightcurve model is this idx and the lightcurve label is idx_idx+1
+    true_model = os.path.basename(lightcurve_path).split(file_seperator)[lc_model_idx]
+    lightcurve_id = os.path.basename(lightcurve_path).split(file_seperator)[lc_model_idx+1]
+    lightcurve_name = true_model +'_' + lightcurve_id ## get lightcurve name from lightcurve path
+    tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 3 (eg lc_Me2017_00000_fit_Me2017_tmax_3). This means that the tmax is this idx
+    best_fit_params, best_fit_lightcurve = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
+    
+    
+    series = pd.Series() ## initialize series
+    series['lightcurve'] = lightcurve_name
+    series['true_model'] = true_model
+    series['lightcurve_path'] = lightcurve_path
+    series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
+    series['fit_path'] = best_fit_json_path
+    series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
+    series['best_fit_params'] = best_fit_params
+    
+    ## note: should I also have it store the best fit lightcurve and the lightcurve as dictionaries? Might be useful for plotting
+    
+    return series
+    
