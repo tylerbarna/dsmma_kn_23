@@ -2,6 +2,7 @@
 functions for evaluating the results of fitting
 '''
 
+from itertools import groupby
 import json
 import os
 import pandas as pd
@@ -75,6 +76,15 @@ def get_model_name(best_fit_json, **kwargs):
     
     return model_name
 
+def get_lightcurve_name(lightcurve_json, **kwargs):
+    '''
+    Retrieves the lightcurve name from the lightcurve json file
+    '''
+    file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
+    name_idx = kwargs.get('name_idx', 1) ## position of lightcurve name in lightcurve filename, the default is 1 (eg lc_Me2017_00000). This means that the lightcurve model is this idx and the lightcurve label is idx_idx+1m
+    lightcurve_name = os.path.basename(lightcurve_json).split(file_seperator)[name_idx] + '_' + os.path.basename(lightcurve_json).split(file_seperator)[name_idx+1] ## get lightcurve name from lightcurve path
+    return lightcurve_name
+
 def evaluate_fits_by_residuals(lightcurve_json, best_fit_json_list, **kwargs):
     '''
     Evaluates the fit between the lightcurve and the best fit lightcurve
@@ -142,8 +152,7 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
     lc_model_idx = kwargs.get('lc_model_idx', 1) ## position of lightcurve model in lightcurve filename, the default is 1 (eg lc_Me2017_00000). This means that the lightcurve model is this idx and the lightcurve label is idx_idx+1
     true_model = os.path.basename(lightcurve_path).split(file_seperator)[lc_model_idx]
-    lightcurve_id = os.path.basename(lightcurve_path).split(file_seperator)[lc_model_idx+1]
-    lightcurve_name = true_model +'_' + lightcurve_id ## get lightcurve name from lightcurve path
+    lightcurve_name = get_lightcurve_name(lightcurve_path, **kwargs)
     tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 3 (eg lc_Me2017_00000_fit_Me2017_tmax_3). This means that the tmax is this idx
     best_fit_params, best_fit_lightcurve = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
     target_model = kwargs.get('target_model', 'Me2017') ## model to compare to
@@ -164,3 +173,31 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     
     return series
     
+def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs):
+    '''
+    Creates a dictionary where each key is a lightcurve path and the list is a list of lists, with each sublist representing a time step
+    
+    Args:
+    - lightcurve_paths (list): list of lightcurve paths
+    - best_fit_json_paths (list): list of best fit json paths
+    
+    Returns:
+    - lightcurve_fit_dict (dict): dictionary of lightcurve paths and associated best fit json paths
+    '''
+    file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
+    lightcurve_fit_dict = {}
+    for lightcurve_path in lightcurve_paths:
+        lightcurve_fit_dict[lightcurve_path] = []
+        for best_fit_json_path in best_fit_json_paths:
+            lightcurve_name = get_lightcurve_name(lightcurve_path, **kwargs)
+            best_fit_lightcurve_name = get_lightcurve_name(best_fit_json_path, **kwargs)
+            if lightcurve_name == best_fit_lightcurve_name:
+                lightcurve_fit_dict[lightcurve_path].append(best_fit_json_path)
+            ## best fit json file names are in the format lc_<model>_<label>_fit_<model>_tmax_<tmax>.json. take the list of all best fit jsons for a given lightcurve and place them into sublists ordered by tmax, such that the structure of each value is [[tmax1_bestfitjsons], [tmax2_bestfitjsons], ...]
+        lightcurve_fit_dict[lightcurve_path] = sorted(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[6])) ## sort the list of best fit jsons by tmax
+        ## now split them into sublists based on tmax
+        lightcurve_fit_dict[lightcurve_path] = [list(g) for _, g in groupby(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[6]))]
+    
+    return lightcurve_fit_dict
+            
+            
