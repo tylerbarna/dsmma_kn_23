@@ -146,6 +146,7 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     lightcurve_name = true_model +'_' + lightcurve_id ## get lightcurve name from lightcurve path
     tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 3 (eg lc_Me2017_00000_fit_Me2017_tmax_3). This means that the tmax is this idx
     best_fit_params, best_fit_lightcurve = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
+    target_model = kwargs.get('target_model', 'Me2017') ## model to compare to
     
     
     series = pd.Series() ## initialize series
@@ -155,6 +156,8 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
     series['fit_path'] = best_fit_json_path
     series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
+    # series['residual'] = calculate_lightcurve_residual(lightcurve_path, [best_fit_json_path])[0] ## not working yet
+    #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
     series['best_fit_params'] = best_fit_params
     
     ## note: should I also have it store the best fit lightcurve and the lightcurve as dictionaries? Might be useful for plotting
