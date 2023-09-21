@@ -185,6 +185,7 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
     - lightcurve_fit_dict (dict): dictionary of lightcurve paths and associated best fit json paths
     '''
     file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
+    tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 6 (eg lc_Me2017_00000_fit_Me2017_tmax_3).
     lightcurve_fit_dict = {}
     for lightcurve_path in lightcurve_paths:
         lightcurve_fit_dict[lightcurve_path] = []
@@ -193,25 +194,9 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
             best_fit_lightcurve_name = get_lightcurve_name(best_fit_json_path, **kwargs)
             if lightcurve_name == best_fit_lightcurve_name:
                 lightcurve_fit_dict[lightcurve_path].append(best_fit_json_path)
-            ## best fit json file names are in the format lc_<model>_<label>_fit_<model>_tmax_<tmax>.json. take the list of all best fit jsons for a given lightcurve and place them into sublists ordered by tmax, such that the structure of each value is [[tmax1_bestfitjsons], [tmax2_bestfitjsons], ...]
-        lightcurve_fit_dict[lightcurve_path] = sorted(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[6])) ## sort the list of best fit jsons by tmax
-        ## now split them into sublists based on tmax
-        # lightcurve_fit_dict[lightcurve_path] = [list(g) for _, g in groupby(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[6]))]
-    
+        lightcurve_fit_dict[lightcurve_path] = sorted(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[tmax_idx])) ## sort the list of best fit jsons by tmax
+        lightcurve_fit_dict[lightcurve_path] = [list(g) for _, g in groupby(lightcurve_fit_dict[lightcurve_path], key=lambda x: float(os.path.basename(x).split(file_seperator)[tmax_idx]))] ## splitting them into sublists based on tmax
+        
     return lightcurve_fit_dict
             
-            
-## use glob to find all lightcurve jsons in the injections directory
-lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json'))) ## assumes leading label is lc_
-## use glob to find all best fit jsons in the fits_expanse directory, regardless of how deep it needs to go into subdirectories
-best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**','*.json'), recursive=True)) ## assumes leading label is lc_
-print (best_fit_json_paths)
 
-## call associate_lightcurves_and_fits to associate lightcurves and best fit jsons
-lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
-
-for key, value in lightcurve_fit_dict.items():
-    print (key, value)
-    print()
-    # for item in value:
-    #     print (key, item)
