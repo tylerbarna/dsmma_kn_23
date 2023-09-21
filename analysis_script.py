@@ -1,5 +1,6 @@
 import argparse
 import glob
+import numpy as np
 import os
 import time
 
@@ -75,6 +76,8 @@ os.makedirs(outdir)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
+tmax_array = np.arange(3.1,20.1,2)
+
 results_paths = []
 bestfit_paths = []
 for model in models:
@@ -82,15 +85,15 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=None, slurm=cluster, dry_run=args.dry_run)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
-if args.dry_run:
-    print('dry run complete, exiting')
-    exit()
 print('all fits submitted, checking for completion')
 start_time = time.time()
 while True:
+    if args.dry_run:
+        print('dry run complete, exiting')
+        break
     time.sleep(300)
     completion_bool, completed_fits = check_completion(results_paths, start_time, timeout)
     if completion_bool:

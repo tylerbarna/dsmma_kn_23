@@ -110,7 +110,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm))
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run)
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
     else:
         analysis_main(args)
@@ -209,7 +209,7 @@ def check_completion(result_paths, t0, timeout=71.9):
         return False, completed_analyses
     
     
-def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi'):
+def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', **kwargs):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     
@@ -234,6 +234,10 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     errfile = os.path.join(outdir, f'%x_%j.err')
     job_path = os.path.join(outdir, label + '.sh')
     trigger_time = get_trigger_time(lightcurve_path)
+    dry_run = kwargs.get('dry_run', False)
+    if dry_run and os.path.exists(job_path):
+        #print(f'{job_path} already exists, skipping')
+        return job_path
     
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
