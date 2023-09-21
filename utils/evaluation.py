@@ -52,13 +52,18 @@ def calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df):
     '''
     
     time_cutoff = best_fit_lightcurve_df['bestfit_sample_times'].max() ## get the maximum time of the best fit lightcurve
-    lighcurve_df = lightcurve_df[lightcurve_df['sample_times'] <= time_cutoff]
+    lightcurve_df = lightcurve_df[lightcurve_df['sample_times'] <= time_cutoff]
     lightcurve_residual = 0 ## initialize lightcurve residual
-    for filter in lightcurve_df.keys():
+    for filter in ['ztfg','ztfr','ztfi']: ##    TO-DO: make this more general so that it can handle any filter
+        if filter == 'sample_times':
+            continue
         ## residual given by (lightcurve - best_fit_lightcurve)^2 / lightcurve_err
-        filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
+        try:
+            filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
+        except: ## TO-DO: make it so you don't have to have this except (due to above)
+            continue
         
-        lightcurve_residual += np.nansum((filter_residual), where=filter_residual!=np.inf) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
+        lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
 
     return lightcurve_residual
 
@@ -154,8 +159,10 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     true_model = os.path.basename(lightcurve_path).split(file_seperator)[lc_model_idx]
     lightcurve_name = get_lightcurve_name(lightcurve_path, **kwargs)
     tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 3 (eg lc_Me2017_00000_fit_Me2017_tmax_3). This means that the tmax is this idx
-    best_fit_params, best_fit_lightcurve = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
+    best_fit_params, best_fit_lightcurve_df = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
     target_model = kwargs.get('target_model', 'Me2017') ## model to compare to
+    lightcurve_df = read_lightcurve(lightcurve_path) ## read in lightcurve
+    # print(lightcurve_df['sample_times'])
     
     
     series = pd.Series() ## initialize series
@@ -165,7 +172,7 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
     series['fit_path'] = best_fit_json_path
     series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
-    # series['residual'] = calculate_lightcurve_residual(lightcurve_path, [best_fit_json_path])[0] ## not working yet
+    series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) ## not working yet
     #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
     series['best_fit_params'] = best_fit_params
     
@@ -199,9 +206,3 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
         
     return lightcurve_fit_dict
             
-
-# ## get all the lightcurve and best fit json paths
-# lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
-# ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-# best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
-# print(best_fit_json_paths)
