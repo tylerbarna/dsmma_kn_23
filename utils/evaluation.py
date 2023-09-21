@@ -77,6 +77,8 @@ def get_model_name(best_fit_json, **kwargs):
     Returns:
     - model_name (str): model name
     '''
+    print('gmn bfj',best_fit_json)
+    print('gmn ospbn',os.path.basename(best_fit_json).split(kwargs.get('file_sep','_')))
     model_name = os.path.basename(best_fit_json).split(kwargs.get('file_sep','_'))[kwargs.get('model_idx',4)] ## get model name from best fit json. Assumes that the model name is the 4th item in the filename, separated by underscores, but these can be changed with kwargs
     
     return model_name
@@ -206,3 +208,44 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
         
     return lightcurve_fit_dict
             
+            
+            
+            
+
+def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
+    '''
+    Creates a dataframe of fit evaluation metrics
+    
+    Args:
+    - lightcurve_paths (list): list of lightcurve paths
+    - best_fit_json_paths (list): list of best fit json paths
+    
+    Returns:
+    - fit_df (pd.DataFrame): dataframe of fit evaluation metrics
+    '''
+    lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs)
+    fit_df = pd.DataFrame()
+    for lightcurve_path in lightcurve_paths:
+        for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
+            
+            for best_fit_json in best_fit_json_list:
+                # likelihood_dict = evaluate_fits_by_likelihood(lightcurve_path, best_fit_json_list, **kwargs)
+                # likelihood = likelihood_dict[get_model_name(best_fit_json)]
+                fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
+                # fit_series['likelihood'] = likelihood
+                fit_df = fit_df.append(fit_series, ignore_index=True)
+
+    return fit_df
+
+
+
+
+
+
+
+
+
+
+
+
+
