@@ -211,7 +211,21 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
             
             
             
+## get all the lightcurve and best fit json paths
+lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
+## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
 
+paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
+# print(paired_files[lightcurve_paths[0]][0][0])
+fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
+# print(fit_series)
+print(paired_files)
+
+
+
+
+## now define a function create_dataframe that takes a list of lightcurves, a list of best fit jsons, and kwargs and returns a dataframe of fit evaluation metrics. It also will add a column for the likelihood, which will require using the structure created by associate_lightcurves_and_fits to compare the likelihoods of the best fit jsons that are grouped as a sublist
 def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     '''
     Creates a dataframe of fit evaluation metrics
@@ -227,16 +241,18 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     fit_df = pd.DataFrame()
     for lightcurve_path in lightcurve_paths:
         for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
-            
+            print('cd ',best_fit_json_list)
             for best_fit_json in best_fit_json_list:
-                # likelihood_dict = evaluate_fits_by_likelihood(lightcurve_path, best_fit_json_list, **kwargs)
-                # likelihood = likelihood_dict[get_model_name(best_fit_json)]
+                likelihood_dict = evaluate_fits_by_likelihood(lightcurve_path, best_fit_json_list, **kwargs)
+                likelihood = likelihood_dict[get_model_name(best_fit_json)]
                 fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
-                # fit_series['likelihood'] = likelihood
+                fit_series['likelihood'] = likelihood
                 fit_df = fit_df.append(fit_series, ignore_index=True)
 
     return fit_df
 
+fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+print(fit_df)
 
 
 
