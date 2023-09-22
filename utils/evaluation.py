@@ -8,9 +8,12 @@ import json
 import os
 import pandas as pd
 import numpy as np
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
 from lightcurves import read_lightcurve
+from misc import suppress_print
 
 def read_best_fit_params(json_path, **kwargs):
     '''
@@ -77,8 +80,8 @@ def get_model_name(best_fit_json, **kwargs):
     Returns:
     - model_name (str): model name
     '''
-    print('gmn bfj',best_fit_json)
-    print('gmn ospbn',os.path.basename(best_fit_json).split(kwargs.get('file_sep','_')))
+    # print('gmn bfj',best_fit_json)
+    # print('gmn ospbn',os.path.basename(best_fit_json).split(kwargs.get('file_sep','_')))
     model_name = os.path.basename(best_fit_json).split(kwargs.get('file_sep','_'))[kwargs.get('model_idx',4)] ## get model name from best fit json. Assumes that the model name is the 4th item in the filename, separated by underscores, but these can be changed with kwargs
     
     return model_name
@@ -167,7 +170,7 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     # print(lightcurve_df['sample_times'])
     
     
-    series = pd.Series() ## initialize series
+    series = pd.Series(dtype='float64') ## initialize series
     series['lightcurve'] = lightcurve_name
     series['true_model'] = true_model
     series['lightcurve_path'] = lightcurve_path
@@ -208,24 +211,8 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
         
     return lightcurve_fit_dict
             
-            
-            
-            
-## get all the lightcurve and best fit json paths
-lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
-## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
-
-paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
-# print(paired_files[lightcurve_paths[0]][0][0])
-fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
-# print(fit_series)
-print(paired_files)
 
 
-
-
-## now define a function create_dataframe that takes a list of lightcurves, a list of best fit jsons, and kwargs and returns a dataframe of fit evaluation metrics. It also will add a column for the likelihood, which will require using the structure created by associate_lightcurves_and_fits to compare the likelihoods of the best fit jsons that are grouped as a sublist
 def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     '''
     Creates a dataframe of fit evaluation metrics
@@ -239,20 +226,38 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     '''
     lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs)
     fit_df = pd.DataFrame()
+    
     for lightcurve_path in lightcurve_paths:
         for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
-            print('cd ',best_fit_json_list)
+            # print('cd ', best_fit_json_list)
             for best_fit_json in best_fit_json_list:
-                likelihood_dict = evaluate_fits_by_likelihood(lightcurve_path, best_fit_json_list, **kwargs)
-                likelihood = likelihood_dict[get_model_name(best_fit_json)]
+                # Evaluate fits for each best fit JSON individually
+
                 fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
-                fit_series['likelihood'] = likelihood
+                # likelihood_dict = evaluate_fits_by_likelihood([best_fit_json], **kwargs)
+                # likelihood = likelihood_dict[get_model_name(best_fit_json)]
+                # fit_series['likelihood'] = likelihood
                 fit_df = fit_df.append(fit_series, ignore_index=True)
 
     return fit_df
 
-fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
-print(fit_df)
+
+
+            
+# ## get all the lightcurve and best fit json paths
+# lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
+# ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+# best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+
+# paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
+# # print(paired_files[lightcurve_paths[0]][0][0])
+# fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
+# # print(fit_series)
+# # print(paired_files)
+
+# fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+# print(fit_df)
+# fit_df.to_csv('./fit_df_no_likelihoods.csv')
 
 
 
