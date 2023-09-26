@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(description='Generate light curves for a given 
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
                     default=['nugent-hyper','Me2017','TrPi2018'],
-                    choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017'], 
+                    choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
 parser.add_argument('-f','--filters',
