@@ -13,7 +13,7 @@ parser.add_argument('-m','--models',
                     help='models to generate light curves for'
 )
 parser.add_argument('-f','--filters',
-                    type=str,
+                    type=str, nargs='+',
                     default='ztfg',
                     choices=['ztfr','ztfg','ztfi'],
                     help='filters to generate light curves for (choices for ztf are r,g,i)'
