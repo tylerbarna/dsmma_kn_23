@@ -1,0 +1,53 @@
+/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/astropy/time/formats.py:1580: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  val1_uint32 = val1.view((np.uint32, val1.dtype.itemsize // 4))
+17:48 bilby INFO    : Running for label 'lc_nugent-hyper_00005_fit_TrPi2018_tmax_17', output will be saved to 'fits_msi/lc_nugent-hyper_00005/TrPi2018'
+17:48 bilby INFO    : Analysis priors:
+17:48 bilby INFO    : luminosity_distance=Uniform(minimum=150, maximum=185, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+17:48 bilby INFO    : KNtimeshift=Uniform(minimum=-0.1, maximum=1.0, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+17:48 bilby INFO    : inclination_EM=Sine(minimum=0.0, maximum=0.19634954084936207, name='inclination_EM', latex_label='$\\iota$', unit=None, boundary=None)
+17:48 bilby INFO    : log10_n0=Uniform(minimum=-3.0, maximum=3.0, name='log10_n0', latex_label='$\\log_{10}n_0$', unit=None, boundary=None)
+17:48 bilby INFO    : p=Uniform(minimum=2.0, maximum=3.0, name='p', latex_label='$p$', unit=None, boundary=None)
+17:48 bilby INFO    : log10_epsilon_e=Uniform(minimum=-3.0, maximum=0.0, name='log10_epsilon_e', latex_label='$\\log_{10}\\epsilon_e$', unit=None, boundary=None)
+17:48 bilby INFO    : log10_epsilon_B=Uniform(minimum=-3.0, maximum=0.0, name='log10_epsilon_B', latex_label='$\\log_{10}\\epsilon_B$', unit=None, boundary=None)
+17:48 bilby INFO    : Ebv=Interped(xx=array([0.    , 0.5724]), yy=array([3.4940601, 0.       ]), minimum=0.0, maximum=0.5724, name='Ebv', latex_label='$E(B-V)$', unit=None, boundary=None)
+17:48 bilby INFO    : log10_E0=53.0
+17:48 bilby INFO    : thetaCore=0.05
+17:48 bilby INFO    : thetaWing=0.1
+17:48 bilby INFO    : ksiN=1.0
+17:48 bilby INFO    : L0=0.0
+17:48 bilby INFO    : dL=3.09e+19
+17:48 bilby INFO    : b=6.0
+17:48 bilby INFO    : q=0.0
+17:48 bilby INFO    : ts=0.0
+17:48 bilby INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+17:48 bilby INFO    : Analysis likelihood noise evidence: 0.0
+Traceback (most recent call last):
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/bin/light_curve_analysis", line 33, in <module>
+    sys.exit(load_entry_point('nmma==0.0.19', 'console_scripts', 'light_curve_analysis')())
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/analysis.py", line 909, in main
+    analysis(args)
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/analysis.py", line 655, in analysis
+    result = bilby.run_sampler(
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/__init__.py", line 190, in run_sampler
+    sampler = sampler_class(
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/pymultinest.py", line 86, in __init__
+    super(Pymultinest, self).__init__(
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/base_sampler.py", line 904, in __init__
+    super(_TemporaryFileSamplerMixin, self).__init__(**kwargs)
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/base_sampler.py", line 252, in __init__
+    self._verify_parameters()
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/base_sampler.py", line 421, in _verify_parameters
+    self.log_likelihood(theta)
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/base_sampler.py", line 845, in log_likelihood
+    return Sampler.log_likelihood(self, theta)
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/bilby/core/sampler/base_sampler.py", line 536, in log_likelihood
+    return self.likelihood.log_likelihood()
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/likelihood.py", line 108, in log_likelihood
+    lbol, mag_abs = self.light_curve_model.generate_lightcurve(
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/model.py", line 520, in generate_lightcurve
+    _, lbol, mag = utils.grb_lc(
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/utils.py", line 574, in grb_lc
+    mJys = fluxDensity(times, nus, **param_dict)
+  File "/home/cough052/barna314/anaconda3/envs/nmma_env/lib/python3.10/site-packages/nmma-0.0.19-py3.10.egg/nmma/em/utils.py", line 544, in fluxDensity
+    raise ValueError("afterglowpy required for GRB afterglow")
+ValueError: afterglowpy required for GRB afterglow
