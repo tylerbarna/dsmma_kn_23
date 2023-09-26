@@ -42,7 +42,7 @@ inj_gen_time_dict = {model:[] for model in models}
 for model, prior in zip(models,priors):
     print('starting model: {0} with prior: {1}'.format(model,prior))
     if model == 'nugent-hyper':
-        lc_count = 7 * multiplier
+        lc_count = 1 * multiplier
     else:
         lc_count = 1 * multiplier
     
