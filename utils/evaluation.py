@@ -94,7 +94,8 @@ def get_lightcurve_name(lightcurve_json, **kwargs):
     '''
     file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
     name_idx = kwargs.get('name_idx', 1) ## position of lightcurve name in lightcurve filename, the default is 1 (eg lc_Me2017_00000). This means that the lightcurve model is this idx and the lightcurve label is idx_idx+1m
-    lightcurve_name = os.path.basename(lightcurve_json).split(file_seperator)[name_idx] + '_' + os.path.basename(lightcurve_json).split(file_seperator)[name_idx+1] ## get lightcurve name from lightcurve path
+    lightcurve_name = os.path.basename(lightcurve_json).split(file_seperator)[name_idx] + '_' + os.path.basename(lightcurve_json).split(file_seperator)[name_idx+1] ## remove .json from the end of the lightcurve name
+    lightcurve_name = lightcurve_name.split('.')[0]
     return lightcurve_name
 
 def evaluate_fits_by_residuals(lightcurve_json, best_fit_json_list, **kwargs):
