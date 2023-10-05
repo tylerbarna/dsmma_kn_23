@@ -244,10 +244,10 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
 
 
             
-# ## get all the lightcurve and best fit json paths
-# lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
-# ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-# best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+## get all the lightcurve and best fit json paths
+lightcurve_paths = sorted(glob.glob(os.path.join('./model-recovery-injections/','lc*.json')))
+## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+best_fit_json_paths = sorted(glob.glob(os.path.join('./model-recovery-fits/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
 
 # paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
 # # print(paired_files[lightcurve_paths[0]][0][0])
@@ -255,9 +255,9 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
 # # print(fit_series)
 # # print(paired_files)
 
-# fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
-# print(fit_df)
-# fit_df.to_csv('./fit_df_no_likelihoods.csv')
+fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+print(fit_df)
+fit_df.to_csv('./fit_df_no_likelihoods.csv')
 
 
 
