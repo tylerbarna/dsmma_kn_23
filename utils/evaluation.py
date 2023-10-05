@@ -9,6 +9,8 @@ import os
 import pandas as pd
 import numpy as np
 import warnings
+
+from injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
@@ -168,18 +170,23 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     target_model = kwargs.get('target_model', 'Me2017') ## model to compare to
     lightcurve_df = read_lightcurve(lightcurve_path) ## read in lightcurve
     # print(lightcurve_df['sample_times'])
+    ## get a kwarg of injection_path, but if it isn't provided, set it to the path of the lightcurve, but with the 'lc' replaced with 'inj'
+    injection_path = kwargs.get('injection_path', lightcurve_path.replace('lc','inj'))
     
     
     series = pd.Series(dtype='float64') ## initialize series
     series['lightcurve'] = lightcurve_name
     series['true_model'] = true_model
     series['lightcurve_path'] = lightcurve_path
+    series['true_params'] = get_parameters(injection_path)
+    series['true_lightcurve'] = lightcurve_df.to_dict() ## not working yet
     series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
     series['fit_path'] = best_fit_json_path
     series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
     series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) ## not working yet
     #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
     series['best_fit_params'] = best_fit_params
+    series['best_fit_lightcurve'] = best_fit_lightcurve_df.to_dict()
     
     ## note: should I also have it store the best fit lightcurve and the lightcurve as dictionaries? Might be useful for plotting
     
