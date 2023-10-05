@@ -180,6 +180,7 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) ## not working yet
     #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
     series['best_fit_params'] = best_fit_params
+    series['best_fit_lightcurve'] = best_fit_lightcurve_df.to_dict()
     
     ## note: should I also have it store the best fit lightcurve and the lightcurve as dictionaries? Might be useful for plotting
     
