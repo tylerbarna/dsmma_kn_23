@@ -38,6 +38,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     dry_run = kwargs.get('dry_run', False)
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
     os.makedirs(outdir, exist_ok=True)
+    env = kwargs.get('env', 'nmma_env')
     
     if not tmax:
         try:
@@ -137,7 +138,6 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     - results_paths (list): list of paths to results files for a given lightcurve and model
     - bestfit_paths (list): list of paths to bestfit files for a given lightcurve and model
     '''
-    
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
     lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
     lighcurve_outdir = os.path.join(outdir, lightcurve_label)
