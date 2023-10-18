@@ -248,7 +248,10 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
         outdir = './'
         lightcurve_path = os.path.join(rootdir, lightcurve_path)
         prior = os.path.join(rootdir, prior)
-        
+    if not os.path.exists(lightcurve_path):
+        lightcurve_path = os.path.join('~/dsmma_kn_23', lightcurve_path)
+        if not os.path.exists(lightcurve_path):
+            raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
         
     
     cmd_str = [ 'lightcurve-analysis',
