@@ -52,6 +52,12 @@ parser.add_argument('--cluster',
                     help='cluster to run on (default: msi)',choices=['msi','expanse','']
 )
 
+parser.add_argument('--env',
+                    type=str,
+                    default='nmma_env',
+                    help='conda environment to run on (default: nmma_env)'
+)
+
 parser.add_argument('--dry-run',
                     action='store_true',
                     help='dry run, do not submit jobs'
@@ -64,6 +70,7 @@ models = args.models
 outdir = args.outdir
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
+env = args.env
 
 if os.path.exists(outdir):
     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
@@ -76,7 +83,7 @@ os.makedirs(outdir)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
-tmax_array = np.array([21])
+tmax_array = np.arange(3.1,15.1,2)
 
 results_paths = []
 bestfit_paths = []
@@ -85,7 +92,7 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 print('all fits submitted, checking for completion')
