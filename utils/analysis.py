@@ -38,6 +38,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     dry_run = kwargs.get('dry_run', False)
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
     os.makedirs(outdir, exist_ok=True)
+    env = kwargs.get('env', 'nmma_env')
     
     if not tmax:
         try:
@@ -110,7 +111,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run)
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env)
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
     else:
         analysis_main(args)
@@ -137,7 +138,6 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     - results_paths (list): list of paths to results files for a given lightcurve and model
     - bestfit_paths (list): list of paths to bestfit files for a given lightcurve and model
     '''
-    
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
     lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
     lighcurve_outdir = os.path.join(outdir, lightcurve_label)
@@ -145,7 +145,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     os.makedirs(model_outdir, exist_ok=True)
     fit_label = lightcurve_label + '_fit_' + model if not label else label
     
-    if tmax_array==None:
+    if tmax_array is None:
         try:
             lightcurve_df = pd.read_json(lightcurve_path)
             tmax = lightcurve_df.max()[0][0] - lightcurve_df.min()[0][0] ## should return the last time in the lightcurve
@@ -235,6 +235,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     job_path = os.path.join(outdir, label + '.sh')
     trigger_time = get_trigger_time(lightcurve_path)
     dry_run = kwargs.get('dry_run', False)
+    filters = ','.join(kwargs.get('filters', ['ztfg'])) ## assumes filters is a list
     if dry_run and os.path.exists(job_path):
         #print(f'{job_path} already exists, skipping')
         return job_path
@@ -250,13 +251,13 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
         
         
     
-    cmd_str = [ 'light_curve_analysis',
+    cmd_str = [ 'lightcurve-analysis',
                 '--data', lightcurve_path,
                 '--model', model,
                 '--label', label,
                 '--prior', prior,
                 '--svd-path', svdpath,
-                '--filters', 'ztfg',
+                '--filters', filters,
                 '--tmin', '0.1',
                 '--tmax', str(tmax),
                 '--dt', '0.5',
