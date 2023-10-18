@@ -145,7 +145,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     os.makedirs(model_outdir, exist_ok=True)
     fit_label = lightcurve_label + '_fit_' + model if not label else label
     
-    if tmax_array==None:
+    if not tmax_array:
         try:
             lightcurve_df = pd.read_json(lightcurve_path)
             tmax = lightcurve_df.max()[0][0] - lightcurve_df.min()[0][0] ## should return the last time in the lightcurve
