@@ -251,7 +251,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
         
         
     
-    cmd_str = [ 'light-curve-analysis',
+    cmd_str = [ 'lightcurve-analysis',
                 '--data', lightcurve_path,
                 '--model', model,
                 '--label', label,
