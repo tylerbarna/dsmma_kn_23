@@ -77,7 +77,7 @@ env = args.env
 #     outdir = os.path.join(outdir +'-'+ strtime())
 #     print(f'outdir is now {outdir}')
 
-os.makedirs(outdir)
+os.makedirs(outdir, exist_ok=True)
 
 
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
