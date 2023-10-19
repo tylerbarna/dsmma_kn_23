@@ -8,6 +8,7 @@
     "Ebv": 0.2760022462706794,
     "log_likelihood": -1.8484966175860305,
     "log_prior": -9.610663465926825,
+    "log_bayes_factor": -5.034756285231421,
     "Best fit index": 3540,
     "Magnitudes": {
         "ztfg": [

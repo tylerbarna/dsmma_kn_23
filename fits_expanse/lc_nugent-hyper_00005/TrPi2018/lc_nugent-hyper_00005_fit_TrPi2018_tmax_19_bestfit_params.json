@@ -18,6 +18,7 @@
     "ts": 0.0,
     "log_likelihood": -37.09069177520237,
     "log_prior": -10.39500610168468,
+    "log_bayes_factor": -46.61359051778645,
     "Best fit index": 4969,
     "Magnitudes": {
         "ztfg": [
