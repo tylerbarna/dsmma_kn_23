@@ -5,9 +5,11 @@ functions for implementing the multi-arm bandit within analysis_script.py
 import json
 import numpy as np
 
-def create_mask():
-     pass
+def get_reward():
+    pass
 
+def create_mask():
+    pass
 
 def mask_lightcurve(mask, lc, model_n):
     '''
