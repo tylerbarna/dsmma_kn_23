@@ -83,7 +83,7 @@ os.makedirs(outdir)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
-tmax_array = np.arange(3.1,20.1,2)
+tmax_array = np.arange(3.1,11.1,1)
 
 results_paths = []
 bestfit_paths = []
