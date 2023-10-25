@@ -269,13 +269,13 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 '--error-budget', '1',
                 '--nlive', '1024',
                 '--ztf-uncertainties',
-                #'--ztf-sampling',
+                # '--ztf-sampling',
                 '--ztf-ToO', '180',
                 '--outdir', outdir, 
                 '--bestfit',
                 " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\"",
                 "--remove-nondetections",
-                "--verbose",
+                # "--verbose",
             ]
     
     ## create job file
