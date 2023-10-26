@@ -70,8 +70,7 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file, print_stats):
         for lightcurve_type, count in failed_jobs_per_lightcurve.items():
             print(f"Lightcurve Type: {lightcurve_type}, Failed Jobs: {count}, Percentage: {count / total_jobs * 100:.2f}%")
 
-        # Print the top 5 lightcurve type/model fit pairings with their failure percentages
-        print("\nTop 5 Lightcurve Type/Model Fit Pairings:")
+        print("\nHighest Failure Rate Lightcurve Type/Model Fit Combinations:")
         sorted_lightcurve_model_failures = sorted(lightcurve_model_failures.items(), key=lambda x: x[1], reverse=True)[:5]
         for pairing, count in sorted_lightcurve_model_failures:
             lightcurve, model = pairing
