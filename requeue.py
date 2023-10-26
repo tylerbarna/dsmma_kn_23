@@ -2,10 +2,12 @@ import os
 import subprocess
 import argparse
 import shutil
+import json
 
 # Function to find and optionally requeue failed jobs
 def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
-    failed_jobs = []
+    failed_jobs = {}
+    associated_files = {}
 
     for dirpath, _, filenames in os.walk(root_dir):
         # Check if a bash script is present in the current directory
@@ -23,20 +25,22 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
                 if test_run:
                     print(f"Found failed job: {bash_script}")
                     # List associated files (excluding the script itself)
-                    associated_files = list_associated_files(dirpath, script_name)
-                    print("Associated files:")
-                    for file in associated_files:
-                        print(file)
+                    associated_files[bash_script] = list_associated_files(dirpath, script_name)
                 else:
                     print(f"Requeuing failed job: {bash_script}")
                     # Delete files and subdirectories with the same base filename (excluding the script itself)
                     delete_files_and_subdirs(dirpath, script_name)
                     requeue_failed_job(bash_script)
-                failed_jobs.append(bash_script)
+                failed_jobs[bash_script] = json_file
 
     if output_file:
         with open(output_file, 'w') as f:
-            f.write("\n".join(failed_jobs))
+            f.write("\n".join(failed_jobs.keys()))
+        
+        if test_run:
+            associated_file = output_file.replace('.txt', '.json')
+            with open(associated_file, 'w') as f:
+                json.dump(associated_files, f, indent=2)
 
 # Function to requeue a failed job using sbatch
 def requeue_failed_job(script_path):
