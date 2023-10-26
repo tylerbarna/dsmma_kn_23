@@ -14,13 +14,13 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
         bash_script = None
         for filename in filenames:
             if filename.endswith(".sh"):
-                bash_script = os.path.join(dirpath, filename)
+                bash_script = os.path.abspath(os.path.join(dirpath, filename))
                 break
 
         if bash_script is not None:
             # Check if the corresponding JSON file is missing
             script_name = os.path.splitext(os.path.basename(bash_script))[0]
-            json_file = os.path.join(dirpath, f"{script_name}_result.json")
+            json_file = os.path.abspath(os.path.join(dirpath, f"{script_name}_result.json"))
             if not os.path.exists(json_file):
                 if test_run:
                     print(f"Found failed job: {bash_script}")
@@ -53,7 +53,7 @@ def requeue_failed_job(script_path):
 def list_associated_files(dirpath, base_filename):
     associated_files = []
     for item in os.listdir(dirpath):
-        item_path = os.path.join(dirpath, item)
+        item_path = os.path.abspath(os.path.join(dirpath, item))
         if (
             os.path.isfile(item_path)
             or (os.path.isdir(item_path) and item != base_filename)
@@ -64,7 +64,7 @@ def list_associated_files(dirpath, base_filename):
 # Function to delete files and subdirectories with the same base filename (excluding the script itself)
 def delete_files_and_subdirs(dirpath, base_filename):
     for item in os.listdir(dirpath):
-        item_path = os.path.join(dirpath, item)
+        item_path = os.path.abspath(os.path.join(dirpath, item))
         if item != base_filename:
             if os.path.isfile(item_path):
                 os.remove(item_path)
@@ -76,6 +76,9 @@ if __name__ == "__main__":
     parser.add_argument("--test-run", action="store_true", help="Perform a test run and print script paths and associated files.")
     parser.add_argument("--root-dir", required=True, help="Root directory to search for scripts.")
     parser.add_argument("--output-file", help="File to store the paths of failed jobs.")
-
     args = parser.parse_args()
+    
+    ## if output_file string does not contain .txt at the end, add it
+    args.output_file = args.output_file if args.output_file.endswith('.txt') else args.output_file + '.txt'
+
     find_and_requeue_failed_jobs(args.root_dir, args.test_run, args.output_file)
