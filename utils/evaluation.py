@@ -169,6 +169,11 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     lightcurve_name = get_lightcurve_name(lightcurve_path, **kwargs)
     tmax_idx = kwargs.get('tmax_idx', 6) ## position of tmax in lightcurve filename, the default is 3 (eg lc_Me2017_00000_fit_Me2017_tmax_3). This means that the tmax is this idx
     best_fit_params, best_fit_lightcurve_df = read_best_fit_params(best_fit_json_path) ## read in best fit parameters
+    ## from best_fit_params, get the log_likelihood
+    log_likelihood = best_fit_params['log_likelihood']
+    log_prior = best_fit_params['log_prior']
+    log_bayes_factor = best_fit_params['log_bayes_factor']
+    # log_bayes_factor = best_fit_params['log_bayes_factor'] ## for when the log_bayes_factor is added to the set of best fit parameters
     target_model = kwargs.get('target_model', 'Me2017') ## model to compare to
     lightcurve_df = read_lightcurve(lightcurve_path) ## read in lightcurve
     # print(lightcurve_df['sample_times'])
@@ -181,12 +186,15 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     series['true_model'] = true_model
     series['lightcurve_path'] = lightcurve_path
     series['true_params'] = get_parameters(injection_path)
-    series['true_lightcurve'] = lightcurve_df.to_dict() ## not working yet
+    series['true_lightcurve'] = lightcurve_df.to_dict() 
     series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
     series['fit_path'] = best_fit_json_path
     series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
-    series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) ## not working yet
+    series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) 
     #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
+    series['log_likelihood'] = log_likelihood
+    series['log_prior'] = log_prior
+    series['log_bayes_factor'] = log_bayes_factor
     series['best_fit_params'] = best_fit_params
     series['best_fit_lightcurve'] = best_fit_lightcurve_df.to_dict()
     
@@ -254,9 +262,9 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
 
             
 ## get all the lightcurve and best fit json paths
-lightcurve_paths = sorted(glob.glob(os.path.join('./model-recovery-injections/','lc*.json')))
+lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
 ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-best_fit_json_paths = sorted(glob.glob(os.path.join('./model-recovery-fits/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+best_fit_json_paths = sorted(glob.glob(os.path.join('./model_recovery_timestep/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
 
 # paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
 # # print(paired_files[lightcurve_paths[0]][0][0])
@@ -266,7 +274,7 @@ best_fit_json_paths = sorted(glob.glob(os.path.join('./model-recovery-fits/','**
 
 fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
 print(fit_df)
-fit_df.to_csv('./fit_df_no_likelihoods.csv')
+fit_df.to_csv('./model_recovery_fit_df.csv')
 
 
 
