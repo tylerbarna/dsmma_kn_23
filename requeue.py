@@ -1,6 +1,7 @@
 import os
 import subprocess
 import argparse
+import shutil
 
 # Function to find and optionally requeue failed jobs
 def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
@@ -21,8 +22,15 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
             if not os.path.exists(json_file):
                 if test_run:
                     print(f"Found failed job: {bash_script}")
+                    # List associated files (excluding the script itself)
+                    associated_files = list_associated_files(dirpath, script_name)
+                    print("Associated files:")
+                    for file in associated_files:
+                        print(file)
                 else:
                     print(f"Requeuing failed job: {bash_script}")
+                    # Delete files and subdirectories with the same base filename (excluding the script itself)
+                    delete_files_and_subdirs(dirpath, script_name)
                     requeue_failed_job(bash_script)
                 failed_jobs.append(bash_script)
 
@@ -37,12 +45,33 @@ def requeue_failed_job(script_path):
     except subprocess.CalledProcessError as e:
         print(f"Failed to requeue {script_path}: {e}")
 
+# Function to list associated files (excluding the script itself)
+def list_associated_files(dirpath, base_filename):
+    associated_files = []
+    for item in os.listdir(dirpath):
+        item_path = os.path.join(dirpath, item)
+        if (
+            os.path.isfile(item_path)
+            or (os.path.isdir(item_path) and item != base_filename)
+        ):
+            associated_files.append(item_path)
+    return associated_files
+
+# Function to delete files and subdirectories with the same base filename (excluding the script itself)
+def delete_files_and_subdirs(dirpath, base_filename):
+    for item in os.listdir(dirpath):
+        item_path = os.path.join(dirpath, item)
+        if item != base_filename:
+            if os.path.isfile(item_path):
+                os.remove(item_path)
+            elif os.path.isdir(item_path):
+                shutil.rmtree(item_path)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Find and requeue failed SLURM jobs.")
-    parser.add_argument("--test-run", action="store_true", help="Perform a test run and print script paths only.")
+    parser.add_argument("--test-run", action="store_true", help="Perform a test run and print script paths and associated files.")
     parser.add_argument("--root-dir", required=True, help="Root directory to search for scripts.")
     parser.add_argument("--output-file", help="File to store the paths of failed jobs.")
 
     args = parser.parse_args()
     find_and_requeue_failed_jobs(args.root_dir, args.test_run, args.output_file)
-
