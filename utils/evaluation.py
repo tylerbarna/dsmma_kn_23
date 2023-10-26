@@ -260,17 +260,17 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Evaluate the results of fitting.')
-    parser.add_argument('--lc_paths', metavar='lightcurve_paths', type=str, 
+    parser.add_argument('--lc_path', metavar='lightcurve_paths', type=str, 
                             help='paths to the lightcurve files')
-    parser.add_argument('--bf_json_paths', metavar='best_fit_json_paths', type=str, 
+    parser.add_argument('--fit_path', metavar='best_fit_json_paths', type=str, 
                             help='paths to the best fit json files')
-    parser.add_argument('--output_csv_path', metavar='output_csv',
+    parser.add_argument('--output', metavar='output_csv',
                             help='path to the output csv file')
     args = parser.parse_args()
     ## get all the lightcurve and best fit json paths
-    lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_paths,'lc*.json')))
+    lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_path,'lc*.json')))
     ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-    best_fit_json_paths = sorted(glob.glob(os.path.join(args.bf_json_paths,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+    best_fit_json_paths = sorted(glob.glob(os.path.join(args.fit_path,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
     
     #   lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
     # ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
@@ -282,10 +282,11 @@ if __name__ == "__main__":
     # fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
     # # print(fit_series)
     # # print(paired_files)
-
+    ## if output does not end in csv, add it
+    args.output = args.output if args.output.endswith('.csv') else args.output + '.csv'
     fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
     print(fit_df)
-    fit_df.to_csv(args.output_csv_path)
+    fit_df.to_csv(args.output)
 
 
 
