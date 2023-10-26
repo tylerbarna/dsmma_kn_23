@@ -10,12 +10,10 @@ import pandas as pd
 import numpy as np
 import warnings
 
-from injections import get_parameters
+from utils.injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
-
-from lightcurves import read_lightcurve
-from misc import suppress_print
+from utils.lightcurves import read_lightcurve
+from utils.misc import suppress_print
 
 def read_best_fit_params(json_path, **kwargs):
     '''
@@ -259,27 +257,35 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     return fit_df
 
 
-
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description='Evaluate the results of fitting.')
+    parser.add_argument('--lc_paths', metavar='lightcurve_paths', type=str, 
+                            help='paths to the lightcurve files')
+    parser.add_argument('--bf_json_paths', metavar='best_fit_json_paths', type=str, 
+                            help='paths to the best fit json files')
+    parser.add_argument('--output_csv_path', metavar='output_csv',
+                            help='path to the output csv file')
+    args = parser.parse_args()
+    ## get all the lightcurve and best fit json paths
+    lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_paths,'lc*.json')))
+    ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+    best_fit_json_paths = sorted(glob.glob(os.path.join(args.bf_json_paths,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+    
+    #   lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
+    # ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+    # best_fit_json_paths = sorted(glob.glob(os.path.join('./model_recovery_timestep/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
             
-## get all the lightcurve and best fit json paths
-lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
-## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-best_fit_json_paths = sorted(glob.glob(os.path.join('./model_recovery_timestep/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
 
-# paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
-# # print(paired_files[lightcurve_paths[0]][0][0])
-# fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
-# # print(fit_series)
-# # print(paired_files)
+    # paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
+    # # print(paired_files[lightcurve_paths[0]][0][0])
+    # fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
+    # # print(fit_series)
+    # # print(paired_files)
 
-fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
-print(fit_df)
-fit_df.to_csv('./model_recovery_fit_df.csv')
-
-
-
-
-
+    fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+    print(fit_df)
+    fit_df.to_csv(args.output_csv_path)
 
 
 
