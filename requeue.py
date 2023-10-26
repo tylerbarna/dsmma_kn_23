@@ -35,7 +35,8 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file):
 
     if output_file:
         with open(output_file, 'w') as f:
-            f.write("\n".join(failed_jobs.keys()))
+            for job in sorted(failed_jobs.keys()):
+                f.write(job + '\n')
         
         if test_run:
             associated_file = output_file.replace('.txt', '.json')
