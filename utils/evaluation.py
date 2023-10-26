@@ -10,10 +10,10 @@ import pandas as pd
 import numpy as np
 import warnings
 
-from utils.injections import get_parameters
+from injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
-from utils.lightcurves import read_lightcurve
-from utils.misc import suppress_print
+from lightcurves import read_lightcurve
+from misc import suppress_print
 
 def read_best_fit_params(json_path, **kwargs):
     '''
