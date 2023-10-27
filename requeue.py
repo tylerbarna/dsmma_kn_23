@@ -125,6 +125,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     ## if output_file string does not contain .txt at the end, add it
-    args.output_file = args.output_file if args.output_file.endswith('.txt') else args.output_file + '.txt'
+    if args.output_file:
+        args.output_file = args.output_file if args.output_file.endswith('.txt') else args.output_file + '.txt'
 
     find_and_requeue_failed_jobs(args.root_dir, args.test_run, args.output_file, args.stats)
