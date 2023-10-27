@@ -60,15 +60,15 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file, print_stats):
         print(f"Number of failed jobs: {num_failed_jobs}")
         print(f"Percentage of jobs that have failed: {percent_failed:.2f}%")
         print(f"Number of files associated with failed jobs: {num_associated_files}")
-        print(f"Average number of files associated with each failed job: {num_associated_files / num_failed_jobs:.2f}")
+        print(f"Average number of files associated with each failed job: {num_associated_files / num_failed_jobs:.2f}") if num_failed_jobs > 0 else None
 
         print("\nBreakdown by Model:")
         for model, count in failed_jobs_per_model.items():
-            print(f"Model: {model}, Failed Jobs: {count}, Percentage: {count / total_jobs * 100:.2f}%")
+            print(f"Model: {model}, Failed Jobs: {count}, Percentage: {count / total_jobs * 100:.2f}%") if total_jobs > 0 else None
 
         print("\nBreakdown by Lightcurve Type:")
         for lightcurve_type, count in failed_jobs_per_lightcurve.items():
-            print(f"Lightcurve Type: {lightcurve_type}, Failed Jobs: {count}, Percentage: {count / total_jobs * 100:.2f}%")
+            print(f"Lightcurve Type: {lightcurve_type}, Failed Jobs: {count}, Percentage: {count / total_jobs * 100:.2f}%") if total_jobs > 0 else None
 
         print("\nHighest Failure Rate Lightcurve Type/Model Fit Combinations:")
         sorted_lightcurve_model_failures = sorted(lightcurve_model_failures.items(), key=lambda x: x[1], reverse=True)[:5]
