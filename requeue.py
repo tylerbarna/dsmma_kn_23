@@ -98,10 +98,16 @@ def requeue_failed_job(script_path):
 def list_associated_files(dirpath, base_filename):
     associated_files = []
     for item in os.listdir(dirpath):
+        if item.endswith(".sh"):
+            continue
+        elif base_filename not in item:
+            continue
         item_path = os.path.abspath(os.path.join(dirpath, item))
+        item_name = os.path.splitext(item)[0]
         if (
             os.path.isfile(item_path)
             or (os.path.isdir(item_path) and item != base_filename)
+            and base_filename in item_name
         ):
             associated_files.append(item_path)
     return associated_files
