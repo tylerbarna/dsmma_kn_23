@@ -120,7 +120,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Find and requeue failed SLURM jobs.")
     parser.add_argument("--test-run", action="store_true", help="Perform a test run and print script paths and associated files.")
     parser.add_argument("--root-dir", required=True, help="Root directory to search for scripts.")
-    parser.add_argument("--output-file", help="File to store the paths of failed jobs.")
+    parser.add_argument("--output-file", help="File to store the paths of failed jobs.", default=None)
     parser.add_argument("--stats", action="store_true", help="Print statistics")
     args = parser.parse_args()
     
