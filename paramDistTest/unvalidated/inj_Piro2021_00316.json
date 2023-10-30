@@ -1,0 +1,28 @@
+{
+  "injections": {
+    "__dataframe__": true,
+    "content": {
+      "simulation_id": [
+        0
+      ],
+      "luminosity_distance": [
+        740.7708134047622
+      ],
+      "timeshift": [
+        -1.5434701397971324
+      ],
+      "log10_Menv": [
+        -1.3690492690071365
+      ],
+      "log10_Renv": [
+        10.687995214408508
+      ],
+      "log10_Ee": [
+        48.31678101402288
+      ],
+      "geocent_time": [
+        -0.05619713544179146
+      ]
+    }
+  }
+}
