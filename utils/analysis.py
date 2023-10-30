@@ -287,7 +287,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
             f.write('#SBATCH --partition=shared\n')
             f.write('#SBATCH --account=umn131\n')
         f.write('#SBATCH --job-name=' + label + '\n')
-        f.write('#SBATCH --time=23:59:00\n')
+        f.write('#SBATCH --time=01:59:00\n')
         f.write('#SBATCH --nodes=1\n')
         f.write('#SBATCH --ntasks=1\n')
         f.write('#SBATCH --cpus-per-task=2\n')
