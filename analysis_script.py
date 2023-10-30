@@ -101,7 +101,7 @@ while True:
     if args.dry_run:
         print('dry run complete, exiting')
         break
-    time.sleep(300)
     completion_bool, completed_fits = check_completion(results_paths, start_time, timeout)
     if completion_bool:
         break
+    time.sleep(300)
