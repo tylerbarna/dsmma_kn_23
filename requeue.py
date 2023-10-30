@@ -14,9 +14,11 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file, print_stats):
     failed_jobs_per_model = defaultdict(int)
     failed_jobs_per_lightcurve = defaultdict(int)
     lightcurve_model_failures = defaultdict(int)
+    directory_total_size = 0
 
     for dirpath, _, filenames in os.walk(root_dir):
         for filename in filenames:
+            directory_total_size += os.path.getsize(os.path.join(dirpath, filename))
             if filename.endswith(".sh"):
                 total_jobs += 1
                 bash_script = os.path.abspath(os.path.join(dirpath, filename))
@@ -52,6 +54,7 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file, print_stats):
 
     if print_stats:
         print(f"\nStatistics:")
+        print(f"Directory size: {directory_total_size/ 1e9 :.2f} GB")
         print(f"Total number of jobs: {total_jobs}")
         print(f"Number of failed jobs: {num_failed_jobs}")
         print(f"Percentage of jobs that have failed: {percent_failed:.2f}%")
