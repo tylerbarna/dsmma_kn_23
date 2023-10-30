@@ -2,7 +2,7 @@ import argparse
 import os
 
 from utils.injections import generate_injection
-from utils.lightcurves import generate_lightcurve
+from utils.lightcurves import generate_lightcurve, validate_lightcurve
 
 parser = argparse.ArgumentParser(description='Generate light curves for a given model')
 
@@ -24,15 +24,21 @@ parser.add_argument('-o','--outdir',
                     default='./injections/',
                     help='output directory for light curves')
 
+parser.add_argument('--validate',
+                    action='store_true',
+                    help='whether to validate the light curves (default=False). When true, will attempt to resample injection until a valid light curve is generated.')
+
 parser.add_argument('--multiplier',
                     type=int,
                     default=1,
                     help='multiplier for number of light curves to generate (default=1)')
 
+
 args = parser.parse_args()
 models = args.models
 outdir = args.outdir
 multiplier = args.multiplier
+validate = args.validate
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
@@ -52,4 +58,14 @@ for model, prior in zip(models,priors):
         injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
         print('created injection file: {0}'.format(injection_file))
         lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir)
+        if validate:
+            retry_count = 1
+            while not validate_lightcurve(lightcurve_file):
+                print('light curve validation failed, resampling injection (attempt {0})'.format(retry_count))
+                ## delete injection and light curve files
+                os.remove(injection_file), os.remove(lightcurve_file)
+                injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
+                print('created injection file: {0}'.format(injection_file))
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir)
+                retry_count += 1
         
