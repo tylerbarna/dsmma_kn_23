@@ -87,6 +87,7 @@ tmax_array = np.arange(3.1,11.1,1)
 
 results_paths = []
 bestfit_paths = []
+start_time = time.time()
 for model in models:
     model_prior = os.path.join(priors,f'{model}.prior')
     for lightcurve_path in lightcurve_paths:
@@ -96,7 +97,6 @@ for model in models:
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 print('all fits submitted, checking for completion')
-start_time = time.time()
 while True:
     if args.dry_run:
         print('dry run complete, exiting')
