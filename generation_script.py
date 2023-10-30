@@ -24,9 +24,9 @@ parser.add_argument('-o','--outdir',
                     default='./injections/',
                     help='output directory for light curves')
 
-parser.add_argument('--validate',
-                    action='store_true',
-                    help='whether to validate the light curves (default=False). When true, will attempt to resample injection until a valid light curve is generated.')
+parser.add_argument('--no-validate',
+                    action='store_false',
+                    help='whether to validate the light curves (default=true). When true, will attempt to resample injection until a valid light curve is generated.')
 
 parser.add_argument('--multiplier',
                     type=int,
@@ -38,7 +38,7 @@ args = parser.parse_args()
 models = args.models
 outdir = args.outdir
 multiplier = args.multiplier
-validate = args.validate
+validate = args.no_validate
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
