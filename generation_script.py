@@ -39,6 +39,7 @@ models = args.models
 outdir = args.outdir
 multiplier = args.multiplier
 validate = args.no_validate
+filters = [args.filters] if type(args.filters) == str else args.filters
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
@@ -57,7 +58,7 @@ for model, prior in zip(models,priors):
         print('starting light curve: {0}'.format(lc_idx))
         injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
         print('created injection file: {0}'.format(injection_file))
-        lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir)
+        lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters)
         if validate:
             retry_count = 1
             while not validate_lightcurve(lightcurve_file):
@@ -66,6 +67,6 @@ for model, prior in zip(models,priors):
                 os.remove(injection_file), os.remove(lightcurve_file)
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters)
                 retry_count += 1
         
