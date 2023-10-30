@@ -16,39 +16,35 @@ def find_and_requeue_failed_jobs(root_dir, test_run, output_file, print_stats):
     lightcurve_model_failures = defaultdict(int)
 
     for dirpath, _, filenames in os.walk(root_dir):
-        # Check if a bash script is present in the current directory
-        bash_script = None
         for filename in filenames:
             if filename.endswith(".sh"):
                 total_jobs += 1
                 bash_script = os.path.abspath(os.path.join(dirpath, filename))
-                break
+                
+                # Check if the corresponding JSON file is missing
+                script_name = os.path.splitext(os.path.basename(bash_script))[0]
+                json_file = os.path.abspath(os.path.join(dirpath, f"{script_name}_result.json"))
+                if not os.path.exists(json_file):
+                    if test_run:
+                        print(f"Found failed job: {bash_script}")
+                        # List associated files (excluding the script itself)
+                        associated_files[bash_script] = list_associated_files(dirpath, script_name)
+                    else:
+                        print(f"Requeuing failed job: {bash_script}")
+                        # Delete files and subdirectories with the same base filename (excluding the script itself)
+                        delete_files_and_subdirs(dirpath, script_name)
+                        requeue_failed_job(bash_script)
+                    failed_jobs[bash_script] = json_file
 
-        if bash_script is not None:
-            # Check if the corresponding JSON file is missing
-            script_name = os.path.splitext(os.path.basename(bash_script))[0]
-            json_file = os.path.abspath(os.path.join(dirpath, f"{script_name}_result.json"))
-            if not os.path.exists(json_file):
-                if test_run:
-                    print(f"Found failed job: {bash_script}")
-                    # List associated files (excluding the script itself)
-                    associated_files[bash_script] = list_associated_files(dirpath, script_name)
-                else:
-                    print(f"Requeuing failed job: {bash_script}")
-                    # Delete files and subdirectories with the same base filename (excluding the script itself)
-                    delete_files_and_subdirs(dirpath, script_name)
-                    requeue_failed_job(bash_script)
-                failed_jobs[bash_script] = json_file
-
-                # Extract lightcurve type and model from the script label
-                script_parts = script_name.split("_fit_")
-                if len(script_parts) == 2:
-                    lightcurve_type, model = script_parts[0], script_parts[1]
-                    model = model.split("_")[0]
-                    true_lightcurve = lightcurve_type.split("_")[1] if lightcurve_type.startswith("lc_") else lightcurve_type
-                    failed_jobs_per_model[model] += 1
-                    failed_jobs_per_lightcurve[true_lightcurve] += 1
-                    lightcurve_model_failures[(true_lightcurve, model)] += 1
+                    # Extract lightcurve type and model from the script label
+                    script_parts = script_name.split("_fit_")
+                    if len(script_parts) == 2:
+                        lightcurve_type, model = script_parts[0], script_parts[1]
+                        model = model.split("_")[0]
+                        true_lightcurve = lightcurve_type.split("_")[1] if lightcurve_type.startswith("lc_") else lightcurve_type
+                        failed_jobs_per_model[model] += 1
+                        failed_jobs_per_lightcurve[true_lightcurve] += 1
+                        lightcurve_model_failures[(true_lightcurve, model)] += 1
 
     num_failed_jobs = len(failed_jobs)
     percent_failed = (num_failed_jobs / total_jobs) * 100 if total_jobs > 0 else 0
