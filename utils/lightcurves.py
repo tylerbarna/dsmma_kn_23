@@ -147,3 +147,51 @@ def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None):
         lightcurve_df = lightcurve_df[lightcurve_df['sample_times'] <= cutoff_time]
     
     return lightcurve_df
+
+def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_bands=False, **kwargs):
+    '''
+    Validates that the lightcurve actually has a minimum number of usable detections at the start of the lightcurve.
+
+    Args:
+    - lightcurve_path (str): path to lightcurve file
+    - min_detections (int): minimum number of detections to be considered valid (default=3)
+    - min_time (float): time interval from the start of the lightcurve that needs to contain the minimum number of detections (default=3.1)
+    - all_bands (bool): whether or not to require detections in all bands (e.g. for a lightcurve observed in two bands, require both bands to meet observing conditions). When false, only one band needs to meet observing conditions (default=False)
+
+    Returns:
+    - valid (bool): whether or not the lightcurve is valid 
+    '''
+    ## Read in the lightcurve
+    lightcurve_df = read_lightcurve(lightcurve_path, **kwargs)
+    start_time = lightcurve_df['sample_times'].min()
+    end_time = start_time + min_time ## end time is the interval from the start time we want to check for detections
+
+    if all_bands: ## check if all bands meet requirements
+        all_bands_meet_criteria = True ## default to true, then check if any band does not meet criteria
+
+        for band in lightcurve_df.columns[1:]:
+            min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
+            num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
+            meets_min_detections = num_detections.sum() >= min_detections
+            if not meets_min_detections: ## failure condition, don't need to check other bands
+                all_bands_meet_criteria = False
+                break
+        return all_bands_meet_criteria
+
+    else: ## ensure at least one band meets requirements
+        for band in lightcurve_df.columns[1:]:
+            min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
+            num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
+            meets_min_detections = num_detections.sum() >= min_detections
+
+            if meets_min_detections:
+                return True  ## At least one band meets the criteria
+
+        return False  # None of the bands meet the criteria
+ 
+    
+# known_bad = 'injections/lc_TrPi2018_00000.json'
+# print(validate_lightcurve(known_bad, min_detections=3, min_time=3.1, all_bands=False))
+# known_good = 'injections/lc_Me2017_00000.json'
+# print(validate_lightcurve(known_good, min_detections=3, min_time=3.1, all_bands=False))
+    
