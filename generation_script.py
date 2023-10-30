@@ -53,11 +53,16 @@ for model, prior in zip(models,priors):
         lc_count = 1 * multiplier
     
     for lc_idx in range(lc_count):
-        lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
-        print('starting light curve: {0}'.format(lc_idx))
-        injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
-        print('created injection file: {0}'.format(injection_file))
-        lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters)
+        generated_lc = False
+        while not generated_lc:
+            lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
+            try:
+                print('starting light curve: {0}'.format(lc_idx))
+                injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
+                print('created injection file: {0}'.format(injection_file))
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters)
+            except:
+                pass
         if validate:
             retry_count = 1
             while not validate_lightcurve(lightcurve_file):
