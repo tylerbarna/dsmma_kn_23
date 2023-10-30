@@ -24,7 +24,7 @@ parser.add_argument('-m','--models',
 
 parser.add_argument('-p','--priors',
                     type=str,
-                    default='./priors',
+                    default='~/dsmma_kn_23/priors',
                     help='path to the prior files'
 )
 
