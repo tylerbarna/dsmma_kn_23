@@ -34,6 +34,18 @@ parser.add_argument('--data',
                     help='path to lightcurves'
 )
 
+parser.add_argument('--tmax',
+                    type=float,
+                    default=11.1,
+                    help='tmax value to use for all light curves (default: 11.1)'
+)
+
+parser.add_argument('--tstep',
+                    type=float,
+                    default=1.0,
+                    help='tstep value to use for all light curves (default: 1.0)'
+)
+
 parser.add_argument('--outdir',
                     type=str,
                     default='./fits',
@@ -71,6 +83,8 @@ outdir = args.outdir
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
 env = args.env
+tmax = args.tmax
+tstep = args.tstep
 
 # if os.path.exists(outdir):
 #     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
@@ -83,7 +97,19 @@ os.makedirs(outdir, exist_ok=True)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
-tmax_array = np.arange(3.1,11.1,1)
+tmax_array = [np.arange(3.1,11.1,1)]
+
+estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
+if estimated_job_count > 4000 and not args.dry_run:
+    print('warning: estimated job count exceeds 4000, this may exceed the limits for job counts on expanse')
+    while True:
+        user_input = input('continue? (y/n)')
+        if user_input == 'y':
+            break
+        elif user_input == 'n':
+            exit()
+        else:
+            print('invalid input, try again')
 
 results_paths = []
 bestfit_paths = []
