@@ -34,6 +34,12 @@ parser.add_argument('--data',
                     help='path to lightcurves'
 )
 
+parser.add_argument('--tmin',
+                    type=float,
+                    default=3.1,
+                    help='tmin value to use for all light curves (default: 3.1)'
+)
+
 parser.add_argument('--tmax',
                     type=float,
                     default=11.1,
@@ -83,6 +89,7 @@ outdir = args.outdir
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
 env = args.env
+tmin = args.tmin
 tmax = args.tmax
 tstep = args.tstep
 
@@ -97,16 +104,16 @@ os.makedirs(outdir, exist_ok=True)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
-tmax_array = np.arange(3.1,tmax,tstep)
+tmax_array = np.arange(tmin,tmax,tstep)
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
 if estimated_job_count > 4000 and not args.dry_run:
     print('warning: estimated job count exceeds 4000, this may exceed the limits for job counts on expanse')
     while True:
         user_input = input('continue? (y/n)')
-        if user_input == 'y':
+        if user_input == 'y' or user_input == 'yes':
             break
-        elif user_input == 'n':
+        elif user_input == 'n' or user_input == 'no':
             exit()
         else:
             print('invalid input, try again')
