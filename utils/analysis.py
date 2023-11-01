@@ -198,7 +198,7 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
     timeout_elapsed = round((t1 - t0_submission) / 3600, 2) > timeout
     estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
     
-    if timeout_elapsed > timeout:
+    if timeout_elapsed:
         print(f'[{current_time}] Analysis timed out with {total_analyses - completed_analyses_count} fits left, exiting...')
         return True, completed_analyses
     elif completion_status:
