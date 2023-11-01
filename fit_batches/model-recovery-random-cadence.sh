@@ -24,7 +24,7 @@ python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-random
 
 echo "All done with analysis!"
 
-python3 ./requeue.py --test-run --root-dir /expanse/lustre/projects/umn131/tbarna/model-recovery-random-cadence-fits --output-file ./failures/model-recovery-random-cadence-failures --stats
+python3 ./requeue_parallel.py --test-run --root-dir /expanse/lustre/projects/umn131/tbarna/model-recovery-random-cadence-fits --output-file ./failures/model-recovery-random-cadence-failures --stats || echo "Requeue failed!"
 
 python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/model-recovery-random-cadence --fit-path /expanse/lustre/projects/umn131/tbarna/model-recovery-random-cadence-fits --output ./fit_dataframes/model-recovery-random-cadence-fit_df.csv
 
