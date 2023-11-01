@@ -120,7 +120,7 @@ if estimated_job_count > 4096 and not args.dry_run:
 
 results_paths = []
 bestfit_paths = []
-start_time = time.time()
+start_time = time.time() ## start of submission process
 for model in models:
     model_prior = os.path.join(priors,f'{model}.prior')
     for lightcurve_path in lightcurve_paths:
@@ -129,12 +129,14 @@ for model in models:
         idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
-print('all fits submitted, checking for completion')
+
+submission_time = time.time() ## all submissions made
+print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
 while True:
     if args.dry_run:
         print('dry run complete, exiting')
         break
-    completion_bool, completed_fits = check_completion(results_paths, start_time, timeout)
+    completion_bool, completed_fits = check_completion(results_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
     if completion_bool:
         end_time = time.time()
         print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')

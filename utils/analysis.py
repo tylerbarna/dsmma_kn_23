@@ -171,13 +171,14 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
                 continue
     return results_paths, bestfit_paths
 
-def check_completion(result_paths, t0, timeout=71.9):
+def check_completion(result_paths, t0, t0_submission, timeout=71.9):
     '''
     checks for truthiness of all json files existing in output directory
     
     args:
     - result_paths (list): list of the expected lightcurve result paths (including relative path)
     - t0 (time object): time of trigger (assign time.time() at start of analysis)
+    - t0_submission (time object): time following submission of all analyses, used for calculating timeout
     - timeout (float): time in hours to wait until returning False even with incomplete analysis
     
     returns:
@@ -194,9 +195,10 @@ def check_completion(result_paths, t0, timeout=71.9):
     current_time = strtime()
     t1 = time.time()
     hours_elapsed = round((t1 - t0) / 3600, 2)
+    timeout_elapsed = round((t1 - t0_submission) / 3600, 2) > timeout
     estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
     
-    if hours_elapsed > timeout:
+    if timeout_elapsed > timeout:
         print(f'[{current_time}] Analysis timed out with {total_analyses - completed_analyses_count} fits left, exiting...')
         return True, completed_analyses
     elif completion_status:
