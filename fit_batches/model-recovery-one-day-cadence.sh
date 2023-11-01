@@ -14,13 +14,13 @@
 cd ~/dsmma_kn_23
 source activate nmma_dev
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 2.5
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 2.5
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 2.5
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-one-day-cadence --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-one-day-cadence-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 3.1 --tmax 11.1 --tstep 1 --timeout 2.5
 
 echo "All done with analysis!"
 
