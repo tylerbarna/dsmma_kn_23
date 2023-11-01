@@ -136,5 +136,7 @@ while True:
         break
     completion_bool, completed_fits = check_completion(results_paths, start_time, timeout)
     if completion_bool:
+        end_time = time.time()
+        print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')
         break
     time.sleep(120)
