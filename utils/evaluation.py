@@ -260,9 +260,9 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description='Evaluate the results of fitting.')
-    parser.add_argument('--lc_path', metavar='lightcurve_paths', type=str, 
+    parser.add_argument('--lc-path', metavar='lightcurve_paths', type=str, 
                             help='paths to the lightcurve files')
-    parser.add_argument('--fit_path', metavar='best_fit_json_paths', type=str, 
+    parser.add_argument('--fit-path', metavar='best_fit_json_paths', type=str, 
                             help='paths to the best fit json files')
     parser.add_argument('--output', metavar='output_csv',
                             help='path to the output csv file')

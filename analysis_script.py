@@ -107,8 +107,8 @@ lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_path
 tmax_array = np.arange(tmin,tmax,tstep)
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
-if estimated_job_count > 4000 and not args.dry_run:
-    print('warning: estimated job count exceeds 4000, this may exceed the limits for job counts on expanse')
+if estimated_job_count > 4096 and not args.dry_run:
+    print('warning: estimated job count exceeds 4096, this may exceed the limits for job counts on expanse')
     while True:
         user_input = input('continue? (y/n)')
         if user_input == 'y' or user_input == 'yes':
@@ -137,4 +137,4 @@ while True:
     completion_bool, completed_fits = check_completion(results_paths, start_time, timeout)
     if completion_bool:
         break
-    time.sleep(300)
+    time.sleep(120)
