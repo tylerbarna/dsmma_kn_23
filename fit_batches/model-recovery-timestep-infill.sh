@@ -14,18 +14,18 @@
 cd ~/dsmma_kn_23
 source activate nmma_dev
 
-python3 analysis_script.py --data ~/dsmma_kn_23/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 11.1 --tmax 21 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 11.1 --tmax 21.1 --tstep 1 --timeout 4
 
-python3 analysis_script.py --data ~/dsmma_kn_23/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 11.1 --tmax 21 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 11.1 --tmax 21.1 --tstep 1 --timeout 4
 
-python3 analysis_script.py --data ~/dsmma_kn_23/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 11.1 --tmax 21 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 11.1 --tmax 21.1 --tstep 1 --timeout 4
 
-python3 analysis_script.py --data ~/dsmma_kn_23/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 11.1 --tmax 21 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 11.1 --tmax 21.1 --tstep 1 --timeout 4
 
 echo "All done with analysis!"
 
-python3 ./requeue.py --test-run --root-dir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --output-file ./model-recovery-timestep-failures --stats
+python3 ./requeue.py --test-run --root-dir /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --output-file ./failures/model-recovery-timestep-failures --stats
 
-python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/model-recovery-validated-injections --fit-path /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --output ./model-recovery-full-fit_df.csv
+python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/model-recovery-validated-injections --fit-path /expanse/lustre/projects/umn131/tbarna/model-recovery-validated-fits --output ./fit_dataframes/model-recovery-full-fit_df.csv
 
 echo "All done with evaluation!"
