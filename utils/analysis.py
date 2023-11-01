@@ -244,7 +244,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
     if outdir_string_length > 64: 
-        print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
+        #print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
         relative_outdir = os.path.join(rootdir,outdir)
         outdir = './'
         lightcurve_path = os.path.join(rootdir, lightcurve_path)
