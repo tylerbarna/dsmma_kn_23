@@ -90,7 +90,7 @@ if __name__ == "__main__":
         args.output_file = args.output_file if args.output_file.endswith('.txt') else args.output_file + '.txt'
     
     root_dir = args.root_dir
-
+    print('starting search for failed jobs')
     # Manager to create shared lists for failed jobs and associated files
     with Manager() as manager:
         failed_jobs_list = manager.list()
