@@ -14,12 +14,12 @@
 cd ~/dsmma_kn_23
 source activate nmma_dev
 
-python3 generation_script.py --outdir ~dsmma_kn_23/injections/toy-model-validated-injections/
+python3 generation_script.py --outdir ~dsmma_kn_23/injections/toy-model-injections/
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/toy-model-validated-injections/ --outdir /expanse/lustre/projects/umn131/tbarna/toy-model-validated-fits/ --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper Me2017 TrPi2018 --tmin 3.1 --tmax 21.1 --tstep 2 --timeout 4
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/toy-model-injections/ --outdir /expanse/lustre/projects/umn131/tbarna/toy-model-fits/ --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper Me2017 TrPi2018 --tmin 3.1 --tmax 21.1 --tstep 2 --timeout 4
 
 echo "All done with analysis!"
 
-python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/toy-model-validated --fit-path /expanse/lustre/projects/umn131/tbarna/toy-model-validated-fits/ --output ./fit_dataframes/toy-model-validated-fit_df.csv
+python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/toy-model-validated --fit-path /expanse/lustre/projects/umn131/tbarna/toy-model-fits/ --output ./fit_dataframes/toy-model-fit_df.csv
 
 echo "All done with evaluation!"
