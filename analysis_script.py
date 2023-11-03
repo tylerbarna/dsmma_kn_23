@@ -105,7 +105,6 @@ lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assume
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
 tmax_array = np.arange(tmin,tmax,tstep)
-tmax_array = [21]
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
 if estimated_job_count > 4096 and not args.dry_run:
@@ -137,7 +136,7 @@ while True:
     if args.dry_run:
         print('dry run complete, exiting')
         break
-    completion_bool, completed_fits = check_completion(results_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
+    completion_bool, completed_fits = check_completion(result_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
     if completion_bool:
         end_time = time.time()
         print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')
