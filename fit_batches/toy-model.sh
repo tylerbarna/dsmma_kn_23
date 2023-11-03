@@ -20,6 +20,6 @@ python3 analysis_script.py --data ~/dsmma_kn_23/injections/toy-model-injections/
 
 echo "All done with analysis!"
 
-python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/toy-model-validated --fit-path /expanse/lustre/projects/umn131/tbarna/toy-model-fits/ --output ./fit_dataframes/toy-model-fit_df.csv
+python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/toy-model-injections/ --fit-path /expanse/lustre/projects/umn131/tbarna/toy-model-fits/ --output ./fit_dataframes/toy-model-fit_df.csv
 
 echo "All done with evaluation!"
