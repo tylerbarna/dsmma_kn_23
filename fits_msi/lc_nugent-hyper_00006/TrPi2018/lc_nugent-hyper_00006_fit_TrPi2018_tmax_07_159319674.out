@@ -1,6 +1,0 @@
-Install afterglowpy if you want to simulate afterglows.
-Install wrapt_timeout_decorator if you want timeout simulations.
-Creating light curve model for inference
-Running with filters ['ztfg']
-Running with the following additional sampler_kwargs:
-{}
