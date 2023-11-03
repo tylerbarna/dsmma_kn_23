@@ -1,0 +1,11 @@
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00000.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00001.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00002.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00003.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00004.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00005.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00006.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_Me2017_00000.json
+11:53 bilby_pipe INFO    : Created injection file ~dsmma_kn_23/injections/toy-model-injections/inj_TrPi2018_00000.json
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
