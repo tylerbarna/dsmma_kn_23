@@ -105,6 +105,7 @@ lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assume
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
 tmax_array = np.arange(tmin,tmax,tstep)
+tmax_array = [21]
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
 if estimated_job_count > 4096 and not args.dry_run:
