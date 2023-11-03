@@ -1,0 +1,52 @@
+starting model: nugent-hyper with prior: ./priors/nugent-hyper.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00000.json
+Injection generated
+starting light curve: 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00001.json
+Injection generated
+starting light curve: 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00002.json
+Injection generated
+starting light curve: 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00003.json
+Injection generated
+starting light curve: 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00004.json
+Injection generated
+starting light curve: 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00005.json
+Injection generated
+starting light curve: 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00006.json
+Injection generated
+starting model: Me2017 with prior: ./priors/Me2017.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_Me2017_00000.json
+Injection generated
+light curve validation failed, resampling injection (attempt 1)
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_Me2017_00000.json
+Injection generated
+starting model: TrPi2018 with prior: ./priors/TrPi2018.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_TrPi2018_00000.json
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_TrPi2018_00000.json
+WARNING: 11.801065439272435 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+all fits submitted (submission took 1698565016.215823 hours and 0.0 minutes elapsed)
+[2023-11-03_11:42:50] All 0 analyses complete!
+completed all fits in 1698565016.2162526 hours and 0.0 minutes
+All done with analysis!
+All done with evaluation!

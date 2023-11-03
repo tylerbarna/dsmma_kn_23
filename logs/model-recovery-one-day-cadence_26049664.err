@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/tbarna/dsmma_kn_23/analysis_script.py", line 139, in <module>
+    completion_bool, completed_fits = check_completion(results_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
+TypeError: check_completion() got an unexpected keyword argument 'results_paths'
+Traceback (most recent call last):
+  File "/home/tbarna/dsmma_kn_23/analysis_script.py", line 139, in <module>
+    completion_bool, completed_fits = check_completion(results_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
+TypeError: check_completion() got an unexpected keyword argument 'results_paths'
