@@ -81,6 +81,17 @@ parser.add_argument('--dry-run',
                     help='dry run, do not submit jobs'
 )
 
+parser.add_argument('--nmma-tmin',
+                    type=float,
+                    default=0.1,
+                    help='tmin value to use for analysis of all light curves (default: 0.1)'
+)
+parser.add_argument('--nmma-plot',
+                    action='store_true',
+                    help='whether to plot the nmma fits with nmma'
+)
+                    
+
 args = parser.parse_args()
 priors = args.priors
 datadir = args.data
@@ -92,6 +103,8 @@ env = args.env
 tmin = args.tmin
 tmax = args.tmax
 tstep = args.tstep
+nmma_tmin = args.nmma_tmin
+nmma_plot = args.nmma_plot
 
 # if os.path.exists(outdir):
 #     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
@@ -126,7 +139,7 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env,nmma_tmin=nmma_tmin, nmma_plot=nmma_plot)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 

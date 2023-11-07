@@ -60,7 +60,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         outdir=outdir,
         interpolation_type="sklearn_gp",
         svd_path="svdmodels",
-        tmin=0.1,
+        tmin=kwargs.get('nmma_tmin',0.1),
         tmax=tmax,
         dt=0.5,
         log_space_time=False,
@@ -111,8 +111,8 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
-        submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/', **kwargs)
+        submit_slurm_job(job_path, **kwargs) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
     else:
         analysis_main(args)
@@ -265,7 +265,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 '--prior', prior,
                 '--svd-path', svdpath,
                 '--filters', filters,
-                '--tmin', '0.1',
+                '--tmin', str(kwargs.get('nmma_tmin',0.1)),
                 '--tmax', str(tmax),
                 '--dt', '0.5',
                 '--trigger-time', str(trigger_time),
@@ -279,7 +279,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\"",
                 "--remove-nondetections",
                 # "--verbose",
-                # '--plot'
+                '--plot' if kwargs.get('nmma_plot', False) else '',
             ]
     
     ## create job file
