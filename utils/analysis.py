@@ -279,8 +279,10 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\"",
                 "--remove-nondetections",
                 # "--verbose",
-                '--plot' if kwargs.get('nmma_plot', False) else '',
+                #'--plot'
             ]
+    if kwargs.get('nmma_plot', True):
+        cmd_str.append('--plot')
     
     ## create job file
     
