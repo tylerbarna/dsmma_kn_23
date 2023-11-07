@@ -256,6 +256,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     #     if not os.path.exists(lightcurve_path):
     #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
     lightcurve_path = os.path.abspath(lightcurve_path)
+    tmin = kwargs.get('nmma_tmin',0.1)
         
     
     cmd_str = [ 'lightcurve-analysis',
@@ -265,7 +266,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 '--prior', prior,
                 '--svd-path', svdpath,
                 '--filters', filters,
-                '--tmin', str(kwargs.get('nmma_tmin',0.1)),
+                '--tmin', str(tmin),
                 '--tmax', str(tmax),
                 '--dt', '0.5',
                 '--trigger-time', str(trigger_time),
