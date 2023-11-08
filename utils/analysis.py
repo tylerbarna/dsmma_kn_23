@@ -49,7 +49,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
             tmax = 21 ## nmma might not like this 
     # print('tmax is {}'.format(tmax))
     trigger_time = get_trigger_time(lightcurve_path)
-    tmin = kwargs.get('nmma_tmin',0.1)
+    
     
     args = Namespace(
         data=lightcurve_path,
@@ -61,7 +61,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         outdir=outdir,
         interpolation_type="sklearn_gp",
         svd_path="svdmodels",
-        tmin=tmin,
+        tmin=0.1,
         tmax=tmax,
         dt=0.5,
         log_space_time=False,
@@ -111,7 +111,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm), env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/', tmin=tmin,**kwargs)
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm), rootdir='/expanse/lustre/projects/umn131/tbarna/', **kwargs)
         print(f'created job file {job_path}')
         submit_slurm_job(job_path, **kwargs) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
@@ -215,7 +215,7 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
         return False, completed_analyses
     
     
-def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', tmin=0.1, **kwargs):
+def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', **kwargs):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     
@@ -259,6 +259,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     #     if not os.path.exists(lightcurve_path):
     #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
     lightcurve_path = os.path.abspath(lightcurve_path)
+    tmin = kwargs.get('nmma_tmin',0.1)
     print('tmin is {}'.format(tmin))
         
     
