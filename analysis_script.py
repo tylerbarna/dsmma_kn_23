@@ -12,7 +12,7 @@ parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
-                    default=['nugent-hyper','Me2017','TrPi2018'],
+                    default=['nugent-hyper','Bu2019lm','TrPi2018', 'Piro2021'],
                     choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
@@ -120,8 +120,8 @@ lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_path
 tmax_array = np.arange(tmin,tmax,tstep)
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
-if estimated_job_count > 4096 and not args.dry_run:
-    print('warning: estimated job count exceeds 4096, this may exceed the limits for job counts on expanse')
+if cluster=='expanse' and estimated_job_count > 4096 and not args.dry_run or cluster=='msi' and estimated_job_count > 2000 and not args.dry_run':
+    print(f'warning: estimated job count exceeds the limit for {cluster} (estimated job count: {estimated_job_count})')
     while True:
         user_input = input('continue? (y/n)')
         if user_input == 'y' or user_input == 'yes':
