@@ -111,8 +111,12 @@ for model, prior in zip(models,priors):
                     injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                     print('created injection file: {0}'.format(injection_file))
                     lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot = plot)
+                    assert os.path.exists(lightcurve_file), "light curve file {} does not exist".format(lightcurve_file)
+                    assert validate_lightcurve(lightcurve_file, min_detections=min_detections, min_time=min_detections_cuttoff), "light curve validation failed"
+                    generated_lc = True
                 except Exception as e:
+                    retry_count += 1
                     print('generation error: {0}'.format(e))
                     pass
-                retry_count += 1
+                
         
