@@ -26,6 +26,6 @@ echo "All done with analysis!"
 
 # python3 ./requeue.py --test-run --root-dir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --output-file ./failures/model-recovery-timestep-failures --stats
 
-python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/model-recovery-validated-injections --fit-path /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --output ./fit_dataframes/model-recovery-ignore-first-fit_df.csv
+python3 utils/evaluation.py --lc-path ~/dsmma_kn_23/injections/model-recovery-validated-injections --fit-path /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --output ./fit_dataframes/model-recovery-ignore-first-21-fit_df.csv
 
 echo "All done with evaluation!"
