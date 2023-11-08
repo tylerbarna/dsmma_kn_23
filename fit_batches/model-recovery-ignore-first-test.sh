@@ -14,43 +14,43 @@
 cd ~/dsmma_kn_23
 source activate nmma_dev
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4  --dry-run 
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run 
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4  --dry-run
-
-
-
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4  --dry-run
-
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4  --dry-run
-
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4  --dry-run
-
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 3.1 --tmax 4.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
 
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 7.1 --tmax 8.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
 
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 21 --tmax 21.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 21 --tmax 21.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 21 --tmax 21.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
-python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 21 --tmax 21.1 --tstep 1 --timeout 4  --dry-run
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 10.1 --tmax 11.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
+
+
+
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev  --cluster expanse --models nugent-hyper --tmin 21 --tmax 21.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
+
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Bu2019lm --tmin 21 --tmax 21.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
+
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models TrPi2018 --tmin 21 --tmax 21.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
+
+python3 analysis_script.py --data ~/dsmma_kn_23/injections/model-recovery-validated-injections --outdir /expanse/lustre/projects/umn131/tbarna/model-recovery-ignore-first --priors ~/dsmma_kn_23/priors --env nmma_dev --cluster expanse --models Piro2021 --tmin 21 --tmax 21.1 --tstep 1 --timeout 4 --nmma-tmin 1.0 --nmma-plot --dry-run
 
 
 
