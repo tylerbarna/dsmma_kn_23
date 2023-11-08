@@ -110,7 +110,8 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         analysis.main(args)
         
     if slurm:
-        print(f'running {label} via slurm')
+        current_time = strtime()
+        print(f'[{current_time}] running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm), rootdir='/expanse/lustre/projects/umn131/tbarna/', **kwargs)
         # print(f'created job file {job_path}')
         submit_slurm_job(job_path, **kwargs) if not dry_run else print('dry run, not submitting job')
