@@ -57,6 +57,7 @@ def generate_lightcurve(
     ztf_sampling = kwargs.get("ztf_sampling", False)
     ztf_uncertainties = kwargs.get("ztf_uncertainties", True)
     ztf_ToO = None if not ztf_sampling else 180
+    plot = kwargs.get("plot", False)
     ## may need to check about photometry augmentation
 
     args = Namespace(  ## based on Michael's changes to nmma unit test
@@ -85,7 +86,7 @@ def generate_lightcurve(
         photometry_augmentation_filters=",".join(filters),
         photometry_augmentation_times=None,
         photometric_error_budget=0,
-        plot=False,  ## maybe change this to False?
+        plot=plot,  ## maybe change this to False?
         joint_light_curve=False,
         with_grb_injection=False,
         absolute=False,

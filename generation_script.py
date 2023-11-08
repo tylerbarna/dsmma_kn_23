@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(description='Generate light curves for a given 
 
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
-                    default=['nugent-hyper','Me2017','TrPi2018'],
+                    default=['nugent-hyper','Bu2019lm','TrPi2018', 'Piro2021'],
                     choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
@@ -55,6 +55,16 @@ parser.add_argument('--multiplier',
                     help='multiplier for number of light curves to generate (default=1)'
 )
 
+parser.add_argument('--ztf-sampling',
+                    action='store_true',
+                    help='whether to use ztf sampling (default=False)'
+)
+
+parser.add_argument('--plot',
+                    action='store_true',
+                    help='whether to plot the light curve (default=False)'
+)
+
 args = parser.parse_args()
 models = args.models
 outdir = args.outdir
@@ -63,6 +73,8 @@ validate = args.no_validate
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
 filters = [args.filters] if type(args.filters) == str else args.filters
+ztf_sampling = args.ztf_sampling
+plot = args.plot
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
@@ -73,10 +85,7 @@ time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
 
 for model, prior in zip(models,priors):
     print('starting model: {0} with prior: {1}'.format(model,prior))
-    if model == 'nugent-hyper':
-        lc_count = 1 * multiplier
-    else:
-        lc_count = 1 * multiplier
+    lc_count = 1 * multiplier
     
     for lc_idx in range(lc_count):
         generated_lc = False
@@ -86,9 +95,10 @@ for model, prior in zip(models,priors):
                 print('starting light curve: {0}'.format(lc_idx))
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot=plot)
                 generated_lc = True
-            except:
+            except Exception as e:
+                print('generation error: {0}'.format(e))
                 pass
         if validate:
             retry_count = 1
@@ -98,6 +108,6 @@ for model, prior in zip(models,priors):
                 os.remove(injection_file), os.remove(lightcurve_file)
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot = plot)
                 retry_count += 1
         
