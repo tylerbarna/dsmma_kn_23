@@ -7,6 +7,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 
 from utils.injections import generate_injection
 from utils.lightcurves import generate_lightcurve, validate_lightcurve
+from utils.misc import strtime
 
 parser = argparse.ArgumentParser(description='Generate light curves for a given model')
 
@@ -87,14 +88,14 @@ inj_gen_time_dict = {model:[] for model in models}
 time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
 
 for model, prior in zip(models,priors):
-    print('starting model: {0} with prior: {1}'.format(model,prior))
+    print(f'[{strtime()}] starting model: {model} with prior: {prior}')
     lc_count = 1 * multiplier
     
     for lc_idx in range(lc_count):
         generated_lc = False
         lc_idx_zfill = str(lc_idx).zfill(5)
         retry_count=0
-        print('generating light curve: {0}'.format(lc_idx_zfill))
+        print(f'[{strtime()}] generating light curve: {lc_idx_zfill}')
         while not generated_lc:
             try:
                 print('\nattempt {0}'.format(retry_count))
