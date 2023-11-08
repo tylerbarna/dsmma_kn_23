@@ -1,0 +1,71 @@
+[2023-11-08_12:40:53] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_12:40:53] running lc_Piro2021_00000_fit_nugent-hyper_tmax_21 via slurm
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+[2023-11-08_12:40:53] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_21 via slurm
+all fits submitted (submission took 1699003977.8175926 hours and 0.0 minutes elapsed)
+[2023-11-08_12:40:53] 0/3 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_12:42:53] 2/3 analyses complete, estimated time remaining: 00.02 hours
+[2023-11-08_12:44:54] All 3 analyses complete!
+completed all fits in 1699004218.0219805 hours and 4.0 minutes
+[2023-11-08_12:44:56] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_12:44:56] running lc_Piro2021_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_12:44:56] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_12:44:56] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_21 via slurm
+all fits submitted (submission took 1699004220.8015106 hours and 0.0 minutes elapsed)
+[2023-11-08_12:44:56] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_12:46:56] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_12:48:57] 1/4 analyses complete, estimated time remaining: 00.21 hours
+[2023-11-08_12:50:57] 1/4 analyses complete, estimated time remaining: 000.3 hours
+[2023-11-08_12:52:57] 2/4 analyses complete, estimated time remaining: 00.13 hours
+[2023-11-08_12:54:57] 3/4 analyses complete, estimated time remaining: 00.06 hours
+[2023-11-08_12:56:57] 3/4 analyses complete, estimated time remaining: 00.07 hours
+[2023-11-08_12:58:57] All 4 analyses complete!
+completed all fits in 1699005061.3960927 hours and 14.0 minutes
+All done with analysis!
+
+Statistics:
+Directory size: 0.08 GB
+Total number of jobs: 8
+Number of failed jobs: 0
+Percentage of jobs that have failed: 0.00%
+Number of files associated with failed jobs: 0
+
+Breakdown by Model:
+
+Breakdown by Lightcurve Type:
+
+Highest Failure Rate Lightcurve Type/Model Fit Combinations:
+[2023-11-08_12:59:00] Creating Dataframe
+[2023-11-08_12:59:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_Bu2019lm_00000.json
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+[2023-11-08_12:59:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_Piro2021_00000.json
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+[2023-11-08_12:59:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_TrPi2018_00000.json
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+[2023-11-08_12:59:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_nugent-hyper_00000.json
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+Residual Calculation Error:  'ztfr'
+Residual Calculation Error:  'ztfi'
+[2023-11-08_12:59:00] Dataframe creation complete
+           lightcurve  ...                                best_fit_lightcurve
+0      Bu2019lm_00000  ...  {'ztfg': {0: 15.778694291147998, 1: 12.4357610...
+1      Bu2019lm_00000  ...  {'ztfg': {0: 19.595384044988585, 1: 17.6500059...
+2      Piro2021_00000  ...  {'ztfg': {0: 17.969241583882315, 1: 14.6850225...
+3      Piro2021_00000  ...  {'ztfg': {0: 22.74511067330072, 1: 20.79973254...
+4      TrPi2018_00000  ...  {'ztfg': {0: 16.475649886464062, 1: 13.0710232...
+5      TrPi2018_00000  ...  {'ztfg': {0: 21.361365326613367, 1: 19.4159872...
+6  nugent-hyper_00000  ...  {'ztfg': {0: 13.468760714148864, 1: 10.2752655...
+7  nugent-hyper_00000  ...  {'ztfg': {0: 17.02812142980684, 1: 15.08274330...
+
+[8 rows x 14 columns]
+All done with evaluation!

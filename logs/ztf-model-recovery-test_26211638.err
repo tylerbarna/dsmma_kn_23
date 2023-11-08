@@ -1,0 +1,8 @@
+  File "/home/tbarna/dsmma_kn_23/analysis_script.py", line 123
+    if cluster=='expanse' and estimated_job_count > 4096 and not args.dry_run or cluster=='msi' and estimated_job_count > 2000 and not args.dry_run':
+                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 123)
+  File "/home/tbarna/dsmma_kn_23/analysis_script.py", line 123
+    if cluster=='expanse' and estimated_job_count > 4096 and not args.dry_run or cluster=='msi' and estimated_job_count > 2000 and not args.dry_run':
+                                                                                                                                                   ^
+SyntaxError: unterminated string literal (detected at line 123)
