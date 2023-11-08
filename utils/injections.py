@@ -10,6 +10,9 @@ from argparse import Namespace
 
 from nmma.eos import create_injection
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
 def generate_injection(model, outDir, injection_label=None,prior=None,):
     '''
     Generates injection for a given model

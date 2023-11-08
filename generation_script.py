@@ -2,6 +2,9 @@ import argparse
 import numpy as np
 import os
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
 from utils.injections import generate_injection
 from utils.lightcurves import generate_lightcurve, validate_lightcurve
 
@@ -89,34 +92,25 @@ for model, prior in zip(models,priors):
     
     for lc_idx in range(lc_count):
         generated_lc = False
+        lc_idx_zfill = str(lc_idx).zfill(5)
+        retry_count=0
+        print('generating light curve: {0}'.format(lc_idx_zfill))
         while not generated_lc:
-            lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
             try:
-                print('starting light curve: {0}'.format(lc_idx))
+                print('attempt {0}'.format(retry_count))
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
                 lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot=plot)
                 assert os.path.exists(lightcurve_file), "light curve file {} does not exist".format(lightcurve_file)
+                if validate:
+                    assert validate_lightcurve(lightcurve_file, min_detections=min_detections, min_time=min_detections_cuttoff), "light curve validation failed"
                 generated_lc = True
             except Exception as e:
+                retry_count += 1
                 print('generation error: {0}'.format(e))
-                pass
-        if validate:
-            retry_count = 1
-            while not validate_lightcurve(lightcurve_file, min_detections=min_detections, min_time=min_detections_cuttoff):
-                print('light curve validation failed, resampling injection (attempt {0})'.format(retry_count))
-                ## delete injection and light curve files
                 os.remove(injection_file), os.remove(lightcurve_file)
-                try:
-                    injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
-                    print('created injection file: {0}'.format(injection_file))
-                    lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot = plot)
-                    assert os.path.exists(lightcurve_file), "light curve file {} does not exist".format(lightcurve_file)
-                    assert validate_lightcurve(lightcurve_file, min_detections=min_detections, min_time=min_detections_cuttoff), "light curve validation failed"
-                    generated_lc = True
-                except Exception as e:
-                    retry_count += 1
-                    print('generation error: {0}'.format(e))
-                    pass
+                pass
+                
+            
                 
         

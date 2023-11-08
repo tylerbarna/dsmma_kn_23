@@ -14,6 +14,8 @@ from functools import reduce
 
 from nmma.em import create_lightcurves
 
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 def generate_lightcurve(
     model,
