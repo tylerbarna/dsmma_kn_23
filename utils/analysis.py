@@ -241,8 +241,8 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     dry_run = kwargs.get('dry_run', False)
     filters = ','.join(kwargs.get('filters', ['ztfg'])) ## assumes filters is a list
     if dry_run and os.path.exists(job_path):
-        #print(f'{job_path} already exists, skipping')
-        return job_path
+        print(f'{job_path} already exists (dry run)')
+        # return job_path
     
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
@@ -257,7 +257,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     #     if not os.path.exists(lightcurve_path):
     #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
     lightcurve_path = os.path.abspath(lightcurve_path)
-
+    print('tmin is {}'.format(tmin))
         
     
     cmd_str = [ 'lightcurve-analysis',
@@ -283,10 +283,11 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 # "--verbose",
                 #'--plot'
             ]
-    # if kwargs.get('nmma_plot', True):
-    #     cmd_str.append('--plot')
+    if kwargs.get('nmma_plot', True):
+        cmd_str.append('--plot')
     
     ## create job file
+    print(f'command string is {cmd_str}')
     
     with open(job_path, 'w') as f:
         f.write('#!/bin/bash\n')
