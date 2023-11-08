@@ -82,6 +82,11 @@ priors = [os.path.join('./priors/',model+'.prior') for model in models]
 inj_gen_time_dict = {model:[] for model in models}
 
 time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
+def generation():
+    print('starting light curve: {0}'.format(lc_idx))
+    injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
+    print('created injection file: {0}'.format(injection_file))
+    lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot=plot)
 
 for model, prior in zip(models,priors):
     print('starting model: {0} with prior: {1}'.format(model,prior))
@@ -92,10 +97,7 @@ for model, prior in zip(models,priors):
         while not generated_lc:
             lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
             try:
-                print('starting light curve: {0}'.format(lc_idx))
-                injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
-                print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot=plot)
+                generation()
                 generated_lc = True
             except Exception as e:
                 print('generation error: {0}'.format(e))
@@ -106,8 +108,11 @@ for model, prior in zip(models,priors):
                 print('light curve validation failed, resampling injection (attempt {0})'.format(retry_count))
                 ## delete injection and light curve files
                 os.remove(injection_file), os.remove(lightcurve_file)
-                injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
-                print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, ztf_sampling=ztf_sampling, plot = plot)
+                try:
+                    generation()
+                    generated_lc = True
+                except Exception as e:
+                    print('generation error: {0}'.format(e))
+                    pass
                 retry_count += 1
         
