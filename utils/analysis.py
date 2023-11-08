@@ -328,8 +328,8 @@ def submit_slurm_job(job_path, delete=False, **kwargs):
     Returns:
     - None
     '''
+    submission_cmd = f'sbatch {job_path}'
     if kwargs.get('resubmit', False):
-        submission_cmd = f'sbatch {job_path}'
         subp = subprocess.run(submission_cmd, shell=True, capture_output=True)
         if delete:
             os.remove(job_path) 
@@ -338,6 +338,8 @@ def submit_slurm_job(job_path, delete=False, **kwargs):
         potential_results_path = job_path.split('.')[0] + '_result.json'
         if os.path.exists(potential_results_path):
             print(f'[{current_time}] {potential_results_path} already exists, skipping submission')
+        else:
+            subp = subprocess.run(submission_cmd, shell=True, capture_output=True)
         
 def get_trigger_time(lightcurve_path):
     '''
