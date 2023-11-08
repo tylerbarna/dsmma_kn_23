@@ -283,8 +283,8 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 # "--verbose",
                 #'--plot'
             ]
-    if kwargs.get('nmma_plot', True):
-        cmd_str.append('--plot')
+    # if kwargs.get('nmma_plot', True):
+    #     cmd_str.append('--plot')
     
     ## create job file
     
