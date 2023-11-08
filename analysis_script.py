@@ -120,7 +120,7 @@ lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_path
 tmax_array = np.arange(tmin,tmax,tstep)
 
 estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
-if cluster=='expanse' and estimated_job_count > 4096 and not args.dry_run or cluster=='msi' and estimated_job_count > 2000 and not args.dry_run':
+if cluster=='expanse' and estimated_job_count > 4096 and not args.dry_run or cluster=='msi' and estimated_job_count > 2000 and not args.dry_run:
     print(f'warning: estimated job count exceeds the limit for {cluster} (estimated job count: {estimated_job_count})')
     while True:
         user_input = input('continue? (y/n)')
