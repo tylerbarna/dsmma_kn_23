@@ -233,6 +233,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     Returns:
     - job_path (str): path to job file
     '''
+    print('making slurm job')
     os.makedirs(outdir, exist_ok=True)
     outfile = os.path.join(outdir, f'%x_%j.out')
     errfile = os.path.join(outdir, f'%x_%j.err')
@@ -243,11 +244,10 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     if dry_run and os.path.exists(job_path):
         print(f'{job_path} already exists (dry run)')
         # return job_path
-    
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
     if outdir_string_length > 64: 
-        #print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
+        print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
         relative_outdir = os.path.join(rootdir,outdir)
         outdir = './'
         lightcurve_path = os.path.join(rootdir, lightcurve_path)
