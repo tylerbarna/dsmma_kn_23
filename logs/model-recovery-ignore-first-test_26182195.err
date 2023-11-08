@@ -1,0 +1,32 @@
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+/home/tbarna/dsmma_kn_23/utils/analysis.py:199: RuntimeWarning: invalid value encountered in true_divide
+  estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)

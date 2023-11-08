@@ -1,0 +1,92 @@
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+all fits submitted (submission took 1699005382.243761 hours and 0.0 minutes elapsed)
+[2023-11-08_13:04:19] All 0 analyses complete!
+completed all fits in 1699005382.2438223 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+all fits submitted (submission took 1699005384.1826248 hours and 0.0 minutes elapsed)
+[2023-11-08_13:04:21] All 0 analyses complete!
+completed all fits in 1699005384.1826851 hours and 0.0 minutes
+[2023-11-08_13:04:23] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_13:04:23] running lc_Piro2021_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_13:04:23] running lc_TrPi2018_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_13:04:23] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_21 via slurm
+all fits submitted (submission took 1699005386.7326229 hours and 0.0 minutes elapsed)
+[2023-11-08_13:04:23] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:06:23] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:08:23] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:10:23] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:12:24] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:14:24] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:16:24] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:18:24] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:20:24] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:22:24] 2/4 analyses complete, estimated time remaining: 000.3 hours
+[2023-11-08_13:24:24] 3/4 analyses complete, estimated time remaining: 00.11 hours
+[2023-11-08_13:26:24] 3/4 analyses complete, estimated time remaining: 00.12 hours
+[2023-11-08_13:28:24] 3/4 analyses complete, estimated time remaining: 00.13 hours
+[2023-11-08_13:30:24] 3/4 analyses complete, estimated time remaining: 00.14 hours
+[2023-11-08_13:32:24] 3/4 analyses complete, estimated time remaining: 00.16 hours
+[2023-11-08_13:34:24] 3/4 analyses complete, estimated time remaining: 00.17 hours
+[2023-11-08_13:36:25] 3/4 analyses complete, estimated time remaining: 00.18 hours
+[2023-11-08_13:38:25] 3/4 analyses complete, estimated time remaining: 00.19 hours
+[2023-11-08_13:40:25] 3/4 analyses complete, estimated time remaining: 000.2 hours
+[2023-11-08_13:42:25] 3/4 analyses complete, estimated time remaining: 00.21 hours
+[2023-11-08_13:44:25] 3/4 analyses complete, estimated time remaining: 00.22 hours
+[2023-11-08_13:46:25] 3/4 analyses complete, estimated time remaining: 00.23 hours
+[2023-11-08_13:48:25] All 4 analyses complete!
+completed all fits in 1699008028.7062712 hours and 44.0 minutes
+[2023-11-08_13:48:27] running lc_Bu2019lm_00000_fit_Piro2021_tmax_21 via slurm
+[2023-11-08_13:48:28] running lc_Piro2021_00000_fit_Piro2021_tmax_21 via slurm
+[2023-11-08_13:48:28] running lc_TrPi2018_00000_fit_Piro2021_tmax_21 via slurm
+[2023-11-08_13:48:28] running lc_nugent-hyper_00000_fit_Piro2021_tmax_21 via slurm
+all fits submitted (submission took 1699008031.5629964 hours and 0.0 minutes elapsed)
+[2023-11-08_13:48:28] 0/4 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_13:50:28] 1/4 analyses complete, estimated time remaining: 00.09 hours
+[2023-11-08_13:52:28] All 4 analyses complete!
+completed all fits in 1699008271.6964223 hours and 4.0 minutes
+All done with analysis!
+
+Statistics:
+Directory size: 0.21 GB
+Total number of jobs: 16
+Number of failed jobs: 0
+Percentage of jobs that have failed: 0.00%
+Number of files associated with failed jobs: 0
+
+Breakdown by Model:
+
+Breakdown by Lightcurve Type:
+
+Highest Failure Rate Lightcurve Type/Model Fit Combinations:
+[2023-11-08_13:52:32] Creating Dataframe
+[2023-11-08_13:52:32] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_Bu2019lm_00000.json
+[2023-11-08_13:52:32] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_Piro2021_00000.json
+[2023-11-08_13:52:32] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_TrPi2018_00000.json
+[2023-11-08_13:52:32] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-test/lc_nugent-hyper_00000.json
+[2023-11-08_13:52:33] Dataframe creation complete
+            lightcurve  ...                                best_fit_lightcurve
+0       Bu2019lm_00000  ...  {'ztfg': {0: 15.778694291147998, 1: 12.4357610...
+1       Bu2019lm_00000  ...  {'ztfg': {0: 12.693199996493856, 1: 12.1259698...
+2       Bu2019lm_00000  ...  {'ztfg': {0: 12.106936373481453, 1: 12.8224215...
+3       Bu2019lm_00000  ...  {'ztfg': {0: 19.595384044988585, 1: 17.6500059...
+4       Piro2021_00000  ...  {'ztfg': {0: 17.969241583882315, 1: 14.6850225...
+5       Piro2021_00000  ...  {'ztfg': {0: 21.809749089587292, 1: 19.9025924...
+6       Piro2021_00000  ...  {'ztfg': {0: 27.57281699699702, 1: 19.49017804...
+7       Piro2021_00000  ...  {'ztfg': {0: 22.74511067330072, 1: 20.79973254...
+8       TrPi2018_00000  ...  {'ztfg': {0: 16.475649886464062, 1: 13.0710232...
+9       TrPi2018_00000  ...  {'ztfg': {0: 16.25119483742435, 1: 15.10245220...
+10      TrPi2018_00000  ...  {'ztfg': {0: 14.708430739253274, 1: 15.1159917...
+11      TrPi2018_00000  ...  {'ztfg': {0: 21.361365326613367, 1: 19.4159872...
+12  nugent-hyper_00000  ...  {'ztfg': {0: 13.468760714148864, 1: 10.2752655...
+13  nugent-hyper_00000  ...  {'ztfg': {0: 17.203053584050085, 1: 15.2934889...
+14  nugent-hyper_00000  ...  {'ztfg': {0: 14.945829817928594, 1: 12.2206531...
+15  nugent-hyper_00000  ...  {'ztfg': {0: 17.02812142980684, 1: 15.08274330...
+
+[16 rows x 14 columns]
+All done with evaluation!
