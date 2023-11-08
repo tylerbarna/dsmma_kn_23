@@ -316,7 +316,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     
     return job_path
 
-def submit_slurm_job(job_path, delete=False):
+def submit_slurm_job(job_path, delete=False, **kwargs):
     '''
     submits a job to a cluster
     
