@@ -106,7 +106,6 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         reactive_sampling=False,
         verbose=False,
     ) 
-    # @suppress_print
     def analysis_main(args):
         analysis.main(args)
         
@@ -214,7 +213,7 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
         return False, completed_analyses
     
     
-def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', **kwargs):
+def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', tmin=0.1, **kwargs):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     
@@ -258,7 +257,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     #     if not os.path.exists(lightcurve_path):
     #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
     lightcurve_path = os.path.abspath(lightcurve_path)
-    tmin = kwargs.get('nmma_tmin',0.1)
+
         
     
     cmd_str = [ 'lightcurve-analysis',
