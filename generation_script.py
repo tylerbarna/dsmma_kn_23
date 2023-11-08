@@ -108,7 +108,10 @@ for model, prior in zip(models,priors):
             except Exception as e:
                 retry_count += 1
                 print('generation error: {0}'.format(e))
-                os.remove(injection_file), os.remove(lightcurve_file)
+                try:
+                    os.remove(injection_file), os.remove(lightcurve_file)
+                except:
+                    pass
                 pass
                 
             
