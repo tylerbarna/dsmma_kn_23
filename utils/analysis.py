@@ -112,7 +112,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     if slurm:
         print(f'running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm), rootdir='/expanse/lustre/projects/umn131/tbarna/', **kwargs)
-        print(f'created job file {job_path}')
+        # print(f'created job file {job_path}')
         submit_slurm_job(job_path, **kwargs) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
     else:
@@ -235,7 +235,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     Returns:
     - job_path (str): path to job file
     '''
-    print('making slurm job')
+
     os.makedirs(outdir, exist_ok=True)
     outfile = os.path.join(outdir, f'%x_%j.out')
     errfile = os.path.join(outdir, f'%x_%j.err')
@@ -249,7 +249,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
     if outdir_string_length > 64: 
-        print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
+        # print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
         relative_outdir = os.path.join(rootdir,outdir)
         outdir = './'
         lightcurve_path = os.path.join(rootdir, lightcurve_path)
@@ -260,7 +260,6 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
     lightcurve_path = os.path.abspath(lightcurve_path)
     tmin = kwargs.get('nmma_tmin',0.1)
-    print('tmin is {}'.format(tmin))
         
     
     cmd_str = [ 'lightcurve-analysis',
@@ -290,8 +289,6 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
         cmd_str.append('--plot')
     
     ## create job file
-    print(f'command string is {cmd_str}')
-    
     with open(job_path, 'w') as f:
         f.write('#!/bin/bash\n')
         if cluster == 'expanse':
@@ -317,7 +314,6 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
             f.write(f'source activate {env}\n')
         f.write(' '.join(cmd_str))
     
-    print(job_path)
     return job_path
 
 def submit_slurm_job(job_path, delete=False):
