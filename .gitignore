@@ -1,4 +1,6 @@
 expanseIgnore/
+injections/ztf-cadence-test/.nfs00000000161c100c000010c6
+injections/ztf-cadence-test/.nfs00000000161c100d000010c7
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
