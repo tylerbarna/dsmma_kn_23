@@ -13,7 +13,7 @@ import warnings
 from injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
 from lightcurves import read_lightcurve
-from misc import suppress_print
+from misc import suppress_print, strtime
 
 def read_best_fit_params(json_path, **kwargs):
     '''
@@ -63,10 +63,11 @@ def calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df):
         ## residual given by (lightcurve - best_fit_lightcurve)^2 / lightcurve_err
         try:
             filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
-        except: ## TO-DO: make it so you don't have to have this except (due to above)
+            lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
+        except Exception as e:
+             ## TO-DO: make it so you don't have to have this except (due to above)
+            print('Residual Calculation Error: ', e)
             continue
-        
-        lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
 
     return lightcurve_residual
 
@@ -241,17 +242,15 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     '''
     lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs)
     fit_df = pd.DataFrame()
-    
+    print(f'[{strtime()}] Creating Dataframe')
     for lightcurve_path in lightcurve_paths:
+        print(f'[{strtime()}] Creating Dataframe items for {lightcurve_path}')
         for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
             # print('cd ', best_fit_json_list)
             for best_fit_json in best_fit_json_list:
                 # Evaluate fits for each best fit JSON individually
-
                 fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
                 # likelihood_dict = evaluate_fits_by_likelihood([best_fit_json], **kwargs)
-                # likelihood = likelihood_dict[get_model_name(best_fit_json)]
-                # fit_series['likelihood'] = likelihood
                 fit_df = fit_df.append(fit_series, ignore_index=True)
 
     return fit_df
@@ -271,20 +270,10 @@ if __name__ == "__main__":
     lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_path,'lc*.json')))
     ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
     best_fit_json_paths = sorted(glob.glob(os.path.join(args.fit_path,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
-    
-    #   lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
-    # ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-    # best_fit_json_paths = sorted(glob.glob(os.path.join('./model_recovery_timestep/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
-            
-
-    # paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
-    # # print(paired_files[lightcurve_paths[0]][0][0])
-    # fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
-    # # print(fit_series)
-    # # print(paired_files)
     ## if output does not end in csv, add it
     args.output = args.output if args.output.endswith('.csv') else args.output + '.csv'
     fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+    print(f'[{strtime()}] Dataframe creation complete')
     print(fit_df)
     fit_df.to_csv(args.output)
 
