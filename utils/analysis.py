@@ -49,6 +49,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
             tmax = 21 ## nmma might not like this 
     # print('tmax is {}'.format(tmax))
     trigger_time = get_trigger_time(lightcurve_path)
+    tmin = kwargs.get('nmma_tmin',0.1)
     
     args = Namespace(
         data=lightcurve_path,
@@ -60,7 +61,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         outdir=outdir,
         interpolation_type="sklearn_gp",
         svd_path="svdmodels",
-        tmin=kwargs.get('nmma_tmin',0.1),
+        tmin=tmin,
         tmax=tmax,
         dt=0.5,
         log_space_time=False,
@@ -111,7 +112,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/', **kwargs)
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/', tmin=tmin,**kwargs)
         print(f'created job file {job_path}')
         submit_slurm_job(job_path, **kwargs) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
