@@ -226,7 +226,7 @@ def validate_lightcurve(
             True  ## default to true, then check if any band does not meet criteria
         )
 
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[
                 (lightcurve_df["sample_times"] >= start_time)
                 & (lightcurve_df["sample_times"] <= end_time)
@@ -243,7 +243,7 @@ def validate_lightcurve(
         return all_bands_meet_criteria
 
     else:  ## ensure at least one band meets requirements
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[
                 (lightcurve_df["sample_times"] >= start_time)
                 & (lightcurve_df["sample_times"] <= end_time)
