@@ -60,6 +60,8 @@ def calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df):
     for filter in ['ztfg','ztfr','ztfi']: ##    TO-DO: make this more general so that it can handle any filter
         if filter == 'sample_times':
             continue
+        elif filter not in lightcurve_df.keys():
+            continue
         ## residual given by (lightcurve - best_fit_lightcurve)^2 / lightcurve_err
         try:
             filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
