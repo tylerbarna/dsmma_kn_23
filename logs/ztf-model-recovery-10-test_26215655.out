@@ -1,0 +1,2737 @@
+[2023-11-08_16:51:43] starting model: Bu2019lm with prior: ./priors/Bu2019lm.prior
+[2023-11-08_16:51:43] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00000.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:51:48] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00001.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:51:49] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00002.json
+Loaded filter ztfg
+WARNING: 9.791874067219624 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 8.978949663619485 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.668101251157566 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.834301512828333 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.926829120063045 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00002.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:51:52] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00003.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:51:54] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00004.json
+Loaded filter ztfg
+WARNING: 10.692292963534324 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.975719301327729 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.849923807355506 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00004.json
+Loaded filter ztfg
+WARNING: 9.68115113749149 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 8.871505230165528 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.615738324104665 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.845524147142129 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.966598968826839 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00004.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:51:59] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00005.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:52:00] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00006.json
+Loaded filter ztfg
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00006.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:52:03] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00007.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:52:05] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00008.json
+Loaded filter ztfg
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00008.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:52:08] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00009.json
+Loaded filter ztfg
+WARNING: 10.444014381031968 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.862919720444054 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.689171484877352 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00009.json
+Loaded filter ztfg
+WARNING: 9.232036932873651 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 8.707607864364512 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.110660533235176 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 9.883039996562236 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.72188168423208 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.539193583274423 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00009.json
+Loaded filter ztfg
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00009.json
+Loaded filter ztfg
+Injection generated
+[2023-11-08_16:52:14] starting model: nugent-hyper with prior: ./priors/nugent-hyper.prior
+[2023-11-08_16:52:14] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00000.json
+Injection generated
+[2023-11-08_16:52:22] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00001.json
+Injection generated
+[2023-11-08_16:52:25] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00002.json
+Injection generated
+[2023-11-08_16:52:26] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00003.json
+Injection generated
+[2023-11-08_16:52:28] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00004.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00004.json
+Injection generated
+[2023-11-08_16:52:31] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00005.json
+Injection generated
+[2023-11-08_16:52:33] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00006.json
+Injection generated
+[2023-11-08_16:52:35] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00007.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00007.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00007.json
+Injection generated
+[2023-11-08_16:52:39] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+Injection generated
+[2023-11-08_16:52:47] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+Injection generated
+[2023-11-08_16:52:58] starting model: TrPi2018 with prior: ./priors/TrPi2018.prior
+[2023-11-08_16:52:58] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00000.json
+Injection generated
+[2023-11-08_16:53:01] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00001.json
+Injection generated
+[2023-11-08_16:53:04] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00002.json
+Injection generated
+[2023-11-08_16:53:06] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00003.json
+Injection generated
+[2023-11-08_16:53:09] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00004.json
+Injection generated
+[2023-11-08_16:53:11] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+WARNING: 11.39060314479466 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+Injection generated
+[2023-11-08_16:53:22] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00006.json
+Injection generated
+[2023-11-08_16:53:31] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00007.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00007.json
+WARNING: 6.724159395601404 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.837829384366735 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00007.json
+Injection generated
+[2023-11-08_16:53:36] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00008.json
+Injection generated
+[2023-11-08_16:53:39] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+WARNING: 10.482735079155795 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.510620191137683 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+WARNING: 7.842713790905705 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.427444441176878 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+WARNING: 8.803564745631807 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.358725226527731 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 11.455410507967187 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+WARNING: 8.329354431566895 is outside of the measured uncertainty region with a lower limit of 12.0
+WARNING: 10.64053769015716 is outside of the measured uncertainty region with a lower limit of 12.0
+Injection generated
+[2023-11-08_16:53:49] starting model: Piro2021 with prior: ./priors/Piro2021.prior
+[2023-11-08_16:53:49] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+Injection generated
+[2023-11-08_16:54:09] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 20
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 21
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 22
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+Injection generated
+[2023-11-08_16:54:40] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+Injection generated
+[2023-11-08_16:55:05] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 20
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 21
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 22
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 23
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 24
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 25
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 26
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 27
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 28
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 29
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 30
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 31
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 32
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 33
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 34
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 35
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 36
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 37
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 38
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 39
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 40
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 41
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 42
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 43
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 44
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 45
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 46
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 47
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 48
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 49
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 50
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 51
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 52
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 53
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 54
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 55
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 56
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 57
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 58
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 59
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 60
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 61
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 62
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 63
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 64
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 65
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 66
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 67
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 68
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 69
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 70
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 71
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 72
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 73
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 74
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 75
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 76
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 77
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 78
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 79
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 80
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 81
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 82
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 83
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 84
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 85
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+Injection generated
+[2023-11-08_16:56:55] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00004.json
+Injection generated
+[2023-11-08_16:56:56] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+Injection generated
+[2023-11-08_16:57:14] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 20
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 21
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 22
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 23
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 24
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 25
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 26
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 27
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 28
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 29
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 30
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 31
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 32
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 33
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 34
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 35
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+Injection generated
+[2023-11-08_16:58:00] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00007.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00007.json
+Injection generated
+[2023-11-08_16:58:03] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 20
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 21
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 22
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 23
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 24
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 25
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 26
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 27
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 28
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 29
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 30
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 31
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 32
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 33
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+Injection generated
+[2023-11-08_16:58:45] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 7
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 8
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 9
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 10
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 11
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 12
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 13
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 14
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 15
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 16
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 17
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 18
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 19
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 20
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 21
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 22
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 23
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 24
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 25
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+generation error: light curve validation failed
+
+attempt 26
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+Injection generated
+[2023-11-08_16:59:26] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:26] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00001_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00001_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00001_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00002_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:27] running lc_Bu2019lm_00002_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00002_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00003_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00003_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00003_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00004_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00004_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:28] running lc_Bu2019lm_00004_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:29] running lc_Bu2019lm_00005_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:29] running lc_Bu2019lm_00005_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:29] running lc_Bu2019lm_00005_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:29] running lc_Bu2019lm_00006_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00006_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00006_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00007_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00007_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00007_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:30] running lc_Bu2019lm_00008_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:31] running lc_Bu2019lm_00008_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:31] running lc_Bu2019lm_00008_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:31] running lc_Bu2019lm_00009_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:31] running lc_Bu2019lm_00009_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:31] running lc_Bu2019lm_00009_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:31] running lc_Piro2021_00000_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00000_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00000_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00001_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00001_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00001_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:32] running lc_Piro2021_00002_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00002_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00002_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00003_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00003_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00003_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00004_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:33] running lc_Piro2021_00004_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00004_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00005_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00005_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00005_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00006_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:34] running lc_Piro2021_00006_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:35] running lc_Piro2021_00006_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:35] running lc_Piro2021_00007_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:35] running lc_Piro2021_00007_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:35] running lc_Piro2021_00007_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00008_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00008_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00008_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00009_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00009_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:36] running lc_Piro2021_00009_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:37] running lc_TrPi2018_00000_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:37] running lc_TrPi2018_00000_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:37] running lc_TrPi2018_00000_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:37] running lc_TrPi2018_00001_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:37] running lc_TrPi2018_00001_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00001_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00002_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00002_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00002_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00003_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:38] running lc_TrPi2018_00003_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00003_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00004_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00004_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00004_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00005_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:39] running lc_TrPi2018_00005_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00005_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00006_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00006_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00006_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00007_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:40] running lc_TrPi2018_00007_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00007_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00008_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00008_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00008_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00009_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:41] running lc_TrPi2018_00009_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:42] running lc_TrPi2018_00009_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00001_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00001_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:42] running lc_nugent-hyper_00001_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00002_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00002_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00002_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00003_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00003_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:43] running lc_nugent-hyper_00003_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00004_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00004_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00004_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00005_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00005_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:44] running lc_nugent-hyper_00005_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00006_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00006_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00006_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00007_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00007_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_16:59:45] running lc_nugent-hyper_00007_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_16:59:56] running lc_nugent-hyper_00008_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_17:00:06] running lc_nugent-hyper_00008_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_17:00:16] running lc_nugent-hyper_00008_fit_nugent-hyper_tmax_05 via slurm
+[2023-11-08_17:00:25] running lc_nugent-hyper_00009_fit_nugent-hyper_tmax_03 via slurm
+[2023-11-08_17:00:27] running lc_nugent-hyper_00009_fit_nugent-hyper_tmax_04 via slurm
+[2023-11-08_17:00:28] running lc_nugent-hyper_00009_fit_nugent-hyper_tmax_05 via slurm
+all fits submitted (submission took 1699019550.3887053 hours and 1.0 minutes elapsed)
+[2023-11-08_17:00:30] 35/120 analyses complete, estimated time remaining: 00.05 hours
+[2023-11-08_17:02:30] 113/120 analyses complete, estimated time remaining: 000.0 hours
+[2023-11-08_17:04:30] All 120 analyses complete!
+completed all fits in 1699019790.6748774 hours and 5.0 minutes
+[2023-11-08_17:04:32] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00001_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00001_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00001_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:33] running lc_Bu2019lm_00002_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00002_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00002_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00003_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00003_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00003_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:34] running lc_Bu2019lm_00004_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00004_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00004_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00005_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00005_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00005_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:35] running lc_Bu2019lm_00006_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00006_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00006_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00007_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00007_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00007_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00008_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:36] running lc_Bu2019lm_00008_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:37] running lc_Bu2019lm_00008_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:37] running lc_Bu2019lm_00009_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:37] running lc_Bu2019lm_00009_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:37] running lc_Bu2019lm_00009_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:37] running lc_Piro2021_00000_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:37] running lc_Piro2021_00000_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00000_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00001_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00001_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00001_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00002_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00002_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:38] running lc_Piro2021_00002_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:39] running lc_Piro2021_00003_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:39] running lc_Piro2021_00003_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:39] running lc_Piro2021_00003_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:39] running lc_Piro2021_00004_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:39] running lc_Piro2021_00004_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00004_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00005_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00005_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00005_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00006_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:40] running lc_Piro2021_00006_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00006_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00007_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00007_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00007_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00008_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:41] running lc_Piro2021_00008_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:42] running lc_Piro2021_00008_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:42] running lc_Piro2021_00009_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:42] running lc_Piro2021_00009_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:42] running lc_Piro2021_00009_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:42] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:42] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:42] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00001_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00001_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00001_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00002_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00002_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:43] running lc_TrPi2018_00002_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00003_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00003_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00003_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00004_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00004_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00004_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:44] running lc_TrPi2018_00005_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00005_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00005_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00006_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00006_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00006_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:45] running lc_TrPi2018_00007_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:46] running lc_TrPi2018_00007_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:46] running lc_TrPi2018_00007_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:46] running lc_TrPi2018_00008_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:46] running lc_TrPi2018_00008_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:46] running lc_TrPi2018_00008_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:47] running lc_TrPi2018_00009_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:47] running lc_TrPi2018_00009_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:47] running lc_TrPi2018_00009_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:47] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:47] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:47] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00001_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00001_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00001_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00002_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00002_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00002_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:48] running lc_nugent-hyper_00003_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00003_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00003_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00004_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00004_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00004_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:49] running lc_nugent-hyper_00005_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00005_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00005_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00006_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00006_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00006_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:50] running lc_nugent-hyper_00007_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:52] running lc_nugent-hyper_00007_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:04:52] running lc_nugent-hyper_00007_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:04:52] running lc_nugent-hyper_00008_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:04:53] running lc_nugent-hyper_00008_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:05:03] running lc_nugent-hyper_00008_fit_Bu2019lm_tmax_05 via slurm
+[2023-11-08_17:05:13] running lc_nugent-hyper_00009_fit_Bu2019lm_tmax_03 via slurm
+[2023-11-08_17:05:23] running lc_nugent-hyper_00009_fit_Bu2019lm_tmax_04 via slurm
+[2023-11-08_17:05:25] running lc_nugent-hyper_00009_fit_Bu2019lm_tmax_05 via slurm
+all fits submitted (submission took 1699019844.6181653 hours and 0.0 minutes elapsed)
+[2023-11-08_17:05:25] 0/120 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:07:25] 40/120 analyses complete, estimated time remaining: 000.1 hours
+[2023-11-08_17:09:25] 91/120 analyses complete, estimated time remaining: 00.03 hours
+[2023-11-08_17:11:31] All 120 analyses complete!
+completed all fits in 1699020210.3444824 hours and 6.0 minutes
+[2023-11-08_17:11:33] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:33] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:33] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:33] running lc_Bu2019lm_00001_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00001_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00001_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00002_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00002_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00002_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:34] running lc_Bu2019lm_00003_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00003_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00003_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00004_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00004_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00004_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:35] running lc_Bu2019lm_00005_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00005_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00005_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00006_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00006_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00006_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:36] running lc_Bu2019lm_00007_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:37] running lc_Bu2019lm_00007_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:37] running lc_Bu2019lm_00007_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:37] running lc_Bu2019lm_00008_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:37] running lc_Bu2019lm_00008_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:37] running lc_Bu2019lm_00008_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:38] running lc_Bu2019lm_00009_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:38] running lc_Bu2019lm_00009_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:38] running lc_Bu2019lm_00009_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:38] running lc_Piro2021_00000_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:38] running lc_Piro2021_00000_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:38] running lc_Piro2021_00000_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00001_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00001_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00001_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00002_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00002_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00002_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:39] running lc_Piro2021_00003_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00003_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00003_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00004_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00004_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00004_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:40] running lc_Piro2021_00005_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00005_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00005_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00006_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00006_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00006_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:41] running lc_Piro2021_00007_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00007_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00007_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00008_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00008_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00008_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:42] running lc_Piro2021_00009_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:43] running lc_Piro2021_00009_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:43] running lc_Piro2021_00009_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:43] running lc_TrPi2018_00000_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:43] running lc_TrPi2018_00000_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:43] running lc_TrPi2018_00000_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:43] running lc_TrPi2018_00001_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:44] running lc_TrPi2018_00001_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:44] running lc_TrPi2018_00001_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:44] running lc_TrPi2018_00002_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:44] running lc_TrPi2018_00002_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:44] running lc_TrPi2018_00002_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:45] running lc_TrPi2018_00003_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:45] running lc_TrPi2018_00003_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:45] running lc_TrPi2018_00003_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:45] running lc_TrPi2018_00004_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:45] running lc_TrPi2018_00004_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00004_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00005_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00005_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00005_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00006_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00006_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:46] running lc_TrPi2018_00006_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00007_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00007_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00007_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00008_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00008_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:47] running lc_TrPi2018_00008_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:48] running lc_TrPi2018_00009_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:48] running lc_TrPi2018_00009_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:48] running lc_TrPi2018_00009_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:48] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:48] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:48] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00001_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00001_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00001_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00002_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00002_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:49] running lc_nugent-hyper_00002_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00003_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00003_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00003_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00004_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00004_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:50] running lc_nugent-hyper_00004_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00005_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00005_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00005_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00006_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00006_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00006_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:51] running lc_nugent-hyper_00007_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00007_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00007_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00008_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00008_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00008_fit_TrPi2018_tmax_05 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00009_fit_TrPi2018_tmax_03 via slurm
+[2023-11-08_17:11:52] running lc_nugent-hyper_00009_fit_TrPi2018_tmax_04 via slurm
+[2023-11-08_17:11:53] running lc_nugent-hyper_00009_fit_TrPi2018_tmax_05 via slurm
+all fits submitted (submission took 1699020232.3314717 hours and 0.0 minutes elapsed)
+[2023-11-08_17:11:53] 0/120 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:13:53] 0/120 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:15:53] 6/120 analyses complete, estimated time remaining: 01.33 hours
+[2023-11-08_17:17:53] 56/120 analyses complete, estimated time remaining: 00.13 hours
+[2023-11-08_17:19:53] 107/120 analyses complete, estimated time remaining: 00.02 hours
+[2023-11-08_17:21:53] All 120 analyses complete!
+completed all fits in 1699020832.954807 hours and 10.0 minutes
+[2023-11-08_17:21:57] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00001_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00002_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00003_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00004_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00005_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:58] running lc_Bu2019lm_00006_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Bu2019lm_00007_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Bu2019lm_00008_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Bu2019lm_00009_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Piro2021_00000_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Piro2021_00001_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Piro2021_00002_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:21:59] running lc_Piro2021_00003_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:00] running lc_Piro2021_00004_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:05] running lc_Piro2021_00005_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_Piro2021_00006_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_Piro2021_00007_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_Piro2021_00008_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_Piro2021_00009_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_TrPi2018_00000_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:06] running lc_TrPi2018_00001_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:07] running lc_TrPi2018_00002_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:07] running lc_TrPi2018_00003_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:07] running lc_TrPi2018_00004_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:07] running lc_TrPi2018_00005_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:08] running lc_TrPi2018_00006_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:08] running lc_TrPi2018_00007_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:08] running lc_TrPi2018_00008_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:08] running lc_TrPi2018_00009_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:08] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00001_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00002_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00003_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00004_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00005_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:09] running lc_nugent-hyper_00006_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:10] running lc_nugent-hyper_00007_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:10] running lc_nugent-hyper_00008_fit_nugent-hyper_tmax_10 via slurm
+[2023-11-08_17:22:10] running lc_nugent-hyper_00009_fit_nugent-hyper_tmax_10 via slurm
+all fits submitted (submission took 1699020849.7086208 hours and 0.0 minutes elapsed)
+[2023-11-08_17:22:10] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:24:10] All 40 analyses complete!
+completed all fits in 1699020969.8367786 hours and 2.0 minutes
+[2023-11-08_17:24:13] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:13] running lc_Bu2019lm_00001_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:13] running lc_Bu2019lm_00002_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:13] running lc_Bu2019lm_00003_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:13] running lc_Bu2019lm_00004_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:13] running lc_Bu2019lm_00005_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:14] running lc_Bu2019lm_00006_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:14] running lc_Bu2019lm_00007_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:14] running lc_Bu2019lm_00008_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:20] running lc_Bu2019lm_00009_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:20] running lc_Piro2021_00000_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00001_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00002_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00003_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00004_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00005_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:21] running lc_Piro2021_00006_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_Piro2021_00007_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_Piro2021_00008_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_Piro2021_00009_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_TrPi2018_00001_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:22] running lc_TrPi2018_00002_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00003_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00004_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00005_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00006_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00007_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00008_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:23] running lc_TrPi2018_00009_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00001_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00002_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00003_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00004_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00005_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:24] running lc_nugent-hyper_00006_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:25] running lc_nugent-hyper_00007_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:25] running lc_nugent-hyper_00008_fit_Bu2019lm_tmax_10 via slurm
+[2023-11-08_17:24:25] running lc_nugent-hyper_00009_fit_Bu2019lm_tmax_10 via slurm
+all fits submitted (submission took 1699020985.0364068 hours and 0.0 minutes elapsed)
+[2023-11-08_17:24:26] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:26:26] 5/40 analyses complete, estimated time remaining: 00.28 hours
+[2023-11-08_17:28:26] 22/40 analyses complete, estimated time remaining: 00.06 hours
+[2023-11-08_17:30:26] 32/40 analyses complete, estimated time remaining: 00.02 hours
+[2023-11-08_17:32:26] All 40 analyses complete!
+completed all fits in 1699021465.486876 hours and 8.0 minutes
+[2023-11-08_17:32:28] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00001_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00002_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00003_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00004_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00005_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:30] running lc_Bu2019lm_00006_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Bu2019lm_00007_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Bu2019lm_00008_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Bu2019lm_00009_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Piro2021_00000_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Piro2021_00001_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Piro2021_00002_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:31] running lc_Piro2021_00003_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00004_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00005_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00006_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00007_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00008_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:32] running lc_Piro2021_00009_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00000_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00001_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00002_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00003_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00004_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00005_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:33] running lc_TrPi2018_00006_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_TrPi2018_00007_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_TrPi2018_00008_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_TrPi2018_00009_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_nugent-hyper_00001_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:34] running lc_nugent-hyper_00002_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00003_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00004_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00005_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00006_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00007_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00008_fit_TrPi2018_tmax_10 via slurm
+[2023-11-08_17:32:35] running lc_nugent-hyper_00009_fit_TrPi2018_tmax_10 via slurm
+all fits submitted (submission took 1699021475.1431756 hours and 0.0 minutes elapsed)
+[2023-11-08_17:32:36] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:34:36] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:36:36] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:38:36] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:40:36] 10/40 analyses complete, estimated time remaining: 00.42 hours
+[2023-11-08_17:42:36] 18/40 analyses complete, estimated time remaining: 00.21 hours
+[2023-11-08_17:44:36] 26/40 analyses complete, estimated time remaining: 00.11 hours
+[2023-11-08_17:46:36] 30/40 analyses complete, estimated time remaining: 00.08 hours
+[2023-11-08_17:48:36] 37/40 analyses complete, estimated time remaining: 00.02 hours
+[2023-11-08_17:50:36] All 40 analyses complete!
+completed all fits in 1699022555.9834547 hours and 18.0 minutes
+[2023-11-08_17:50:41] running lc_Bu2019lm_00000_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:41] running lc_Bu2019lm_00001_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:41] running lc_Bu2019lm_00002_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:41] running lc_Bu2019lm_00003_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00004_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00005_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00006_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00007_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00008_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:42] running lc_Bu2019lm_00009_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00000_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00001_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00002_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00003_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00004_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00005_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:43] running lc_Piro2021_00006_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_Piro2021_00007_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_Piro2021_00008_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_Piro2021_00009_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_TrPi2018_00000_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_TrPi2018_00001_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:44] running lc_TrPi2018_00002_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00003_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00004_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00005_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00006_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00007_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:45] running lc_TrPi2018_00008_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_TrPi2018_00009_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00000_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00001_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00002_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00003_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00004_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:46] running lc_nugent-hyper_00005_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:47] running lc_nugent-hyper_00006_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:47] running lc_nugent-hyper_00007_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:47] running lc_nugent-hyper_00008_fit_nugent-hyper_tmax_21 via slurm
+[2023-11-08_17:50:47] running lc_nugent-hyper_00009_fit_nugent-hyper_tmax_21 via slurm
+all fits submitted (submission took 1699022567.806918 hours and 0.0 minutes elapsed)
+[2023-11-08_17:50:48] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:52:48] All 40 analyses complete!
+completed all fits in 1699022687.9311886 hours and 2.0 minutes
+[2023-11-08_17:52:50] running lc_Bu2019lm_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00001_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00002_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00003_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00004_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00005_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00006_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:51] running lc_Bu2019lm_00007_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Bu2019lm_00008_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Bu2019lm_00009_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Piro2021_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Piro2021_00001_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Piro2021_00002_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:52] running lc_Piro2021_00003_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:53] running lc_Piro2021_00004_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:53] running lc_Piro2021_00005_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:53] running lc_Piro2021_00006_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:53] running lc_Piro2021_00007_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:53] running lc_Piro2021_00008_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_Piro2021_00009_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00001_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00002_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00003_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00004_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:54] running lc_TrPi2018_00005_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_TrPi2018_00006_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_TrPi2018_00007_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_TrPi2018_00008_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_TrPi2018_00009_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_nugent-hyper_00000_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:55] running lc_nugent-hyper_00001_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00002_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00003_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00004_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00005_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00006_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00007_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:56] running lc_nugent-hyper_00008_fit_Bu2019lm_tmax_21 via slurm
+[2023-11-08_17:52:57] running lc_nugent-hyper_00009_fit_Bu2019lm_tmax_21 via slurm
+all fits submitted (submission took 1699022696.2186906 hours and 0.0 minutes elapsed)
+[2023-11-08_17:52:57] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_17:54:57] 1/40 analyses complete, estimated time remaining: 01.56 hours
+[2023-11-08_17:56:57] 23/40 analyses complete, estimated time remaining: 00.05 hours
+[2023-11-08_17:58:57] 28/40 analyses complete, estimated time remaining: 00.04 hours
+[2023-11-08_18:00:57] 34/40 analyses complete, estimated time remaining: 00.02 hours
+[2023-11-08_18:02:57] All 40 analyses complete!
+completed all fits in 1699023296.7601593 hours and 10.0 minutes
+[2023-11-08_18:02:59] running lc_Bu2019lm_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:02:59] running lc_Bu2019lm_00001_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:02:59] running lc_Bu2019lm_00002_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00003_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00004_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00005_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00006_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00007_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:00] running lc_Bu2019lm_00008_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Bu2019lm_00009_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Piro2021_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Piro2021_00001_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Piro2021_00002_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Piro2021_00003_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:01] running lc_Piro2021_00004_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_Piro2021_00005_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_Piro2021_00006_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_Piro2021_00007_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_Piro2021_00008_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_Piro2021_00009_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:02] running lc_TrPi2018_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00001_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00002_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00003_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00004_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00005_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00006_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:03] running lc_TrPi2018_00007_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_TrPi2018_00008_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_TrPi2018_00009_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_nugent-hyper_00000_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_nugent-hyper_00001_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_nugent-hyper_00002_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_nugent-hyper_00003_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:04] running lc_nugent-hyper_00004_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:05] running lc_nugent-hyper_00005_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:05] running lc_nugent-hyper_00006_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:05] running lc_nugent-hyper_00007_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:05] running lc_nugent-hyper_00008_fit_TrPi2018_tmax_21 via slurm
+[2023-11-08_18:03:05] running lc_nugent-hyper_00009_fit_TrPi2018_tmax_21 via slurm
+all fits submitted (submission took 1699023303.8914552 hours and 0.0 minutes elapsed)
+[2023-11-08_18:03:05] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:05:06] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:07:06] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:09:06] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:11:06] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:13:06] 0/40 analyses complete, estimated time remaining: 00000 hours
+[2023-11-08_18:15:06] 11/40 analyses complete, estimated time remaining: 00.53 hours
+[2023-11-08_18:17:06] 14/40 analyses complete, estimated time remaining: 00.45 hours
+[2023-11-08_18:19:06] 19/40 analyses complete, estimated time remaining: 000.3 hours
+[2023-11-08_18:21:06] 24/40 analyses complete, estimated time remaining: 000.2 hours
+[2023-11-08_18:23:06] 28/40 analyses complete, estimated time remaining: 00.15 hours
+[2023-11-08_18:25:07] 30/40 analyses complete, estimated time remaining: 00.12 hours
+[2023-11-08_18:27:07] 30/40 analyses complete, estimated time remaining: 00.13 hours
+[2023-11-08_18:29:07] 30/40 analyses complete, estimated time remaining: 00.15 hours
+[2023-11-08_18:31:07] 30/40 analyses complete, estimated time remaining: 00.16 hours
+[2023-11-08_18:33:07] 31/40 analyses complete, estimated time remaining: 00.15 hours
+[2023-11-08_18:35:07] 32/40 analyses complete, estimated time remaining: 00.14 hours
+[2023-11-08_18:37:07] 35/40 analyses complete, estimated time remaining: 00.08 hours
+[2023-11-08_18:39:07] 36/40 analyses complete, estimated time remaining: 00.07 hours
+[2023-11-08_18:41:07] 37/40 analyses complete, estimated time remaining: 00.05 hours
+[2023-11-08_18:43:07] 38/40 analyses complete, estimated time remaining: 00.04 hours
+[2023-11-08_18:45:07] All 40 analyses complete!
+completed all fits in 1699025825.985402 hours and 42.0 minutes
+All done with analysis!
+
+Statistics:
+Directory size: 5.66 GB
+Total number of jobs: 600
+Number of failed jobs: 0
+Percentage of jobs that have failed: 0.00%
+Number of files associated with failed jobs: 0
+
+Breakdown by Model:
+
+Breakdown by Lightcurve Type:
+
+Highest Failure Rate Lightcurve Type/Model Fit Combinations:
+[2023-11-08_18:47:53] Creating Dataframe
+[2023-11-08_18:47:53] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00000.json
+[2023-11-08_18:47:53] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00001.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00002.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00003.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00004.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00005.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00006.json
+[2023-11-08_18:47:54] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00007.json
+[2023-11-08_18:47:55] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00008.json
+[2023-11-08_18:47:55] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00009.json
+[2023-11-08_18:47:55] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00000.json
+[2023-11-08_18:47:55] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00001.json
+[2023-11-08_18:47:55] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00002.json
+[2023-11-08_18:47:56] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00003.json
+[2023-11-08_18:47:56] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00004.json
+[2023-11-08_18:47:56] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00005.json
+[2023-11-08_18:47:56] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00006.json
+[2023-11-08_18:47:56] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00007.json
+[2023-11-08_18:47:57] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00008.json
+[2023-11-08_18:47:57] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00009.json
+[2023-11-08_18:47:57] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00000.json
+[2023-11-08_18:47:57] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00001.json
+[2023-11-08_18:47:57] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00002.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00003.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00004.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00005.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00006.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00007.json
+[2023-11-08_18:47:58] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00008.json
+[2023-11-08_18:47:59] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00009.json
+[2023-11-08_18:47:59] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00000.json
+[2023-11-08_18:47:59] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00001.json
+[2023-11-08_18:47:59] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00002.json
+[2023-11-08_18:47:59] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00003.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00004.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00005.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00006.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00007.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00008.json
+[2023-11-08_18:48:00] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00009.json
+[2023-11-08_18:48:01] Dataframe creation complete
+             lightcurve  ...                                best_fit_lightcurve
+0        Bu2019lm_00000  ...  {'ztfg': {0: 17.373262328839594, 1: 13.6400922...
+1        Bu2019lm_00000  ...  {'ztfg': {0: 12.914672112997142, 1: 14.3653764...
+2        Bu2019lm_00000  ...  {'ztfg': {0: 18.180554027740612, 1: 16.2351759...
+3        Bu2019lm_00000  ...  {'ztfg': {0: 17.61603570853513, 1: 13.59884679...
+4        Bu2019lm_00000  ...  {'ztfg': {0: 13.984451786347666, 1: 14.3708501...
+..                  ...  ...                                                ...
+595  nugent-hyper_00009  ...  {'ztfg': {0: 28.62845376248506, 1: 18.06231584...
+596  nugent-hyper_00009  ...  {'ztfg': {0: 20.086190604568575, 1: 18.1408124...
+597  nugent-hyper_00009  ...  {'ztfg': {0: 15.714594343811317, 1: 12.5520663...
+598  nugent-hyper_00009  ...  {'ztfg': {0: 30.436949404948315, 1: 19.1452151...
+599  nugent-hyper_00009  ...  {'ztfg': {0: 20.117279813611017, 1: 18.1719016...
+
+[600 rows x 14 columns]
+All done with evaluation!
