@@ -32,10 +32,6 @@ def generate_lightcurves_for_model(model, multiplier, validate, min_detections, 
                 assert os.path.exists(lightcurve_file), "light curve file {} does not exist".format(lightcurve_file)
                 if validate:
                     assert validate_lightcurve(lightcurve_file, min_detections=min_detections, min_time=min_detections_cuttoff), "light curve validation failed"
-                end_time = time.time()
-                elapsed_hours, elapsed_rem = divmod(end_time - start_time, 3600)
-                elapsed_mins = elapsed_rem // 60
-                print(f'succsefully generated {lightcurve_file} in {elapsed_hours:.0f} hours, {elapsed_mins:.0f} minutes (took {retry_count} attempts)')
                 generated_lc = True
             except Exception as e:
                 retry_count += 1
@@ -45,6 +41,10 @@ def generate_lightcurves_for_model(model, multiplier, validate, min_detections, 
                 except:
                     pass
                 pass
+        end_time = time.time()
+        elapsed_hours, elapsed_rem = divmod(end_time - start_time, 3600)
+        elapsed_mins = elapsed_rem // 60
+        print(f'succsefully generated {lightcurve_file} in {elapsed_hours:.0f} hours, {elapsed_mins:.0f} minutes (took {retry_count} attempts)')
 
 def main():
     parser = argparse.ArgumentParser(description='Generate light curves for a given model')
