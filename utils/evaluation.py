@@ -1,7 +1,7 @@
 '''
 functions for evaluating the results of fitting
 '''
-
+import argparse
 import glob
 from itertools import groupby
 import json
@@ -258,8 +258,7 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     return fit_df
 
 
-if __name__ == "__main__":
-    import argparse
+def main():
     parser = argparse.ArgumentParser(description='Evaluate the results of fitting.')
     parser.add_argument('--lc-path', metavar='lightcurve_paths', type=str, 
                             help='paths to the lightcurve files')
@@ -278,10 +277,6 @@ if __name__ == "__main__":
     print(f'[{strtime()}] Dataframe creation complete')
     print(fit_df)
     fit_df.to_csv(args.output)
-
-
-
-
-
-
-
+    
+if __name__ == "__main__":
+    main()
