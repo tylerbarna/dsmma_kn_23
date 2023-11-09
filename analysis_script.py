@@ -135,16 +135,20 @@ results_paths = []
 bestfit_paths = []
 start_time = time.time() ## start of submission process
 for model in models:
-    model_prior = os.path.join(priors,f'{model}.prior')
+    model_prior = os.path.join(priors, f'{model}.prior')
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env,nmma_tmin=nmma_tmin, nmma_plot=nmma_plot)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env, nmma_tmin=nmma_tmin, nmma_plot=nmma_plot)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 
 submission_time = time.time() ## all submissions made
-print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
+elapsed_time = submission_time - start_time
+hours = int(elapsed_time // 3600)
+minutes = int((elapsed_time % 3600) // 60)
+print(f'all fits submitted (submission took {hours} hours and {minutes} minutes elapsed)')
+
 while True:
     if args.dry_run:
         print('dry run complete, exiting')
