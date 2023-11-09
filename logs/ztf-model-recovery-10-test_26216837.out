@@ -1,0 +1,912 @@
+[2023-11-08_18:54:25] starting model: Bu2019lm with prior: ./priors/Bu2019lm.prior
+[2023-11-08_18:54:25] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00000.json
+Loaded filter ztfg
+[2023-11-08_18:54:28] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00001.json
+Loaded filter ztfg
+[2023-11-08_18:54:28] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00002.json
+Loaded filter ztfg
+[2023-11-08_18:54:28] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00003.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00004.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00005.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00006.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00007.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00008.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Bu2019lm_00009.json
+Loaded filter ztfg
+[2023-11-08_18:54:29] starting model: nugent-hyper with prior: ./priors/nugent-hyper.prior
+[2023-11-08_18:54:29] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00000.json
+[2023-11-08_18:54:29] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00001.json
+[2023-11-08_18:54:29] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00002.json
+[2023-11-08_18:54:29] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00003.json
+[2023-11-08_18:54:29] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00004.json
+[2023-11-08_18:54:29] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00005.json
+[2023-11-08_18:54:29] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00006.json
+[2023-11-08_18:54:29] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00007.json
+[2023-11-08_18:54:30] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00008.json
+[2023-11-08_18:54:30] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_nugent-hyper_00009.json
+[2023-11-08_18:54:30] starting model: TrPi2018 with prior: ./priors/TrPi2018.prior
+[2023-11-08_18:54:30] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00000.json
+[2023-11-08_18:54:30] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00001.json
+[2023-11-08_18:54:30] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00002.json
+[2023-11-08_18:54:30] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00003.json
+[2023-11-08_18:54:30] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00004.json
+[2023-11-08_18:54:30] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00005.json
+[2023-11-08_18:54:30] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00006.json
+[2023-11-08_18:54:30] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00007.json
+[2023-11-08_18:54:30] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00008.json
+[2023-11-08_18:54:30] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_TrPi2018_00009.json
+[2023-11-08_18:54:30] starting model: Piro2021 with prior: ./priors/Piro2021.prior
+[2023-11-08_18:54:30] generating light curve: 00000
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00000.json
+[2023-11-08_18:54:30] generating light curve: 00001
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00001.json
+[2023-11-08_18:54:30] generating light curve: 00002
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00002.json
+[2023-11-08_18:54:30] generating light curve: 00003
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00003.json
+[2023-11-08_18:54:30] generating light curve: 00004
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00004.json
+[2023-11-08_18:54:30] generating light curve: 00005
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00005.json
+[2023-11-08_18:54:30] generating light curve: 00006
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00006.json
+[2023-11-08_18:54:30] generating light curve: 00007
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00007.json
+[2023-11-08_18:54:30] generating light curve: 00008
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00008.json
+[2023-11-08_18:54:30] generating light curve: 00009
+
+attempt 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ./injections/ztf-cadence-10-test/inj_Piro2021_00009.json
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00001_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00001_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00001_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00002_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00002_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00002_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00003_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00003_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00003_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00004_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00004_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00004_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00005_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00005_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00005_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00006_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00006_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00006_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00007_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00007_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00007_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00008_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00008_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00008_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00009_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00009_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00009_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00001_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00001_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00001_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00002_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00002_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00002_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00003_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00003_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00003_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00004_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00004_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00004_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00005_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00005_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00005_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00006_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00006_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00006_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00007_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00007_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00007_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00008_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00008_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00008_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_Piro2021_00009_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_Piro2021_00009_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_Piro2021_00009_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00001_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00001_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00001_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00002_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00002_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00002_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00003_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00003_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00003_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00004_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00004_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00004_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00005_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00005_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00005_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00006_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00006_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00006_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00007_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00007_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00007_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00008_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00008_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00008_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_TrPi2018_00009_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_TrPi2018_00009_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_TrPi2018_00009_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00001_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00001_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00001_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00002_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00002_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00002_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00003_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00003_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00003_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00004_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00004_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00004_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00005_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00005_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00005_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00006_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00006_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00006_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00007_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00007_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00007_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00008_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00008_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00008_fit_nugent-hyper_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00009_fit_nugent-hyper_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00009_fit_nugent-hyper_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00009_fit_nugent-hyper_tmax_05 has already been fit, skipping
+all fits submitted (submission took 1699026390.7757084 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:32] All 0 analyses complete!
+completed all fits in 1699026390.7758071 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00001_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00001_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00001_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00002_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00002_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00002_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00003_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00003_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00003_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00004_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00004_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00004_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00005_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00005_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00005_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00006_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00006_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00006_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00007_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00007_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00007_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00008_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00008_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00008_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00009_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00009_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00009_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00001_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00001_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00001_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00002_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00002_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00002_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00003_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00003_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00003_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00004_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00004_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00004_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00005_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00005_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00005_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00006_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00006_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00006_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00007_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00007_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00007_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00008_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00008_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00008_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_Piro2021_00009_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_Piro2021_00009_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_Piro2021_00009_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00001_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00001_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00001_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00002_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00002_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00002_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00003_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00003_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00003_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00004_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00004_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00004_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00005_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00005_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00005_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00006_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00006_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00006_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00007_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00007_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00007_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00008_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00008_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00008_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_TrPi2018_00009_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_TrPi2018_00009_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_TrPi2018_00009_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00001_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00001_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00001_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00002_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00002_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00002_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00003_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00003_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00003_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00004_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00004_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00004_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00005_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00005_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00005_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00006_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00006_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00006_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00007_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00007_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00007_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00008_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00008_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00008_fit_Bu2019lm_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00009_fit_Bu2019lm_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00009_fit_Bu2019lm_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00009_fit_Bu2019lm_tmax_05 has already been fit, skipping
+all fits submitted (submission took 1699026392.628697 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:34] All 0 analyses complete!
+completed all fits in 1699026392.6287816 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00000_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00000_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00001_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00001_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00001_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00002_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00002_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00002_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00003_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00003_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00003_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00004_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00004_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00004_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00005_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00005_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00005_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00006_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00006_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00006_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00007_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00007_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00007_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00008_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00008_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00008_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Bu2019lm_00009_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Bu2019lm_00009_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Bu2019lm_00009_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00000_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00000_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00000_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00001_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00001_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00001_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00002_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00002_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00002_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00003_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00003_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00003_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00004_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00004_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00004_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00005_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00005_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00005_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00006_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00006_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00006_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00007_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00007_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00007_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00008_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00008_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00008_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_Piro2021_00009_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_Piro2021_00009_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_Piro2021_00009_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00000_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00000_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00000_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00001_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00001_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00001_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00002_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00002_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00002_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00003_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00003_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00003_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00004_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00004_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00004_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00005_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00005_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00005_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00006_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00006_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00006_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00007_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00007_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00007_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00008_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00008_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00008_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_TrPi2018_00009_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_TrPi2018_00009_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_TrPi2018_00009_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00000_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00000_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00000_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00001_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00001_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00001_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00002_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00002_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00002_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00003_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00003_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00003_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00004_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00004_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00004_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00005_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00005_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00005_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00006_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00006_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00006_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00007_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00007_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00007_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00008_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00008_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00008_fit_TrPi2018_tmax_05 has already been fit, skipping
+lc_nugent-hyper_00009_fit_TrPi2018_tmax_03 has already been fit, skipping
+lc_nugent-hyper_00009_fit_TrPi2018_tmax_04 has already been fit, skipping
+lc_nugent-hyper_00009_fit_TrPi2018_tmax_05 has already been fit, skipping
+all fits submitted (submission took 1699026394.579974 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:36] All 0 analyses complete!
+completed all fits in 1699026394.5800931 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00001_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00002_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00003_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00004_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00005_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00006_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00007_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00008_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00009_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00001_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00002_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00003_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00004_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00005_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00006_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00007_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00008_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_Piro2021_00009_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00001_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00002_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00003_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00004_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00005_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00006_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00007_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00008_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_TrPi2018_00009_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00001_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00002_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00003_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00004_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00005_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00006_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00007_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00008_fit_nugent-hyper_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00009_fit_nugent-hyper_tmax_10 has already been fit, skipping
+all fits submitted (submission took 1699026398.483017 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:40] All 0 analyses complete!
+completed all fits in 1699026398.4830887 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00001_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00002_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00003_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00004_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00005_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00006_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00007_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00008_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00009_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00001_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00002_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00003_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00004_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00005_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00006_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00007_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00008_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_Piro2021_00009_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00001_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00002_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00003_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00004_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00005_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00006_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00007_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00008_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_TrPi2018_00009_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00001_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00002_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00003_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00004_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00005_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00006_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00007_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00008_fit_Bu2019lm_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00009_fit_Bu2019lm_tmax_10 has already been fit, skipping
+all fits submitted (submission took 1699026400.384584 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:42] All 0 analyses complete!
+completed all fits in 1699026400.384653 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00001_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00002_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00003_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00004_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00005_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00006_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00007_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00008_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Bu2019lm_00009_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00000_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00001_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00002_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00003_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00004_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00005_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00006_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00007_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00008_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_Piro2021_00009_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00000_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00001_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00002_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00003_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00004_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00005_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00006_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00007_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00008_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_TrPi2018_00009_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00000_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00001_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00002_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00003_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00004_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00005_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00006_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00007_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00008_fit_TrPi2018_tmax_10 has already been fit, skipping
+lc_nugent-hyper_00009_fit_TrPi2018_tmax_10 has already been fit, skipping
+all fits submitted (submission took 1699026402.5301528 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:44] All 0 analyses complete!
+completed all fits in 1699026402.5302258 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00001_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00002_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00003_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00004_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00005_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00006_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00007_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00008_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00009_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00001_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00002_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00003_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00004_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00005_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00006_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00007_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00008_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_Piro2021_00009_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00001_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00002_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00003_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00004_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00005_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00006_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00007_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00008_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_TrPi2018_00009_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00000_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00001_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00002_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00003_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00004_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00005_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00006_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00007_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00008_fit_nugent-hyper_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00009_fit_nugent-hyper_tmax_21 has already been fit, skipping
+all fits submitted (submission took 1699026406.2027948 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:48] All 0 analyses complete!
+completed all fits in 1699026406.2028904 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00001_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00002_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00003_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00004_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00005_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00006_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00007_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00008_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00009_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00001_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00002_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00003_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00004_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00005_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00006_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00007_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00008_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_Piro2021_00009_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00001_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00002_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00003_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00004_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00005_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00006_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00007_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00008_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_TrPi2018_00009_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00000_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00001_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00002_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00003_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00004_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00005_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00006_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00007_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00008_fit_Bu2019lm_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00009_fit_Bu2019lm_tmax_21 has already been fit, skipping
+all fits submitted (submission took 1699026408.1760569 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:50] All 0 analyses complete!
+completed all fits in 1699026408.1761281 hours and 0.0 minutes
+lc_Bu2019lm_00000_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00001_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00002_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00003_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00004_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00005_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00006_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00007_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00008_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Bu2019lm_00009_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00000_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00001_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00002_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00003_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00004_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00005_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00006_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00007_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00008_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_Piro2021_00009_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00000_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00001_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00002_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00003_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00004_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00005_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00006_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00007_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00008_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_TrPi2018_00009_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00000_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00001_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00002_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00003_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00004_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00005_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00006_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00007_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00008_fit_TrPi2018_tmax_21 has already been fit, skipping
+lc_nugent-hyper_00009_fit_TrPi2018_tmax_21 has already been fit, skipping
+all fits submitted (submission took 1699026410.1491346 hours and 0.0 minutes elapsed)
+[2023-11-08_18:54:52] All 0 analyses complete!
+completed all fits in 1699026410.1492078 hours and 0.0 minutes
+All done with analysis!
+
+Statistics:
+Directory size: 5.66 GB
+Total number of jobs: 600
+Number of failed jobs: 0
+Percentage of jobs that have failed: 0.00%
+Number of files associated with failed jobs: 0
+
+Breakdown by Model:
+
+Breakdown by Lightcurve Type:
+
+Highest Failure Rate Lightcurve Type/Model Fit Combinations:
+[2023-11-08_18:55:08] Creating Dataframe
+[2023-11-08_18:55:08] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00000.json
+[2023-11-08_18:55:08] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00001.json
+[2023-11-08_18:55:08] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00002.json
+[2023-11-08_18:55:08] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00003.json
+[2023-11-08_18:55:08] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00004.json
+[2023-11-08_18:55:09] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00005.json
+[2023-11-08_18:55:09] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00006.json
+[2023-11-08_18:55:09] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00007.json
+[2023-11-08_18:55:09] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00008.json
+[2023-11-08_18:55:09] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Bu2019lm_00009.json
+[2023-11-08_18:55:10] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00000.json
+[2023-11-08_18:55:10] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00001.json
+[2023-11-08_18:55:10] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00002.json
+[2023-11-08_18:55:10] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00003.json
+[2023-11-08_18:55:10] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00004.json
+[2023-11-08_18:55:11] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00005.json
+[2023-11-08_18:55:11] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00006.json
+[2023-11-08_18:55:11] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00007.json
+[2023-11-08_18:55:11] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00008.json
+[2023-11-08_18:55:11] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_Piro2021_00009.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00000.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00001.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00002.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00003.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00004.json
+[2023-11-08_18:55:12] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00005.json
+[2023-11-08_18:55:13] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00006.json
+[2023-11-08_18:55:13] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00007.json
+[2023-11-08_18:55:13] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00008.json
+[2023-11-08_18:55:13] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_TrPi2018_00009.json
+[2023-11-08_18:55:13] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00000.json
+[2023-11-08_18:55:14] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00001.json
+[2023-11-08_18:55:14] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00002.json
+[2023-11-08_18:55:14] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00003.json
+[2023-11-08_18:55:14] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00004.json
+[2023-11-08_18:55:14] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00005.json
+[2023-11-08_18:55:15] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00006.json
+[2023-11-08_18:55:15] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00007.json
+[2023-11-08_18:55:15] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00008.json
+[2023-11-08_18:55:15] Creating Dataframe items for /home/tbarna/dsmma_kn_23/injections/ztf-cadence-10-test/lc_nugent-hyper_00009.json
+[2023-11-08_18:55:15] Dataframe creation complete
+             lightcurve  ...                                best_fit_lightcurve
+0        Bu2019lm_00000  ...  {'ztfg': {0: 17.373262328839594, 1: 13.6400922...
+1        Bu2019lm_00000  ...  {'ztfg': {0: 12.914672112997142, 1: 14.3653764...
+2        Bu2019lm_00000  ...  {'ztfg': {0: 18.180554027740612, 1: 16.2351759...
+3        Bu2019lm_00000  ...  {'ztfg': {0: 17.61603570853513, 1: 13.59884679...
+4        Bu2019lm_00000  ...  {'ztfg': {0: 13.984451786347666, 1: 14.3708501...
+..                  ...  ...                                                ...
+595  nugent-hyper_00009  ...  {'ztfg': {0: 28.62845376248506, 1: 18.06231584...
+596  nugent-hyper_00009  ...  {'ztfg': {0: 20.086190604568575, 1: 18.1408124...
+597  nugent-hyper_00009  ...  {'ztfg': {0: 15.714594343811317, 1: 12.5520663...
+598  nugent-hyper_00009  ...  {'ztfg': {0: 30.436949404948315, 1: 19.1452151...
+599  nugent-hyper_00009  ...  {'ztfg': {0: 20.117279813611017, 1: 18.1719016...
+
+[600 rows x 14 columns]
+All done with evaluation!
