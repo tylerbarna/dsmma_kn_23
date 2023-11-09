@@ -191,28 +191,33 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
     '''
     
     total_analyses = len(result_paths)
-    analysis_status = np.array([os.path.exists(result_file) for result_file in result_paths], dtype=bool)
-    completed_analyses = np.array(result_paths)[analysis_status]
-    completed_analyses_count = np.sum(analysis_status)
+    analysis_status = [os.path.exists(result_file) for result_file in result_paths]
+    completed_analyses = [result_paths[i] for i in range(total_analyses) if analysis_status[i]]
+    completed_analyses_count = len(completed_analyses)
     completion_status = completed_analyses_count == total_analyses
-    
-    current_time = strtime()
+
+    current_time = time.strftime('%Y-%m-%d %H:%M:%S')
     t1 = time.time()
     hours_elapsed = round((t1 - t0) / 3600, 2)
     timeout_elapsed = round((t1 - t0_submission) / 3600, 2) > timeout
-    estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2) if completed_analyses_count > 0 else 0
-    
+
     if timeout_elapsed:
         print(f'[{current_time}] Analysis timed out with {total_analyses - completed_analyses_count} fits left, exiting...')
         return True, completed_analyses
     elif completion_status:
         print(f'[{current_time}] All {total_analyses} analyses complete!')
         return True, completed_analyses
-    else:
-        print(f'[{current_time}] {completed_analyses_count}/{total_analyses} analyses complete, estimated time remaining: {str(estimated_remaining_time).zfill(5)} hours')
-        if hours_elapsed + estimated_remaining_time > timeout:
-            excess_time = round((hours_elapsed + estimated_remaining_time - timeout),2)
+    elif completed_analyses_count > 0:
+        remaining_time = (hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count)
+        remaining_hours = int(remaining_time)
+        remaining_minutes = int((remaining_time - remaining_hours) * 60)
+        print(f'[{current_time}] {completed_analyses_count}/{total_analyses} analyses complete, estimated time remaining: {remaining_hours:02d}:{remaining_minutes:02d} hours')
+        if hours_elapsed + remaining_time > timeout:
+            excess_time = round((hours_elapsed + remaining_time - timeout), 2)
             print(f'[{current_time}] Warning: estimated time remaining exceeds timeout by {excess_time} hours')
+        return False, completed_analyses
+    else:
+        print(f'[{current_time}] 0/{total_analyses} analyses complete, estimated time remaining: N/A')
         return False, completed_analyses
     
     
