@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 import os
+import time
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -86,7 +87,7 @@ priors = [os.path.join('./priors/',model+'.prior') for model in models]
 inj_gen_time_dict = {model:[] for model in models}
 
 time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
-
+start_time = time.time()
 for model, prior in zip(models,priors):
     print(f'[{strtime()}] starting model: {model} with prior: {prior}')
     lc_count = 1 * multiplier
@@ -114,7 +115,12 @@ for model, prior in zip(models,priors):
                 except:
                     pass
                 pass
-                
+end_time = time.time()
+## get hours and minutes
+elapsed_hours, elapsed_rem = divmod(end_time - start_time, 3600)
+elapsed_mins = elapsed_rem // 60
+print(f'[{strtime()}] finished generating all light curves')
+print(f'[{strtime()}] total time elapsed: {elapsed_hours:.0f} hours, {elapsed_mins:.0f} minutes')
             
                 
         
