@@ -44,7 +44,7 @@ def generate_lightcurves_for_model(model, multiplier, validate, min_detections, 
         end_time = time.time()
         elapsed_hours, elapsed_rem = divmod(end_time - start_time, 3600)
         elapsed_mins = elapsed_rem // 60
-        print(f'succsefully generated {lightcurve_file} in {elapsed_hours:.0f} hours, {elapsed_mins:.0f} minutes (took {retry_count} attempts)')
+        print(f'succsefully generated {lightcurve_file} in {elapsed_hours:.0f}:{str(elapsed_mins).zfill(2)} hours (took {retry_count} attempts)')
 
 def main():
     parser = argparse.ArgumentParser(description='Generate light curves for a given model')
