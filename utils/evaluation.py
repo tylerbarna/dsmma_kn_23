@@ -70,7 +70,10 @@ def calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df):
             lightcurve_df = lightcurve_df[~lightcurve_df.index.isin(nondetection_indices)]
             best_fit_lightcurve_df = best_fit_lightcurve_df[~best_fit_lightcurve_df.index.isin(nondetection_indices)]
             filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
-            lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
+            if len(np.isreal(lightcurve_df[filter])) == 0:
+                continue
+            else:
+                lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
         except Exception as e:
              ## TO-DO: make it so you don't have to have this except (due to above)
             print('Residual Calculation Error: ', e)
@@ -236,31 +239,56 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
             
 
 
-def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
+import pandas as pd
+from multiprocessing import Pool, cpu_count
+from functools import partial
+from time import time as strtime
+
+def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kwargs):
     '''
     Creates a dataframe of fit evaluation metrics
     
     Args:
     - lightcurve_paths (list): list of lightcurve paths
     - best_fit_json_paths (list): list of best fit json paths
+    - parallel (bool): optional argument to enable parallel processing (default is False)
     
     Returns:
     - fit_df (pd.DataFrame): dataframe of fit evaluation metrics
     '''
+    def process_lightcurve(lightcurve_path, best_fit_json_list, **kwargs):
+        fit_series_list = []
+        for best_fit_json in best_fit_json_list:
+            fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
+            fit_series_list.append(fit_series)
+        return fit_series_list
+
     lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs)
     fit_df = pd.DataFrame()
     print(f'[{strtime()}] Creating Dataframe')
-    for lightcurve_path in lightcurve_paths:
-        print(f'[{strtime()}] Creating Dataframe items for {lightcurve_path}')
-        for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
-            # print('cd ', best_fit_json_list)
-            for best_fit_json in best_fit_json_list:
-                # Evaluate fits for each best fit JSON individually
-                fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
-                # likelihood_dict = evaluate_fits_by_likelihood([best_fit_json], **kwargs)
+
+    if parallel:
+        num_processes = min(cpu_count(), len(lightcurve_paths))
+        with Pool(num_processes) as pool:
+            partial_process_lightcurve = partial(process_lightcurve, **kwargs)
+            results = pool.starmap(partial_process_lightcurve, lightcurve_fit_dict.items())
+        
+        for fit_series_list in results:
+            for fit_series in fit_series_list:
                 fit_df = fit_df.append(fit_series, ignore_index=True)
+    else:
+        for lightcurve_path in lightcurve_paths:
+            print(f'[{strtime()}] Creating Dataframe items for {lightcurve_path}')
+            for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
+                for best_fit_json in best_fit_json_list:
+                    fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
+                    fit_df = fit_df.append(fit_series, ignore_index=True)
+
+    # Sort the dataframe by 'lightcurve', 't_max', 'fit_model'
+    fit_df.sort_values(by=['lightcurve', 't_max', 'fit_model'], inplace=True)
 
     return fit_df
+
 
 
 def main():
@@ -271,6 +299,7 @@ def main():
                             help='paths to the best fit json files')
     parser.add_argument('--output', metavar='output_csv',
                             help='path to the output csv file')
+    parser.add_argument('--parallel', action='store_true', help='enable parallel processing')
     args = parser.parse_args()
     ## get all the lightcurve and best fit json paths
     lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_path,'lc*.json')))
@@ -278,7 +307,7 @@ def main():
     best_fit_json_paths = sorted(glob.glob(os.path.join(args.fit_path,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
     ## if output does not end in csv, add it
     args.output = args.output if args.output.endswith('.csv') else args.output + '.csv'
-    fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+    fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=args.parallel)
     print(f'[{strtime()}] Dataframe creation complete')
     print(fit_df)
     fit_df.to_csv(args.output)
