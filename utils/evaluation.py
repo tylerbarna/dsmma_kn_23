@@ -9,6 +9,8 @@ import os
 import pandas as pd
 import numpy as np
 import warnings
+from multiprocessing import Pool, cpu_count
+from functools import partial
 
 from injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -244,6 +246,11 @@ from multiprocessing import Pool, cpu_count
 from functools import partial
 from time import time as strtime
 
+import pandas as pd
+from multiprocessing import Pool, cpu_count
+from functools import partial
+from time import time as strtime
+
 def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kwargs):
     '''
     Creates a dataframe of fit evaluation metrics
@@ -271,11 +278,21 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kw
         num_processes = min(cpu_count(), len(lightcurve_paths))
         with Pool(num_processes) as pool:
             partial_process_lightcurve = partial(process_lightcurve, **kwargs)
-            results = pool.starmap(partial_process_lightcurve, lightcurve_fit_dict.items())
-        
-        for fit_series_list in results:
-            for fit_series in fit_series_list:
-                fit_df = fit_df.append(fit_series, ignore_index=True)
+            results = []
+
+            for lightcurve_path in lightcurve_paths:
+                print(f'[{strtime()}] Creating Dataframe items for {lightcurve_path}')
+                for best_fit_json_list in lightcurve_fit_dict[lightcurve_path]:
+                    async_result = pool.apply_async(partial_process_lightcurve, args=(lightcurve_path, best_fit_json_list))
+                    results.append(async_result)
+
+            pool.close()
+            pool.join()
+
+            for async_result in results:
+                fit_series_list = async_result.get()
+                for fit_series in fit_series_list:
+                    fit_df = fit_df.append(fit_series, ignore_index=True)
     else:
         for lightcurve_path in lightcurve_paths:
             print(f'[{strtime()}] Creating Dataframe items for {lightcurve_path}')
@@ -284,10 +301,11 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kw
                     fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
                     fit_df = fit_df.append(fit_series, ignore_index=True)
 
-    # Sort the dataframe by 'lightcurve', 't_max', 'fit_model'
     fit_df.sort_values(by=['lightcurve', 't_max', 'fit_model'], inplace=True)
+    fit_df.reset_index(drop=True, inplace=True)
 
     return fit_df
+
 
 
 
