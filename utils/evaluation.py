@@ -201,7 +201,11 @@ def create_fit_series(lightcurve_path, best_fit_json_path, **kwargs):
     series['fit_model'] = get_model_name(best_fit_json_path, **kwargs)
     series['fit_path'] = best_fit_json_path
     series['t_max'] = float(os.path.basename(best_fit_json_path).split(file_seperator)[tmax_idx]) ## get tmax from lightcurve path
-    series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) 
+    if 'chi2_per_dof' in best_fit_params.keys():
+        series['residual'] = best_fit_params['chi2_per_dof']
+        series['residual_by_filter'] = best_fit_params['chi2_per_dof_per_filt']
+    else:
+        series['residual'] = calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df) 
     #series['odds_ratio'] = evaluate_fits_by_likelihood([best_fit_json_path], target_model=target_model)[0] ## need to rethink how this works
     series['log_likelihood'] = log_likelihood
     series['log_prior'] = log_prior
