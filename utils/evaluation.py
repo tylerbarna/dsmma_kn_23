@@ -64,6 +64,11 @@ def calculate_lightcurve_residual(lightcurve_df, best_fit_lightcurve_df):
             continue
         ## residual given by (lightcurve - best_fit_lightcurve)^2 / lightcurve_err
         try:
+            ## get indices where the err is nan or inf
+            nondetection_indices = np.where(np.isnan(lightcurve_df[f'{filter}_err']) | np.isinf(lightcurve_df[f'{filter}_err']))[0]
+            ## now only keep the indices of the filter where the err is not nan or inf
+            lightcurve_df = lightcurve_df[~lightcurve_df.index.isin(nondetection_indices)]
+            best_fit_lightcurve_df = best_fit_lightcurve_df[~best_fit_lightcurve_df.index.isin(nondetection_indices)]
             filter_residual = np.array((lightcurve_df[filter] - best_fit_lightcurve_df[filter])**2/lightcurve_df[f'{filter}_err']) ## calculate the residual for each filter. may want to have an except in the event that there is no error
             lightcurve_residual += np.nansum(filter_residual[~np.isinf(filter_residual)]) / len(np.isreal(lightcurve_df[filter])) ## sum the residuals for each filter and normalize by the number of samples. Accounts for the fact that the number of samples may be different for each filter and that there may be inf values in the residuals
         except Exception as e:
