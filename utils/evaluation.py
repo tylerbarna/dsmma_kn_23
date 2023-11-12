@@ -245,15 +245,23 @@ def associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwar
             
 
 
-import pandas as pd
-from multiprocessing import Pool, cpu_count
-from functools import partial
-from time import time as strtime
 
-import pandas as pd
-from multiprocessing import Pool, cpu_count
-from functools import partial
-from time import time as strtime
+def process_lightcurve(lightcurve_path, best_fit_json_list, **kwargs):
+    '''
+    Wrapper function for create_fit_series used in the event of parallel processing
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve
+    - best_fit_json_list (list): list of paths to best fit json files
+    
+    Returns:
+    - fit_series_list (list): list of fit evaluation metrics
+    '''
+    fit_series_list = []
+    for best_fit_json in best_fit_json_list:
+        fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
+        fit_series_list.append(fit_series)
+    return fit_series_list
 
 def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kwargs):
     '''
@@ -267,12 +275,6 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, parallel=False, **kw
     Returns:
     - fit_df (pd.DataFrame): dataframe of fit evaluation metrics
     '''
-    def process_lightcurve(lightcurve_path, best_fit_json_list, **kwargs):
-        fit_series_list = []
-        for best_fit_json in best_fit_json_list:
-            fit_series = create_fit_series(lightcurve_path, best_fit_json, **kwargs)
-            fit_series_list.append(fit_series)
-        return fit_series_list
 
     lightcurve_fit_dict = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths, **kwargs)
     fit_df = pd.DataFrame()
