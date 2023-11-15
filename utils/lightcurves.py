@@ -124,7 +124,7 @@ def lightcurve_conversion(lightcurve_path):
         
     return converted_lightcurve_path 
             
-def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None):
+def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None, **kwargs):
     '''
     Reads in the lightcurve json and returns a pandas dataframe of the lightcurve with associated times, relative to the start time
     
@@ -250,8 +250,9 @@ def starting_lightcurve(full_lightcurve, outdir, starting_time=2, starting_obser
         
         TODO:
         - make it so it checks about non-detections
+        - fix the way the correct_times works so it reads in the correct initial time. Right now, it will read in the time of the first detection, so if the lowest time measurement is a non-detection, the times will be thrown off
         '''
-        full_lightcurve_df = read_lightcurve(full_lightcurve, **kwargs)
+        full_lightcurve_df = read_lightcurve(full_lightcurve, start_time = 0, **kwargs)
         filters = [col for col in full_lightcurve_df.columns if col not in ['sample_times'] and '_err' not in col]
         if starting_time and starting_observations is None:
             starting_lightcurve_df = full_lightcurve_df[full_lightcurve_df['sample_times'] <= starting_time]
@@ -267,7 +268,7 @@ def starting_lightcurve(full_lightcurve, outdir, starting_time=2, starting_obser
             starting_lightcurve_df = pd.concat(starting_lightcurve)
         if correct_times:
             tmin = get_trigger_time(full_lightcurve)
-            starting_lightcurve_df.loc[:,'sample_times'] += tmin
+            starting_lightcurve_df.loc[:,'sample_times'] += tmin + 0.1
         ## construct dictionary to write to json. Each key is the filter, and the value for each key is a list of lists, with the sublists containing three terms: sample_times, filter, and filter_err for each observation
         starting_lightcurve_dict = generate_lightcurve_dict(starting_lightcurve_df)
         starting_lightcurve_path = os.path.join(outdir, kwargs.get('lightcurve_label', os.path.basename(full_lightcurve)))
@@ -277,16 +278,17 @@ def starting_lightcurve(full_lightcurve, outdir, starting_time=2, starting_obser
         return starting_lightcurve_path
 
 
-def observe_lightcurve(full_lightcurve, previous_lightcurve, outdir, step_size=1,filters=['ztfg'],**kwargs):
+def observe_lightcurve(full_lightcurve, previous_lightcurve, outdir, step_size=1,filters=['ztfg'], correct_times=False, **kwargs):
     '''
     Takes in a full lightcurve and a previous lightcurve, and returns a new lightcurve with the next step_size observations. This is useful for simulating observing a lightcurve in real time. 
     
     Args:
     - full_lightcurve (str): path to full lightcurve file
     - previous_lightcurve (str): path to previous lightcurve file
+    - outdir (str): output directory for next lightcurve file
     - step_size (int): interval on which to add observations (default=1). For the default, this will add any observations made in the next day.
     - filters (list): list of filters to observe (default=['ztfg']). These filters need to exist
-    - outdir (str): output directory for next lightcurve file
+    - correct_times (bool): whether or not to correct the times so that the first observation is at the same time as the original lightcurve (default=False)
     
     Returns:
     - next_lightcurve (str): path to next lightcurve file
@@ -294,9 +296,10 @@ def observe_lightcurve(full_lightcurve, previous_lightcurve, outdir, step_size=1
     TODO:
     - make it so it checks about non-detections
     - make an option so you can specify that you want the next observation regardless of whether or not it's in the next step_size interval (maybe)
+    - fix the way the correct_times works so it reads in the correct initial time. Right now, it will read in the time of the first detection, so if the lowest time measurement is a non-detection, the times will be thrown off
     '''
-    full_lightcurve_df = read_lightcurve(full_lightcurve, **kwargs)
-    previous_lightcurve_df = read_lightcurve(previous_lightcurve, **kwargs)
+    full_lightcurve_df = read_lightcurve(full_lightcurve, start_time=0, **kwargs)
+    previous_lightcurve_df = read_lightcurve(previous_lightcurve, start_time=0, **kwargs)
     start_time = full_lightcurve_df['sample_times'].min()
     end_time = previous_lightcurve_df['sample_times'].max() + step_size ## end time is the interval from the start time we want to check for detections
     new_observations = []
@@ -307,13 +310,12 @@ def observe_lightcurve(full_lightcurve, previous_lightcurve, outdir, step_size=1
         new_observations.append(next_observations)
     new_observations_df = pd.concat(new_observations)
     next_lightcurve_df = pd.concat([previous_lightcurve_df, new_observations_df])
-    
+    if correct_times:
+            tmin = get_trigger_time(previous_lightcurve)
+            next_lightcurve_df.loc[:,'sample_times'] += tmin
     next_lightcurve_dict = generate_lightcurve_dict(next_lightcurve_df)
     next_lightcurve_path = os.path.join(outdir, kwargs.get('lightcurve_label', os.path.basename(full_lightcurve)))
     os.makedirs(outdir, exist_ok=True)
     with open(next_lightcurve_path, 'w') as f:
         json.dump(next_lightcurve_dict, f, indent=4)
     return next_lightcurve_path  
-    
-    
-starting_lightcurve(full_lightcurve='test/lc_Me2017_00000.json',outdir='test_starting',starting_time=2, starting_observations=None, correct_times=True)
