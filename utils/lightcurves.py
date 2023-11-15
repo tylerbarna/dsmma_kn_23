@@ -5,6 +5,7 @@ creates lightcurves from a given injection file using nmma
 import numpy as np
 import os 
 import pandas as pd
+import json 
 
 from astropy.time import Time
 
@@ -190,8 +191,60 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
         return False  # None of the bands meet the criteria
  
 
-# def starting_lightcurve(full_lightcurve, output_dir, starting_sample=3)    
+def starting_lightcurve(full_lightcurve, output_dir, starting_time=2, starting_observations=None, **kwargs):
+        '''
+        Retreives a full lightcurve from a lightcurve file and generates a new file with enough observations to start the multi-arm bandit analysis. This is either the first n observations, where n is starting_observations, or the first observations within a certain number of days from the first observation. I would recommend using starting_observations when using ztf sampling and then use starting_time for even/better sampling. If the starting time does not contain at least 2 points, will print a warning and then default to setting starting_observations to 2 even if it's not provided.
+        
+        Args:
+        - full_lightcurve (str): path to full lightcurve file
+        - output_dir (str): output directory for starting lightcurve file
+        - starting_time (float): time interval from the start of the lightcurve that needs to contain the minimum number of detections (default=2)
+        - starting_observations (int): number of observations to start with (default=None). You only need to provide the starting_time or starting_observations, but starting_observations will supercede starting_time if both are provided.
+        
+        Returns:
+        - starting_lightcurve (str): path to starting lightcurve file
+        
+        TODO:
+        - make it so it checks about non-detections
+        '''
+        full_lightcurve_df = read_lightcurve(full_lightcurve, **kwargs)
+        start_time = full_lightcurve_df['sample_times'].min()
+        filters = [col for col in full_lightcurve_df.columns if col not in ['sample_times'] and '_err' not in col]
+        if starting_time and starting_observations is None:
+            starting_lightcurve_df = full_lightcurve_df[full_lightcurve_df['sample_times'] <= starting_time]
+            if starting_lightcurve_df.shape[0] <= 2:
+                print('WARNING: starting lightcurve does not contain at least 2 points. Defaulting to starting_observations=2')
+                starting_observations = 2
+        if starting_observations is not None:
+            ## get the first n observations, where n is starting_observations for each filter
+            starting_lightcurve = []
+            for filter in filters:
+                filter_df_list = []
+                for row in full_lightcurve_df.iterrows():
+                    if row[1][filter] != np.inf and row[1][filter] != np.nan:
+                        filter_df_list.append(row[1])
+                filter_df = pd.DataFrame(filter_df_list)
+                starting_lightcurve.append(filter_df.iloc[:starting_observations])
+            starting_lightcurve_df = pd.concat(starting_lightcurve)
+        starting_lightcurve_path = os.path.join(output_dir, os.path.basename(full_lightcurve))
+        os.makedirs(output_dir, exist_ok=True)
+        ## construct dictionary to write to json. Each key is the filter, and the value for each key is a list of lists, with the sublists containing three terms: sample_times, filter, and filter_err for each observation
+        starting_lightcurve_dict = {}
+        for filter in filters:
+            filter_df_list = []
+            for row in starting_lightcurve_df.iterrows():
+                if row[1][filter] != np.inf and row[1][filter] != np.nan:
+                    filter_df_list.append(row[1])
+            filter_df = pd.DataFrame(filter_df_list)
+            sample_times = filter_df['sample_times'].tolist()
+            filter_vals = filter_df[filter].tolist()
+            filter_errs = filter_df[f'{filter}_err'].tolist()
+            ## use sample times to itterate the above 3 lists. if they do not have the same length, then there is an issue
+            starting_lightcurve_dict[filter] = [[sample_times[i], filter_vals[i], filter_errs[i]] for i in range(len(sample_times))]
+        with open(starting_lightcurve_path, 'w') as f:
+            json.dump(starting_lightcurve_dict, f, indent=4)
+        return starting_lightcurve_path
 
 
-# def observe_lightcurve(full_lightcurve,previous_lightcurve=None,)
+
     

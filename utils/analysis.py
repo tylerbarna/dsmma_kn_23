@@ -326,7 +326,7 @@ def submit_slurm_job(job_path, delete=False):
     
     submission_cmd = f'sbatch {job_path}'
     subp = subprocess.run(submission_cmd, shell=True, capture_output=True)
-    tims.sleep(0.1)
+    time.sleep(0.1)
     
     if delete:
         os.remove(job_path)
