@@ -169,7 +169,7 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
     if all_bands: ## check if all bands meet requirements
         all_bands_meet_criteria = True ## default to true, then check if any band does not meet criteria
 
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
@@ -179,7 +179,7 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
         return all_bands_meet_criteria
 
     else: ## ensure at least one band meets requirements
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
@@ -189,9 +189,9 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
 
         return False  # None of the bands meet the criteria
  
-    
-# known_bad = 'injections/lc_TrPi2018_00000.json'
-# print(validate_lightcurve(known_bad, min_detections=3, min_time=3.1, all_bands=False))
-# known_good = 'injections/lc_Me2017_00000.json'
-# print(validate_lightcurve(known_good, min_detections=3, min_time=3.1, all_bands=False))
+
+# def starting_lightcurve(full_lightcurve, output_dir, starting_sample=3)    
+
+
+# def observe_lightcurve(full_lightcurve,previous_lightcurve=None,)
     
