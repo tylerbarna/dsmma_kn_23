@@ -20,7 +20,7 @@ class UCB:
     All rewards start at infinity if the arm hasn't been pulled so the 
     algorithm should pull all arms at least once
     '''
-    def choose_arm(self):
+    def choose_obj(self):
 
         if self.t <= (self.n_obj - 1):
             obj = self.t
@@ -41,7 +41,7 @@ class UCB:
 
         self.t += 1
 
-        # return(obj)
+        return(obj)
 
     def update_model(self, reward):
 
