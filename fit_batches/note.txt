@@ -1,0 +1,1 @@
+infill means it's running for the rest of the timesteps that weren't covered in the initial job. This is because, at most, ~4000 jobs can be queued at a time with expanse

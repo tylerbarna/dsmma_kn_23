@@ -91,7 +91,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         xlim="0,21",
         ylim="22,16",
         generation_seed=42,
-        plot=True,
+        plot=False,
         bilby_zero_likelihood_mode=False,
         photometry_augmentation=False,
         photometry_augmentation_seed=0,
@@ -111,8 +111,9 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         
     if slurm:
         print(f'running {label} via slurm')
-        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env)
+        job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
+        time.sleep(0.1)
     else:
         analysis_main(args)
     
@@ -170,13 +171,14 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
                 continue
     return results_paths, bestfit_paths
 
-def check_completion(result_paths, t0, timeout=71.9):
+def check_completion(result_paths, t0, t0_submission, timeout=71.9):
     '''
     checks for truthiness of all json files existing in output directory
     
     args:
     - result_paths (list): list of the expected lightcurve result paths (including relative path)
     - t0 (time object): time of trigger (assign time.time() at start of analysis)
+    - t0_submission (time object): time following submission of all analyses, used for calculating timeout
     - timeout (float): time in hours to wait until returning False even with incomplete analysis
     
     returns:
@@ -193,9 +195,10 @@ def check_completion(result_paths, t0, timeout=71.9):
     current_time = strtime()
     t1 = time.time()
     hours_elapsed = round((t1 - t0) / 3600, 2)
-    estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2)
+    timeout_elapsed = round((t1 - t0_submission) / 3600, 2) > timeout
+    estimated_remaining_time = round((hours_elapsed / completed_analyses_count) * (total_analyses - completed_analyses_count),2) if completed_analyses_count > 0 else 0
     
-    if hours_elapsed > timeout:
+    if timeout_elapsed:
         print(f'[{current_time}] Analysis timed out with {total_analyses - completed_analyses_count} fits left, exiting...')
         return True, completed_analyses
     elif completion_status:
@@ -243,12 +246,16 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
     ## workaround for path length limit in fortran
     outdir_string_length = len(outdir)
     if outdir_string_length > 64: 
-        print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
+        #print(f'Warning: outdir ({outdir}) string length is {outdir_string_length}, which exceeds the 64 character limit for fortran')
         relative_outdir = os.path.join(rootdir,outdir)
         outdir = './'
         lightcurve_path = os.path.join(rootdir, lightcurve_path)
         prior = os.path.join(rootdir, prior)
-        
+    # if not os.path.exists(lightcurve_path):
+    #     lightcurve_path = os.path.join('~/dsmma_kn_23', lightcurve_path)
+    #     if not os.path.exists(lightcurve_path):
+    #         raise ValueError(f'lightcurve_path {lightcurve_path} does not exist')
+    lightcurve_path = os.path.abspath(lightcurve_path)
         
     
     cmd_str = [ 'lightcurve-analysis',
@@ -265,14 +272,14 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
                 '--error-budget', '1',
                 '--nlive', '1024',
                 '--ztf-uncertainties',
-                #'--ztf-sampling',
+                # '--ztf-sampling',
                 '--ztf-ToO', '180',
-                '--outdir', outdir,
-                '--plot', 
+                '--outdir', outdir, 
                 '--bestfit',
                 " --detection-limit \"{\'r\':21.5, \'g\':21.5, \'i\':21.5}\"",
                 "--remove-nondetections",
-                "--verbose",
+                # "--verbose",
+                # '--plot'
             ]
     
     ## create job file
@@ -283,7 +290,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
             f.write('#SBATCH --partition=shared\n')
             f.write('#SBATCH --account=umn131\n')
         f.write('#SBATCH --job-name=' + label + '\n')
-        f.write('#SBATCH --time=23:59:00\n')
+        f.write('#SBATCH --time=01:59:00\n')
         f.write('#SBATCH --nodes=1\n')
         f.write('#SBATCH --ntasks=1\n')
         f.write('#SBATCH --cpus-per-task=2\n')
@@ -319,6 +326,7 @@ def submit_slurm_job(job_path, delete=False):
     
     submission_cmd = f'sbatch {job_path}'
     subp = subprocess.run(submission_cmd, shell=True, capture_output=True)
+    time.sleep(0.1)
     
     if delete:
         os.remove(job_path)
@@ -337,4 +345,3 @@ def get_trigger_time(lightcurve_path):
     lc_keys = list(lightcurve_df.keys())
     trigger_time = lightcurve_df[lc_keys[0]][0][0]
     return trigger_time
-

@@ -12,8 +12,6 @@ import warnings
 
 from injections import get_parameters
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
-
 from lightcurves import read_lightcurve
 from misc import suppress_print
 
@@ -94,7 +92,8 @@ def get_lightcurve_name(lightcurve_json, **kwargs):
     '''
     file_seperator = kwargs.get('file_sep','_') ## seperator between items in filename
     name_idx = kwargs.get('name_idx', 1) ## position of lightcurve name in lightcurve filename, the default is 1 (eg lc_Me2017_00000). This means that the lightcurve model is this idx and the lightcurve label is idx_idx+1m
-    lightcurve_name = os.path.basename(lightcurve_json).split(file_seperator)[name_idx] + '_' + os.path.basename(lightcurve_json).split(file_seperator)[name_idx+1] ## remove .json from the end of the lightcurve name
+    lightcurve_name = os.path.basename(lightcurve_json).split(file_seperator)[name_idx] + '_' + os.path.basename(lightcurve_json).split(file_seperator)[name_idx+1]
+    ## remove .json from the end of the lightcurve name
     lightcurve_name = lightcurve_name.split('.')[0]
     return lightcurve_name
 
@@ -258,21 +257,36 @@ def create_dataframe(lightcurve_paths, best_fit_json_paths, **kwargs):
     return fit_df
 
 
-
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description='Evaluate the results of fitting.')
+    parser.add_argument('--lc-path', metavar='lightcurve_paths', type=str, 
+                            help='paths to the lightcurve files')
+    parser.add_argument('--fit-path', metavar='best_fit_json_paths', type=str, 
+                            help='paths to the best fit json files')
+    parser.add_argument('--output', metavar='output_csv',
+                            help='path to the output csv file')
+    args = parser.parse_args()
+    ## get all the lightcurve and best fit json paths
+    lightcurve_paths = sorted(glob.glob(os.path.join(args.lc_path,'lc*.json')))
+    ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+    best_fit_json_paths = sorted(glob.glob(os.path.join(args.fit_path,'**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
+    
+    #   lightcurve_paths = sorted(glob.glob(os.path.join('./characteristic_injections/','lc*.json')))
+    # ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
+    # best_fit_json_paths = sorted(glob.glob(os.path.join('./model_recovery_timestep/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
             
-# ## get all the lightcurve and best fit json paths
-# lightcurve_paths = sorted(glob.glob(os.path.join('./injections/','lc*.json')))
-# ## get all *bestfit_params.json files from fits_expanse regardless of subdirectory depth
-# best_fit_json_paths = sorted(glob.glob(os.path.join('./fits_expanse/','**/*bestfit_params.json'),recursive=True)) ## note: this will only work on python 3.5+
 
-# fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
-# print(fit_df)
-# fit_df.to_csv('./fit_df.csv')
-
-
-
-
-
+    # paired_files = associate_lightcurves_and_fits(lightcurve_paths, best_fit_json_paths)
+    # # print(paired_files[lightcurve_paths[0]][0][0])
+    # fit_series = create_fit_series(lightcurve_paths[0], paired_files[lightcurve_paths[0]][0][0])
+    # # print(fit_series)
+    # # print(paired_files)
+    ## if output does not end in csv, add it
+    args.output = args.output if args.output.endswith('.csv') else args.output + '.csv'
+    fit_df = create_dataframe(lightcurve_paths, best_fit_json_paths)
+    print(fit_df)
+    fit_df.to_csv(args.output)
 
 
 

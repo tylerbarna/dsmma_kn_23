@@ -1,0 +1,35 @@
+starting model: nugent-hyper with prior: ./priors/nugent-hyper.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00000.json
+starting light curve: 1
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00001.json
+starting light curve: 2
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00002.json
+starting light curve: 3
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00003.json
+starting light curve: 4
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00004.json
+starting light curve: 5
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00005.json
+starting light curve: 6
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_nugent-hyper_00006.json
+starting model: Me2017 with prior: ./priors/Me2017.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_Me2017_00000.json
+starting model: TrPi2018 with prior: ./priors/TrPi2018.prior
+starting light curve: 0
+No injection files provided, will generate injection based on the prior file provided only
+created injection file: ~dsmma_kn_23/injections/toy-model-injections/inj_TrPi2018_00000.json
+all fits submitted (submission took 1698565640.7558582 hours and 0.0 minutes elapsed)
+[2023-11-03_11:53:14] All 0 analyses complete!
+completed all fits in 1698565640.7562914 hours and 0.0 minutes
+All done with analysis!
+All done with evaluation!
