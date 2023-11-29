@@ -140,6 +140,7 @@ for t in tmax_array:
 
     cur_lc_idx = bandit.choose_obj()    # returns index of lightcurve to observe
     
+    
 
     reward = get_reward()       # returns the reward for observing the lc
 
