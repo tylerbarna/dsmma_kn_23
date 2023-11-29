@@ -1,5 +1,5 @@
 ''' 
-functions for implementing the multi-arm bandit within analysis_script.py
+functions for implementing the multi-arm bandit within mab_analysis_script.py
 '''
 
 import json
