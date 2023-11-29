@@ -131,7 +131,7 @@ Multi-arm bandit steps:
 '''
 from mab import UCB
 from mab_utils import get_reward, create_mask, mask_lightcurve
-
+from lightcurve_obj import LightCurve
 
 
 bandit = UCB(len(lightcurve_paths))     # is this the number of lc we have?
@@ -140,8 +140,16 @@ for t in tmax_array:
 
     cur_lc_idx = bandit.choose_obj()    # returns index of lightcurve to observe
     
-    
+    cur_lc = LightCurve(lightcurve_paths[cur_lc_idx], models, priors)
 
+    # calculate the reward
+
+    # get all the model's bayes factors
+    idx_results_paths, idx_bestfit_paths = cur_lc.compute_models(outdir)
+
+
+
+    # compute the reward
     reward = get_reward()       # returns the reward for observing the lc
 
 
