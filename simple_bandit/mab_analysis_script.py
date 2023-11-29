@@ -134,36 +134,46 @@ from mab_utils import get_reward, create_mask, mask_lightcurve
 from lightcurve_obj import LightCurve
 
 
+# instantiate bandit
 bandit = UCB(len(lightcurve_paths))     # is this the number of lc we have?
 
-for t in tmax_array:
+# create lightcurve objects 
+lightcurve_objects = []
+for lightcurve_path in lightcurve_paths:
+
+    new_lc = LightCurve(lightcurve_path, models, priors)
+
+    lightcurve_objects.append(new_lc)
+
+
+idx = 0
+for t in tmax_array:    # these times are not 0, 1, 2, 3, etc.?
+    idx += 1
 
     cur_lc_idx = bandit.choose_obj()    # returns index of lightcurve to observe
     
-    cur_lc = LightCurve(lightcurve_paths[cur_lc_idx], models, priors)
+    cur_lc = lightcurve_objects[cur_lc_idx]     # grab lightcurve object
+
+    masked_lc = cur_lc.mask(idx)     # update mask of this object and return masked lightcurve
 
     # calculate the reward
+    # 1. get all the model's bayes factors
 
-    # get all the model's bayes factors
-    idx_results_paths, idx_bestfit_paths = cur_lc.compute_models(outdir)
-
-
-
-    # compute the reward
+    # 2. compute the reward
     reward = get_reward()       # returns the reward for observing the lc
 
 
     bandit.update_model(reward)     # updates lc's avg reward with new reward
 
 
-for model in models:
-    model_prior = os.path.join(priors,f'{model}.prior')
-    for lightcurve_path in lightcurve_paths:
-        # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
-        # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
-        results_paths += idx_results_paths
-        bestfit_paths += idx_bestfit_paths
+# for model in models:
+#     model_prior = os.path.join(priors,f'{model}.prior')
+#     for lightcurve_path in lightcurve_paths:
+#         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
+#         # print(f'running analysis on {lightcurve_label} with {model} model')
+#         idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
+#         results_paths += idx_results_paths
+#         bestfit_paths += idx_bestfit_paths
 
 submission_time = time.time() ## all submissions made
 print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
