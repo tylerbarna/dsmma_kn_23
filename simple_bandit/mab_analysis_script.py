@@ -130,7 +130,7 @@ Multi-arm bandit steps:
 - update each lc's rewards
 '''
 from mab import UCB
-from mab_utils import get_reward, create_mask, mask_lightcurve
+from mab_utils import get_reward
 from lightcurve_obj import LightCurve
 
 
@@ -154,10 +154,14 @@ for t in tmax_array:    # these times are not 0, 1, 2, 3, etc.?
     
     cur_lc = lightcurve_objects[cur_lc_idx]     # grab lightcurve object
 
-    masked_lc = cur_lc.mask(idx)     # update mask of this object and return masked lightcurve
+    masked_lc = cur_lc.get_masked_lc(idx)     # update mask of this object and return masked lightcurve
 
     # calculate the reward
     # 1. get all the model's bayes factors
+    # CALL LIGHTCURVE_ANALYSIS IN UTILS
+    # have a while loop that checks for best fit path for all of them os.path(exists) 
+    # # (make sure they all exist before you try to compute the reward)
+    # # make sure Tyler has switched over to the NMMA residual 
 
     # 2. compute the reward
     reward = get_reward()       # returns the reward for observing the lc
