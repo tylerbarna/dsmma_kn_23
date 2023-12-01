@@ -123,6 +123,10 @@ bestfit_paths = []
 start_time = time.time() ## start of submission process
 
 
+###################################################################################################
+###################################################################################################
+# Run Multi-Arm Bandit 
+###################################################################################################
 '''
 Multi-arm bandit steps:
 - initiate multi-arm bandit class
@@ -130,46 +134,60 @@ Multi-arm bandit steps:
 - update each lc's rewards
 '''
 from simple_bandit.MultiArmBandit import UCB
-from simple_bandit.BanditUtils import get_reward
 from simple_bandit.LightCurve import LightCurve
 
+from simple_bandit.BanditUtils import get_intervals
+from simple_bandit.Rewards import stochastic_reward
 
-# instantiate bandit
-bandit = UCB(len(lightcurve_paths))     # is this the number of lc we have?
+# calculate the intervals we want our bandit to use
+intervals = get_intervals(init_time = 0.0, time_step = 2.0)  # CHECK where get info for this?
+n_intervals = len(get_intervals)
 
-# create lightcurve objects 
+
+# create lightcurve objects for all candidate lightcurves
 lightcurve_objects = []
 for lightcurve_path in lightcurve_paths:
 
-    new_lc = LightCurve(lightcurve_path, models, priors)
+    new_lc = LightCurve(lightcurve_path, n_intervals)
 
     lightcurve_objects.append(new_lc)
 
+# instantiate bandit
+n_objects = len(lightcurve_paths)   # is this the number of lc we have?
 
-obs_idx = 0
-for t in tmax_array:    # times correspond to the actual time the observations were taken
-    obs_idx += 1
+Bandit = UCB(n_objects)
 
-    cur_lc_idx = bandit.choose_obj()    # returns index of lightcurve to observe
-    
-    cur_lc = lightcurve_objects[cur_lc_idx]     # grab lightcurve object
+# run bandit
 
-    masked_lc = cur_lc.get_masked_lc(obs_idx, t)     # update mask of this object and return masked lightcurve file name
+chosen_object = None    # CHECK this works, this object is the one that the bandit will tell NMMA to choose
 
-    # calculate the reward
-    # 1. get all the model's bayes factors
-    # CALL LIGHTCURVE_ANALYSIS IN UTILS
-    # have a while loop that checks for best fit path for all of them os.path(exists) 
-    # # (make sure they all exist before you try to compute the reward)
-    # # make sure Tyler has switched over to the NMMA residual 
+for obs_int in range(n_intervals):
 
-    # 2. compute the reward
-    reward = get_reward()       # returns the reward for observing the lc
+    int_start_t = intervals[obs_int][0]     # CHECK
+    int_end_t = intervals[obs_int][1]       # CHECK
 
+    # initial run, have to observe and generate reward for all lc objects
+    if obs_int == 0:
+        
+        for obj_idx in range(n_objects):    # CHECK
+            lc = lightcurve_objects[obj_idx]
+            model_fits = lc.observe_lightcurve(obs_int, int_start_t, int_end_t)     # get initial model fits using initial observations
+            reward = stochastic_reward(model_fits)      # calculate the reward for an object
+            Bandit.initial_reward(obj_idx, reward)      # give this initial reward to the Bandit
+        
+        chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
+        chosen_object = lightcurve_objects[chosen_object_idx]
 
-    bandit.update_model(reward)     # updates lc's avg reward with new reward
+    else:
+        
+        model_fits = chosen_object.observe_lightcurve(obs_int, int_start_t, int_end_t)  # observe the current chosen_object and get its model fits
+        reward = stochastic_reward(model_fits)
+        Bandit.update_model(reward)
+        
+        chosen_object_idx = Bandit.choose_obj()
+        chosen_object = lightcurve_objects[chosen_object_idx]
 
-
+############## do this in Models.py ########################
 # for model in models:
 #     model_prior = os.path.join(priors,f'{model}.prior')
 #     for lightcurve_path in lightcurve_paths:

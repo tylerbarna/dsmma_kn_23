@@ -30,7 +30,7 @@ Author: Ana Uribe (uribe055@umn.edu)
 ################################    imports    ###################################################
 
 import pandas as pd
-from Simple_Bandit import Multi_Arm_Bandit
+from simple_bandit.old.Simple_Bandit import Multi_Arm_Bandit
 
 
 

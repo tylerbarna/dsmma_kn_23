@@ -10,8 +10,6 @@ import os
 # Class: Models - contains the models and priors that will be considered,
 #               - runs the models and returns a dictionary with the statistics for each model
 ###################################################################################################
-
-
 class Models:
 
     def __init__(self, models, priors):

@@ -21,6 +21,10 @@ class UCB:
         self.cur_obj = None
         self.t = 0
 
+    def initial_reward(self, obj_idx, reward):
+        pass
+        # put the initial rewards here for each object's reward, so just add to the obj_rewards
+
     ''' 
     Play each arm once, then in round t > n, 
     select arm with highest avg reward plus some confidence interval
@@ -30,7 +34,7 @@ class UCB:
     '''
     def choose_obj(self):
 
-        if self.t <= (self.n_obj - 1):
+        if self.t <= (self.n_obj - 1):  # can delete this if statement since we always have some initial observations
             obj = self.t
         else:
             obj_ucbs = np.zeros(self.n_obj)
