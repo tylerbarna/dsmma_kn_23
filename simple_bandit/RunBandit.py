@@ -129,9 +129,9 @@ Multi-arm bandit steps:
 - at each time point in tmax_array, have the multi-arm bandit decide what lc to observe
 - update each lc's rewards
 '''
-from mab import UCB
-from mab_utils import get_reward
-from lightcurve_obj import LightCurve
+from simple_bandit.MultiArmBandit import UCB
+from simple_bandit.BanditUtils import get_reward
+from simple_bandit.LightCurve import LightCurve
 
 
 # instantiate bandit
@@ -146,15 +146,15 @@ for lightcurve_path in lightcurve_paths:
     lightcurve_objects.append(new_lc)
 
 
-idx = 0
-for t in tmax_array:    # these times are not 0, 1, 2, 3, etc.?
-    idx += 1
+obs_idx = 0
+for t in tmax_array:    # times correspond to the actual time the observations were taken
+    obs_idx += 1
 
     cur_lc_idx = bandit.choose_obj()    # returns index of lightcurve to observe
     
     cur_lc = lightcurve_objects[cur_lc_idx]     # grab lightcurve object
 
-    masked_lc = cur_lc.get_masked_lc(idx)     # update mask of this object and return masked lightcurve
+    masked_lc = cur_lc.get_masked_lc(obs_idx, t)     # update mask of this object and return masked lightcurve file name
 
     # calculate the reward
     # 1. get all the model's bayes factors

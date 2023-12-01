@@ -4,30 +4,35 @@ import json
 
 class LightCurve:
 
-    def __init__(self, path, models, priors, n_obs):
-        
+    def __init__(self, path, n_obs):
+
         self.path = path
 
         lc_file = open(path)
         self.lc = json.load(lc_file)
         lc_file.close()
 
-        self.init_time = 0 # first element of first element of json file (Tyler: analysis - get_trigger_time function)
+        self.label = os.path.basename(self.path).split('.')[0]   # CHECK
+        
+        self.intervals_obs = np.zeros(n_obs) 
 
-        self.label = os.path.basename(path).split('.')[0]   #check
-        self.models = models
-        self.priors = priors
-        self.mask = np.zeros(n_obs) 
+        self.fit_stats = {} # CHECK : empty dictionary
 
-    def get_priors(self, model):
+        ''' Simulations case:'''
+        self.observed_lc = {'ztfg: []'} # CHECK : empty dictionary to add observations
 
-        model_prior = os.path.join(self.priors, f'{model}.prior')
+        ''' Online case: observed lightcurve is just the lightcurve given'''
+        # self.observed_lc = self.lc
 
-    def compute_models(self, outdir):
+    # def get_priors(self, model):
 
-        for model in self.models:
+    #     model_prior = os.path.join(self.priors, f'{model}.prior')
 
-            model_prior = self.get_priors(model)
+    # def compute_models(self, outdir):
+
+    #     for model in self.models:
+
+    #         model_prior = self.get_priors(model)
 
             # compute lightcurve models for each prior
 
@@ -64,12 +69,17 @@ class LightCurve:
 
         return masked_file_name
 
-    def get_masked_lc(self, idx):   # what do we need to return here?
+    def calc_time_from_obs_idx(self, t):
+        '''
+        Calculate the 
+        '''
+
+    def get_masked_lc(self, idx, time):   # what do we need to return here?
         
-        # update mask at new timepoint
+        # update mask at new observation index
         self.mask[idx] = 1
 
-        # mask lightcurve and return ____
+        # mask lightcurve and return the file name of new masked lightcurve
         return self.mask_lightcurve()
         
 
