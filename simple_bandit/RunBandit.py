@@ -169,6 +169,8 @@ for obs_int in range(n_intervals):
     # initial run, have to observe and generate reward for all lc objects
     if obs_int == 0:
         
+        # while loop that checks if they're all done 
+
         for obj_idx in range(n_objects):    # CHECK
             lc = lightcurve_objects[obj_idx]
             model_fits = lc.observe_lightcurve(obs_int, int_start_t, int_end_t)     # get initial model fits using initial observations

@@ -29,6 +29,10 @@ class LightCurve:
 
         self.fit_stats = {} # CHECK : empty dictionary
 
+        ###########################################################
+        ### Add the model fits for the initial observations here
+        ### Simulation var == TRUE
+
         ''' Simulations case:'''
         self.observed_lc = {'ztfg: []'} # CHECK : empty dictionary to add observations
 

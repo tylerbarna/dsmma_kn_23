@@ -28,5 +28,6 @@ class Models:
         # run lightcurve analysis for all models for the given lightcurve lc
         # generate a dictionary for the info we want (BF, residuals, likelihood, etc.)
         # return the dictionary 
+        # while loop to wait until you get all the model fits for all the 
 
         
