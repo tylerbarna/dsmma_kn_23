@@ -54,7 +54,7 @@ class LightCurve:
         # get model outputs and save in fit_stats dict with idx as key
         run_models(self.observed_lc)
 
-    def return_model_outputs(self, idx):
+    def model_fits(self, idx):
 
         return self.fit_stats[idx]
 
@@ -68,7 +68,7 @@ class LightCurve:
         self.get_new_obs(start_int, end_int)    # Simulations case
         self.get_model_outputs(idx)
         
-        return self.fit_stats[idx]
+        return self.model_fits()
 
 
 ###################################################################################################
