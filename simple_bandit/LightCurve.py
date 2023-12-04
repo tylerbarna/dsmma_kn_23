@@ -15,7 +15,7 @@ from Models import run_models
 ###################################################################################################
 class LightCurve:
 
-    def __init__(self, path, n_intervals):
+    def __init__(self, path, n_intervals, sim):
 
         self.path = path
 
@@ -27,17 +27,14 @@ class LightCurve:
         
         self.intervals_obs = np.zeros(n_intervals) 
 
+        self.s = sim
+
         self.fit_stats = {} # CHECK : empty dictionary
 
-        ###########################################################
-        ### Add the model fits for the initial observations here
-        ### Simulation var == TRUE
-
-        ''' Simulations case:'''
-        self.observed_lc = {'ztfg: []'} # CHECK : empty dictionary to add observations
-
-        ''' Online case: observed lightcurve is just the lightcurve given'''
-        # self.observed_lc = self.lc
+        if self.s == True:
+            self.observed_lc = {'ztfg: []'} # CHECK : empty dictionary to add observations works
+        else:
+            self.observed_lc = self.lc
 
     def update_intervals_obs(self, idx):
         
@@ -45,30 +42,42 @@ class LightCurve:
         self.intervals_obs[idx] = 1
 
     def get_new_obs(self, start_int, end_int):
-        pass
-        ''' Simulations case:'''
-        # given start and end time of interval observed, get observations to add to observed_lc from lc
+
+        if self.s == True:
+            pass
+            # given start and end time of interval observed, get observations to add to observed_lc from lc
+        else:
+            # re-load in the lc file from path to account for new observations
+            new_lc_file = open(self.path)   ### assuming new observations will be added to the same file path
+            new_lc = json.load(new_lc_file)
+            new_lc_file.close()
+
+            self.observed_lc = new_lc
 
     def get_model_outputs(self, idx):
-        pass
+
         # get model outputs and save in fit_stats dict with idx as key
-        run_models(self.observed_lc)
+        out = run_models(self.observed_lc)
+
+        idx_str = str(idx)
+
+        self.fit_stats[idx_str] = out
 
     def model_fits(self, idx):
 
         return self.fit_stats[idx]
 
     def observe_lightcurve(self, idx, start_int, end_int):
-        pass
-        # given start and end time of interval observed, update intervals_obs for this object, 
-        # get new observations and add to observed_lc
-        # and get model outputs (call models script)
 
         self.update_intervals_obs(idx)
-        self.get_new_obs(start_int, end_int)    # Simulations case
-        self.get_model_outputs(idx)
+
+        if self.s == False:
+            pass ### wait until time is end_int, so we are sure NMMA has gotten all the obs from one time
+        self.get_new_obs(start_int, end_int)
+
+        self.get_model_outputs(idx) ## maybe add print statement like: I am about to start running models
         
-        return self.model_fits()
+        return self.model_fits(idx)
 
 
 ###################################################################################################

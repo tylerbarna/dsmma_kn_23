@@ -139,50 +139,60 @@ from simple_bandit.LightCurve import LightCurve
 from simple_bandit.BanditUtils import get_intervals
 from simple_bandit.Rewards import stochastic_reward
 
+# Boolean - declare True if simulation, False if online data
+sim = True
+
+
 # calculate the intervals we want our bandit to use
 intervals = get_intervals(init_time = 0.0, time_step = 2.0)  # CHECK where get info for this?
-n_intervals = len(get_intervals)
+n_intervals = len(intervals) # CHECK
 
 
+### ADD the initial run of the lightcurves here...like the while-loop check??
 # create lightcurve objects for all candidate lightcurves
 lightcurve_objects = []
 for lightcurve_path in lightcurve_paths:
 
-    new_lc = LightCurve(lightcurve_path, n_intervals)
+    new_lc = LightCurve(lightcurve_path, n_intervals, sim)
 
     lightcurve_objects.append(new_lc)
 
 # instantiate bandit
-n_objects = len(lightcurve_paths)   # is this the number of lc we have?
-
+n_objects = len(lightcurve_objects)   # CHECK
 Bandit = UCB(n_objects)
 
-# run bandit
 
-chosen_object = None    # CHECK this works, this object is the one that the bandit will tell NMMA to choose
+# Initial chosen object is the object with thei highest reward
+chosen_object_idx = Bandit.choose_obj()    # this object is the one that the bandit will tell NMMA to choose
+chosen_object = lightcurve_objects[chosen_object_idx]
 
-for obs_int in range(n_intervals):
+# Run bandit
+
+for obs_int in range(n_intervals):  ### For online data, this would have to have a time check
 
     int_start_t = intervals[obs_int][0]     # CHECK
     int_end_t = intervals[obs_int][1]       # CHECK
 
-    # initial run, have to observe and generate reward for all lc objects
+    # DONT NEED THIS INITIAL CASE ANYMORE
     if obs_int == 0:
-        
-        # while loop that checks if they're all done 
+        # MOVE to creation of ligthcurve objects: have to observe and generate reward for all lc objects
+        # while loop that checks if they're all done --- do we need this here???
 
         for obj_idx in range(n_objects):    # CHECK
             lc = lightcurve_objects[obj_idx]
             model_fits = lc.observe_lightcurve(obs_int, int_start_t, int_end_t)     # get initial model fits using initial observations
             reward = stochastic_reward(model_fits)      # calculate the reward for an object
             Bandit.initial_reward(obj_idx, reward)      # give this initial reward to the Bandit
-        
+        ## end MOVE
+
+        # DONT NEED THIS ANYMORE, CHOSE FIRST OBJECT OUTSIDE OF FOR LOOP
         chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
         chosen_object = lightcurve_objects[chosen_object_idx]
 
     else:
-        
+
         model_fits = chosen_object.observe_lightcurve(obs_int, int_start_t, int_end_t)  # observe the current chosen_object and get its model fits
+        
         reward = stochastic_reward(model_fits)
         Bandit.update_model(reward)
         
