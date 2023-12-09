@@ -6,10 +6,10 @@ import numpy as np
 
 ###################################################################################################
 ###################################################################################################
-# Rewards - has the reward functions
+# Rewards - contains the reward functions
 ###################################################################################################
 
-def stochastic_reward(dat):
+def stochastic_reward(dat, model_of_interest):
     pass
     # given dat dict with BF/residual/likelihood for a lightcurve, calculate the reward:
     # R = L_k - max(L_j) (where L_k is the kilonova model likelihood, L_j is the greatest L of 
