@@ -32,8 +32,8 @@ class Models:
         model_fits_results = {}
 
         for model, prior in zip(self.model_names, self.priors):
-
-            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= None, label= )
+            label = 'ADD'
+            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= None, label= label)
 
             bestfit_file = open(bestfit_path)
             best_fit_json = json.load(bestfit_file)
@@ -48,7 +48,10 @@ class Models:
         # return the dictionary 
         # while loop to wait until you get all the model fits for all the 
 
-        # dict: {self.model_names[i] : {"log_bayes"}
-        #       }
+        # dict: {modelA : {"log_bayes": 0, 
+        #                 "likelihood": 0}
+        #        modelB : {"log_bayes": 0, 
+        #                 "likelihood": 0}
+        #        }
 
         

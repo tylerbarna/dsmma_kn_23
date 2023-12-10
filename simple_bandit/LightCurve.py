@@ -23,6 +23,9 @@ class LightCurve:
                 : (For ONLINE data) file that contains observations of lightcurve, and is the file where new obs are stored
     - n_intervals (int): number of intervals the bandit will run
     -  sim (Boolean): True if this is simulated data, false otherwise
+
+    Notes:
+    - filter is currently hard-coded as 'ztfg'
     '''
     def __init__(self, path, n_intervals, sim):
 
@@ -54,35 +57,25 @@ class LightCurve:
         '''update the array that keeps a 1 if the lc was observed at that interval, 0 else'''
         self.intervals_obs[idx] = 1
 
-    def update_file(self, start_int, end_int):
+    def update_lc(self, start_int, end_int):
         '''for simulated data: adds new observations to observed_lc_path that happened within (start_int, end_int)'''
-        lc_arr = np.asarray(lc_og['ztfg'])
-        time = lc_arr[:,0]
-        print(time)
+        
+        # get new obs from true lc
+        lc_arr = np.asarray(self.true_lc['ztfg'])
+        time_cutoff = lc_arr[(lc_arr[:,0]  >= start_int) & (lc_arr[:,0] <= end_int)]
+        time_cutoff_list = np.ndarray.tolist(time_cutoff)
 
-        time_cutoff = lc_arr[(lc_arr[:,0]  > 44263) & (lc_arr[:,0] < 44264)]
-        print(time_cutoff)
+        # add new obs to observed_lc
+        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list, axis = 0))
 
-    def get_new_obs(self, start_int, end_int):
-
-        if self.s == True:
-            pass
-            # given start and end time of interval observed, get observations to add to observed_lc from lc
-            masked_file = open(self.observed_lc_path, "w")
-            json.dump(self.observed_lc, masked_file, indent = 6)
-            masked_file.close()
-        else:
-            # re-load in the lc file from path to account for new observations
-            new_lc_file = open(self.path)   ### assuming new observations will be added to the same file path
-            new_lc = json.load(new_lc_file)
-            new_lc_file.close()
-
-            self.observed_lc = new_lc
+        # rewrite json file with new observed_lc
+        f = open(self.observed_lc_path, "w")
+        json.dump(self.observed_lc, f, indent = 6)
+        f.close()
 
     def get_model_outputs(self, idx):
-
-        # get model outputs and save in fit_stats dict with idx as key
-        out = run_models(self.observed_lc)
+        '''call run_models and get model outputs (likelihood, bayes factor) and save in fit_stats dict with idx as key'''
+        out = run_models(self.observed_lc_path)
 
         idx_str = str(idx)
 
@@ -93,12 +86,11 @@ class LightCurve:
         return self.fit_stats[idx]
 
     def observe_lightcurve(self, idx, start_int, end_int):
-
+        ''' after lc object has gotten new observations (for simulated data: add obs within given time), run model fits, and save output to fit_stats dict'''
         self.update_intervals_obs(idx)
 
-        if self.s == False:
-            pass ### wait until time is end_int, so we are sure NMMA has gotten all the obs from one time
-        self.get_new_obs(start_int, end_int)
+        if self.s == True:
+            self.update_lc(start_int, end_int)
 
         self.get_model_outputs(idx) ## maybe add print statement like: I am about to start running models
         
@@ -108,6 +100,23 @@ class LightCurve:
 ###################################################################################################
 # graveyard
 ###################################################################################################
+
+    # def get_new_obs(self, start_int, end_int):
+
+    #     if self.s == True:
+    #         pass
+    #         # given start and end time of interval observed, get observations to add to observed_lc from lc
+    #         masked_file = open(self.observed_lc_path, "w")
+    #         json.dump(self.observed_lc, masked_file, indent = 6)
+    #         masked_file.close()
+    #     else:
+    #         # re-load in the lc file from path to account for new observations
+    #         new_lc_file = open(self.path)   ### assuming new observations will be added to the same file path
+    #         new_lc = json.load(new_lc_file)
+    #         new_lc_file.close()
+
+    #         self.observed_lc = new_lc
+
     # def mask_lightcurve(self):
     #     '''
     #     Masks the true lightcurve so only the observed time-points have values.
