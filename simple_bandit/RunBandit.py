@@ -122,12 +122,7 @@ results_paths = []
 bestfit_paths = []
 start_time = time.time() ## start of submission process
 
-
 ###################################################################################################
-###################################################################################################
-# Run Multi-Arm Bandit 
-###################################################################################################
-
 ###################################################################################################
 # imports
 ###################################################################################################
@@ -138,22 +133,37 @@ from simple_bandit.BanditUtils import get_intervals
 from simple_bandit.Rewards import stochastic_reward
 ###################################################################################################
 
+###################################################################################################
+###################################################################################################
+# Run Multi-Arm Bandit:
+# - 1. declare variables
+# - 2. calculate the intervals we want our bandit to use
+# - 3. instantiate bandit object 
+# - 4. create lightcurve objects for all candidate lightcurves
+# - 5. run bandit
+###################################################################################################
 
-# Boolean - declare True if simulation, False if online data
+'''1. Declare variables'''
+# (Boolean) - declare True if simulation, False if online data
 sim = True
 
+# (str) - name of object of interest (the type of model we want the bandit to observe)
+model_of_interest = 'Me2017'
 
-# calculate the intervals we want our bandit to use
+# (str) - name of statistic you want to use to compute reward (CURRENTLY just: 'likelihood' or 'log_bayes')
+stat_to_use = 'likelihood'
+
+'''2. calculate the intervals we want our bandit to use'''
 intervals = get_intervals(init_time = 0.0, time_step = 2.0)  # CHECK where get info for this?
 n_intervals = len(intervals) # CHECK
 
-# instantiate bandit
+'''3. instantiate bandit object'''
 n_objects = len(lightcurve_paths)   # CHECK
 Bandit = UCB(n_objects)
 
 ### CHECK: ok that while loop only in run_models (called by observe_lightcurve)
 
-# create lightcurve objects for all candidate lightcurves
+'''4. create lightcurve objects for all candidate lightcurves'''
 # TODO: make a function and add to BanditUtils?
 lightcurve_objects = []
 lc_idx = 0
@@ -174,8 +184,7 @@ for lightcurve_path in lightcurve_paths:
     lc_idx += 1
 
 
-# Run bandit
-
+'''5. Run bandit'''
 for obs_int in range(n_intervals):  ### For online data, this would have to have a time check
 
     int_start_t = intervals[obs_int][0]     # CHECK
@@ -187,7 +196,7 @@ for obs_int in range(n_intervals):  ### For online data, this would have to have
 
     # observe lc and get reward
     model_fits = chosen_object.observe_lightcurve(obs_int + 1, int_start_t, int_end_t)  # add one to idx because initial obs are in 0-th place
-    reward = stochastic_reward(model_fits)
+    reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
     
     # update bandit with new reward
     Bandit.update_model(reward)

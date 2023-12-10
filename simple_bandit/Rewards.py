@@ -15,8 +15,8 @@ def stochastic_reward(dat, model_of_interest, stat):
     (L_k be the stat of the model of interest, L_j the greatest stat out of all the stat except the model of interest)
 
     Args:
-    -dat(dict): dictionary with statistics for each model
-    example dict: {modelA : {"log_bayes": float, 
+    - dat(dict): dictionary with statistics for each model
+    - example dict: {modelA : {"log_bayes": float, 
                              "likelihood": float},
                    modelB : {"log_bayes": float, 
                               "likelihood": float}
