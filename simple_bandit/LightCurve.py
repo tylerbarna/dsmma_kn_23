@@ -31,7 +31,7 @@ class LightCurve:
 
         self.path = path
         self.label = os.path.basename(self.path).split('.')[0]   # CHECK
-
+        self.outdir = os.path.dirname(self.path)
         self.intervals_obs = np.zeros(n_intervals)
         self.s = sim
 
@@ -45,7 +45,7 @@ class LightCurve:
             self.observed_lc = {'ztfg' : None} # CHECK : empty dictionary to add observations works
 
             # create file path name
-            self.observed_lc_path = os.path.join(os.path.dirname(self.path), 'observed_lc_'+self.label+'.json')
+            self.observed_lc_path = os.path.join(self.outdir, 'observed_lc_'+self.label+'.json')
         
         else:
             # just need path of lc object observations
@@ -75,7 +75,7 @@ class LightCurve:
 
     def get_model_outputs(self, idx):
         '''call run_models and get model outputs (likelihood, bayes factor) and save in fit_stats dict with idx as key'''
-        out = run_models(self.observed_lc_path)
+        out = run_models(self.observed_lc_path, self.outdir)
 
         idx_str = str(idx)
 
