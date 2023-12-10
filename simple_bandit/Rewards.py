@@ -6,20 +6,34 @@ import numpy as np
 
 ###################################################################################################
 ###################################################################################################
-# Rewards - contains the reward functions
+# contains reward functions
 ###################################################################################################
 
-def stochastic_reward(dat, model_of_interest):
-    pass
-    # given dat dict with BF/residual/likelihood for a lightcurve, calculate the reward:
-    # R = L_k - max(L_j) (where L_k is the kilonova model likelihood, L_j is the greatest L of 
-    # a model that is not the kilonova model)
-    # assume the kilonova model is always the first one in the list
+def stochastic_reward(dat, model_of_interest, stat):
+    '''
+    Calculates the reward R = L_k - L_j 
+    (L_k be the stat of the model of interest, L_j the greatest stat out of all the stat except the model of interest)
 
-    k_model_stat = dat['bf'][0]     # CHECK you are using the bayes factor, make sure you make dict key as expected
-    
-    other_models_stats = dat['bf'][1:]
+    Args:
+    -dat(dict): dictionary with statistics for each model
+    example dict: {modelA : {"log_bayes": float, 
+                             "likelihood": float},
+                   modelB : {"log_bayes": float, 
+                              "likelihood": float}
+                  }
+    - model_of_interest (str)
+    - stat (str): which statistic to use: 'log_bayes' or 'likelihood'   # TODO: make sure you can only choose an available stat
+    '''
+    all_stats = []
+    model_of_interst_stat = None
 
-    R = k_model_stat - max(other_models_stats)
+    for key in dat:
+
+        if key == model_of_interest:
+            model_of_interst_stat = dat[key][stat]
+        else:
+            all_stats.append(dat[key][stat])
+
+    R = model_of_interst_stat - max(all_stats)
 
     return R
