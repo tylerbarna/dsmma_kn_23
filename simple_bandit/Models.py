@@ -12,7 +12,7 @@ from utils.analysis import lightcurve_analysis
 #               - runs the models and returns a dictionary with the statistics for each model
 #               - example dict: {
 #                                   modelA : {"log_bayes": float, 
-#                                             "likelihood": float}
+#                                             "likelihood": float},
 #                                   modelB : {"log_bayes": float, 
 #                                             "likelihood": float}
 #                               }
@@ -43,7 +43,7 @@ class Models:
         model_fits_results = {}
 
         # TODO: while loop to wait until you get all the model fits for all the 
-        
+
         for model, prior in zip(self.model_names, self.priors):
             
             # code edited from analysis.py function: timestep_lightcurve_analysis
