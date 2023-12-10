@@ -127,17 +127,17 @@ start_time = time.time() ## start of submission process
 ###################################################################################################
 # Run Multi-Arm Bandit 
 ###################################################################################################
-'''
-Multi-arm bandit steps:
-- initiate multi-arm bandit class
-- at each time point in tmax_array, have the multi-arm bandit decide what lc to observe
-- update each lc's rewards
-'''
+
+###################################################################################################
+# imports
+###################################################################################################
 from simple_bandit.MultiArmBandit import UCB
 from simple_bandit.LightCurve import LightCurve
 
 from simple_bandit.BanditUtils import get_intervals
 from simple_bandit.Rewards import stochastic_reward
+###################################################################################################
+
 
 # Boolean - declare True if simulation, False if online data
 sim = True
@@ -147,24 +147,32 @@ sim = True
 intervals = get_intervals(init_time = 0.0, time_step = 2.0)  # CHECK where get info for this?
 n_intervals = len(intervals) # CHECK
 
-
-### ADD the initial run of the lightcurves here...like the while-loop check??
-# create lightcurve objects for all candidate lightcurves
-lightcurve_objects = []
-for lightcurve_path in lightcurve_paths:
-
-    new_lc = LightCurve(lightcurve_path, n_intervals, sim)
-
-    lightcurve_objects.append(new_lc)
-
 # instantiate bandit
-n_objects = len(lightcurve_objects)   # CHECK
+n_objects = len(lightcurve_paths)   # CHECK
 Bandit = UCB(n_objects)
 
+### CHECK: ok that while loop only in run_models (called by observe_lightcurve)
 
-# Initial chosen object is the object with thei highest reward
-chosen_object_idx = Bandit.choose_obj()    # this object is the one that the bandit will tell NMMA to choose
-chosen_object = lightcurve_objects[chosen_object_idx]
+# create lightcurve objects for all candidate lightcurves
+# TODO: make a function and add to BanditUtils?
+lightcurve_objects = []
+lc_idx = 0
+
+for lightcurve_path in lightcurve_paths:
+
+    # initialize LC object
+    new_lc = LightCurve(lightcurve_path, n_intervals, sim)
+
+    # get initial obs and corresponding reward
+    model_fits = new_lc.observe_lightcurve(0)
+    reward = stochastic_reward(model_fits)
+
+    # add initial reward to bandit
+    Bandit.initial_reward(lc_idx, reward)
+
+    lightcurve_objects.append(new_lc)
+    lc_idx += 1
+
 
 # Run bandit
 
@@ -173,41 +181,17 @@ for obs_int in range(n_intervals):  ### For online data, this would have to have
     int_start_t = intervals[obs_int][0]     # CHECK
     int_end_t = intervals[obs_int][1]       # CHECK
 
-    # DONT NEED THIS INITIAL CASE ANYMORE
-    if obs_int == 0:
-        # MOVE to creation of ligthcurve objects: have to observe and generate reward for all lc objects
-        # while loop that checks if they're all done --- do we need this here???
+    # choose lc to observe
+    chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
+    chosen_object = lightcurve_objects[chosen_object_idx]
 
-        for obj_idx in range(n_objects):    # CHECK
-            lc = lightcurve_objects[obj_idx]
-            model_fits = lc.observe_lightcurve(obs_int, int_start_t, int_end_t)     # get initial model fits using initial observations
-            reward = stochastic_reward(model_fits)      # calculate the reward for an object
-            Bandit.initial_reward(obj_idx, reward)      # give this initial reward to the Bandit
-        ## end MOVE
+    # observe lc and get reward
+    model_fits = chosen_object.observe_lightcurve(obs_int + 1, int_start_t, int_end_t)  # add one to idx because initial obs are in 0-th place
+    reward = stochastic_reward(model_fits)
+    
+    # update bandit with new reward
+    Bandit.update_model(reward)
 
-        # DONT NEED THIS ANYMORE, CHOSE FIRST OBJECT OUTSIDE OF FOR LOOP
-        chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
-        chosen_object = lightcurve_objects[chosen_object_idx]
-
-    else:
-
-        model_fits = chosen_object.observe_lightcurve(obs_int, int_start_t, int_end_t)  # observe the current chosen_object and get its model fits
-        
-        reward = stochastic_reward(model_fits)
-        Bandit.update_model(reward)
-        
-        chosen_object_idx = Bandit.choose_obj()
-        chosen_object = lightcurve_objects[chosen_object_idx]
-
-############## do this in Models.py ########################
-# for model in models:
-#     model_prior = os.path.join(priors,f'{model}.prior')
-#     for lightcurve_path in lightcurve_paths:
-#         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
-#         # print(f'running analysis on {lightcurve_label} with {model} model')
-#         idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env)
-#         results_paths += idx_results_paths
-#         bestfit_paths += idx_bestfit_paths
 
 submission_time = time.time() ## all submissions made
 print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
