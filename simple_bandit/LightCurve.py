@@ -32,7 +32,7 @@ class LightCurve:
         self.path = path
         self.label = os.path.basename(self.path).split('.')[0]   # CHECK
         self.outdir = os.path.dirname(self.path)
-        self.intervals_obs = np.zeros(n_intervals)
+        self.intervals_obs = np.zeros(n_intervals + 1) # add one because all lightcurves have initial observations saved in the zero-th place
         self.s = sim
 
         if self.s == True:
@@ -85,8 +85,18 @@ class LightCurve:
 
         return self.fit_stats[idx]
 
-    def observe_lightcurve(self, idx, start_int, end_int):
-        ''' after lc object has gotten new observations (for simulated data: add obs within given time), run model fits, and save output to fit_stats dict'''
+    def observe_lightcurve(self, idx, start_int=None, end_int=None):
+        ''' 
+        after lc object has gotten new observations (for simulated data: add obs within given time), run model fits, and save output to fit_stats dict
+
+        Args:
+        - idx (int): index of the observation interval of the bandit (should have a one added to it because initial obs of LightCurve object are in 0-th place)
+        - start_int (float): start time of observation interval, don't need for online data (default=None)
+        - end_int (float): end time of observation interval, don't need for online data (default=None)
+
+        Returns: 
+        - dictionary of model fits
+        '''
         self.update_intervals_obs(idx)
 
         if self.s == True:
