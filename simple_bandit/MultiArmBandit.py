@@ -22,8 +22,9 @@ class UCB:
         self.t = 0
 
     def initial_reward(self, obj_idx, reward):
-        pass
-        # put the initial rewards here for each object's reward, so just add to the obj_rewards
+        
+        self.obj_rewards[obj_idx] += reward     # should be empty, but doing += to be safe
+        self.avg_rewards[obj_idx] += reward     # technically no observations, so cannot use 'update_reward' function
 
     ''' 
     Play each arm once, then in round t > n, 
