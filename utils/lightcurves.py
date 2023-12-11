@@ -5,6 +5,8 @@ creates lightcurves from a given injection file using nmma
 import numpy as np
 import os 
 import pandas as pd
+pd.options.mode.chained_assignment = None
+import json 
 
 from astropy.time import Time
 
@@ -13,6 +15,8 @@ from argparse import Namespace
 from functools import reduce
 
 from nmma.em import create_lightcurves
+
+from analysis import get_trigger_time
 
 def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=None, filters=['ztfg'], **kwargs):
     '''
@@ -120,7 +124,7 @@ def lightcurve_conversion(lightcurve_path):
         
     return converted_lightcurve_path 
             
-def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None):
+def read_lightcurve(lightcurve_json, start_time=0.1, cutoff_time=None, **kwargs):
     '''
     Reads in the lightcurve json and returns a pandas dataframe of the lightcurve with associated times, relative to the start time
     
@@ -169,7 +173,7 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
     if all_bands: ## check if all bands meet requirements
         all_bands_meet_criteria = True ## default to true, then check if any band does not meet criteria
 
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
@@ -179,7 +183,7 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
         return all_bands_meet_criteria
 
     else: ## ensure at least one band meets requirements
-        for band in lightcurve_df.columns[1:]:
+        for band in lightcurve_df.columns[2:]:
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
@@ -189,9 +193,129 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
 
         return False  # None of the bands meet the criteria
  
+def get_filter_df(lightcurve_df, filter):
+    '''
+    Retreives a dataframe containing only the filter specified. Assumes structure of the read_lightcurve function.
     
-# known_bad = 'injections/lc_TrPi2018_00000.json'
-# print(validate_lightcurve(known_bad, min_detections=3, min_time=3.1, all_bands=False))
-# known_good = 'injections/lc_Me2017_00000.json'
-# print(validate_lightcurve(known_good, min_detections=3, min_time=3.1, all_bands=False))
+    Args:
+    - lightcurve_df (pd.DataFrame): dataframe of lightcurve with associated times
+    - filter (str): filter to retreive
     
+    Returns:
+    - filter_df (pd.DataFrame): dataframe of lightcurve with associated times for the specified filter
+    '''
+    existing_filters = [col for col in lightcurve_df.columns if col not in ['sample_times'] and '_err' not in col]
+    assert filter in existing_filters, 'filter {} does not exist in lightcurve'.format(filter)
+    filter_df_list = []
+    for row in lightcurve_df.iterrows():
+        if row[1][filter] != np.inf and row[1][filter] != np.nan:
+            filter_df_list.append(row[1])
+    filter_df = pd.DataFrame(filter_df_list)
+    return filter_df
+
+def generate_lightcurve_dict(lightcurve_df):
+    '''
+    Generates dictionary in the format needed to dump to a json
+    
+    Args:
+    - lightcurve_df (pd.DataFrame): dataframe of lightcurve with associated times
+    
+    Returns:
+    - lightcurve_dict (dict): dictionary of lightcurve with associated times
+    '''
+    filters = [col for col in lightcurve_df.columns if col not in ['sample_times'] and '_err' not in col]
+    lightcurve_dict = {}
+    for filter in filters:
+        filter_df = get_filter_df(lightcurve_df, filter)
+        sample_times = filter_df['sample_times'].tolist()
+        filter_vals = filter_df[filter].tolist()
+        filter_errs = filter_df[f'{filter}_err'].tolist()
+        ## use sample times to itterate the above 3 lists. if they do not have the same length, then there is an issue
+        lightcurve_dict[filter] = [[sample_times[i], filter_vals[i], filter_errs[i]] for i in range(len(sample_times))]
+    return lightcurve_dict
+
+def starting_lightcurve(full_lightcurve, outdir, starting_time=2, starting_observations=None, correct_times=False, **kwargs):
+        '''
+        Retreives a full lightcurve from a lightcurve file and generates a new file with enough observations to start the multi-arm bandit analysis. This is either the first n observations, where n is starting_observations, or the first observations within a certain number of days from the first observation. I would recommend using starting_observations when using ztf sampling and then use starting_time for even/better sampling. If the starting time does not contain at least 2 points, will print a warning and then default to setting starting_observations to 2 even if it's not provided.
+        
+        Args:
+        - full_lightcurve (str): path to full lightcurve file
+        - outdir (str): output directory for starting lightcurve file
+        - starting_time (float): time interval from the start of the lightcurve that needs to contain the minimum number of detections (default=2)
+        - starting_observations (int): number of observations to start with (default=None). You only need to provide the starting_time or starting_observations, but starting_observations will supercede starting_time if both are provided.
+        - correct_times (bool): whether or not to correct the times so that the first observation is at the same time as the original lightcurve (default=False)
+        
+        Returns:
+        - starting_lightcurve (str): path to starting lightcurve file
+        
+        TODO:
+        - make it so it checks about non-detections
+        - fix the way the correct_times works so it reads in the correct initial time. Right now, it will read in the time of the first detection, so if the lowest time measurement is a non-detection, the times will be thrown off
+        '''
+        full_lightcurve_df = read_lightcurve(full_lightcurve, start_time = 0, **kwargs)
+        filters = [col for col in full_lightcurve_df.columns if col not in ['sample_times'] and '_err' not in col]
+        if starting_time and starting_observations is None:
+            starting_lightcurve_df = full_lightcurve_df[full_lightcurve_df['sample_times'] <= starting_time]
+            if starting_lightcurve_df.shape[0] <= 2:
+                print('WARNING: starting lightcurve does not contain at least 2 points. Defaulting to starting_observations=2')
+                starting_observations = 2
+        if starting_observations is not None:
+            ## get the first n observations, where n is starting_observations for each filter
+            starting_lightcurve = []
+            for filter in filters:
+                filter_df = get_filter_df(full_lightcurve_df, filter)
+                starting_lightcurve.append(filter_df.iloc[:starting_observations])
+            starting_lightcurve_df = pd.concat(starting_lightcurve)
+        if correct_times:
+            tmin = get_trigger_time(full_lightcurve)
+            starting_lightcurve_df.loc[:,'sample_times'] += tmin + 0.1
+        ## construct dictionary to write to json. Each key is the filter, and the value for each key is a list of lists, with the sublists containing three terms: sample_times, filter, and filter_err for each observation
+        starting_lightcurve_dict = generate_lightcurve_dict(starting_lightcurve_df)
+        starting_lightcurve_path = os.path.join(outdir, kwargs.get('lightcurve_label', os.path.basename(full_lightcurve)))
+        os.makedirs(outdir, exist_ok=True)
+        with open(starting_lightcurve_path, 'w') as f:
+            json.dump(starting_lightcurve_dict, f, indent=4)
+        return starting_lightcurve_path
+
+
+def observe_lightcurve(full_lightcurve, previous_lightcurve, outdir, step_size=1,filters=['ztfg'], correct_times=False, **kwargs):
+    '''
+    Takes in a full lightcurve and a previous lightcurve, and returns a new lightcurve with the next step_size observations. This is useful for simulating observing a lightcurve in real time. 
+    
+    Args:
+    - full_lightcurve (str): path to full lightcurve file
+    - previous_lightcurve (str): path to previous lightcurve file
+    - outdir (str): output directory for next lightcurve file
+    - step_size (int): interval on which to add observations (default=1). For the default, this will add any observations made in the next day.
+    - filters (list): list of filters to observe (default=['ztfg']). These filters need to exist
+    - correct_times (bool): whether or not to correct the times so that the first observation is at the same time as the original lightcurve (default=False)
+    
+    Returns:
+    - next_lightcurve (str): path to next lightcurve file
+    
+    TODO:
+    - make it so it checks about non-detections
+    - make an option so you can specify that you want the next observation regardless of whether or not it's in the next step_size interval (maybe)
+    - fix the way the correct_times works so it reads in the correct initial time. Right now, it will read in the time of the first detection, so if the lowest time measurement is a non-detection, the times will be thrown off
+    '''
+    full_lightcurve_df = read_lightcurve(full_lightcurve, start_time=0, **kwargs)
+    previous_lightcurve_df = read_lightcurve(previous_lightcurve, start_time=0, **kwargs)
+    start_time = full_lightcurve_df['sample_times'].min()
+    end_time = previous_lightcurve_df['sample_times'].max() + step_size ## end time is the interval from the start time we want to check for detections
+    new_observations = []
+    for filter in filters:
+        full_filter_df = get_filter_df(full_lightcurve_df, filter)
+        previous_filter_df = get_filter_df(previous_lightcurve_df, filter)
+        next_observations = full_filter_df[(full_filter_df['sample_times'] > previous_filter_df['sample_times'].max()) & (full_filter_df['sample_times'] <= end_time)]
+        new_observations.append(next_observations)
+    new_observations_df = pd.concat(new_observations)
+    next_lightcurve_df = pd.concat([previous_lightcurve_df, new_observations_df])
+    if correct_times:
+            tmin = get_trigger_time(previous_lightcurve)
+            next_lightcurve_df.loc[:,'sample_times'] += tmin
+    next_lightcurve_dict = generate_lightcurve_dict(next_lightcurve_df)
+    next_lightcurve_path = os.path.join(outdir, kwargs.get('lightcurve_label', os.path.basename(full_lightcurve)))
+    os.makedirs(outdir, exist_ok=True)
+    with open(next_lightcurve_path, 'w') as f:
+        json.dump(next_lightcurve_dict, f, indent=4)
+    return next_lightcurve_path  

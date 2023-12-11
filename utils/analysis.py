@@ -15,7 +15,7 @@ from functools import wraps
 
 from nmma.em import analysis
 
-from utils.misc import strtime, suppress_print
+from misc import strtime, suppress_print
 
 
 def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=False, **kwargs):
@@ -340,8 +340,14 @@ def get_trigger_time(lightcurve_path):
     
     Returns:
     - trigger_time (float): trigger time of lightcurve
+    
+    TODO:
+    - make it so it checks all filters and returns the earliest trigger time
     '''
     lightcurve_df = pd.read_json(lightcurve_path)
     lc_keys = list(lightcurve_df.keys())
-    trigger_time = lightcurve_df[lc_keys[0]][0][0]
+    trigger_time = np.inf
+    for key in lc_keys:
+        trigger_time = lightcurve_df[key][0][0] if lightcurve_df[key][0][0] < trigger_time else trigger_time
+    # trigger_time = lightcurve_df[lc_keys[0]][0][0]
     return trigger_time
