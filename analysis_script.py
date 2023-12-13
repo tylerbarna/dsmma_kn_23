@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='Do analysis on light curves')
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
                     default=['nugent-hyper','Bu2019lm','TrPi2018', 'Piro2021'],
-                    choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
+                    # choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
 
@@ -114,6 +114,12 @@ nmma_plot = args.nmma_plot
 
 os.makedirs(outdir, exist_ok=True)
 
+for model in models:
+    prior = os.path.join(priors, f'{model}.prior')
+    if not os.path.exists(prior):
+        print(f'prior {prior} does not exist, removing model from consideration')
+        models.remove(model)
+        continue
 
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
