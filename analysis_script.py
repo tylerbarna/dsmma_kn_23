@@ -67,7 +67,7 @@ parser.add_argument('--timeout',
 
 parser.add_argument('--cluster',
                     type=str,
-                    default='msi',
+                    default='expanse',
                     help='cluster to run on (default: msi)',choices=['msi','expanse','']
 )
 
