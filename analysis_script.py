@@ -16,11 +16,12 @@ parser.add_argument('-m','--models',
                     choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
-# parser.add_argument('-f','--filters',
-#                     type=str,
-#                     default='g',
-#                     help='filters to generate light curves for (choices for ztf are ztfr,ztfg,ztfi)'
-# )
+
+parser.add_argument('-f','--filters',
+                    type=str, nargs='+',
+                    default='ztfg',
+                    help='filters to generate light curves for (choices for ztf are ztfr,ztfg,ztfi)'
+)
 
 parser.add_argument('-p','--priors',
                     type=str,
@@ -139,7 +140,7 @@ for model in models:
     for lightcurve_path in lightcurve_paths:
         # lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
         # print(f'running analysis on {lightcurve_label} with {model} model')
-        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env, nmma_tmin=nmma_tmin, nmma_plot=nmma_plot)
+        idx_results_paths, idx_bestfit_paths = timestep_lightcurve_analysis(lightcurve_path, model, model_prior, outdir, label=None, tmax_array=tmax_array, slurm=cluster, dry_run=args.dry_run, env=env, nmma_tmin=nmma_tmin, nmma_plot=nmma_plot, filters=args.filters)
         results_paths += idx_results_paths
         bestfit_paths += idx_bestfit_paths
 
