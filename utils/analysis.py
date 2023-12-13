@@ -358,6 +358,10 @@ def get_trigger_time(lightcurve_path):
     '''
     lightcurve = json.load(open(lightcurve_path))
     print('lightcurve ',lightcurve)
+    ## each filter contains a list of lists, where the first element of each sublist is the time. find the minimum time across all filters
+    trigger_time = min([min([filter[0] for filter in lightcurve[filter]]) for filter in lightcurve.keys()])
+    print('trigger_time ',trigger_time)
+    return trigger_time
     lightcurve_df = pd.read_json(lightcurve_path)
     print('lightcurve_df ',lightcurve_df)
     lc_keys = list(lightcurve_df.keys())
