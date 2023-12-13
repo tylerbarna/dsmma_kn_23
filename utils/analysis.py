@@ -164,10 +164,10 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
             print(f'{tmax_label} has already been fit, skipping')
             continue
         else:
-            try:
-                results_path, bestfit_path = lightcurve_analysis(lightcurve_path, model, prior, model_outdir, label=tmax_label, tmax=tmax, threading=threading, **kwargs)
-                results_paths.append(results_path)
-                bestfit_paths.append(bestfit_path)
+            # try:
+            results_path, bestfit_path = lightcurve_analysis(lightcurve_path, model, prior, model_outdir, label=tmax_label, tmax=tmax, threading=threading, **kwargs)
+            results_paths.append(results_path)
+            bestfit_paths.append(bestfit_path)
             # except Exception as e:
             #     ## print what the error is
             #     print('exception: ',e)
