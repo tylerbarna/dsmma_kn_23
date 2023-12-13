@@ -356,6 +356,8 @@ def get_trigger_time(lightcurve_path):
     Returns:
     - trigger_time (float): trigger time of lightcurve
     '''
+    lightcurve = json.load(open(lightcurve_path))
+    print('lightcurve ',lightcurve)
     lightcurve_df = pd.read_json(lightcurve_path)
     print('lightcurve_df ',lightcurve_df)
     lc_keys = list(lightcurve_df.keys())
