@@ -1,0 +1,16 @@
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/astropy/time/formats.py:1580: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  val1_uint32 = val1.view((np.uint32, val1.dtype.itemsize // 4))
+Traceback (most recent call last):
+  File "/home/tbarna/.conda/envs/nmma_dev/bin/lightcurve-analysis", line 8, in <module>
+    sys.exit(main())
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/analysis.py", line 1006, in main
+    analysis(args)
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/analysis.py", line 643, in analysis
+    model_names, models, light_curve_model = create_light_curve_model_from_args(
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/model.py", line 1100, in create_light_curve_model_from_args
+    lc_model = SVDLightCurveModel(**lc_kwargs)
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/model.py", line 226, in __init__
+    _, model_filters = get_model(
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/utils/models.py", line 266, in get_model
+    raise ValueError(
+ValueError: models list from zenodo does not have filters sdssr,sdssg,sdssi for Bu2019lm

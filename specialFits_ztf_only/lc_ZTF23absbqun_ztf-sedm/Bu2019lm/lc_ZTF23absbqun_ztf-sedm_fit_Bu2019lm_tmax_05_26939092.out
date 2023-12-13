@@ -1,0 +1,7 @@
+Creating light curve model for inference
+Running with filters ['ztfg', 'ztfr']
+downloading 1 files for model Bu2019lm:
+Loaded filter ztfg
+Could not find model file for filter ztfr
+Running with the following additional sampler_kwargs:
+{}

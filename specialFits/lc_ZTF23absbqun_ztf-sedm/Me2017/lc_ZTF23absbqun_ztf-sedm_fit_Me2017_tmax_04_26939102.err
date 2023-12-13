@@ -1,0 +1,64 @@
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/astropy/time/formats.py:1580: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  val1_uint32 = val1.view((np.uint32, val1.dtype.itemsize // 4))
+13:21 bilby INFO    : Running for label 'lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04', output will be saved to './specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017'
+Traceback (most recent call last):
+  File "/cm/shared/apps/spack/0.17.3/cpu/b/opt/spack/linux-rocky8-zen/gcc-8.5.0/anaconda3-2021.05-q4munrgvh7qp4o7r3nzcdkbuph4z7375/condabin/conda", line 12, in <module>
+    from conda.cli import main
+ModuleNotFoundError: No module named 'conda'
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/_distutils_hack/__init__.py:33: UserWarning: Setuptools is replacing distutils.
+  warnings.warn("Setuptools is replacing distutils.")
+13:21 bilby INFO    : Analysis priors:
+13:21 bilby INFO    : luminosity_distance=Uniform(minimum=0.0, maximum=200.0, name='luminosity_distance', latex_label='$D_L$', unit=None, boundary=None)
+13:21 bilby INFO    : beta=Uniform(minimum=1.0, maximum=5.0, name='beta', latex_label='$\\beta$', unit=None, boundary=None)
+13:21 bilby INFO    : log10_kappa_r=Uniform(minimum=-1.0, maximum=2.0, name='log10_kappa_r', latex_label='$\\log_{10}\\kappa_r$', unit=None, boundary=None)
+13:21 bilby INFO    : timeshift=Uniform(minimum=-2.0, maximum=1.0, name='trigger_time', latex_label='$t_0$', unit=None, boundary=None)
+13:21 bilby INFO    : log10_vej=Uniform(minimum=-2.0, maximum=-0.5, name='log10_vej', latex_label='$\\log_{10}v^{\\rm{ej}}$', unit=None, boundary=None)
+13:21 bilby INFO    : log10_mej=Uniform(minimum=-3.0, maximum=-0.5, name='log10_mej', latex_label='$\\log_{10}M^{\\rm{ej}}$', unit=None, boundary=None)
+13:21 bilby INFO    : Ebv=0.0
+13:21 bilby INFO    : Analysis likelihood class: <class 'nmma.em.likelihood.OpticalLightCurve'>
+13:21 bilby INFO    : Analysis likelihood noise evidence: 0.0
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/utils.py:1012: RuntimeWarning: invalid value encountered in true_divide
+  Tobs = 1e10 * (Ltot / (4 * np.pi * Rphoto**2 * sigSB)) ** (0.25)
+13:21 bilby INFO    : Single likelihood evaluation took 7.753e-03 s
+13:21 bilby WARNING : Supplied argument 'queue_size' not an argument of 'Pymultinest', removing.
+13:21 bilby WARNING : Supplied argument 'check_point_delta_t' not an argument of 'Pymultinest', removing.
+13:21 bilby INFO    : Using sampler Pymultinest with kwargs {'importance_nested_sampling': False, 'resume': True, 'verbose': True, 'sampling_efficiency': 'parameter', 'n_live_points': 1024, 'n_params': 6, 'n_clustering_params': None, 'wrapped_params': None, 'multimodal': True, 'const_efficiency_mode': False, 'evidence_tolerance': 0.5, 'n_iter_before_update': 100, 'null_log_evidence': -1e+90, 'max_modes': 100, 'mode_tolerance': -1e+90, 'seed': 42, 'context': 0, 'write_output': True, 'log_zero': -1e+100, 'max_iter': 0, 'init_MPI': False, 'dump_callback': <bound method Pymultinest._dump_callback of <bilby.core.sampler.pymultinest.Pymultinest object at 0x155536c1ba90>>}
+13:21 bilby INFO    : Using temporary file /tmp/tmp2f1m5p_o
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/utils.py:1026: RuntimeWarning: overflow encountered in exp
+  exp = np.exp(-h * nu_of_filt * one_over_T / kb)
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/utils.py:1028: RuntimeWarning: invalid value encountered in true_divide
+  (2.0 * (h * nu_of_filt) * (nu_of_filt / c) ** 2)
+13:21 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:21 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:21 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:22 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:22 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:22 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:23 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:23 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:23 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:23 bilby INFO    : Overwriting ./specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/pm_lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04/ with /tmp/tmp2f1m5p_o/
+13:23 bilby INFO    : Sampling time: 0:02:22.512626
+13:23 bilby INFO    : Summary of results:
+nsamples: 5016
+ln_noise_evidence:  0.000
+ln_evidence: -22.950 +/-  0.066
+ln_bayes_factor: -22.950 +/-  0.066
+
+13:23 bilby INFO    : Writing samples file to /expanse/lustre/projects/umn131/tbarna/specialFits/lc_ZTF23absbqun_ztf-sedm/Me2017/lc_ZTF23absbqun_ztf-sedm_fit_Me2017_tmax_04_posterior_samples.dat
+/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/utils.py:1012: RuntimeWarning: invalid value encountered in true_divide
+  Tobs = 1e10 * (Ltot / (4 * np.pi * Rphoto**2 * sigSB)) ** (0.25)
+Traceback (most recent call last):
+  File "/home/tbarna/.conda/envs/nmma_dev/bin/lightcurve-analysis", line 8, in <module>
+    sys.exit(main())
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/analysis.py", line 1006, in main
+    analysis(args)
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/nmma/em/analysis.py", line 806, in analysis
+    num = (y_det - interp(t_det))**2
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/scipy/interpolate/polyint.py", line 78, in __call__
+    y = self._evaluate(x)
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/scipy/interpolate/interpolate.py", line 684, in _evaluate
+    below_bounds, above_bounds = self._check_bounds(x_new)
+  File "/home/tbarna/.conda/envs/nmma_dev/lib/python3.10/site-packages/scipy/interpolate/interpolate.py", line 716, in _check_bounds
+    raise ValueError("A value in x_new is above the interpolation "
+ValueError: A value in x_new is above the interpolation range.

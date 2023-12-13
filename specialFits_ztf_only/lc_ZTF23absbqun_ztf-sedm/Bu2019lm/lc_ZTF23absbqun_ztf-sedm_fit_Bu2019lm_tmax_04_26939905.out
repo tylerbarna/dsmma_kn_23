@@ -1,0 +1,9 @@
+Creating light curve model for inference
+Running with filters ['ztfg', 'ztfr']
+Loaded filter ztfg
+Loaded filter ztfr
+Running with the following additional sampler_kwargs:
+{}
+Best fit parameters: {'luminosity_distance': 83.84735573791669, 'KNphi': 37.15394468127294, 'inclination_EM': 0.7283488869277488, 'timeshift': 0.983855739980553, 'log10_mej_dyn': -1.1308714619535003, 'log10_mej_wind': -0.7065564969902964, 'Ebv': 0.0, 'log_likelihood': -8.486576177567716, 'log_prior': -12.656859027754813}
+Best fit index: 3069
+Saved bestfit parameters and magnitudes to ./specialFits_ztf_only/lc_ZTF23absbqun_ztf-sedm/Bu2019lm/lc_ZTF23absbqun_ztf-sedm_fit_Bu2019lm_tmax_04_bestfit_params.json
