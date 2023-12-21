@@ -5,7 +5,9 @@
 import os
 import json
 
-from utils.analysis import lightcurve_analysis
+import time
+
+from utils.analysis import lightcurve_analysis, check_completion
 ###################################################################################################
 ###################################################################################################
 # Class: Models - contains the models and priors that will be considered,
@@ -42,8 +44,8 @@ class Models:
         ''' given lightcurve file path, run model fits for all models being considered. Save stats for each model'''
         model_fits_results = {}
 
-        # TODO: while loop to wait until you get all the model fits for all the 
-
+        best_fit_paths = []
+        start_time = time.time()    # for the while loop to check all files are complete
         for model, prior in zip(self.model_names, self.priors):
             
             # code edited from analysis.py function: timestep_lightcurve_analysis
@@ -53,8 +55,23 @@ class Models:
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
             
-            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label)  # this will override the previous run
+            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
+            best_fit_paths.append(bestfit_path)
 
+        submission_time = time.time()   # for the while loop to check all files are complete
+        
+        # while loop to check all files are complete
+        # code edited from analysis_script.py after timestep_ligthcurve_analysis is called
+        while True:
+            completion_bool, completed_fits = check_completion(best_fit_paths, t0 =start_time,  t0_submission= submission_time)
+            if completion_bool:
+                end_time = time.time()
+                print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')
+                break
+            time.sleep(120)
+        
+        # now get the information from all the files
+        for bestfit_path in best_fit_paths:
             bestfit_file = open(bestfit_path)
             best_fit_json = json.load(bestfit_file)
             bestfit_file.close()

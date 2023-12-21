@@ -22,9 +22,17 @@ class UCB:
         self.t = 0
 
     def initial_reward(self, obj_idx, reward):
-        
-        self.obj_rewards[obj_idx] += reward     # should be empty, but doing += to be safe
-        self.avg_rewards[obj_idx] += reward     # technically no observations, so cannot use 'update_reward' function
+        '''
+        Stores the inital rewards of each candidate object at the zero-th observation.
+        Cannot use 'update_reward' function because this inital reward does not count as an observation.
+        Changes the n_obs to ones so when the average reward is calculcated again, you divide by the right
+        number of observations (instead of dividing the sum of two rewards by one).
+        '''
+        self.obj_rewards[obj_idx] += reward
+        self.avg_rewards[obj_idx] += reward
+
+        self.nobs[obj_idx] += 1
+
 
     ''' 
     Play each arm once, then in round t > n, 
@@ -34,9 +42,11 @@ class UCB:
     algorithm should pull all arms at least once
     '''
     def choose_obj(self):
+        
+        # check that all objects have at least one observation, and observe the first object that doesn't
+        if np.argwhere(self.n_obs == 0).any():
+            obj = (np.argwhere(self.n_obs == 0)[0][0])
 
-        if self.t <= (self.n_obj - 1):  # can delete this if statement since we always have some initial observations
-            obj = self.t
         else:
             obj_ucbs = np.zeros(self.n_obj)
 

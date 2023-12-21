@@ -164,7 +164,6 @@ Bandit = UCB(n_objects)
 ### CHECK: ok that while loop only in run_models (called by observe_lightcurve)
 
 '''4. create lightcurve objects for all candidate lightcurves'''
-# TODO: make a function and add to BanditUtils?
 lightcurve_objects = []
 lc_idx = 0
 
