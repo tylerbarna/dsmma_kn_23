@@ -153,9 +153,18 @@ model_of_interest = 'Me2017'
 # (str) - name of statistic you want to use to compute reward (CURRENTLY just: 'likelihood' or 'log_bayes')
 stat_to_use = 'likelihood'
 
+# (float) - the latest time observation for all the candidate objects
+init_time = 0.0
+          
+# (float) - the length of time you want each observation interval to be
+time_step = 2.0
+
+# (int) - the number of intervals you want the bandit to choose objects for
+n_steps = 10
+
 '''2. calculate the intervals we want our bandit to use'''
-intervals = get_intervals(init_time = 0.0, time_step = 2.0, n_steps = 10)
-n_intervals = len(intervals) # CHECK
+intervals = get_intervals(init_time, time_step, n_steps)
+n_intervals = len(intervals) # CHECK: should be same as n_steps
 
 '''3. instantiate bandit object'''
 n_objects = len(lightcurve_paths)   # CHECK
