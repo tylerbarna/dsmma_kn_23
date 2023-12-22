@@ -8,20 +8,22 @@ import time
 
 import sys #############################################################
 sys.path.append('home/tbarna/dsmma_kn_23') #############################################################
+# sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') 
 
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent.parent))
+import sys  #####################################################################
+from pathlib import Path  #####################################################################
+sys.path.append(str(Path(__file__).parent.parent.parent))  #####################################################################
 # rootpath = os.path.join(os.getcwd(), '..')
 # sys.path.append(rootpath)
 # sys.path.append(os.path.join(rootpath, 'utils'))
 # sys.path.append('..')
 # sys.path.append('../utils')
-current_path = os.getcwd()
-print(current_path)
+current_path = os.getcwd()  #####################################################################
+print(current_path)  #####################################################################
 # os.chdir('../utils/')
 
-from dsmma_kn_23.utils.analysis import lightcurve_analysis, check_completion
+# from utils.analysis import lightcurve analysis, check_completion  #####################################################################
+from dsmma_kn_23.utils.analysis import lightcurve_analysis, check_completion  #####################################################################
 #from utils.analysis import lightcurve_analysis, check_completion
 # os.chdir(current_path)
 
@@ -75,7 +77,7 @@ class Models:
             fit_label = lightcurve_label + '_fit_' + model 
             print('model_outdir', model_outdir)
             
-            # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### TEST #####################################################################
+            # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### FOR TEST WITHOUT NMMA #####################################################################
             results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = 'expanse')  # this will override the previous run
             best_fit_paths.append(bestfit_path)
             print('bestfit_path', bestfit_path)
@@ -94,7 +96,7 @@ class Models:
             time.sleep(120)
         
         # now get the information from all the files
-        for model, bestfit_path in zip(self.model_names, best_fit_paths): ## need to account for failed fits (set negative infinity for log_bayes and log_likelihood)
+        for model, bestfit_path in zip(self.model_names, best_fit_paths): ## TODO: need to account for failed fits (set negative infinity for log_bayes and log_likelihood)
             bestfit_file = open(bestfit_path)
             best_fit_json = json.load(bestfit_file)
             bestfit_file.close()
