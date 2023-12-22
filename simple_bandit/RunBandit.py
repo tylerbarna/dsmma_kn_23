@@ -68,8 +68,8 @@ parser.add_argument('--timeout',
 
 parser.add_argument('--cluster',
                     type=str,
-                    default='msi',
-                    help='cluster to run on (default: msi)',choices=['msi','expanse','']
+                    default='expanse',
+                    help='cluster to run on (default: expanse)',choices=['msi','expanse','']
 )
 
 parser.add_argument('--env',
