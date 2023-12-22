@@ -108,7 +108,7 @@ def lc_analysis_test(lc, model, prior, outdir, label):
     lc_file.close()
 
     # print(lc_og['ztfg'][1]) #####################################################################
-    if lc_og['ztfg'][1] % 2 == 0:
+    if lc_og['ztfg'][1][0] % 2 == 0:
         value = kn
     else:
         value = other

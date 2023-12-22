@@ -6,9 +6,9 @@
       "log10_vej": -1.406799995564421,
       "log10_mej": -2.9722156205901293,
       "Ebv": 0.3061284522346548,
-      "log_likelihood": 10,
+      "log_likelihood": 1,
       "log_prior": -9.717849136485976,
-      "log_bayes_factor": 0.1,
+      "log_bayes_factor": -10,
       "Best fit index": 3054,
       "Magnitudes": {
             "ztfg": [

@@ -47,7 +47,7 @@ class LightCurve:
             true_lc_file.close()
 
             # make empty lc dict
-            self.observed_lc = {"ztfg" : []} # CHECK 
+            self.observed_lc = {"ztfg" : [self.true_lc['ztfg'][0]]} # CHECK 
 
             # create file path name
             self.observed_lc_path = os.path.join(self.outdir, 'observed_lc_'+self.label+'.json')
@@ -74,7 +74,7 @@ class LightCurve:
         # print(self.observed_lc['ztfg']) #####################################################################
 
         # add new obs to observed_lc
-        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list[0], axis = 0))
+        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list, axis = 0))
 
         # rewrite json file with new observed_lc
         f = open(self.observed_lc_path, "w")
