@@ -25,7 +25,7 @@ def stochastic_reward(dat, model_of_interest, stat):
     - stat (str): which statistic to use: 'log_bayes' or 'likelihood'   # TODO: make sure you can only choose an available stat
     '''
     all_stats = []
-    model_of_interst_stat = None
+    model_of_interst_stat = 0
 
     for key in dat:
 

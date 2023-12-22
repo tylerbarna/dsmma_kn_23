@@ -4,10 +4,13 @@
 ###################################################################################################
 import os
 import json
-
 import time
 
+import sys #############################################################
+sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
+
 from utils.analysis import lightcurve_analysis, check_completion
+from BanditUtils import lc_analysis_test
 ###################################################################################################
 ###################################################################################################
 # Class: Models - contains the models and priors that will be considered,
@@ -55,7 +58,8 @@ class Models:
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
             
-            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
+            bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label)
+            # results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
             best_fit_paths.append(bestfit_path)
 
         submission_time = time.time()   # for the while loop to check all files are complete
@@ -77,9 +81,8 @@ class Models:
             bestfit_file.close()
 
             model_fits_results[model] = {"log_likelihood": best_fit_json["log_likelihood"],
-                                         "log_bayes_factor": best_fit_json["log_bayes_factor"]}
+                                            "log_bayes_factor": best_fit_json["log_bayes_factor"]}
 
         return model_fits_results
 
-
-        
+            

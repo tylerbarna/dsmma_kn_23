@@ -6,7 +6,10 @@ import numpy as np
 import os
 import json
 
-from Models import run_models
+import sys #############################################################
+sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
+
+from simple_bandit.Models import Models
 ###################################################################################################
 ###################################################################################################
 # Class: LightCurve - saves observations of one object
@@ -27,13 +30,15 @@ class LightCurve:
     Notes:
     - filter is currently hard-coded as 'ztfg'
     '''
-    def __init__(self, path, n_intervals, sim):
+    def __init__(self, path, n_intervals, sim, all_models):
 
         self.path = path
         self.label = os.path.basename(self.path).split('.')[0]   # CHECK
         self.outdir = os.path.dirname(self.path)
         self.intervals_obs = np.zeros(n_intervals + 1) # add one because all lightcurves have initial observations saved in the zero-th place
         self.s = sim
+
+        self.all_models = all_models
 
         if self.s == True:
             # read in true LC
@@ -42,7 +47,7 @@ class LightCurve:
             true_lc_file.close()
 
             # make empty lc dict
-            self.observed_lc = {'ztfg' : None} # CHECK : empty dictionary to add observations works
+            self.observed_lc = {"ztfg" : []} # CHECK 
 
             # create file path name
             self.observed_lc_path = os.path.join(self.outdir, 'observed_lc_'+self.label+'.json')
@@ -63,10 +68,13 @@ class LightCurve:
         # get new obs from true lc
         lc_arr = np.asarray(self.true_lc['ztfg'])
         time_cutoff = lc_arr[(lc_arr[:,0]  >= start_int) & (lc_arr[:,0] <= end_int)]
+        # print(start_int, end_int) #####################################################################
         time_cutoff_list = np.ndarray.tolist(time_cutoff)
+        # print(time_cutoff_list[0]) #####################################################################
+        # print(self.observed_lc['ztfg']) #####################################################################
 
         # add new obs to observed_lc
-        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list, axis = 0))
+        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list[0], axis = 0))
 
         # rewrite json file with new observed_lc
         f = open(self.observed_lc_path, "w")
@@ -76,15 +84,16 @@ class LightCurve:
     def get_model_outputs(self, idx):
         '''call run_models and get model outputs (likelihood, bayes factor) and save in fit_stats dict with idx as key'''
         # call run models if there's more data
-        out = run_models(self.observed_lc_path, self.outdir)
+        out = self.all_models.run_models(self.observed_lc_path, self.outdir)
 
         idx_str = str(idx)
 
         self.fit_stats[idx_str] = out
 
     def model_fits(self, idx):
-
-        return self.fit_stats[idx]
+        # print(self.fit_stats) #####################################################################
+        idx_str = str(idx)
+        return self.fit_stats[idx_str]
 
     def observe_lightcurve(self, idx, start_int=None, end_int=None):
         ''' 

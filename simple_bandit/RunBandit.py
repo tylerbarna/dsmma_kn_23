@@ -4,11 +4,13 @@ import numpy as np
 import os
 import time
 
+import sys #############################################################
+sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
+
 from utils.analysis import timestep_lightcurve_analysis, check_completion
 from utils.misc import strtime
 
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
-
 
 parser.add_argument('-m','--models', 
                     type=str, nargs='+', 
@@ -128,6 +130,7 @@ start_time = time.time() ## start of submission process
 ###################################################################################################
 from simple_bandit.MultiArmBandit import UCB
 from simple_bandit.LightCurve import LightCurve
+from simple_bandit.Models import Models
 
 from simple_bandit.BanditUtils import get_intervals
 from simple_bandit.Rewards import stochastic_reward
@@ -151,23 +154,27 @@ sim = True
 model_of_interest = 'Me2017'
 
 # (str) - name of statistic you want to use to compute reward (CURRENTLY just: 'likelihood' or 'log_bayes')
-stat_to_use = 'likelihood'
+stat_to_use = 'log_likelihood'
 
 # (float) - the latest time observation for all the candidate objects
-init_time = 0.0
+init_time = 44245
           
 # (float) - the length of time you want each observation interval to be
-time_step = 2.0
+time_step = 1.0
 
 # (int) - the number of intervals you want the bandit to choose objects for
 n_steps = 10
 
+# Models object
+all_models = Models(models, priors)
+
 '''2. calculate the intervals we want our bandit to use'''
 intervals = get_intervals(init_time, time_step, n_steps)
-n_intervals = len(intervals) # CHECK: should be same as n_steps
+n_intervals = len(intervals)
+print(intervals)
 
 '''3. instantiate bandit object'''
-n_objects = len(lightcurve_paths)   # CHECK
+n_objects = len(lightcurve_paths)
 Bandit = UCB(n_objects)
 
 ### CHECK: ok that while loop only in run_models (called by observe_lightcurve)
@@ -179,11 +186,11 @@ lc_idx = 0
 for lightcurve_path in lightcurve_paths:
 
     # initialize LC object
-    new_lc = LightCurve(lightcurve_path, n_intervals, sim)
+    new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
 
     # get initial obs and corresponding reward
-    model_fits = new_lc.observe_lightcurve(0)
-    reward = stochastic_reward(model_fits)
+    model_fits = new_lc.observe_lightcurve(0, intervals[0][0], intervals[0][1]) # CHECK
+    reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
 
     # add initial reward to bandit
     Bandit.initial_reward(lc_idx, reward)
@@ -191,12 +198,18 @@ for lightcurve_path in lightcurve_paths:
     lightcurve_objects.append(new_lc)
     lc_idx += 1
 
-
+    # print(f'model fits: {model_fits}')
+    # print(f'reward: {reward}')
+# print('Initialized lightcurves Complete')
+    
 '''5. Run bandit'''
+print(f'Running bandit for {n_intervals}')
 for obs_int in range(n_intervals):  ### For online data, this would have to have a time check
 
-    int_start_t = intervals[obs_int][0]     # CHECK
-    int_end_t = intervals[obs_int][1]       # CHECK
+    print(f'Observation interval {obs_int + 1} starting:')
+
+    int_start_t = intervals[obs_int + 1][0]
+    int_end_t = intervals[obs_int + 1][1]    
 
     # choose lc to observe
     chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
