@@ -91,7 +91,6 @@ class LightCurve:
         self.fit_stats[idx_str] = out
 
     def model_fits(self, idx):
-        # print(self.fit_stats) #####################################################################
         idx_str = str(idx)
         return self.fit_stats[idx_str]
 

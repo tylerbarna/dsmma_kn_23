@@ -58,8 +58,8 @@ class Models:
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
             
-            bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label)
-            # results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
+            # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### TEST #####################################################################
+            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
             best_fit_paths.append(bestfit_path)
 
         submission_time = time.time()   # for the while loop to check all files are complete
