@@ -15,7 +15,7 @@ from functools import wraps
 
 from nmma.em import analysis
 
-from utils.misc import strtime, suppress_print
+# from utils.misc import strtime, suppress_print
 
 
 def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=False, **kwargs):
@@ -112,6 +112,7 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     if slurm:
         print(f'running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
+        print(f'job_path is {job_path}')
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
     else:
@@ -192,7 +193,8 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
     completed_analyses_count = np.sum(analysis_status)
     completion_status = completed_analyses_count == total_analyses
     
-    current_time = strtime()
+    # current_time = strtime()
+    current_time = time.strftime('%Y-%m-%d_%H:%M:%S', time.localtime())
     t1 = time.time()
     hours_elapsed = round((t1 - t0) / 3600, 2)
     timeout_elapsed = round((t1 - t0_submission) / 3600, 2) > timeout
@@ -212,7 +214,7 @@ def check_completion(result_paths, t0, t0_submission, timeout=71.9):
         return False, completed_analyses
     
     
-def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_env',cluster='msi', **kwargs):
+def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath='~/dsmma_kn_23/svdmodels', rootdir='~/dsmma_kn_23', envpath='/home/cough052/barna314/anaconda3/bin/activate', env='nmma_dev',cluster='expanse', **kwargs):
     '''
     creates a job file for the MSI cluster (somewhat msi specific, but can adapt for other slurm systems)
     

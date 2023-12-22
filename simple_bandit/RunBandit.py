@@ -5,10 +5,7 @@ import os
 import time
 
 import sys #############################################################
-sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
-
-from utils.analysis import timestep_lightcurve_analysis, check_completion
-from utils.misc import strtime
+sys.path.append('~/dsmma_kn_23') #############################################################
 
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
@@ -128,12 +125,12 @@ start_time = time.time() ## start of submission process
 ###################################################################################################
 # imports
 ###################################################################################################
-from simple_bandit.MultiArmBandit import UCB
-from simple_bandit.LightCurve import LightCurve
-from simple_bandit.Models import Models
+from MultiArmBandit import UCB
+from LightCurve import LightCurve
+from Models import Models
 
-from simple_bandit.BanditUtils import get_intervals
-from simple_bandit.Rewards import stochastic_reward
+from BanditUtils import get_intervals
+from Rewards import stochastic_reward
 ###################################################################################################
 
 ###################################################################################################

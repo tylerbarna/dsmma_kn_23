@@ -7,9 +7,24 @@ import json
 import time
 
 import sys #############################################################
-sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
+sys.path.append('home/tbarna/dsmma_kn_23') #############################################################
 
-from utils.analysis import lightcurve_analysis, check_completion
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent.parent))
+# rootpath = os.path.join(os.getcwd(), '..')
+# sys.path.append(rootpath)
+# sys.path.append(os.path.join(rootpath, 'utils'))
+# sys.path.append('..')
+# sys.path.append('../utils')
+current_path = os.getcwd()
+print(current_path)
+# os.chdir('../utils/')
+
+from dsmma_kn_23.utils.analysis import lightcurve_analysis, check_completion
+#from utils.analysis import lightcurve_analysis, check_completion
+# os.chdir(current_path)
+
 from BanditUtils import lc_analysis_test
 ###################################################################################################
 ###################################################################################################
@@ -57,6 +72,7 @@ class Models:
             model_outdir = os.path.join(lighcurve_outdir, model) ## so directory structure will be {outdir}/{lightcurve_label}/{model}/
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
+            print('model_outdir', model_outdir)
             
             # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### TEST #####################################################################
             results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run

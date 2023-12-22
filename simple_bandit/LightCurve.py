@@ -7,9 +7,9 @@ import os
 import json
 
 import sys #############################################################
-sys.path.append('/Users/bean/Documents/Capstone/dsmma_kn_23') #############################################################
+sys.path.append('~/dsmma_kn_23') #############################################################
 
-from simple_bandit.Models import Models
+from Models import Models
 ###################################################################################################
 ###################################################################################################
 # Class: LightCurve - saves observations of one object
