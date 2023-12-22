@@ -164,6 +164,7 @@ n_steps = 10
 
 # Models object
 all_models = Models(models, priors)
+print(f'All models: {models, priors}')
 
 '''2. calculate the intervals we want our bandit to use'''
 intervals = get_intervals(init_time, time_step, n_steps)
@@ -187,6 +188,7 @@ for lightcurve_path in lightcurve_paths:
 
     # get initial obs and corresponding reward
     model_fits = new_lc.observe_lightcurve(0, intervals[0][0], intervals[0][1]) # CHECK
+    print(f'model fits: {model_fits}')
     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
 
     # add initial reward to bandit

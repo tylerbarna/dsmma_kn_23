@@ -57,6 +57,7 @@ class Models:
         for model in self.model_names:
             model_prior = os.path.join(self.priors, f'{model}.prior')
             self.model_prior_paths.append(model_prior)
+            print(f'prior path: {model_prior}')
 
     def run_models(self, lc, outdir):
         ''' given lightcurve file path, run model fits for all models being considered. Save stats for each model'''
@@ -64,8 +65,8 @@ class Models:
 
         best_fit_paths = []
         start_time = time.time()    # for the while loop to check all files are complete
-        for model, prior in zip(self.model_names, self.priors):
-            
+        for model, prior in zip(self.model_names, self.model_prior_paths):
+            print('zip prior', prior)
             # code edited from analysis.py function: timestep_lightcurve_analysis
             lightcurve_label = os.path.basename(lc).split('.')[0]
             lighcurve_outdir = os.path.join(outdir, lightcurve_label)
@@ -75,8 +76,10 @@ class Models:
             print('model_outdir', model_outdir)
             
             # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### TEST #####################################################################
-            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = True)  # this will override the previous run
+            results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = 'expanse')  # this will override the previous run
             best_fit_paths.append(bestfit_path)
+            print('bestfit_path', bestfit_path)
+            print('results_path', results_path)
 
         submission_time = time.time()   # for the while loop to check all files are complete
         
@@ -91,7 +94,7 @@ class Models:
             time.sleep(120)
         
         # now get the information from all the files
-        for bestfit_path in best_fit_paths:
+        for model, bestfit_path in zip(self.model_names, best_fit_paths): ## need to account for failed fits (set negative infinity for log_bayes and log_likelihood)
             bestfit_file = open(bestfit_path)
             best_fit_json = json.load(bestfit_file)
             bestfit_file.close()
