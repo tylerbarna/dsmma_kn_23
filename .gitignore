@@ -157,3 +157,6 @@ svdmodels/Bu2019lm/ztfg.pkl
 svdmodels/Bu2019lm.pkl
 svdmodels/Bu2019lm/ztfg.pkl
 svdmodels/Bu2019lm.pkl
+
+# DS store
+.DS_Store
