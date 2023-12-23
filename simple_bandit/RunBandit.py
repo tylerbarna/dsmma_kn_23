@@ -160,7 +160,7 @@ init_time = 44245
 time_step = 1.0
 
 # (int) - the number of intervals you want the bandit to choose objects for
-n_steps = 10
+n_steps = 4
 
 # Models object
 all_models = Models(models, priors)
