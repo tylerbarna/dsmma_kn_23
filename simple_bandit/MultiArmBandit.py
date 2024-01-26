@@ -44,6 +44,7 @@ class UCB:
     def choose_obj(self):
         
         # check that all objects have at least one observation, and observe the first object that doesn't
+        # Do not need this if you are sure all objects will have initial obs
         if np.argwhere(self.n_obs == 0).any():
             obj = (np.argwhere(self.n_obs == 0)[0][0])
 
