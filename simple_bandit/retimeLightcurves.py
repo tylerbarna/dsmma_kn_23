@@ -44,6 +44,6 @@ for lc in lc_paths:
     os.makedirs(args.outdir, exist_ok=True)
     outpath = os.path.join(args.outdir, os.path.basename(lc))
     with open(outpath, 'w') as f:
-        json.dump(lc_data, f, indent=6)
+        json.dump(lc_data, f, indent=4)
 
     print(f'Wrote {outpath}')
