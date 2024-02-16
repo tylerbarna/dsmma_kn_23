@@ -154,7 +154,7 @@ model_of_interest = 'Me2017'
 stat_to_use = 'log_likelihood'
 
 # (float) - the latest time observation for all the candidate objects
-init_time = 44245   #TODO: make a function to find the initial time, when we want bandit to take over
+init_time = 44242   #TODO: make a function to find the initial time, when we want bandit to take over
           
 # (float) - the length of time you want each observation interval to be
 time_step = 1.0
