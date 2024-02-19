@@ -203,7 +203,7 @@ for lightcurve_path in lightcurve_paths:
     
 '''5. Run bandit'''
 print(f'Running bandit for {n_intervals}')
-for obs_int in range(n_intervals):  ### For online data, this would have to have a time check
+for obs_int in range(n_intervals-1):  ### For online data, this would have to have a time check
 
     print(f'\n\nObservation interval {obs_int + 1} starting:')
 
