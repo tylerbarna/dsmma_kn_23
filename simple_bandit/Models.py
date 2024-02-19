@@ -78,12 +78,7 @@ class Models:
             fit_label = lightcurve_label + '_fit_' + model 
             print('model_outdir', model_outdir)
             
-            # delete any additional files created by previous lc fit before overwriting results_path and bestfit_path with lightcurve_analysis
-            #############################################################
-            dir_to_delete = 'pm_*'
-            if os.path.exists(dir_to_delete):
-                shutil.rmtree(dir_to_delete)
-            #############################################################
+            
 
             # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### FOR TEST WITHOUT NMMA #####################################################################
             results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = 'expanse')  # this will override the previous run
@@ -111,6 +106,13 @@ class Models:
 
             model_fits_results[model] = {"log_likelihood": best_fit_json["log_likelihood"],
                                             "log_bayes_factor": best_fit_json["log_bayes_factor"]}
+            
+            # delete any additional files created by previous lc fit before overwriting results_path and bestfit_path with lightcurve_analysis
+            #############################################################
+            dir_to_delete = 'pm_*'
+            if os.path.exists(dir_to_delete):
+                shutil.rmtree(dir_to_delete)
+            #############################################################
 
         return model_fits_results
 
