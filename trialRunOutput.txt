@@ -1,0 +1,256 @@
+(nmma_dev) [tbarna@exp-1-48 dsmma_kn_23]$ python3 simple_bandit/RunBandit.py --models nugent-hyper Me2017 --outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted --env nmma_dev --data /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted --priors ~/dsmma_kn_23/priors/
+/home/tbarna/dsmma_kn_23
+Install afterglowpy if you want to simulate afterglows.
+Install wrapt_timeout_decorator if you want timeout simulations.
+prior path: /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+prior path: /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+All models: (['nugent-hyper', 'Me2017'], '/home/tbarna/dsmma_kn_23/priors/')
+[(-inf, 3), (3, 4.0), (4.0, 5.0), (5.0, 6.0), (6.0, 7.0)]
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper
+running observed_lc_lc_Me2017_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017
+running observed_lc_lc_Me2017_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_result.json
+[2024-02-16_13:16:46] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:18:46] 1/2 analyses complete, estimated time remaining: 00.03 hours
+[2024-02-16_13:20:46] All 2 analyses complete!
+completed all fits in 1707643969.7708147 hours and 4.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -25.93777826561191, 'log_bayes_factor': -29.440568527602164}, 'Me2017': {'log_likelihood': -5.58925208849229, 'log_bayes_factor': -13.440962340461853}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/nugent-hyper
+running observed_lc_lc_nugent-hyper_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/nugent-hyper/observed_lc_lc_nugent-hyper_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/nugent-hyper/observed_lc_lc_nugent-hyper_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/nugent-hyper/observed_lc_lc_nugent-hyper_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/nugent-hyper/observed_lc_lc_nugent-hyper_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/Me2017
+running observed_lc_lc_nugent-hyper_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/Me2017/observed_lc_lc_nugent-hyper_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/Me2017/observed_lc_lc_nugent-hyper_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/Me2017/observed_lc_lc_nugent-hyper_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00000/Me2017/observed_lc_lc_nugent-hyper_00000_fit_Me2017_result.json
+[2024-02-16_13:20:47] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:22:47] All 2 analyses complete!
+completed all fits in 1707644090.3778818 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.520986392222382, 'log_bayes_factor': -8.24969577600239}, 'Me2017': {'log_likelihood': -5.533789800843199, 'log_bayes_factor': -9.686012023786592}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/nugent-hyper
+running observed_lc_lc_nugent-hyper_00001_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/nugent-hyper/observed_lc_lc_nugent-hyper_00001_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/nugent-hyper/observed_lc_lc_nugent-hyper_00001_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/nugent-hyper/observed_lc_lc_nugent-hyper_00001_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/nugent-hyper/observed_lc_lc_nugent-hyper_00001_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/Me2017
+running observed_lc_lc_nugent-hyper_00001_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/Me2017/observed_lc_lc_nugent-hyper_00001_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/Me2017/observed_lc_lc_nugent-hyper_00001_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/Me2017/observed_lc_lc_nugent-hyper_00001_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00001/Me2017/observed_lc_lc_nugent-hyper_00001_fit_Me2017_result.json
+[2024-02-16_13:22:47] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:24:48] All 2 analyses complete!
+completed all fits in 1707644211.0224042 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.57179190301224, 'log_bayes_factor': -8.336660424583535}, 'Me2017': {'log_likelihood': -5.581507230713761, 'log_bayes_factor': -9.179936039979205}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/nugent-hyper
+running observed_lc_lc_nugent-hyper_00002_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/nugent-hyper/observed_lc_lc_nugent-hyper_00002_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/nugent-hyper/observed_lc_lc_nugent-hyper_00002_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/nugent-hyper/observed_lc_lc_nugent-hyper_00002_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/nugent-hyper/observed_lc_lc_nugent-hyper_00002_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/Me2017
+running observed_lc_lc_nugent-hyper_00002_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/Me2017/observed_lc_lc_nugent-hyper_00002_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/Me2017/observed_lc_lc_nugent-hyper_00002_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/Me2017/observed_lc_lc_nugent-hyper_00002_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00002/Me2017/observed_lc_lc_nugent-hyper_00002_fit_Me2017_result.json
+[2024-02-16_13:24:48] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:26:48] All 2 analyses complete!
+completed all fits in 1707644331.6223722 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.590193383199719, 'log_bayes_factor': -8.393560161951777}, 'Me2017': {'log_likelihood': -5.605518981635541, 'log_bayes_factor': -9.22822830734288}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/nugent-hyper
+running observed_lc_lc_nugent-hyper_00003_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/nugent-hyper/observed_lc_lc_nugent-hyper_00003_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/nugent-hyper/observed_lc_lc_nugent-hyper_00003_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/nugent-hyper/observed_lc_lc_nugent-hyper_00003_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/nugent-hyper/observed_lc_lc_nugent-hyper_00003_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/Me2017
+running observed_lc_lc_nugent-hyper_00003_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/Me2017/observed_lc_lc_nugent-hyper_00003_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/Me2017/observed_lc_lc_nugent-hyper_00003_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/Me2017/observed_lc_lc_nugent-hyper_00003_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00003/Me2017/observed_lc_lc_nugent-hyper_00003_fit_Me2017_result.json
+[2024-02-16_13:26:49] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:28:49] All 2 analyses complete!
+completed all fits in 1707644452.2230132 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.579743518623008, 'log_bayes_factor': -8.336612251105889}, 'Me2017': {'log_likelihood': -5.5848292950870935, 'log_bayes_factor': -9.62094413048533}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/nugent-hyper
+running observed_lc_lc_nugent-hyper_00004_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/nugent-hyper/observed_lc_lc_nugent-hyper_00004_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/nugent-hyper/observed_lc_lc_nugent-hyper_00004_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/nugent-hyper/observed_lc_lc_nugent-hyper_00004_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/nugent-hyper/observed_lc_lc_nugent-hyper_00004_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/Me2017
+running observed_lc_lc_nugent-hyper_00004_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/Me2017/observed_lc_lc_nugent-hyper_00004_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/Me2017/observed_lc_lc_nugent-hyper_00004_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/Me2017/observed_lc_lc_nugent-hyper_00004_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00004/Me2017/observed_lc_lc_nugent-hyper_00004_fit_Me2017_result.json
+[2024-02-16_13:28:49] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:30:49] 1/2 analyses complete, estimated time remaining: 00.03 hours
+[2024-02-16_13:32:49] All 2 analyses complete!
+completed all fits in 1707644692.9315758 hours and 4.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.540661874078817, 'log_bayes_factor': -9.829472179487576}, 'Me2017': {'log_likelihood': -5.527327983311865, 'log_bayes_factor': -11.113208092131638}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/nugent-hyper
+running observed_lc_lc_nugent-hyper_00005_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/nugent-hyper/observed_lc_lc_nugent-hyper_00005_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/nugent-hyper/observed_lc_lc_nugent-hyper_00005_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/nugent-hyper/observed_lc_lc_nugent-hyper_00005_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/nugent-hyper/observed_lc_lc_nugent-hyper_00005_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/Me2017
+running observed_lc_lc_nugent-hyper_00005_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/Me2017/observed_lc_lc_nugent-hyper_00005_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/Me2017/observed_lc_lc_nugent-hyper_00005_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/Me2017/observed_lc_lc_nugent-hyper_00005_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00005/Me2017/observed_lc_lc_nugent-hyper_00005_fit_Me2017_result.json
+[2024-02-16_13:32:50] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:34:50] All 2 analyses complete!
+completed all fits in 1707644813.5826404 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.5215930581892, 'log_bayes_factor': -8.290938175662381}, 'Me2017': {'log_likelihood': -5.529024026803258, 'log_bayes_factor': -10.420566267144322}}
+nugent-hyper
+Me2017
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/nugent-hyper
+running observed_lc_lc_nugent-hyper_00006_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/nugent-hyper/observed_lc_lc_nugent-hyper_00006_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/nugent-hyper/observed_lc_lc_nugent-hyper_00006_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/nugent-hyper/observed_lc_lc_nugent-hyper_00006_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/nugent-hyper/observed_lc_lc_nugent-hyper_00006_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/Me2017
+running observed_lc_lc_nugent-hyper_00006_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/Me2017/observed_lc_lc_nugent-hyper_00006_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/Me2017/observed_lc_lc_nugent-hyper_00006_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/Me2017/observed_lc_lc_nugent-hyper_00006_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_nugent-hyper_00006/Me2017/observed_lc_lc_nugent-hyper_00006_fit_Me2017_result.json
+[2024-02-16_13:34:51] 0/2 analyses complete, estimated time remaining: 00000 hours
+[2024-02-16_13:36:51] All 2 analyses complete!
+completed all fits in 1707644934.1950781 hours and 2.0 minutes
+model fits: {'nugent-hyper': {'log_likelihood': -5.542044120948973, 'log_bayes_factor': -8.245929248898}, 'Me2017': {'log_likelihood': -5.55241390887212, 'log_bayes_factor': -9.0911929001262}}
+nugent-hyper
+Me2017
+Running bandit for 5
+Observation interval 1 starting:
+/home/tbarna/dsmma_kn_23/simple_bandit/MultiArmBandit.py:56: RuntimeWarning: divide by zero encountered in log
+  confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i]))
+/home/tbarna/dsmma_kn_23/simple_bandit/MultiArmBandit.py:56: RuntimeWarning: invalid value encountered in sqrt
+  confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i]))
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper
+running observed_lc_lc_Me2017_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017
+running observed_lc_lc_Me2017_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_result.json
+[2024-02-16_13:36:51] All 2 analyses complete!
+completed all fits in 1707644934.8827596 hours and 0.0 minutes
+nugent-hyper
+Me2017
+Observation interval 2 starting:
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper
+running observed_lc_lc_Me2017_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017
+running observed_lc_lc_Me2017_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_result.json
+[2024-02-16_13:36:52] All 2 analyses complete!
+completed all fits in 1707644935.357841 hours and 0.0 minutes
+nugent-hyper
+Me2017
+Observation interval 3 starting:
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper
+running observed_lc_lc_Me2017_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017
+running observed_lc_lc_Me2017_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_result.json
+[2024-02-16_13:36:52] All 2 analyses complete!
+completed all fits in 1707644935.9041555 hours and 0.0 minutes
+nugent-hyper
+Me2017
+Observation interval 4 starting:
+zip prior /home/tbarna/dsmma_kn_23/priors/nugent-hyper.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper
+running observed_lc_lc_Me2017_00000_fit_nugent-hyper via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/nugent-hyper/observed_lc_lc_Me2017_00000_fit_nugent-hyper_result.json
+zip prior /home/tbarna/dsmma_kn_23/priors/Me2017.prior
+model_outdir /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017
+running observed_lc_lc_Me2017_00000_fit_Me2017 via slurm
+/expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+job_path is /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017.sh
+bestfit_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_bestfit_params.json
+results_path /expanse/lustre/projects/umn131/tbarna/testBanditLightcurvesAdjusted/observed_lc_lc_Me2017_00000/Me2017/observed_lc_lc_Me2017_00000_fit_Me2017_result.json
+[2024-02-16_13:36:53] All 2 analyses complete!
+completed all fits in 1707644936.3796558 hours and 0.0 minutes
+nugent-hyper
+Me2017
+Observation interval 5 starting:
+Traceback (most recent call last):
+  File "/home/tbarna/dsmma_kn_23/simple_bandit/RunBandit.py", line 210, in <module>
+    int_start_t = intervals[obs_int + 1][0]
+IndexError: list index out of range

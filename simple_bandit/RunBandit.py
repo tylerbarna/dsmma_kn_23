@@ -217,6 +217,11 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     # observe lc and get reward
     model_fits = chosen_object.observe_lightcurve(obs_int + 1, int_start_t, int_end_t)  # add one to idx because initial obs are in 0-th place
     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
+    ## delete all folders that start with pm_ in all subdirectories of the outdir
+    
+    pm_folders = glob.glob(os.path.join(outdir, '**/pm_*'))
+    for folder in pm_folders:
+        os.system(f'rm -r {folder}')
     
     # update bandit with new reward
     Bandit.update_model(reward)
