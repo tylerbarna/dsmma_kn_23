@@ -20,7 +20,7 @@ sys.path.append(str(Path(__file__).parent.parent.parent))  #####################
 # sys.path.append('..')
 # sys.path.append('../utils')
 current_path = os.getcwd()  #####################################################################
-print(current_path)  #####################################################################
+#print(current_path)  #####################################################################
 # os.chdir('../utils/')
 
 # from utils.analysis import lightcurve analysis, check_completion  #####################################################################
@@ -60,7 +60,7 @@ class Models:
         for model in self.model_names:
             model_prior = os.path.join(self.priors, f'{model}.prior')
             self.model_prior_paths.append(model_prior)
-            print(f'prior path: {model_prior}')
+            #print(f'prior path: {model_prior}')
 
     def run_models(self, lc, outdir):
         ''' given lightcurve file path, run model fits for all models being considered. Save stats for each model'''
@@ -69,22 +69,22 @@ class Models:
         best_fit_paths = []
         start_time = time.time()    # for the while loop to check all files are complete
         for model, prior in zip(self.model_names, self.model_prior_paths):
-            print('zip prior', prior)
+            #print('zip prior', prior)
             # code edited from analysis.py function: timestep_lightcurve_analysis
             lightcurve_label = os.path.basename(lc).split('.')[0]
             lighcurve_outdir = os.path.join(outdir, lightcurve_label)
             model_outdir = os.path.join(lighcurve_outdir, model) ## so directory structure will be {outdir}/{lightcurve_label}/{model}/
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
-            print('model_outdir', model_outdir)
+            #print('model_outdir', model_outdir)
             
             
 
             # bestfit_path = lc_analysis_test(lc, model, prior, outdir = model_outdir, label = fit_label) ##################################################################### FOR TEST WITHOUT NMMA #####################################################################
             results_path, bestfit_path = lightcurve_analysis(lc, model, prior, outdir= model_outdir, label= fit_label, slurm = 'expanse')  # this will override the previous run
             best_fit_paths.append(bestfit_path)
-            print('bestfit_path', bestfit_path)
-            print('results_path', results_path)
+            #print('bestfit_path', bestfit_path)
+            #print('results_path', results_path)
 
         submission_time = time.time()   # for the while loop to check all files are complete
         
