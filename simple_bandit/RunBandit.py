@@ -7,6 +7,8 @@ import time
 import sys #############################################################
 sys.path.append('~/dsmma_kn_23') #############################################################
 
+from concurrent.futures import ProcessPoolExecutor
+
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
 parser.add_argument('-m','--models', 
@@ -186,22 +188,35 @@ Bandit = UCB(n_objects)
 '''4. create lightcurve objects for all candidate lightcurves'''
 lightcurve_objects = []
 lc_idx = 0
+lc_array = [*range(n_objects)]
 
-for lightcurve_path in lightcurve_paths:
-
-    # initialize LC object
+def init_observation(lightcurve_path, lc_idx):
     new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
-
-    # get initial obs and corresponding reward
     model_fits = new_lc.observe_lightcurve(0, intervals[0][0], intervals[0][1]) # CHECK
-    print(f'model fits: {model_fits}')
     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
-
-    # add initial reward to bandit
     Bandit.initial_reward(lc_idx, reward)
+    return new_lc
 
-    lightcurve_objects.append(new_lc)
-    lc_idx += 1
+with ProcessPoolExecutor() as executor:
+    for r in executor.map(init_observation, lightcurve_paths, lc_array):
+        lightcurve_objects.append(r)
+        #lc_idx += 1
+
+# for lightcurve_path in lightcurve_paths:
+
+#     # initialize LC object
+#     new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
+
+#     # get initial obs and corresponding reward
+#     model_fits = new_lc.observe_lightcurve(0, intervals[0][0], intervals[0][1]) # CHECK
+#     print(f'model fits: {model_fits}')
+#     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
+
+#     # add initial reward to bandit
+#     Bandit.initial_reward(lc_idx, reward)
+
+#     lightcurve_objects.append(new_lc)
+#     lc_idx += 1
 
     # print(f'model fits: {model_fits}')
     # print(f'reward: {reward}')
