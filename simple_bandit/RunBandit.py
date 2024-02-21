@@ -252,6 +252,10 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     # update bandit with new reward
     Bandit.update_model(reward)
 
+print('Bandit run complete')
+for lc in lightcurve_objects:
+    print(lc.fit_stats)
+print('bandit reward values:', Bandit.obj_rewards)
 ##### NEED THIS HERE??
 # submission_time = time.time() ## all submissions made
 # print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
