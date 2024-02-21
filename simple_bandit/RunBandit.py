@@ -227,6 +227,7 @@ print(f'Running bandit for {n_intervals}')
 for obs_int in range(n_intervals-1):  ### For online data, this would have to have a time check
     
     pm_folders = glob.glob(os.path.join(outdir, '**/pm_*'))
+    print(f'pm_folders: {pm_folders}')
     for folder in pm_folders:
         print(f'rm -r {folder}')
         os.system(f'rm -r {folder}')
