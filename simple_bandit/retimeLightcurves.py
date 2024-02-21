@@ -14,7 +14,7 @@ import sys
 ## argparse the path to the lightcurves
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 parser.add_argument('--data', type=str, required=True, help='path to lightcurves')
-parser.add_argument('--outdir', type=str, default='./fits', help='path to output directory')
+parser.add_argument('--outdir', type=str, required=True, help='path to output directory')
 
 args = parser.parse_args()
 
