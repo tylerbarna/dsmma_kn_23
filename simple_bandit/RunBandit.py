@@ -225,6 +225,11 @@ with ProcessPoolExecutor() as executor:
 '''5. Run bandit'''
 print(f'Running bandit for {n_intervals}')
 for obs_int in range(n_intervals-1):  ### For online data, this would have to have a time check
+    
+    pm_folders = glob.glob(os.path.join(outdir, '**/pm_*'))
+    for folder in pm_folders:
+        print(f'rm -r {folder}')
+        os.system(f'rm -r {folder}')
 
     print(f'\n\nObservation interval {obs_int + 1} starting:')
 
