@@ -51,6 +51,12 @@ parser.add_argument('--tstep',
                     help='tstep value to use for all light curves (default: 1.0)'
 )
 
+parser.add_argument('--nsteps',
+                    type=int,
+                    default=4,
+                    help='number of intervals to use for bandit (default: 4)'
+)
+
 parser.add_argument('--outdir',
                     type=str,
                     default='./fits',
@@ -71,8 +77,8 @@ parser.add_argument('--cluster',
 
 parser.add_argument('--env',
                     type=str,
-                    default='nmma_env',
-                    help='conda environment to run on (default: nmma_env)'
+                    default='nmma_dev',
+                    help='conda environment to run on (default: nmma_dev)'
 )
 
 parser.add_argument('--dry-run',
@@ -160,7 +166,7 @@ init_time = 3  #TODO: make a function to find the initial time, when we want ban
 time_step = 1.0
 
 # (int) - the number of intervals you want the bandit to choose objects for
-n_steps = 4
+n_steps = args.nsteps
 
 # Models object
 all_models = Models(models, priors)
