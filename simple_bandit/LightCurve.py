@@ -51,7 +51,7 @@ class LightCurve:
             self.observed_lc = {"ztfg" : [self.true_lc['ztfg'][0]]} # CHECK 
 
             # create file path name
-            self.observed_lc_path = os.path.join(self.outdir, 'observed_lc_'+self.label+'.json')
+            self.observed_lc_path = os.path.join(self.outdir, 'observed_'+self.label+'.json')
         
         else:
             # just need path of lc object observations
