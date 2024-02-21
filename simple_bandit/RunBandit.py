@@ -23,7 +23,7 @@ parser.add_argument('-m','--models',
 
 parser.add_argument('-p','--priors',
                     type=str,
-                    default='~/dsmma_kn_23/priors',
+                    default='/home/tbarna/dsmma_kn_23/priors',
                     help='path to the prior files'
 )
 
