@@ -17,6 +17,13 @@ parser.add_argument('-m','--models',
                     choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='models to generate light curves for'
 )
+
+parser.add_argument('-tm', '--target-model',
+                    type=str,
+                    default='Me2017',
+                    choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
+                    help='model to use as the target for the bandit'
+                    )
 # parser.add_argument('-f','--filters',
 #                     type=str,
 #                     default='g',
@@ -92,6 +99,7 @@ args = parser.parse_args()
 priors = args.priors
 datadir = args.data
 models = args.models
+target_model = args.target_model
 outdir = args.outdir
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
@@ -156,7 +164,10 @@ from Rewards import stochastic_reward
 sim = True
 
 # (str) - name of object of interest (the type of model we want the bandit to observe)
-model_of_interest = 'Me2017'
+model_of_interest = target_model
+
+if model_of_interest not in models:
+    raise ValueError(f'model_of_interest: {model_of_interest} not in models: {models}')
 
 # (str) - name of statistic you want to use to compute reward (CURRENTLY just: 'likelihood' or 'log_bayes')
 stat_to_use = 'log_likelihood'
