@@ -38,6 +38,12 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     '''
     dry_run = kwargs.get('dry_run', False)
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
+    if os.path.exists(outdir): ## could prob just make it a different name
+        ## find the besfit_params json in the directory and then move it to a new directory in the root outdir
+        best_fit_params = [f for f in os.listdir(outdir) if 'bestfit_params' in f]
+        ## copy to the lightcurve_outdir and append the timestamp to the end of the filename to keep it unique 
+        shutil.copy(os.path.join(outdir, best_fit_params[0]), os.path.join('../',outdir, best_fit_params[0].split('.')[0] + '_' + str(int(time.time())) + '.json'))
+        shutil.rmtree(outdir)
     os.makedirs(outdir, exist_ok=True)
     env = kwargs.get('env', 'nmma_dev')
     
@@ -145,12 +151,7 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
     lighcurve_outdir = os.path.join(outdir, lightcurve_label)
     model_outdir = os.path.join(lighcurve_outdir, model) ## so directory structure will be {outdir}/{lightcurve_label}/{model}/
-    if os.path.exists(model_outdir): ## could prob just make it a different name
-        ## find the besfit_params json in the directory and then move it to a new directory in the root outdir
-        best_fit_params = [f for f in os.listdir(model_outdir) if 'bestfit_params' in f]
-        ## copy to the lightcurve_outdir and append the timestamp to the end of the filename to keep it unique 
-        shutil.copy(os.path.join(model_outdir, best_fit_params[0]), os.path.join(lighcurve_outdir, best_fit_params[0].split('.')[0] + '_' + str(int(time.time())) + '.json'))
-        shutil.rmtree(model_outdir)
+    
     os.makedirs(model_outdir, exist_ok=True)
     fit_label = lightcurve_label + '_fit_' + model if not label else label
     
