@@ -6,6 +6,7 @@ import json
 import numpy as np
 import os
 import pandas as pd
+import shutil
 import subprocess
 import time
 
@@ -144,6 +145,8 @@ def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=No
     lightcurve_label = os.path.basename(lightcurve_path).split('.')[0]
     lighcurve_outdir = os.path.join(outdir, lightcurve_label)
     model_outdir = os.path.join(lighcurve_outdir, model) ## so directory structure will be {outdir}/{lightcurve_label}/{model}/
+    if os.path.exists(model_outdir): ## could prob just make it a different name
+        shutil.rmtree(model_outdir)
     os.makedirs(model_outdir, exist_ok=True)
     fit_label = lightcurve_label + '_fit_' + model if not label else label
     
