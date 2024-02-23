@@ -1,5 +1,6 @@
 import argparse
 import glob
+import json
 import numpy as np
 import os=
 import time
@@ -276,9 +277,15 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     Bandit.update_model(reward)
 
 print('Bandit run complete')
-for lc in lightcurve_objects:
-    print(lc.fit_stats)
-print('bandit reward values:', Bandit.obj_rewards)
+
+fit_stats_file = os.path.join(outdir, 'fit_stats.json')
+fit_stats_dict = {lightcurve_labels[i]: lightcurve_objects[i].fit_stats for i in range(n_objects)}
+with open(fit_stats_file, 'w') as f:
+    json.dump(fit_stats_dict, f, indent=6)
+
+print('bandit reward values:')
+for i in range(n_objects):
+    print(f'{lightcurve_labels[i]} reward: {Bandit.obj_rewards[i]}')
 ##### NEED THIS HERE??
 # submission_time = time.time() ## all submissions made
 # print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
