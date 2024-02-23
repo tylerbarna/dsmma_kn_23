@@ -185,7 +185,7 @@ if model_of_interest not in models:
 stat_to_use = args.target_statistic
 
 # (float) - the latest time observation for all the candidate objects
-init_time = 3.1  #TODO: make a function to find the initial time, when we want bandit to take over
+#init_time = 3.1  #TODO: make a function to find the initial time, when we want bandit to take over
 init_time = find_start_time(lightcurve_paths, min_detections=3, all_filters=False)
           
 # (float) - the length of time you want each observation interval to be
@@ -251,18 +251,7 @@ print(f'Running bandit for {n_intervals}')
 for obs_int in range(n_intervals-1):  ### For online data, this would have to have a time check
     
     
-    ## find all subfolders of the outdir that start with pm_ and delete them. these folders can be multiple levels deep
-    # pm_folders = glob.glob(os.path.join(outdir, '**/pm_*')) ## this doesn't work
-    pm_folders = glob.glob(os.path.join(outdir, '*','*','pm_*'))
-    print(f'pm_folders: {pm_folders}')
-    for folder in pm_folders:
-        ## define name of folder that the pm_ folder is in
-        containing_folder = os.path.dirname(folder)
-        best_fit_params = [f for f in os.listdir(folder) if 'bestfit_params' in f]
-        ## copy bestfit_params files into one level above containing folder, appending the current time to them to avoid overwriting
-        [os.system(f'cp {os.path.join(folder, f)} {os.path.join(os.path.dirname(containing_folder), Path(f).stem)}_{time.time()}.json') for f in best_fit_params]
-        print(f'rm -r {folder}')
-        os.system(f'rm -r {folder}')
+    
         
 
     print(f'\n\nObservation interval {obs_int + 1} starting:')
@@ -285,6 +274,20 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     
     # update bandit with new reward
     Bandit.update_model(reward)
+    
+    
+    ## find all subfolders of the outdir that start with pm_ and delete them. these folders can be multiple levels deep
+    # pm_folders = glob.glob(os.path.join(outdir, '**/pm_*')) ## this doesn't work
+    pm_folders = glob.glob(os.path.join(outdir, '*','*','pm_*'))
+    print(f'pm_folders: {pm_folders}')
+    for folder in pm_folders:
+        ## define name of folder that the pm_ folder is in
+        containing_folder = os.path.dirname(folder)
+        best_fit_params = [f for f in os.listdir(folder) if 'bestfit_params' in f]
+        ## copy bestfit_params files into one level above containing folder, appending the current time to them to avoid overwriting
+        [os.system(f'cp {os.path.join(folder, f)} {os.path.join(os.path.dirname(containing_folder), Path(f).stem)}_{time.time()}.json') for f in best_fit_params]
+        print(f'rm -r {folder}')
+        os.system(f'rm -r {folder}')
 
 print('Bandit run complete')
 stopTime = time.time()
