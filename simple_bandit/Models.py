@@ -99,13 +99,16 @@ class Models:
             time.sleep(120)
         
         # now get the information from all the files
-        for model, bestfit_path in zip(self.model_names, best_fit_paths): ## TODO: need to account for failed fits (set negative infinity for log_bayes and log_likelihood)
-            bestfit_file = open(bestfit_path)
-            best_fit_json = json.load(bestfit_file)
-            bestfit_file.close()
+        for model, bestfit_path in zip(self.model_names, best_fit_paths):
+            try: ## should account for any failed fits
+                bestfit_file = open(bestfit_path)
+                best_fit_json = json.load(bestfit_file)
+                bestfit_file.close()
+            except:
+                print(f'failed to open {bestfit_path}, setting log_bayes and log_likelihood to -inf')
+                best_fit_json = {"log_likelihood": -float('inf'), "log_bayes_factor": -float('inf')}
 
-            model_fits_results[model] = {"log_likelihood": best_fit_json["log_likelihood"],
-                                            "log_bayes_factor": best_fit_json["log_bayes_factor"]}
+            model_fits_results[model] = {key:value for key, value in best_fit_json.items()}
             
             # delete any additional files created by previous lc fit before overwriting results_path and bestfit_path with lightcurve_analysis
             #############################################################
