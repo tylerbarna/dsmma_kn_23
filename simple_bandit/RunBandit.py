@@ -1,13 +1,15 @@
 import argparse
 import glob
 import numpy as np
-import os
+import os=
 import time
 
 import sys #############################################################
 sys.path.append('~/dsmma_kn_23') #############################################################
 
 from concurrent.futures import ProcessPoolExecutor
+
+from pathlib import Path
 
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
@@ -243,8 +245,14 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     pm_folders = glob.glob(os.path.join(outdir, '*','*','pm_*'))
     print(f'pm_folders: {pm_folders}')
     for folder in pm_folders:
+        ## define name of folder that the pm_ folder is in
+        containing_folder = os.path.dirname(folder)
+        best_fit_params = [f for f in os.listdir(folder) if 'bestfit_params' in f]
+        ## copy bestfit_params files into one level above containing folder, appending the current time to them to avoid overwriting
+        [os.system(f'cp {os.path.join(folder, f)} {os.path.join(os.path.dirname(containing_folder), Path(f).stem)}_{time.time()}.json') for f in best_fit_params]
         print(f'rm -r {folder}')
         os.system(f'rm -r {folder}')
+        
 
     print(f'\n\nObservation interval {obs_int + 1} starting:')
 
@@ -260,9 +268,9 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
     ## delete all folders that start with pm_ in all subdirectories of the outdir
     
-    pm_folders = glob.glob(os.path.join(outdir, '**/pm_*'))
-    for folder in pm_folders:
-        os.system(f'rm -r {folder}')
+    # pm_folders = glob.glob(os.path.join(outdir, '**/pm_*'))
+    # for folder in pm_folders:
+    #     os.system(f'rm -r {folder}')
     
     # update bandit with new reward
     Bandit.update_model(reward)
