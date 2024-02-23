@@ -59,7 +59,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             filters=','.join(filters),
             grb_resolution=5,
             jet_type=0,
-            ztf_sampling=False,
+            ztf_sampling=kwargs.get('ztf_sampling', False),
             ztf_uncertainties=True,
             ztf_ToO=None,
             rubin_ToO=False,
