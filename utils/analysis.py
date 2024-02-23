@@ -38,13 +38,13 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     '''
     dry_run = kwargs.get('dry_run', False)
     assert os.path.exists(lightcurve_path), 'lightcurve file {} does not exist'.format(lightcurve_path)
-    if os.path.exists(outdir): ## could prob just make it a different name
-        print('outdir exists, removing')
-        ## find the besfit_params json in the directory and then move it to a new directory in the root outdir
-        best_fit_params = [f for f in os.listdir(outdir) if 'bestfit_params' in f]
-        ## copy to the lightcurve_outdir and append the timestamp to the end of the filename to keep it unique 
-        [shutil.copy(os.path.join(outdir, f), os.path.join('../',outdir, f.split('.')[0] + '_' + str(int(time.time())) + '.json')) for f in best_fit_params]
-        shutil.rmtree(outdir)
+    # if os.path.exists(outdir): ## could prob just make it a different name
+    #     print('outdir exists, removing')
+    #     ## find the besfit_params json in the directory and then move it to a new directory in the root outdir
+    #     best_fit_params = [f for f in os.listdir(outdir) if 'bestfit_params' in f]
+    #     ## copy to the lightcurve_outdir and append the timestamp to the end of the filename to keep it unique 
+    #     [shutil.copy(os.path.join(outdir, f), os.path.join('../',outdir, f.split('.')[0] + '_' + str(int(time.time())) + '.json')) for f in best_fit_params]
+    #     shutil.rmtree(outdir)
     os.makedirs(outdir, exist_ok=True)
     env = kwargs.get('env', 'nmma_dev')
     
