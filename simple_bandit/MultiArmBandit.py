@@ -57,7 +57,7 @@ class UCB:
 
                 obj_ucbs[i] = self.avg_rewards[i] + confidence_interval
 
-            print(obj_ucbs)
+            print('current upper confidence bound array: ',obj_ucbs)
             obj = np.argmax(obj_ucbs)
 
         self.n_obs[obj] += 1
