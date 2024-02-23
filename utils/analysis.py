@@ -19,7 +19,7 @@ from nmma.em import analysis
 # from utils.misc import strtime, suppress_print
 
 
-def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=False, **kwargs):
+def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=True, **kwargs):
     '''
     Uses nmma to analyse a given lightcurve against a specific model and prior
     
@@ -117,14 +117,11 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     def analysis_main(args):
         analysis.main(args)
         
-    if slurm:
         print(f'running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
         #print(f'job_path is {job_path}')
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
-    else:
-        analysis_main(args)
     
     
     results_path = os.path.join(outdir, label + "_result.json")
