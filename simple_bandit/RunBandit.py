@@ -12,6 +12,8 @@ from concurrent.futures import ProcessPoolExecutor
 
 from pathlib import Path
 
+from BanditUtils import find_start_time
+
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
 parser.add_argument('-m','--models', 
@@ -129,7 +131,7 @@ os.makedirs(outdir, exist_ok=True)
 lightcurve_paths = sorted(glob.glob(os.path.join(datadir,'lc*.json'))) ## assumes leading label is lc_
 lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_paths] ## assumes leading label is lc_
 
-tmax_array = np.arange(tmin,tmax,tstep)
+# tmax_array = np.arange(tmin,tmax,tstep)
 
 # estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
 # if estimated_job_count > 4096 and not args.dry_run:
@@ -184,6 +186,7 @@ stat_to_use = args.target_statistic
 
 # (float) - the latest time observation for all the candidate objects
 init_time = 3.1  #TODO: make a function to find the initial time, when we want bandit to take over
+init_time = find_start_time(lightcurve_paths, min_detections=3, all_filters=False)
           
 # (float) - the length of time you want each observation interval to be
 time_step = 1.0

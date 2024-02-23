@@ -58,6 +58,46 @@ def retime_lightcurve(lc, start_time=None):
     
     with open(lc, 'w') as f:
         json.dump(lc, f, indent=4)
+        
+def find_start_time(lightcurves, min_detections=3, all_filters=False):
+    '''
+    From an ensemble of lightcurves, finds the earliest time that has at least min_detections in at least one filter
+    
+    Args:
+    - lightcurves (list): list of paths to lightcurve files
+    - min_detections (int): minimum number of detections to be considered valid (default=3)
+    - all_filters (bool): whether to require min_detections in all filters (default=False)
+    '''
+    lightcurves_start_time = {}
+    lcs = {}
+    for lc in lightcurves:
+        with open(lc, 'r') as f:
+            lcs[lc] = json.load(f)
+    for lc in lcs:
+        # print()
+        # print(lc)
+        ## find the earliest time that there are 3 finite instances of the 3rd element of each detection in each filter
+        lc_start_time = {key: np.inf for key in lcs[lc].keys()}
+        for filter in lcs[lc].keys():
+            observations = np.array(lcs[lc][filter])
+            n_detections = 0
+            while n_detections < min_detections:
+                for obs in observations:
+                    # print(obs)
+                    if np.isfinite(obs[2]):
+                        n_detections += 1
+                        lc_start_time[filter] = obs[0]
+                        if n_detections >= min_detections:
+                            break
+
+        lightcurves_start_time[lc] = max([lc_start_time[key] for key in lc_start_time.keys()]) if all_filters else min([lc_start_time[key] for key in lc_start_time.keys()]) ## will find the latest time to include all filters if all_filters is True, otherwise will find the earliest time to include any filter
+    
+    overall_start_time = max([lightcurves_start_time[lc] for lc in lightcurves_start_time.keys()])
+    return overall_start_time
+            
+                              
+    
+    
     
         
 def lc_analysis_test(lc, model, prior, outdir, label):
