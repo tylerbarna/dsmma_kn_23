@@ -33,6 +33,13 @@ parser.add_argument('-tm', '--target-model',
 #                     help='filters to generate light curves for (choices for ztf are ztfr,ztfg,ztfi)'
 # )
 
+parser.add_argument('-stat', '--target-statistic',
+                    type=str,
+                    default='log_likelihood',
+                    choices=['log_likelihood','log_bayes_factor'],
+                    help='statistic to use for reward in bandit'
+)
+
 parser.add_argument('-p','--priors',
                     type=str,
                     default='/home/tbarna/dsmma_kn_23/priors',
@@ -77,8 +84,8 @@ parser.add_argument('--outdir',
 
 parser.add_argument('--timeout',
                     type=float,
-                    default=71.9,
-                    help='timeout in hours (default: 71.9 hours)'
+                    default=1,
+                    help='timeout in hours (default: 1 hours)'
 )
 
 parser.add_argument('--cluster',
@@ -124,17 +131,17 @@ lightcurve_labels = [os.path.basename(lc).split('.')[0]for lc in lightcurve_path
 
 tmax_array = np.arange(tmin,tmax,tstep)
 
-estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
-if estimated_job_count > 4096 and not args.dry_run:
-    print('warning: estimated job count exceeds 4096, this may exceed the limits for job counts on expanse')
-    while True:
-        user_input = input('continue? (y/n)')
-        if user_input == 'y' or user_input == 'yes':
-            break
-        elif user_input == 'n' or user_input == 'no':
-            exit()
-        else:
-            print('invalid input, try again')
+# estimated_job_count = len(lightcurve_paths) * len(models) * len(tmax_array)
+# if estimated_job_count > 4096 and not args.dry_run:
+#     print('warning: estimated job count exceeds 4096, this may exceed the limits for job counts on expanse')
+#     while True:
+#         user_input = input('continue? (y/n)')
+#         if user_input == 'y' or user_input == 'yes':
+#             break
+#         elif user_input == 'n' or user_input == 'no':
+#             exit()
+#         else:
+#             print('invalid input, try again')
 
 results_paths = []
 bestfit_paths = []
@@ -173,7 +180,7 @@ if model_of_interest not in models:
     raise ValueError(f'model_of_interest: {model_of_interest} not in models: {models}')
 
 # (str) - name of statistic you want to use to compute reward (CURRENTLY just: 'likelihood' or 'log_bayes')
-stat_to_use = 'log_likelihood'
+stat_to_use = args.target_statistic
 
 # (float) - the latest time observation for all the candidate objects
 init_time = 3.1  #TODO: make a function to find the initial time, when we want bandit to take over
@@ -277,9 +284,11 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     Bandit.update_model(reward)
 
 print('Bandit run complete')
+stopTime = time.time()
 
 fit_stats_file = os.path.join(outdir, 'fit_stats.json')
 fit_stats_dict = {lightcurve_labels[i]: lightcurve_objects[i].fit_stats for i in range(n_objects)}
+fit_stats_dict['misc'] = {'start_time': start_time, 'end_time': stopTime, 'run_time': stopTime - start_time}
 with open(fit_stats_file, 'w') as f:
     json.dump(fit_stats_dict, f, indent=6)
 
