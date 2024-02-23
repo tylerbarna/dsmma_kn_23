@@ -34,6 +34,31 @@ def get_intervals(init_time, time_step, n_steps):
 
     return intervals
 
+def retime_lightcurve(lc, start_time=None):
+    '''
+    sets lightcurve to start at a different time. If no specific time is given, it will start at t=0, where t is the time of the first data point (detection or non-detection). Note that this rewrites the lightcurve in place.
+    
+    Args:
+    - lc (string): path to lightcurve file
+    - start_time (float): time to start lightcurve at (default=None). Note that, if it is provided, you will have to make sure it's a value that makes sense for that collection of lightcurves (eg it would be something like 44244).
+    '''
+    with open(lc, 'r') as f:
+        lc = json.load(f)
+    filters = list(lc.keys())
+    if start_time is None:
+        start_time = np.inf
+        for filt in filters:
+            times = np.array(lc[filt])[:,0]
+            if np.min(times) < start_time:
+                start_time = np.min(times)
+    for filt in filters:
+        lc[filt] = np.array(lc[filt])
+        lc[filt][:,0] -= start_time
+        lc[filt] = lc[filt].tolist() ## so it can be written back to json
+    
+    with open(lc, 'w') as f:
+        json.dump(lc, f, indent=4)
+    
         
 def lc_analysis_test(lc, model, prior, outdir, label):
     
@@ -104,10 +129,10 @@ def lc_analysis_test(lc, model, prior, outdir, label):
     }
 
     lc_file = open(lc)
-    lc_og = json.load(lc_file)
+    lc = json.load(lc_file)
     lc_file.close()
 
-    if lc_og['ztfg'][1][0] % 2 == 0:
+    if lc['ztfg'][1][0] % 2 == 0:
         value = kn
     else:
         value = other
