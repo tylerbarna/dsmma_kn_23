@@ -25,15 +25,15 @@ def stochastic_reward(dat, model_of_interest, stat):
     - stat (str): which statistic to use: 'log_bayes' or 'likelihood'   # TODO: make sure you can only choose an available stat
     '''
     all_stats = []
-    model_of_interst_stat = 0
+    model_of_interest_stat = 0
 
     for key in dat:
         print(key)
         if key == model_of_interest:
-            model_of_interst_stat = dat[key][stat]
+            model_of_interest_stat = dat[key][stat]
         else:
             all_stats.append(dat[key][stat])
 
-    R = model_of_interst_stat - max(all_stats)
+    R = model_of_interest_stat - max(all_stats)
 
     return R
