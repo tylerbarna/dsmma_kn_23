@@ -24,7 +24,7 @@ current_path = os.getcwd()  ####################################################
 # os.chdir('../utils/')
 
 # from utils.analysis import lightcurve analysis, check_completion  #####################################################################
-from dsmma_kn_23.utils.analysis import lightcurve_analysis, check_completion  #####################################################################
+from utils.analysis import lightcurve_analysis, check_completion  #####################################################################
 #from utils.analysis import lightcurve_analysis, check_completion
 # os.chdir(current_path)
 
