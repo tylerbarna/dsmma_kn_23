@@ -19,7 +19,7 @@ from nmma.em import analysis
 # from utils.misc import strtime, suppress_print
 
 
-def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm=True, **kwargs):
+def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None, slurm='expanse', **kwargs):
     '''
     Uses nmma to analyse a given lightcurve against a specific model and prior
     
@@ -116,7 +116,10 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     # @suppress_print
     def analysis_main(args):
         analysis.main(args)
-        
+    if not slurm:
+        print(f'running {label} locally')
+        analysis_main(args)    
+    elif slurm:    
         print(f'running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
         #print(f'job_path is {job_path}')
@@ -317,7 +320,6 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
             f.write(f'source activate {env}\n')
         f.write(' '.join(cmd_str))
     
-    print('created job ',job_path)
     return job_path
 
 def submit_slurm_job(job_path, delete=False):
