@@ -55,6 +55,12 @@ parser.add_argument('--multiplier',
                     help='multiplier for number of light curves to generate (default=1)'
 )
 
+parser.add_argument('-i', '--index-offset',
+                    type=int,
+                    default=0,
+                    help='index offset for light curve generation (default=0)'
+)
+
 args = parser.parse_args()
 models = args.models
 outdir = args.outdir
@@ -63,6 +69,7 @@ validate = args.no_validate
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
 filters = [args.filters] if type(args.filters) == str else args.filters
+idx_offset = args.index_offset
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
@@ -78,7 +85,7 @@ for model, prior in zip(models,priors):
     else:
         lc_count = 1 * multiplier
     
-    for lc_idx in range(lc_count):
+    for lc_idx in range(idx_offset, lc_count+idx_offset):
         generated_lc = False
         lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
         while not generated_lc:
