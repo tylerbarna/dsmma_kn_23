@@ -24,7 +24,7 @@ current_path = os.getcwd()  ####################################################
 # os.chdir('../utils/')
 
 # from utils.analysis import lightcurve analysis, check_completion  #####################################################################
-from utils.analysis import lightcurve_analysis, check_completion  #####################################################################
+from dsmma_kn_23.utils.analysis import lightcurve_analysis, check_completion  #####################################################################
 #from utils.analysis import lightcurve_analysis, check_completion
 # os.chdir(current_path)
 
@@ -94,7 +94,7 @@ class Models:
             completion_bool, completed_fits = check_completion(best_fit_paths, t0 =start_time,  t0_submission= submission_time)
             if completion_bool:
                 end_time = time.time()
-                print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')
+                print(f'completed all fits in {((end_time-start_time)%3600)//60} minutes')
                 break
             time.sleep(120)
         
