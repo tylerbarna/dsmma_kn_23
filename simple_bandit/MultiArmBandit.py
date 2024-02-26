@@ -45,20 +45,20 @@ class UCB:
         
         # check that all objects have at least one observation, and observe the first object that doesn't
         # Do not need this if you are sure all objects will have initial obs
-        if np.argwhere(self.n_obs == 0).any():
-            obj = (np.argwhere(self.n_obs == 0)[0][0])
+        # if np.argwhere(self.n_obs == 0).any():
+        #     obj = (np.argwhere(self.n_obs == 0)[0][0])
 
-        else:
-            obj_ucbs = np.zeros(self.n_obj)
+        # else:
+        obj_ucbs = np.zeros(self.n_obj)
 
-            for i in range(self.n_obj):
+        for i in range(self.n_obj):
 
-                confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i]))
+            confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i]))
 
-                obj_ucbs[i] = self.avg_rewards[i] + confidence_interval
+            obj_ucbs[i] = self.avg_rewards[i] + confidence_interval
 
-            print('current upper confidence bound array: ',obj_ucbs)
-            obj = np.argmax(obj_ucbs)
+        print('current upper confidence bound array: ',obj_ucbs)
+        obj = np.argmax(obj_ucbs)
 
         self.n_obs[obj] += 1
 
