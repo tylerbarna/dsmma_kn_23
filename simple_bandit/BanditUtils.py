@@ -93,6 +93,7 @@ def find_start_time(lightcurves, min_detections=3, all_filters=False):
         lightcurves_start_time[lc] = max([lc_start_time[key] for key in lc_start_time.keys()]) if all_filters else min([lc_start_time[key] for key in lc_start_time.keys()]) ## will find the latest time to include all filters if all_filters is True, otherwise will find the earliest time to include any filter
     
     overall_start_time = max([lightcurves_start_time[lc] for lc in lightcurves_start_time.keys()])
+    print(f'Start time found: {overall_start_time}')
     return overall_start_time
             
                               
