@@ -317,7 +317,7 @@ def create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, svdpath
             f.write(f'source activate {env}\n')
         f.write(' '.join(cmd_str))
     
-    print(job_path)
+    print('created job ',job_path)
     return job_path
 
 def submit_slurm_job(job_path, delete=False):
