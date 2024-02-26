@@ -84,6 +84,10 @@ parser.add_argument('--outdir',
                     help='path to output directory'
 )
 
+parser.add_argument('--clean-run',
+                    action='store_true',
+                    help='delete all files and folders that start with observed_ in the outdir')
+
 parser.add_argument('--timeout',
                     type=float,
                     default=1,
@@ -113,6 +117,7 @@ datadir = args.data
 models = args.models
 target_model = args.target_model
 outdir = args.outdir
+clean_run = args.clean_run
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
 env = args.env
@@ -124,6 +129,9 @@ tstep = args.tstep
 #     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
 #     outdir = os.path.join(outdir +'-'+ strtime())
 #     print(f'outdir is now {outdir}')
+if clean_run:
+    print(f'cleaning run, deleting all files and folders that start with observed_ in {outdir}')
+    os.system(f'rm -r {os.path.join(outdir, "observed_*")}')
 
 os.makedirs(outdir, exist_ok=True)
 
