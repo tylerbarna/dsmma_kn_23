@@ -253,7 +253,8 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     
     ## find all subfolders of the outdir that start with pm_ and delete them. these folders can be multiple levels deep
     # pm_folders = glob.glob(os.path.join(outdir, '**/pm_*')) ## this doesn't work
-    pm_folders = glob.glob(os.path.join(outdir, '*','*','pm_*'))
+    pm_folders = glob.glob(os.path.join(outdir, '**','pm_*'))
+    
     print(f'pm_folders: {pm_folders}')
     for folder in pm_folders:
         ## define name of folder that the pm_ folder is in
@@ -263,6 +264,8 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
         [os.system(f'cp {os.path.join(folder, f)} {os.path.join(os.path.dirname(containing_folder), Path(f).stem)}_{time.time()}.json') for f in best_fit_params]
         print(f'rm -r {folder}')
         os.system(f'rm -r {folder}')
+    posterior_samples = glob.glob(os.path.join(outdir, '**','*posterior_samples.dat'))
+    [os.system(f'rm {f}') for f in posterior_samples]
 
         
     print(f'\n\nObservation interval {obs_int + 1} starting:')
