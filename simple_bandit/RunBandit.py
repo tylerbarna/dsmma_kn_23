@@ -276,6 +276,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     posterior_samples = glob.glob(os.path.join(outdir, '**','*posterior_samples.dat'))
     [os.system(f'rm {f}') for f in posterior_samples]
     os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
+    time.sleep(5)
 
         
     print(f'\n\nObservation interval {obs_int + 1} starting:')
