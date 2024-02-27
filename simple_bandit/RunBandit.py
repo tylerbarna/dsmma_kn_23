@@ -219,8 +219,9 @@ Bandit = UCB(n_objects)
 
 '''4. create lightcurve objects for all candidate lightcurves'''
 lightcurve_objects = []
-lc_idx = 0
+# lc_idx = 0
 lc_array = [*range(n_objects)]
+# init_reward_array = [None] * n_objects
 
 def init_observation(lightcurve_path, lc_idx):
     new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
@@ -234,6 +235,8 @@ with ProcessPoolExecutor() as executor:
     for r in executor.map(init_observation, lightcurve_paths, lc_array):
         lightcurve_objects.append(r)
         #lc_idx += 1
+for i in range(n_objects):
+    print('initial rewards are ', Bandit.obj_rewards[i])
 
 # for lightcurve_path in lightcurve_paths:
 
