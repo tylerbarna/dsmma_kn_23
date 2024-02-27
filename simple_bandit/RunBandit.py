@@ -282,6 +282,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
         print(f'rm -r {folder}')
         os.system(f'rm -r {folder}')
     posterior_samples = glob.glob(os.path.join(outdir, '**','*posterior_samples.dat'))
+    print(f'posterior_samples: {posterior_samples}')
     [os.system(f'rm {f}') for f in posterior_samples]
     os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
     time.sleep(5)
