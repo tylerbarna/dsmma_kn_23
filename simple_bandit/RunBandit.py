@@ -308,6 +308,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     
     # update bandit with new reward
     Bandit.update_model(reward)
+    os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
     
     
 print('Bandit run complete')
