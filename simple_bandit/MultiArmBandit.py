@@ -31,7 +31,7 @@ class UCB:
         self.obj_rewards[obj_idx] += reward
         self.avg_rewards[obj_idx] += reward
 
-        self.n_obs[obj_idx] += 1
+        self.n_obs[obj_idx] += 3
 
 
     ''' 
