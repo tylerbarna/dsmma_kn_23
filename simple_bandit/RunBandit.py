@@ -221,7 +221,7 @@ Bandit = UCB(n_objects)
 lightcurve_objects = []
 # lc_idx = 0
 lc_array = [*range(n_objects)]
-init_reward_array = [None] * n_objects
+init_reward_array = np.zeros(n_objects)
 
 def init_observation(lightcurve_path, lc_idx):
     new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
