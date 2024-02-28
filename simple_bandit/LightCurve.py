@@ -85,6 +85,7 @@ class LightCurve:
     def get_model_outputs(self, idx):
         '''call run_models and get model outputs (likelihood, bayes factor) and save in fit_stats dict with idx as key'''
         # call run models if there's more data
+        print('running models for lightcurve ' + self.label + ' at interval ' + str(idx) + '...')
         out = self.all_models.run_models(self.observed_lc_path, self.outdir)
 
         idx_str = str(idx)
