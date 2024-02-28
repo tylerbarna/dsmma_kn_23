@@ -78,6 +78,7 @@ class Models:
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
             #print('model_outdir', model_outdir)
+            print('running fit:' + fit_label)
             
             
 
