@@ -53,7 +53,7 @@ class UCB:
 
         for i in range(self.n_obj):
 
-            confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i]))
+            confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i])) #if self.n_obs[i] != 0 else np.inf
 
             obj_ucbs[i] = self.avg_rewards[i] + confidence_interval
 

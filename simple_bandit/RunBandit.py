@@ -284,7 +284,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
     chosen_object = lightcurve_objects[chosen_object_idx]
     print('chosen object: ', chosen_object.label)
-    print(type(chosen_object))
+    #print(type(chosen_object))
 
     # observe lc and get reward
     model_fits = chosen_object.observe_lightcurve(obs_int + 1, int_start_t, int_end_t)  # add one to idx because initial obs are in 0-th place
