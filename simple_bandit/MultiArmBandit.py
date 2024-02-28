@@ -14,7 +14,7 @@ class UCB:
         
         self.n_obj = num_obj
 
-        self.n_obs = np.zeros(self.n_obj)
+        self.n_obs = np.zeros(self.n_obj) + 3 ## each object is observed at least 3 times prior to the bandit starting
         self.obj_rewards = np.zeros(self.n_obj)
         self.avg_rewards = np.zeros(self.n_obj)
     
@@ -31,7 +31,7 @@ class UCB:
         self.obj_rewards[obj_idx] += reward
         self.avg_rewards[obj_idx] += reward
 
-        self.n_obs[obj_idx] += 3
+        #self.n_obs[obj_idx] += 1 ## not actually adding an observation
 
 
     ''' 
