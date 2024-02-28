@@ -68,6 +68,7 @@ class Models:
 
         best_fit_paths = []
         start_time = time.time()    # for the while loop to check all files are complete
+        os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
         for model, prior in zip(self.model_names, self.model_prior_paths):
             #print('zip prior', prior)
             # code edited from analysis.py function: timestep_lightcurve_analysis
@@ -96,7 +97,7 @@ class Models:
                 end_time = time.time()
                 print(f'completed all fits in {((end_time-start_time)%3600)//60} minutes')
                 break
-            time.sleep(120)
+            time.sleep(60)
         
         # now get the information from all the files
         for model, bestfit_path in zip(self.model_names, best_fit_paths):
