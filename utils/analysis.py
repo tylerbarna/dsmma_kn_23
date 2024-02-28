@@ -47,6 +47,13 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
     #     shutil.rmtree(outdir)
     os.makedirs(outdir, exist_ok=True)
     env = kwargs.get('env', 'nmma_dev')
+    results_path = os.path.join(outdir, label + "_result.json")
+    bestfit_path = os.path.join(outdir, label + "_bestfit_params.json")
+    ## delete previous results if they exist
+    if os.path.exists(results_path):
+        os.remove(results_path)
+    if os.path.exists(bestfit_path):
+        os.remove(bestfit_path)
     
     if not tmax:
         try:
@@ -120,15 +127,14 @@ def lightcurve_analysis(lightcurve_path, model, prior, outdir, label, tmax=None,
         print(f'running {label} locally')
         analysis_main(args)    
     elif slurm:    
-        print(f'running {label} via slurm')
+        #print(f'running {label} via slurm')
         job_path = create_slurm_job(lightcurve_path, model, label, prior, outdir, tmax, cluster=str(slurm),dry_run=dry_run, env=env, rootdir='/expanse/lustre/projects/umn131/tbarna/')
         #print(f'job_path is {job_path}')
         submit_slurm_job(job_path) if not dry_run else print('dry run, not submitting job')
         time.sleep(0.1)
     
     
-    results_path = os.path.join(outdir, label + "_result.json")
-    bestfit_path = os.path.join(outdir, label + "_bestfit_params.json")
+    
     return results_path, bestfit_path
 
 def timestep_lightcurve_analysis(lightcurve_path, model, prior, outdir, label=None, tmax_array=None, threading=True, **kwargs):

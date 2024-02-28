@@ -2,6 +2,7 @@
 creates lightcurves from a given injection file using nmma
 '''
 
+import json
 import numpy as np
 import os 
 import pandas as pd
@@ -195,3 +196,30 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
 # known_good = 'injections/lc_Me2017_00000.json'
 # print(validate_lightcurve(known_good, min_detections=3, min_time=3.1, all_bands=False))
     
+def retime_lightcurve(lightcurve_path, start_time=None, outfile=None):
+    '''
+    Retimes a lightcurve so it is set to a specific time. By default, will set t=0 to be the first observation, but it can be set to any time.
+    
+    Args:
+    - lightcurve_path (str): path to lightcurve file
+    - start_time (float): time to start lightcurve at (default=None). Note that, if it is provided, you will have to make sure it's a value that makes sense for that collection of lightcurves (eg it would be something like 44244). This would be implemented to allow for shifting lightcurves to a specific time.
+    - outfile (str): path to output file (default=None). If None, will overwrite the input file.
+    
+    Returns:
+    - outpath (str): path to output file
+    '''
+    
+    with open(lightcurve_path, 'r') as f:
+        lc = json.load(f)
+    filters = list(lc.keys())
+    if start_time is None:
+        start_time = np.inf
+        for filt in filters:
+            times = np.array(lc[filt])[:,0]
+            filter_min = np.min(times)
+            if filter_min < start_time:
+                start_time = filter_min
+    for filt in filters:
+        lc[filt] = np.array(lc[filt])
+        lc[filt][:,0] -= start_time
+        lc[filt] = lc[filt].tolist()
