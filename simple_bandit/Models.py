@@ -68,7 +68,6 @@ class Models:
 
         best_fit_paths = []
         start_time = time.time()    # for the while loop to check all files are complete
-        os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
         for model, prior in zip(self.model_names, self.model_prior_paths):
             #print('zip prior', prior)
             # code edited from analysis.py function: timestep_lightcurve_analysis
@@ -78,7 +77,7 @@ class Models:
             os.makedirs(model_outdir, exist_ok=True)
             fit_label = lightcurve_label + '_fit_' + model 
             #print('model_outdir', model_outdir)
-            print('running fit:' + fit_label)
+            # print('running fit:' + fit_label)
             
             
 

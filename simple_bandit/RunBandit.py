@@ -229,7 +229,7 @@ def init_observation(lightcurve_path, lc_idx):
     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
     Bandit.initial_reward(lc_idx, reward)
     #init_reward_array[lc_idx] = reward
-    print(f'{lightcurve_path} ({lc_idx}) initial reward is {reward}')
+    # print(f'{lightcurve_path} ({lc_idx}) initial reward is {reward}')
     return (new_lc, reward)
 
 with ProcessPoolExecutor() as executor:
