@@ -95,7 +95,7 @@ class Models:
             completion_bool, completed_fits = check_completion(best_fit_paths, t0 =start_time,  t0_submission= submission_time)
             if completion_bool:
                 end_time = time.time()
-                print(f'completed all fits in {((end_time-start_time)%3600)//60} minutes')
+                print(f'{lightcurve_label} completed all fits in {((end_time-start_time)%3600)//60} minutes')
                 break
             time.sleep(60)
         

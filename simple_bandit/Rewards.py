@@ -28,7 +28,7 @@ def stochastic_reward(dat, model_of_interest, stat):
     model_of_interest_stat = 0
 
     for key in dat:
-        print(key)
+        #print(key)
         if key == model_of_interest:
             model_of_interest_stat = dat[key][stat]
         else:

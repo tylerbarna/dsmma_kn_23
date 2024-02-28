@@ -286,7 +286,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     [os.system(f'rm {f}') for f in posterior_samples]
     os.system("find "+outdir+" -type d -name 'pm_*' -prune -exec rm -rf {} +")
     os.system("find "+outdir+" -type d -name '*posterior_samples.dat' -prune -exec rm -rf {} +")
-    time.sleep(5)
+    time.sleep(1)
 
         
     print(f'\n\nObservation interval {obs_int + 1} starting:')
@@ -297,7 +297,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     # choose lc to observe
     chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
     chosen_object = lightcurve_objects[chosen_object_idx]
-    print('chosen object: ', chosen_object)
+    print('chosen object: ', chosen_object.label)
     print(type(chosen_object))
 
     # observe lc and get reward
