@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --name=ucbeval
+#SBATCH --job-name=ucbeval
 #SBATCH --time=71:59:59
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
