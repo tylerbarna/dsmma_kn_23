@@ -174,7 +174,9 @@ for idx_offset, sample_outdir in zip(sample_idx_offset, sample_outdirs):
 lightcurve_paths = sorted(glob.glob(os.path.join(args.outdir,'**','lc*.json')))
 
 with ProcessPoolExecutor() as executor:
-    [executor.submit(retime_lightcurve, lc) for lc in lightcurve_paths]
+    for lc in lightcurve_paths:
+        executor.submit(retime_lightcurve, lc)
+    # [executor.submit(retime_lightcurve, lc) for lc in lightcurve_paths]
     
 
 ## run the bandit
