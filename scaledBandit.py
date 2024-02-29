@@ -183,6 +183,7 @@ with ProcessPoolExecutor() as executor:
 
 
 ## run the bandit
+bandit_command_list = []
 for sample_outdir in sample_outdirs:
     bandit_command_array = [
         'python3',
@@ -201,5 +202,11 @@ for sample_outdir in sample_outdirs:
         '--clean-run'
     ]
     bandit_command = ' '.join(bandit_command_array)
-    
+    bandit_command_list.append(bandit_command)
+
+def run_bandit(bandit_command):
     os.system(bandit_command)
+    
+with ProcessPoolExecutor() as executor:
+    for _ in executor.map(run_bandit, bandit_command_list):
+        pass
