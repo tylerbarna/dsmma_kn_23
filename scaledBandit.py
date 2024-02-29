@@ -144,7 +144,7 @@ outdir = args.outdir
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
 filters = 'ztfg' #[args.filters] if type(args.filters) == str else args.filters
-idx_offset = args.index_offset
+
 
 
 sample_count = np.arange(num_samples) 
