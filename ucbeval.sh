@@ -2,6 +2,7 @@
 #SBATCH --job-name=ucbeval
 #SBATCH --time=47:59:59
 #SBATCH --partition=shared
+#SBATCH --account=umn131
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
