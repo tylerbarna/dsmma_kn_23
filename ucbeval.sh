@@ -11,6 +11,7 @@
 #SBATCH -e ./logs/%x_%j.err
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=ztfrest@gmail.com
+#SBATCH --account=cough052
 
 source /home/cough052/barna314/anaconda3/bin/activate nmma_dev
 
