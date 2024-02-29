@@ -143,7 +143,7 @@ reward = args.reward
 outdir = args.outdir
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
-filters = [args.filters] if type(args.filters) == str else args.filters
+filters = 'ztfg' #[args.filters] if type(args.filters) == str else args.filters
 idx_offset = args.index_offset
 
 
