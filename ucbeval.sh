@@ -1,12 +1,12 @@
 #!/bin/bash
 #SBATCH --job-name=ucbeval
-#SBATCH --time=71:59:59
+#SBATCH --time=47:59:59
+#SBATCH --partition=shared
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=8gb
-#NOTSBATCH -p amdsmall
 #SBATCH -o ./logs/%x_%j.out
 #SBATCH -e ./logs/%x_%j.err
 #SBATCH --mail-type=ALL
