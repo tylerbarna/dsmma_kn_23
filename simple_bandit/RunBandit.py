@@ -88,6 +88,11 @@ parser.add_argument('--clean-run',
                     action='store_true',
                     help='delete all files and folders that start with observed_ in the outdir')
 
+parser.add_argument('-r','--reward',
+                    type=str,
+                    default='ucb',
+                    help='which reward strategy to use (default: ucb)')
+
 parser.add_argument('--timeout',
                     type=float,
                     default=1,
@@ -118,6 +123,7 @@ models = args.models
 target_model = args.target_model
 outdir = args.outdir
 clean_run = args.clean_run
+reward = args.reward
 timeout = args.timeout
 cluster = args.cluster if args.cluster != '' else False
 env = args.env
@@ -243,25 +249,6 @@ with ProcessPoolExecutor() as executor:
 for i in range(n_objects):
     print('initial rewards are ', Bandit.obj_rewards[i])
 
-# for lightcurve_path in lightcurve_paths:
-
-#     # initialize LC object
-#     new_lc = LightCurve(lightcurve_path, n_intervals, sim, all_models)
-
-#     # get initial obs and corresponding reward
-#     model_fits = new_lc.observe_lightcurve(0, intervals[0][0], intervals[0][1]) # CHECK
-#     print(f'model fits: {model_fits}')
-#     reward = stochastic_reward(model_fits, model_of_interest, stat_to_use)
-
-#     # add initial reward to bandit
-#     Bandit.initial_reward(lc_idx, reward)
-
-#     lightcurve_objects.append(new_lc)
-#     lc_idx += 1
-
-    # print(f'model fits: {model_fits}')
-    # print(f'reward: {reward}')
-# print('Initialized lightcurves Complete')
     
 '''5. Run bandit'''
 print(f'Running bandit for {n_intervals}')
@@ -281,7 +268,7 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     int_end_t = intervals[obs_int + 1][1]    
 
     # choose lc to observe
-    chosen_object_idx = Bandit.choose_obj()     # the Bandit returns the index of the object with the highest reward
+    chosen_object_idx = Bandit.choose_obj(method=reward)     # the Bandit returns the index of the object with the highest reward
     chosen_object = lightcurve_objects[chosen_object_idx]
     print('chosen object: ', chosen_object.label)
     #print(type(chosen_object))

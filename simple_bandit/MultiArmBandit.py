@@ -41,7 +41,7 @@ class UCB:
     All rewards start at infinity if the arm hasn't been pulled so the 
     algorithm should pull all arms at least once
     '''
-    def choose_obj(self):
+    def choose_obj(self,method='ucb'):
         
         # check that all objects have at least one observation, and observe the first object that doesn't
         # Do not need this if you are sure all objects will have initial obs
@@ -53,7 +53,7 @@ class UCB:
 
         for i in range(self.n_obj):
 
-            confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i])) #if self.n_obs[i] != 0 else np.inf
+            confidence_interval = np.sqrt(np.divide(2 * np.log(self.t), self.n_obs[i])) if method == 'ucb' else 0
 
             obj_ucbs[i] = self.avg_rewards[i] + confidence_interval
 
