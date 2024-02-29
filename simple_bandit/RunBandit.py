@@ -28,7 +28,7 @@ parser.add_argument('-tm', '--target-model',
                     default='Me2017',
                     choices=['nugent-hyper','Bu2019lm','TrPi2018', 'Me2017', 'Piro2021'], 
                     help='model to use as the target for the bandit'
-                    )
+)
 # parser.add_argument('-f','--filters',
 #                     type=str,
 #                     default='g',
@@ -298,16 +298,3 @@ with open(fit_stats_file, 'w') as f:
 print('bandit reward values:')
 for i in range(n_objects):
     print(f'{lightcurve_labels[i]} reward: {Bandit.obj_rewards[i]}')
-##### NEED THIS HERE??
-# submission_time = time.time() ## all submissions made
-# print(f'all fits submitted (submission took {submission_time-start_time//3600} hours and {((submission_time-start_time)%3600)//60} minutes elapsed)')
-# while True:
-#     if args.dry_run:
-#         print('dry run complete, exiting')
-#         break
-#     completion_bool, completed_fits = check_completion(result_paths=results_paths, t0=start_time, t0_submission=submission_time, timeout=timeout)
-#     if completion_bool:
-#         end_time = time.time()
-#         print(f'completed all fits in {end_time-start_time//3600} hours and {((end_time-start_time)%3600)//60} minutes')
-#         break
-#     time.sleep(120)

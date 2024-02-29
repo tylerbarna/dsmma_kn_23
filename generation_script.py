@@ -70,13 +70,13 @@ min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
 filters = [args.filters] if type(args.filters) == str else args.filters
 idx_offset = args.index_offset
+time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
 
 os.makedirs(outdir, exist_ok=True)
 priors = [os.path.join('./priors/',model+'.prior') for model in models]
 
 inj_gen_time_dict = {model:[] for model in models}
 
-time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
 
 for model, prior in zip(models,priors):
     print('starting model: {0} with prior: {1}'.format(model,prior))
