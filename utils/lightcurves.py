@@ -36,7 +36,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
         ## if injection_path=injections/injection_<model>_<label>.json, then lightcurve_label will be <label>
         lightcurve_label = os.path.basename(injection_path).split('.')[0].split('_')[-1]
     lightcurve_filename = 'lc_'+model+'_'+lightcurve_label
-    lightcurve_path = os.path.join(outDir, 'lc_'+model+'_'+lightcurve_label+'.json')
+    lightcurve_path = os.path.join(outDir, lightcurve_filename+'.json')
     
     if 'time_series' in kwargs: ## for modification fo time series
         time_series = kwargs['time_series']

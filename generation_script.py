@@ -85,15 +85,15 @@ for model, prior in zip(models,priors):
     else:
         lc_count = 1 * multiplier
     
-    for lc_idx in range(idx_offset, lc_count+idx_offset):
+    for lc_idx in range(lc_count):
         generated_lc = False
-        lc_idx_zfill = str(lc_idx).zfill(5) ## for ease of sorting
+        lc_idx_zfill = str(lc_idx+idx_offset).zfill(5) ## for ease of sorting
         while not generated_lc:
             try:
-                print('starting light curve: {0}'.format(lc_idx))
+                print('starting light curve: {0}'.format(lc_idx_zfill))
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill)
                 generated_lc = True
             except:
                 pass
@@ -105,6 +105,6 @@ for model, prior in zip(models,priors):
                 os.remove(injection_file), os.remove(lightcurve_file)
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill)
                 retry_count += 1
         
