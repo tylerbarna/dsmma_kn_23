@@ -209,7 +209,7 @@ for sample_outdir in sample_outdirs:
         '--timeout', str(args.timeout),
         '--cluster', args.cluster,
         '--env', args.env,
-        # '--clean-run'
+        '--clean-run'
     ]
     bandit_command = ' '.join(bandit_command_array)
     bandit_command_list.append(bandit_command)
