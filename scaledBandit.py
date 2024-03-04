@@ -153,6 +153,13 @@ sample_idx_offset = sample_count * 10 ## maybe not the most resilient method
 sample_outdirs = [os.path.join(outdir, f'{str(idx).zfill(3)}') for idx in sample_idx_offset]
 [os.makedirs(outdir, exist_ok=True) for outdir in sample_outdirs]
 
+for sample_outdir in sample_outdirs:
+    if os.path.exists(os.path.join(sample_outdir, 'fit_stats.json')):
+        print(f'fits already completed for {sample_outdir}. Skipping')
+        sample_outdirs.remove(sample_outdir)
+        sample_idx_offset = np.delete(sample_idx_offset, np.where(sample_idx_offset == int(sample_outdir.split('/')[-1])))
+        
+
 print(f'Generating lightcurves for {num_samples} samples')
 for idx_offset, sample_outdir in zip(sample_idx_offset, sample_outdirs):
     gen_command_array = [
@@ -199,7 +206,7 @@ for sample_outdir in sample_outdirs:
         '--timeout', str(args.timeout),
         '--cluster', args.cluster,
         '--env', args.env,
-        '--clean-run'
+        # '--clean-run'
     ]
     bandit_command = ' '.join(bandit_command_array)
     bandit_command_list.append(bandit_command)

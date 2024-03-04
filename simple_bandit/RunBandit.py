@@ -135,6 +135,11 @@ tstep = args.tstep
 #     print('outdir already exists, are you sure you want to overwrite? adding timestamp to outdir just in case')
 #     outdir = os.path.join(outdir +'-'+ strtime())
 #     print(f'outdir is now {outdir}')
+if os.path.exists(os.path.join(outdir,'fit_stats.json')):
+    print('fit_stats.json already exists, bandit has already been run. Exiting.')
+
+    exit()
+
 if clean_run:
     print(f'cleaning run, deleting all files and folders that start with observed_ in {outdir}')
     os.system(f'rm -r {os.path.join(outdir, "observed_*")}')
