@@ -214,6 +214,7 @@ for sample_outdir in sample_outdirs:
         '--data', sample_outdir,
         '--outdir', sample_outdir,
         '--nsteps', str(args.nsteps),
+        '--tstep', str(args.tstep),
         '--timeout', str(args.timeout),
         '--cluster', args.cluster,
         '--env', args.env,
