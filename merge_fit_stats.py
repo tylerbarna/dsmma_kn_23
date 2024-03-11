@@ -13,9 +13,9 @@ def merge_json_files(start_dir, output_file):
                     merged_data.append(data)
 
     with open(output_file, 'w') as f:
-        json.dump(merged_data, f)
+        json.dump(merged_data, f, indent=6)
 
 if __name__ == "__main__":
     start_dir = '/expanse/lustre/projects/umn131/tbarna/ucbeval/Me2017/ucb'
-    output_file = 'merged_fit_stats.json'
+    output_file = 'merged_fit_stats_2.json'
     merge_json_files(start_dir, output_file)
