@@ -2,15 +2,17 @@ import os
 import json
 
 def merge_json_files(start_dir, output_file):
-    merged_data = []
+    merged_data = {}
 
     for root, dirs, files in os.walk(start_dir):
         for file in files:
             if file == 'fit_stats.json':
                 file_path = os.path.join(root, file)
+                file_path = file_path.replace('/expanse/lustre/projects/umn131/tbarna/ucbeval/Me2017/ucb', '')
                 with open(file_path, 'r') as f:
                     data = json.load(f)
-                    merged_data.append(data)
+                    merged_data[file_path] = data
+    merged_data = sorted(merged_data.items(), key=lambda x: x[0])
 
     with open(output_file, 'w') as f:
         json.dump(merged_data, f, indent=6)
