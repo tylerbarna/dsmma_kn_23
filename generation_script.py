@@ -119,5 +119,8 @@ for model, prior in zip(models,priors):
                     print(f'Observation requirement is too strict, reducing minimum number of detections from {min_detections} to {min_detections-1}')
                     min_detections -= 1
                     retry_count = 1
+                    if min_detections < 3:
+                        print('Minimum number of detections has been reduced to 3, exiting (Note: you should probably take a look at that prior file or how many days the cutoff is set at)')
+                        break
         injection_files[model].append(injection_file), lightcurve_files[model].append(lightcurve_file)
         
