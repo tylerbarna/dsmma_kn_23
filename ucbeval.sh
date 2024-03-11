@@ -19,8 +19,8 @@ echo "Running UCB evaluation for Me2017"
 # Me2017
 
 # do with ucb
-echo "Running with UCB"
-python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Me2017 TrPi2018 -tm Me2017 --reward ucb --min-detections 15 --min-detections-cutoff 10 --nsteps 7 --outdir /expanse/lustre/projects/umn131/tbarna/ucbeval/Me2017/ucb 
+# echo "Running with UCB"
+# python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Me2017 TrPi2018 -tm Me2017 --reward ucb --min-detections 15 --min-detections-cutoff 10 --nsteps 7 --outdir /expanse/lustre/projects/umn131/tbarna/ucbeval/Me2017/ucb 
 
 # do without
 echo "Running without UCB"
