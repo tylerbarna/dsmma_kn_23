@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH --job-name=ztfeval
+#SBATCH --time=47:59:59
+#SBATCH --partition=shared
+#SBATCH --account=umn131
+#SBATCH --mail-type=ALL
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=64gb
+#SBATCH -o ./logs/%x_%j.out
+#SBATCH -e ./logs/%x_%j.err
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=ztfrest@gmail.com
+
+source activate nmma_dev
+
+echo "Evaluating ZTF-like cadences"
+
+echo "Running UCB evaluation for Me2017"
+python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Me2017 TrPi2018 -tm Me2017 --reward ucb --min-detections 10 --min-detections-cutoff 10 --nsteps 5 --outdir /expanse/lustre/projects/umn131/tbarna/ztfeval/Me2017 --nsamples 10
+
+echo "Running UCB evaluation for Bu2019lm"
+python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Bu2019lm TrPi2018 -tm Bu2019lm --reward ucb --min-detections 10 --min-detections-cutoff 10 --nsteps 5 --outdir /expanse/lustre/projects/umn131/tbarna/ztfeval/Bu2019lm --nsamples 10

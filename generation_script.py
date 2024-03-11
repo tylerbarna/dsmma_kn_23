@@ -20,6 +20,11 @@ parser.add_argument('-f','--filters',
                     help='filters to generate light curves for (choices for ztf are r,g,i)'
 )
 
+parser.add_argument('-ztf', '--ztf-sampling',
+                    action='store_true',
+                    help='whether to use a ztf-like observing cadence for the light curves'
+)
+
 parser.add_argument('-o','--outdir',
                     type=str,
                     default='./injections/',
@@ -69,6 +74,7 @@ validate = args.no_validate
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
 filters = [args.filters] if type(args.filters) == str else args.filters
+ztf_sampling = args.ztf_sampling
 idx_offset = args.index_offset
 time_series = np.arange (0.01, 20.0 + 0.5, args.cadence)
 
@@ -93,7 +99,7 @@ for model, prior in zip(models,priors):
                 print('starting light curve: {0}'.format(lc_idx_zfill))
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
                 generated_lc = True
             except:
                 pass
@@ -105,6 +111,6 @@ for model, prior in zip(models,priors):
                 os.remove(injection_file), os.remove(lightcurve_file)
                 injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
                 print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill)
+                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
                 retry_count += 1
         

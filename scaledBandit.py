@@ -46,6 +46,11 @@ parser.add_argument('-r','--reward',
 #                     help='filters to generate light curves for (choices for ztf are ztfr,ztfg,ztfi)'
 # )
 
+parser.add_argument('-ztf', '--ztf-sampling',
+                    action='store_true',
+                    help='whether to use a ztf-like observing cadence for the light curves'
+)
+
 parser.add_argument('-p','--priors',
                     type=str,
                     default='/home/tbarna/dsmma_kn_23/priors',
@@ -137,6 +142,7 @@ args = parser.parse_args()
 ## generate the lightcurves, with a bunch of subdirectories corresponding to each batch of 9 lightcurves
 num_samples = args.nsamples
 models = args.models
+ztf_sampling = args.ztf_sampling
 target_model = args.target_model
 target_statistic = args.target_statistic
 reward = args.reward
@@ -170,6 +176,7 @@ for idx_offset, sample_outdir in zip(sample_idx_offset, sample_outdirs):
         'python3',
         'generation_script.py',
         '--models', ' '.join(models),
+        '--ztf-sampling' if ztf_sampling else '',
         '--outdir', sample_outdir,
         '--min-detections', str(min_detections),
         '--min-detections-cutoff', str(min_detections_cuttoff),
