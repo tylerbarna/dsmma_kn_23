@@ -87,6 +87,7 @@ lightcurve_files = {model:[] for model in models}
 
 for model, prior in zip(models,priors):
     print('starting model: {0} with prior: {1}'.format(model,prior))
+    min_detections = args.min_detections ## to reset from lessening of requirements
     if model == 'nugent-hyper':
         lc_count = 7 * multiplier
     else:
@@ -114,5 +115,9 @@ for model, prior in zip(models,priors):
                 print('created injection file: {0}'.format(injection_file))
                 lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
                 retry_count += 1
+                if retry_count >= 100: ## could make this an arg
+                    print(f'Observation requirement is too strict, reducing minimum number of detections from {min_detections} to {min_detections-1}')
+                    min_detections -= 1
+                    retry_count = 1
         injection_files[model].append(injection_file), lightcurve_files[model].append(lightcurve_file)
         
