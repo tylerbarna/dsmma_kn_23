@@ -158,6 +158,7 @@ for sample_idx, sample_outdir in enumerate(sample_outdirs):
     if os.path.exists(os.path.join(sample_outdir, 'fit_stats.json')):
         print(f'fits already completed for {sample_outdir}. Skipping')
         idx_to_delete.append(sample_idx)
+        num_samples -= 1
 
 ## delete the sample_outdirs that have already been completed
 sample_outdirs = [sample_outdirs[i] for i in range(len(sample_outdirs)) if i not in idx_to_delete]
