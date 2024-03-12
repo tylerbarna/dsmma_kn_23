@@ -174,6 +174,8 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
         all_bands_meet_criteria = True ## default to true, then check if any band does not meet criteria
 
         for band in lightcurve_df.columns[1:]:
+            if not band.endswith('_err'): ## if band string does not end with _err, skip (want finite errors because those are detections)
+                continue
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             print(min_time_interval[band])
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
@@ -185,6 +187,8 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
 
     else: ## ensure at least one band meets requirements
         for band in lightcurve_df.columns[1:]:
+            if not band.endswith('_err'): ## if band string does not end with _err, skip
+                continue
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
