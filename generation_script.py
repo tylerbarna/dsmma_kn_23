@@ -86,7 +86,7 @@ injection_files = {model:[] for model in models}
 lightcurve_files = {model:[] for model in models}
 
 for model, prior in zip(models,priors):
-    print('starting model: {0} with prior: {1}'.format(model,prior))
+    print('\n\nstarting model: {0} with prior: {1}'.format(model,prior))
     min_detections = args.min_detections ## to reset from lessening of requirements
     if model == 'nugent-hyper':
         lc_count = 7 * multiplier
@@ -96,7 +96,7 @@ for model, prior in zip(models,priors):
     for lc_idx in range(lc_count):
         lc_idx_zfill = str(lc_idx+idx_offset).zfill(5) ## for ease of sorting
         try:
-            print('starting light curve: {0}'.format(lc_idx_zfill))
+            print('\nstarting light curve: {0}'.format(lc_idx_zfill))
             injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
             print('created injection file: {0}'.format(injection_file))
             lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
