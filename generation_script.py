@@ -111,9 +111,12 @@ for model, prior in zip(models,priors):
                 ## delete injection and light curve files
                 os.remove(injection_file) if os.path.exists(injection_file) else None
                 os.remove(lightcurve_file) if os.path.exists(lightcurve_file) else None
-                injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
-                print('created injection file: {0}'.format(injection_file))
-                lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
+                try:
+                    injection_file = generate_injection(model=model, outDir=outdir, injection_label=lc_idx_zfill)
+                    #print('created injection file: {0}'.format(injection_file))
+                    lightcurve_file = generate_lightcurve(model=model, injection_path=injection_file, outDir=outdir, filters=filters, time_series=time_series, lightcurve_label=lc_idx_zfill, ztf_sampling=ztf_sampling)
+                except:
+                    pass
                 retry_count += 1
                 if retry_count >= 100: ## could make this an arg
                     print(f'Observation requirement is too strict, reducing minimum number of detections from {min_detections} to {min_detections-1}')
