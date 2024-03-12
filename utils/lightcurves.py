@@ -51,7 +51,7 @@ def generate_lightcurve(model, injection_path, outDir=None, lightcurve_label=Non
             outdir=outDir,
             outfile_type="json", ## new addition
             model=model,
-            svd_path="./svdmodels",
+            svd_path=kwargs.get('svd_path', "./svdmodels"),
             tmin=time_series[0],
             tmax=time_series[-1],
             dt=time_series[1] - time_series[0],
@@ -162,6 +162,9 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
     Returns:
     - valid (bool): whether or not the lightcurve is valid 
     '''
+    if not os.path.exists(lightcurve_path): ## ensure lightcurve exists
+        print('No lightcurve to Validate!')
+        return False
     ## Read in the lightcurve
     lightcurve_df = read_lightcurve(lightcurve_path, **kwargs)
     start_time = lightcurve_df['sample_times'].min()
@@ -172,6 +175,7 @@ def validate_lightcurve(lightcurve_path, min_detections=3, min_time=3.1, all_ban
 
         for band in lightcurve_df.columns[1:]:
             min_time_interval = lightcurve_df[(lightcurve_df['sample_times'] >= start_time) & (lightcurve_df['sample_times'] <= end_time)]
+            print(min_time_interval[band])
             num_detections = min_time_interval[band].apply(lambda val: 1 if val != np.inf and not np.isnan(val) else 0)
             meets_min_detections = num_detections.sum() >= min_detections
             if not meets_min_detections: ## failure condition, don't need to check other bands
