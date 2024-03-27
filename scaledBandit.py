@@ -195,9 +195,11 @@ lightcurve_paths = sorted(glob.glob(os.path.join(args.outdir,'**','lc*.json')))
 #     for lc in lightcurve_paths:
 #         executor.submit(retime_lightcurve, lc)
 #     # [executor.submit(retime_lightcurve, lc) for lc in lightcurve_paths]
-with ProcessPoolExecutor() as executor:
-    for lc in executor.map(retime_lightcurve, lightcurve_paths):
-        pass
+# with ProcessPoolExecutor() as executor:
+#     for lc in executor.map(retime_lightcurve, lightcurve_paths):
+#         pass
+for path in lightcurve_paths: ## skipping the threading for now, should hopefully not be too slow
+    retime_lightcurve(path)
 
 
 ## run the bandit
