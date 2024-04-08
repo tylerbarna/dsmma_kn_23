@@ -291,10 +291,19 @@ for obs_int in range(n_intervals-1):  ### For online data, this would have to ha
     Bandit.update_model(reward)
     
     
+
+    stopTime = time.time()
+
+    fit_stats_file = os.path.join(outdir, 'fit_stats_'+str(obs_int)+'.json')
+    fit_stats_dict = {lightcurve_labels[i]: lightcurve_objects[i].fit_stats for i in range(n_objects)}
+    fit_stats_dict['misc'] = {'start_time': start_time, 'end_time': stopTime, 'run_time': stopTime - start_time}
+    with open(fit_stats_file, 'w') as f:
+        json.dump(fit_stats_dict, f, indent=6)
+
 print('Bandit run complete')
 stopTime = time.time()
 
-fit_stats_file = os.path.join(outdir, 'fit_stats.json')
+fit_stats_file = os.path.join(outdir, 'fit_stats_complete.json')
 fit_stats_dict = {lightcurve_labels[i]: lightcurve_objects[i].fit_stats for i in range(n_objects)}
 fit_stats_dict['misc'] = {'start_time': start_time, 'end_time': stopTime, 'run_time': stopTime - start_time}
 with open(fit_stats_file, 'w') as f:
