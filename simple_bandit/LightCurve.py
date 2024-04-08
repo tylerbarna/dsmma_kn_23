@@ -78,7 +78,9 @@ class LightCurve:
         print('DEBUG PRINTS')
         print(self.observed_lc['ztfg'])
         print(time_cutoff_list)
-        self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list, axis = 0))
+        ## only do if there are new observations
+        if len(time_cutoff_list) > 0:
+            self.observed_lc['ztfg'] = np.ndarray.tolist(np.append(self.observed_lc['ztfg'], time_cutoff_list, axis = 0))
 
         # rewrite json file with new observed_lc
         f = open(self.observed_lc_path, "w")
