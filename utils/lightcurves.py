@@ -214,7 +214,7 @@ def retime_lightcurve(lightcurve_path, start_time=None, outfile=None):
     - outfile (str): path to output file (default=None). If None, will overwrite the input file.
     
     Returns:
-    - outpath (str): path to output file
+    - outfile (str): path to output file
     '''
     
     with open(lightcurve_path, 'r') as f:
@@ -231,3 +231,9 @@ def retime_lightcurve(lightcurve_path, start_time=None, outfile=None):
         lc[filt] = np.array(lc[filt])
         lc[filt][:,0] -= start_time
         lc[filt] = lc[filt].tolist()
+    
+    outfile = outfile or lightcurve_path ## if outfile is None, then overwrite the input file
+    with open(outfile, 'w') as f:
+        json.dump(lc, f, indent=6)
+    
+    return outfile

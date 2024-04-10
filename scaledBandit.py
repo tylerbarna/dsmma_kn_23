@@ -201,7 +201,6 @@ lightcurve_paths = sorted(glob.glob(os.path.join(args.outdir,'**','lc*.json')))
 for path in lightcurve_paths: ## skipping the threading for now, should hopefully not be too slow
     retime_lightcurve(path)
 
-
 ## run the bandit
 bandit_command_list = []
 for sample_outdir in sample_outdirs:
