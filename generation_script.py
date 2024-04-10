@@ -48,6 +48,12 @@ parser.add_argument('--min-detections-cutoff',
                     help='time after start of lightcurve to consider points for when validating (default=3.1)'
 )
 
+parser.add_argument('--retry-count',
+                    type=int,
+                    default=250,
+                    help='number of times to retry resampling injection before reducing minimum number of detections'
+)
+
 parser.add_argument('--cadence',
                     type=float,
                     default=0.5,
@@ -73,6 +79,7 @@ multiplier = args.multiplier
 validate = args.no_validate
 min_detections = args.min_detections
 min_detections_cuttoff = args.min_detections_cutoff
+retry_count = args.retry_count
 filters = [args.filters] if type(args.filters) == str else args.filters
 ztf_sampling = args.ztf_sampling
 idx_offset = args.index_offset
@@ -118,7 +125,7 @@ for model, prior in zip(models,priors):
                 except:
                     pass
                 retry_count += 1
-                if retry_count >= 100: ## could make this an arg
+                if retry_count >= retry_count: ## could make this an arg
                     print(f'Observation requirement is too strict, reducing minimum number of detections from {min_detections} to {min_detections-1}')
                     min_detections -= 1
                     retry_count = 1
