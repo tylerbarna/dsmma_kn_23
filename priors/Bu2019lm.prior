@@ -1,4 +1,4 @@
-luminosity_distance = Uniform(minimum=1.0, maximum=10., name='luminosity_distance',latex_label='$D_L$')
+luminosity_distance = Uniform(minimum=1.0, maximum=200., name='luminosity_distance',latex_label='$D_L$')
 KNphi = Uniform(name='KNphi', minimum=15., maximum=50., latex_label='$\Phi$')
 inclination_EM = Sine(name='inclination_EM', minimum=0., maximum=np.pi/4., latex_label='$\\iota$')
 timeshift = Uniform(minimum=-2.0, maximum=1.0, name='trigger_time',latex_label='$t_0$')
