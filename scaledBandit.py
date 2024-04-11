@@ -9,7 +9,7 @@ import sys
 from utils.lightcurves import retime_lightcurve #############################################################
 sys.path.append('~/dsmma_kn_23') #############################################################
 
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 
 parser = argparse.ArgumentParser(description='Do analysis on light curves')
 
@@ -171,7 +171,7 @@ sample_outdirs = [sample_outdirs[i] for i in range(len(sample_outdirs)) if i not
 sample_idx_offset = [sample_idx_offset[i] for i in range(len(sample_idx_offset)) if i not in idx_to_delete]
 
 print(f'Generating lightcurves for {num_samples} samples')
-for idx_offset, sample_outdir in zip(sample_idx_offset, sample_outdirs):
+def generate_lightcurves(idx_offset, sample_outdir):
     gen_command_array = [
         'python3',
         'generation_script.py',
@@ -184,8 +184,10 @@ for idx_offset, sample_outdir in zip(sample_idx_offset, sample_outdirs):
         '--index-offset', str(idx_offset)
     ]
     gen_command = ' '.join(gen_command_array)
-    
     os.system(gen_command)
+
+with ThreadPoolExecutor() as executor:
+    executor.map(generate_lightcurves, sample_idx_offset, sample_outdirs)
 
 
 ## adjust the lightcurves
