@@ -48,7 +48,7 @@ class LightCurve:
             true_lc_file.close()
 
             # make empty lc dict
-            self.observed_lc = {"ztfg" : [self.true_lc['ztfg'][0]]} # CHECK 
+            self.observed_lc = {"ztfg" : []} # CHECK 
 
             # create file path name
             self.observed_lc_path = os.path.join(self.outdir, 'observed_'+self.label+'.json')
