@@ -50,7 +50,7 @@ parser.add_argument('--min-detections-cutoff',
 
 parser.add_argument('--retry-limit',
                     type=int,
-                    default=250,
+                    default=1000,
                     help='number of times to retry resampling injection before reducing minimum number of detections'
 )
 
