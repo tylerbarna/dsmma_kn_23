@@ -110,7 +110,7 @@ injection_files = {model: [] for model in models}
 lightcurve_files = {model: [] for model in models}
 
 
-def generate_lightcurve_parallel(model, prior):
+def generate_lightcurve_wrapper(model, prior):
     print("\n\nstarting model: {0} with prior: {1}".format(model, prior))
     min_detections = args.min_detections  ## to reset from lessening of requirements
     if model == "nugent-hyper":
@@ -182,8 +182,8 @@ def generate_lightcurve_parallel(model, prior):
         lightcurve_files[model].append(lightcurve_file)
 
 
-with concurrent.futures.ProcessPoolExecutor() as executor:
-    executor.map(generate_lightcurve_parallel, models, priors)
+# with concurrent.futures.ProcessPoolExecutor() as executor:
+#     executor.map(generate_lightcurve_wrapper, models, priors)
 
-# for model, prior in zip(models, priors):
-#     generate_lightcurve_parallel(model, prior)
+for model, prior in zip(models, priors):
+    generate_lightcurve_wrapper(model, prior)
