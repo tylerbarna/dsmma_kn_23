@@ -182,5 +182,8 @@ def generate_lightcurve_parallel(model, prior):
         lightcurve_files[model].append(lightcurve_file)
 
 
-with concurrent.futures.ProcessPoolExecutor() as executor:
-    executor.map(generate_lightcurve_parallel, models, priors)
+# with concurrent.futures.ProcessPoolExecutor() as executor:
+#     executor.map(generate_lightcurve_parallel, models, priors)
+
+for model, prior in zip(models, priors):
+    generate_lightcurve_parallel(model, prior)
