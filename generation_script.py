@@ -5,6 +5,7 @@ import os
 from utils.injections import generate_injection
 from utils.lightcurves import generate_lightcurve, validate_lightcurve
 import multiprocessing
+import concurrent.futures
 
 parser = argparse.ArgumentParser(description="Generate light curves for a given model")
 
@@ -108,8 +109,6 @@ inj_gen_time_dict = {model: [] for model in models}
 injection_files = {model: [] for model in models}
 lightcurve_files = {model: [] for model in models}
 
-import concurrent.futures
-
 
 def generate_lightcurve_parallel(model, prior):
     print("\n\nstarting model: {0} with prior: {1}".format(model, prior))
@@ -168,7 +167,7 @@ def generate_lightcurve_parallel(model, prior):
                 except:
                     pass
                 retry_count += 1
-                if retry_count >= retry_limit:  ## could make this an arg
+                if retry_count >= retry_limit:
                     print(
                         f"Observation requirement is too strict, reducing minimum number of detections from {min_detections} to {min_detections-1}"
                     )
@@ -179,9 +178,8 @@ def generate_lightcurve_parallel(model, prior):
                             "Minimum number of detections has been reduced to 3, exiting (Note: you should probably take a look at that prior file or how many days the cutoff is set at)"
                         )
                         break
-        injection_files[model].append(injection_file), lightcurve_files[model].append(
-            lightcurve_file
-        )
+        injection_files[model].append(injection_file)
+        lightcurve_files[model].append(lightcurve_file)
 
 
 with concurrent.futures.ProcessPoolExecutor() as executor:
