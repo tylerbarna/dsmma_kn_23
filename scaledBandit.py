@@ -288,7 +288,10 @@ for sample_outdir in sample_outdirs:
 def run_bandit(bandit_command):
     os.system(bandit_command)
 
+for bandit_command in bandit_command_list:
+    run_bandit(bandit_command)
+    time.sleep(3)  ## to avoid overloading the cluster
 
-with ProcessPoolExecutor() as executor:
-    for _ in executor.map(run_bandit, bandit_command_list):
-        pass
+# with ProcessPoolExecutor() as executor:
+#     for _ in executor.map(run_bandit, bandit_command_list):
+#         pass
