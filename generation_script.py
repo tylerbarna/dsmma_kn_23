@@ -125,7 +125,25 @@ def generate_lightcurve_wrapper(model, prior):
 
     for lc_idx in range(lc_count):
         start_time = time.time()
-        lc_idx_zfill = str(lc_idx + idx_offset).zfill(5)  ## for ease of sorting
+        lc_idx_zfill = str(lc_idx + idx_offset).zfill(5)  ## for ease of sorting'
+        potential_injection_file = os.path.join(outdir, f"inj_{model}_{lc_idx_zfill}.json")
+        potential_lightcurve_file = os.path.join(outdir, f"lc_{model}_{lc_idx_zfill}.json")
+        if os.path.exists(potential_injection_file) and os.path.exists(potential_lightcurve_file):
+            if validate:
+                if validate_lightcurve(
+                    potential_lightcurve_file,
+                    min_detections=min_detections,
+                    min_time=min_detections_cuttoff,
+                ):
+                    print(f"light curve {lc_idx_zfill} already exists and is valid, skipping")
+                    continue
+                else:
+                    print(f"light curve {lc_idx_zfill} already exists but is invalid, resampling")
+            else:
+                
+                print(f"light curve {lc_idx_zfill} already exists, skipping")
+                continue
+        
         try:
             print("\nstarting light curve: {0}".format(lc_idx_zfill))
             injection_file = generate_injection(
