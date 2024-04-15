@@ -6,7 +6,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=12
 #SBATCH --mem=32gb
 #SBATCH -o ./logs/%x_%j.out
 #SBATCH -e ./logs/%x_%j.err
