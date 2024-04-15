@@ -1,11 +1,16 @@
 import argparse
+import time
 import numpy as np
 import os
+import warnings
 
 from utils.injections import generate_injection
 from utils.lightcurves import generate_lightcurve, validate_lightcurve
 import multiprocessing
 import concurrent.futures
+
+warnings.filterwarnings("ignore", message="*KernelDensity*")
+
 
 parser = argparse.ArgumentParser(description="Generate light curves for a given model")
 
@@ -119,6 +124,7 @@ def generate_lightcurve_wrapper(model, prior):
         lc_count = 1 * multiplier
 
     for lc_idx in range(lc_count):
+        start_time = time.time()
         lc_idx_zfill = str(lc_idx + idx_offset).zfill(5)  ## for ease of sorting
         try:
             print("\nstarting light curve: {0}".format(lc_idx_zfill))
@@ -178,11 +184,15 @@ def generate_lightcurve_wrapper(model, prior):
                             "Minimum number of detections has been reduced to 3, exiting (Note: you should probably take a look at that prior file or how many days the cutoff is set at)"
                         )
                         break
+        creation_duration = (time.time() - start_time) / 60
+        "Generated light curve {0} in {1} minutes".format(
+            lightcurve_file, creation_duration
+        ) 
         injection_files[model].append(injection_file)
         lightcurve_files[model].append(lightcurve_file)
 
 
-# with concurrent.futures.ProcessPoolExecutor() as executor:
+# with concurrent.futures.ProcessPoolExecutor() as executor: ## should not be threading here since threading is occuring higher up
 #     executor.map(generate_lightcurve_wrapper, models, priors)
 
 for model, prior in zip(models, priors):
