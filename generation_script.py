@@ -9,7 +9,7 @@ from utils.lightcurves import generate_lightcurve, validate_lightcurve
 import multiprocessing
 import concurrent.futures
 
-warnings.filterwarnings("ignore", message="*KernelDensity*")
+# warnings.filterwarnings("ignore", message="*KernelDensity*")
 
 
 parser = argparse.ArgumentParser(description="Generate light curves for a given model")
