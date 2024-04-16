@@ -21,4 +21,4 @@ echo "Evaluating ZTF-like cadences"
 # python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Me2017 TrPi2018 -tm Me2017 --reward ucb --min-detections 7 --min-detections-cutoff 15 --nsteps 7 --outdir /expanse/lustre/projects/umn131/tbarna/ztfeval3/Me2017 --nsamples 10 --ztf-sampling --tstep 2
 
 echo "Running UCB evaluation for Bu2019lm"
-python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Bu2019lm TrPi2018 -tm Bu2019lm --reward ucb --min-detections 7 --min-detections-cutoff 18 --nsteps 7 --outdir /expanse/lustre/projects/umn131/tbarna/ztfevalPaper2/Bu2019lm --nsamples 100 --ztf-sampling --tstep 2 
+python3 /home/tbarna/dsmma_kn_23/scaledBandit.py -m nugent-hyper Bu2019lm TrPi2018 -tm Bu2019lm --reward ucb --min-detections 7 --min-detections-cutoff 18 --nsteps 7 --outdir /expanse/lustre/projects/umn131/tbarna/ztfevalPaper/Bu2019lm --nsamples 100 --ztf-sampling --tstep 2 
