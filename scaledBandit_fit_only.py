@@ -16,6 +16,7 @@ sys.path.append(
 )  #############################################################
 
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 
 parser = argparse.ArgumentParser(description="Do analysis on light curves")
 
@@ -288,10 +289,5 @@ for sample_outdir in sample_outdirs:
 def run_bandit(bandit_command):
     os.system(bandit_command)
 
-# for bandit_command in bandit_command_list:
-#     run_bandit(bandit_command)
-#     time.sleep(5)  ## to avoid overloading the cluster
-
-with ProcessPoolExecutor() as executor:
-    for _ in executor.map(run_bandit, bandit_command_list):
-        pass
+with ThreadPoolExecutor() as executor:
+    executor.map(run_bandit, bandit_command_list)
